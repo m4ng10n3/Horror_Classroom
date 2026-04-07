@@ -4,14 +4,23 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class FPSController : MonoBehaviour
 {
-    public Transform cameraTransform;
-    public float moveSpeed = 3.5f;
+    [Header("Movement")]
+    public float moveSpeed = 2.5f;
     public float mouseSensitivity = 0.1f;
     public float gravity = -20f;
+
+    [Header("References")]
+    public Transform cameraTransform;
+    public Transform seatPoint;
+    public Transform standPoint;
+
+    [Header("State")]
+    public bool isSeated = true;
 
     private CharacterController controller;
     private float verticalVelocity;
     private float pitch;
+    private bool eKeyWasPressed;
 
     void Awake()
     {
@@ -22,12 +31,23 @@ public class FPSController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // Posizioniamo il player allo SeatPoint all'avvio
+        if (seatPoint != null)
+        {
+            TeleportTo(seatPoint);
+        }
     }
 
     void Update()
     {
         HandleLook();
-        HandleMovement();
+        HandleSitStandToggle();
+
+        if (!isSeated)
+        {
+            HandleMovement();
+        }
     }
 
     void HandleLook()
@@ -41,6 +61,51 @@ public class FPSController : MonoBehaviour
 
         cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+    }
+
+    void HandleSitStandToggle()
+    {
+        var kb = Keyboard.current;
+        if (kb == null) return;
+
+        bool eIsPressed = kb.eKey.isPressed;
+
+        // Detect "key just pressed" (rising edge) per evitare toggle continuo
+        if (eIsPressed && !eKeyWasPressed)
+        {
+            if (isSeated)
+                StandUp();
+            else
+                SitDown();
+        }
+
+        eKeyWasPressed = eIsPressed;
+    }
+
+    void StandUp()
+    {
+        if (standPoint == null) return;
+        TeleportTo(standPoint);
+        isSeated = false;
+        Debug.Log("Player si è alzato");
+    }
+
+    void SitDown()
+    {
+        if (seatPoint == null) return;
+        TeleportTo(seatPoint);
+        isSeated = true;
+        Debug.Log("Player si è seduto");
+    }
+
+    void TeleportTo(Transform target)
+    {
+        // CharacterController va disabilitato temporaneamente per teletrasportare
+        controller.enabled = false;
+        transform.position = target.position;
+        // Manteniamo la rotation Y attuale del player così non perde l'orientamento
+        controller.enabled = true;
+        verticalVelocity = 0f;
     }
 
     void HandleMovement()
