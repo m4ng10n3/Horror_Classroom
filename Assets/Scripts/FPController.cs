@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class FPSController : MonoBehaviour
 {
+    [Header("External Lock")]
+    [Tooltip("Se true, il player è forzato a restare seduto e non può alzarsi")]
+    public bool forceSeated = false;
+
     [Header("Movement")]
     public float moveSpeed = 2.5f;
     public float mouseSensitivity = 0.1f;
@@ -42,6 +46,13 @@ public class FPSController : MonoBehaviour
     void Update()
     {
         HandleLook();
+
+        // Safety: se siamo forzati seduti ma siamo in piedi, forza il sit down
+        if (forceSeated && !isSeated)
+        {
+            SitDown();
+        }
+
         HandleSitStandToggle();
 
         if (!isSeated)
@@ -70,13 +81,22 @@ public class FPSController : MonoBehaviour
 
         bool eIsPressed = kb.eKey.isPressed;
 
-        // Detect "key just pressed" (rising edge) per evitare toggle continuo
+        // Detect "key just pressed" (rising edge)
         if (eIsPressed && !eKeyWasPressed)
         {
-            if (isSeated)
-                StandUp();
+            if (forceSeated)
+            {
+                // Se siamo forzati a restare seduti, ignora il tasto E
+                // (opzionale: assicurati di essere effettivamente seduto)
+                if (!isSeated) SitDown();
+            }
             else
-                SitDown();
+            {
+                if (isSeated)
+                    StandUp();
+                else
+                    SitDown();
+            }
         }
 
         eKeyWasPressed = eIsPressed;

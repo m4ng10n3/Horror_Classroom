@@ -4466,6 +4466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   teacher: {fileID: 2007373964}
+  player: {fileID: 2017530964}
   questionPanel: {fileID: 1341675442}
   questionText: {fileID: 368761582}
   answerButtons:
@@ -4860,6 +4861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e2b2950ad4c8440868fc8e30444665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPSController
+  forceSeated: 0
   moveSpeed: 2.5
   mouseSensitivity: 0.4
   gravity: -20

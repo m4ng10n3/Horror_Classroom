@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     public TeacherController teacher;
+    public FPSController player;
     public GameObject questionPanel;
     public TextMeshProUGUI questionText;
     public Button[] answerButtons = new Button[4];
@@ -107,6 +108,7 @@ public class GameManager : MonoBehaviour
 
         ShowQuestionPanel();
         if (teacher != null) teacher.FaceClass();
+        if (player != null) player.forceSeated = true;
         state = GameState.AskingQuestion;
     }
 
@@ -142,6 +144,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(resultDisplayTime);
         HideQuestionPanel();
         if (teacher != null) teacher.FaceBoard();
+        if (player != null) player.forceSeated = false;
         state = GameState.BetweenQuestions;
         yield return new WaitForSeconds(betweenQuestionsPause);
         currentQuestionIndex++;
