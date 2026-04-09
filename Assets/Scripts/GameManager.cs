@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -18,11 +19,16 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     public TeacherController teacher;
+    public TeacherStateMachine teacherStateMachine;
     public FPSController player;
     public GameObject questionPanel;
     public TextMeshProUGUI questionText;
     public Button[] answerButtons = new Button[4];
-    public Image timerFill;
+
+    [Header("Game Over UI")]
+    public GameObject gameOverPanel;
+    public TextMeshProUGUI gameOverText;
+    public Button restartButton;
 
     [Header("Timing")]
     public float delayBeforeFirstQuestion = 2f;
@@ -36,34 +42,45 @@ public class GameManager : MonoBehaviour
     private float questionTimeLimit = 0f;
     private enum GameState { Waiting, AskingQuestion, ShowingResult, BetweenQuestions }
     private GameState state = GameState.Waiting;
+    private bool isGameOver = false;
 
     void Start()
     {
         BuildQuestionList();
         HideQuestionPanel();
-        // Aggancia i listener ai pulsanti
+
+        // Aggancia i listener ai pulsanti risposta
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            int capturedIndex = i; // cattura per la closure
+            int capturedIndex = i;
             answerButtons[i].onClick.AddListener(() => OnAnswerClicked(capturedIndex));
         }
+
+        // Setup game over UI
+        if (restartButton != null)
+        {
+            restartButton.onClick.AddListener(RestartGame);
+        }
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false);
+        }
+
         StartCoroutine(InitialDelay());
     }
 
     void Update()
     {
+        if (isGameOver) return;
+
         HandleKeyboardInput();
 
         if (state == GameState.AskingQuestion)
         {
             questionTimer -= Time.deltaTime;
-            if (timerFill != null)
-            {
-                timerFill.fillAmount = Mathf.Max(0f, questionTimer / questionTimeLimit);
-            }
             if (questionTimer <= 0f)
             {
-                OnAnswerClicked(-1); // -1 = timeout
+                OnAnswerClicked(-1); // timeout
             }
         }
     }
@@ -104,7 +121,6 @@ public class GameManager : MonoBehaviour
 
         questionTimeLimit = q.timeLimit;
         questionTimer = q.timeLimit;
-        if (timerFill != null) timerFill.fillAmount = 1f;
 
         ShowQuestionPanel();
         if (teacher != null) teacher.FaceClass();
@@ -123,18 +139,23 @@ public class GameManager : MonoBehaviour
         if (index == -1)
         {
             questionText.text = "\"Troppo lento...\"";
+            if (teacherStateMachine != null) teacherStateMachine.RegisterWrongAnswer();
         }
         else if (correct)
         {
             questionText.text = "\"Bene.\"";
+            if (teacherStateMachine != null) teacherStateMachine.RegisterCorrectAnswer();
         }
         else
         {
             questionText.text = "\"Sbagliato.\"";
+            if (teacherStateMachine != null) teacherStateMachine.RegisterWrongAnswer();
         }
 
-        // Disabilita i bottoni durante il display del risultato
         foreach (var btn in answerButtons) btn.interactable = false;
+
+        // Se la state machine ha triggerato game over, non proseguire
+        if (isGameOver) return;
 
         StartCoroutine(AfterResult());
     }
@@ -159,6 +180,37 @@ public class GameManager : MonoBehaviour
     void HideQuestionPanel()
     {
         if (questionPanel != null) questionPanel.SetActive(false);
+    }
+
+    public void TriggerGameOverExternal(string message)
+    {
+        TriggerGameOver(message);
+    }
+
+    void TriggerGameOver(string message)
+    {
+        isGameOver = true;
+        state = GameState.Waiting;
+        HideQuestionPanel();
+
+        if (gameOverPanel != null) gameOverPanel.SetActive(true);
+        if (gameOverText != null) gameOverText.text = message;
+
+        if (player != null)
+        {
+            player.forceSeated = true;
+            player.gameplayFrozen = true;
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        StopAllCoroutines();
+    }
+
+    void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void BuildQuestionList()

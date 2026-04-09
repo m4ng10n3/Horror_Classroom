@@ -4,10 +4,6 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class FPSController : MonoBehaviour
 {
-    [Header("External Lock")]
-    [Tooltip("Se true, il player è forzato a restare seduto e non può alzarsi")]
-    public bool forceSeated = false;
-
     [Header("Movement")]
     public float moveSpeed = 2.5f;
     public float mouseSensitivity = 0.1f;
@@ -20,6 +16,13 @@ public class FPSController : MonoBehaviour
 
     [Header("State")]
     public bool isSeated = true;
+
+    [Header("External Lock")]
+    [Tooltip("Se true, il player è forzato a restare seduto e non può alzarsi")]
+    public bool forceSeated = false;
+
+    [Tooltip("Se true, il player è completamente disabilitato (niente movimento, niente mouse)")]
+    public bool gameplayFrozen = false;
 
     private CharacterController controller;
     private float verticalVelocity;
@@ -36,7 +39,6 @@ public class FPSController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // Posizioniamo il player allo SeatPoint all'avvio
         if (seatPoint != null)
         {
             TeleportTo(seatPoint);
@@ -45,6 +47,8 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
+        if (gameplayFrozen) return;
+
         HandleLook();
 
         // Safety: se siamo forzati seduti ma siamo in piedi, forza il sit down
@@ -86,8 +90,6 @@ public class FPSController : MonoBehaviour
         {
             if (forceSeated)
             {
-                // Se siamo forzati a restare seduti, ignora il tasto E
-                // (opzionale: assicurati di essere effettivamente seduto)
                 if (!isSeated) SitDown();
             }
             else
@@ -120,10 +122,8 @@ public class FPSController : MonoBehaviour
 
     void TeleportTo(Transform target)
     {
-        // CharacterController va disabilitato temporaneamente per teletrasportare
         controller.enabled = false;
         transform.position = target.position;
-        // Manteniamo la rotation Y attuale del player così non perde l'orientamento
         controller.enabled = true;
         verticalVelocity = 0f;
     }
