@@ -8,15 +8,6 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class Question
-    {
-        public string text;
-        public string[] options = new string[4];
-        public int correctIndex;
-        public float timeLimit = 12f;
-    }
-
     [Header("References")]
     public TeacherController teacher;
     public TeacherStateMachine teacherStateMachine;
@@ -24,6 +15,9 @@ public class GameManager : MonoBehaviour
     public GameObject questionPanel;
     public TextMeshProUGUI questionText;
     public Button[] answerButtons = new Button[4];
+
+    [Header("Question System")]
+    public QuestionDatabase questionDatabase;
 
     [Header("Game Over UI")]
     public GameObject gameOverPanel;
@@ -36,8 +30,7 @@ public class GameManager : MonoBehaviour
     public float betweenQuestionsPause = 3f;
 
     // Stato
-    private List<Question> questions;
-    private int currentQuestionIndex = 0;
+    private Question currentQuestion;
     private float questionTimer = 0f;
     private float questionTimeLimit = 0f;
     private enum GameState { Waiting, AskingQuestion, ShowingResult, BetweenQuestions }
@@ -46,25 +39,18 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        BuildQuestionList();
         HideQuestionPanel();
 
-        // Aggancia i listener ai pulsanti risposta
         for (int i = 0; i < answerButtons.Length; i++)
         {
             int capturedIndex = i;
             answerButtons[i].onClick.AddListener(() => OnAnswerClicked(capturedIndex));
         }
 
-        // Setup game over UI
         if (restartButton != null)
-        {
             restartButton.onClick.AddListener(RestartGame);
-        }
         if (gameOverPanel != null)
-        {
             gameOverPanel.SetActive(false);
-        }
 
         StartCoroutine(InitialDelay());
     }
@@ -79,9 +65,7 @@ public class GameManager : MonoBehaviour
         {
             questionTimer -= Time.deltaTime;
             if (questionTimer <= 0f)
-            {
-                OnAnswerClicked(-1); // timeout
-            }
+                OnAnswerClicked(-1);
         }
     }
 
@@ -105,22 +89,52 @@ public class GameManager : MonoBehaviour
 
     void ShowNextQuestion()
     {
-        if (currentQuestionIndex >= questions.Count)
+        if (questionDatabase == null)
         {
-            currentQuestionIndex = 0; // loop per ora
+            Debug.LogError("[GameManager] QuestionDatabase non assegnato!");
+            return;
         }
 
-        Question q = questions[currentQuestionIndex];
-        questionText.text = q.text;
+        // Scegli categoria in base allo stato della prof
+        QuestionCategory category = QuestionCategory.Scholastic;
+        if (teacherStateMachine != null)
+        {
+            switch (teacherStateMachine.CurrentState)
+            {
+                case TeacherState.Neutral:
+                    category = QuestionCategory.Scholastic;
+                    break;
+                case TeacherState.Pleased:
+                    category = QuestionCategory.CursedEnvironmental;
+                    break;
+                case TeacherState.Angry:
+                    category = QuestionCategory.Aggressive;
+                    break;
+            }
+        }
+
+        currentQuestion = questionDatabase.GetRandomQuestion(category);
+        if (currentQuestion == null)
+        {
+            Debug.LogWarning($"[GameManager] Nessuna domanda per categoria {category}, fallback Scholastic");
+            currentQuestion = questionDatabase.GetRandomQuestion(QuestionCategory.Scholastic);
+            if (currentQuestion == null)
+            {
+                Debug.LogError("[GameManager] Nessuna domanda disponibile nel database!");
+                return;
+            }
+        }
+
+        questionText.text = currentQuestion.questionText;
         for (int i = 0; i < answerButtons.Length; i++)
         {
             TextMeshProUGUI btnText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-            btnText.text = (i + 1) + ". " + q.options[i];
+            btnText.text = (i + 1) + ". " + currentQuestion.options[i];
             answerButtons[i].interactable = true;
         }
 
-        questionTimeLimit = q.timeLimit;
-        questionTimer = q.timeLimit;
+        questionTimeLimit = currentQuestion.timeLimit;
+        questionTimer = currentQuestion.timeLimit;
 
         ShowQuestionPanel();
         if (teacher != null) teacher.FaceClass();
@@ -131,10 +145,10 @@ public class GameManager : MonoBehaviour
     void OnAnswerClicked(int index)
     {
         if (state != GameState.AskingQuestion) return;
+        if (currentQuestion == null) return;
         state = GameState.ShowingResult;
 
-        Question q = questions[currentQuestionIndex];
-        bool correct = index == q.correctIndex;
+        bool correct = index == currentQuestion.correctIndex;
 
         if (index == -1)
         {
@@ -143,18 +157,23 @@ public class GameManager : MonoBehaviour
         }
         else if (correct)
         {
-            questionText.text = "\"Bene.\"";
+            string feedback = string.IsNullOrEmpty(currentQuestion.customCorrectFeedback)
+                ? "\"Bene.\""
+                : currentQuestion.customCorrectFeedback;
+            questionText.text = feedback;
             if (teacherStateMachine != null) teacherStateMachine.RegisterCorrectAnswer();
         }
         else
         {
-            questionText.text = "\"Sbagliato.\"";
+            string feedback = string.IsNullOrEmpty(currentQuestion.customWrongFeedback)
+                ? "\"Sbagliato.\""
+                : currentQuestion.customWrongFeedback;
+            questionText.text = feedback;
             if (teacherStateMachine != null) teacherStateMachine.RegisterWrongAnswer();
         }
 
         foreach (var btn in answerButtons) btn.interactable = false;
 
-        // Se la state machine ha triggerato game over, non proseguire
         if (isGameOver) return;
 
         StartCoroutine(AfterResult());
@@ -168,7 +187,6 @@ public class GameManager : MonoBehaviour
         if (player != null) player.forceSeated = false;
         state = GameState.BetweenQuestions;
         yield return new WaitForSeconds(betweenQuestionsPause);
-        currentQuestionIndex++;
         ShowNextQuestion();
     }
 
@@ -211,62 +229,5 @@ public class GameManager : MonoBehaviour
     void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    void BuildQuestionList()
-    {
-        questions = new List<Question>
-        {
-            new Question {
-                text = "\"Bene, bambini. Quanto fa 7 per 8?\"",
-                options = new[] { "54", "56", "58", "48" },
-                correctIndex = 1, timeLimit = 15f
-            },
-            new Question {
-                text = "\"Qual è la capitale della Francia?\"",
-                options = new[] { "Londra", "Berlino", "Parigi", "Madrid" },
-                correctIndex = 2, timeLimit = 12f
-            },
-            new Question {
-                text = "\"Quanti studenti ci sono in questa classe? Contate bene...\"",
-                options = new[] { "Sei", "Sette", "Otto", "Non ricordo" },
-                correctIndex = 1, timeLimit = 10f
-            },
-            new Question {
-                text = "\"Di che colore sono le pareti di questa classe?\"",
-                options = new[] { "Bianche", "Beige", "Grigie", "Non le vedo più" },
-                correctIndex = 1, timeLimit = 10f
-            },
-            new Question {
-                text = "\"Quante finestre ha questa stanza?\"",
-                options = new[] { "Tre", "Quattro", "Cinque", "Non ci sono finestre" },
-                correctIndex = 1, timeLimit = 8f
-            },
-            new Question {
-                text = "\"Hai sentito anche tu quel rumore dalla porta?\"",
-                options = new[] { "Quale rumore?", "Sì...", "No", "Ho paura" },
-                correctIndex = 0, timeLimit = 8f
-            },
-            new Question {
-                text = "\"Quanti banchi vuoti vedi...?\"",
-                options = new[] { "Nessuno", "Uno", "Non lo so", "Stanno aumentando" },
-                correctIndex = 3, timeLimit = 7f
-            },
-            new Question {
-                text = "\"Chi si siede alla tua sinistra?\"",
-                options = new[] { "Paolo", "Marco", "Nessuno", "Non ricordo più" },
-                correctIndex = 0, timeLimit = 7f
-            },
-            new Question {
-                text = "\"Sai cosa c'è fuori da quella porta?\"",
-                options = new[] { "Il corridoio", "Casa", "Niente", "Non voglio saperlo" },
-                correctIndex = 2, timeLimit = 6f
-            },
-            new Question {
-                text = "\"Pensi davvero... di potertene andare?\"",
-                options = new[] { "Sì", "No", "...", "Devo provarci" },
-                correctIndex = 3, timeLimit = 5f
-            }
-        };
     }
 }

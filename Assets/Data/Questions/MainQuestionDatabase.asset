@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4512a6b4cc48045b4b2ad6f165fa42, type: 3}
+  m_Name: MainQuestionDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionDatabase
+  allQuestions:
+  - {fileID: 11400000, guid: 46faa646e9250984985a4e45ae4d6f14, type: 2}
+  - {fileID: 11400000, guid: cc957193c19c6fd4681534b09a02e5e3, type: 2}
+  - {fileID: 11400000, guid: 6b8200fcfcea1164a8300a8f0f6d8e51, type: 2}
+  - {fileID: 11400000, guid: ce470de100793bf41b6d41345065af9b, type: 2}
+  - {fileID: 11400000, guid: 582b534cf7539324fb59d2e89a79b62f, type: 2}
+  - {fileID: 11400000, guid: 75f0e3c7cd8959947b02a91ece047b55, type: 2}
+  - {fileID: 11400000, guid: 071060f63fc0f924e89c1c0fc25e9cf7, type: 2}
+  - {fileID: 11400000, guid: 5b7b2e5c8fe31fc4da196a9eadbb1124, type: 2}
+  - {fileID: 11400000, guid: bbb45c362aee214418a927276e6c5e49, type: 2}

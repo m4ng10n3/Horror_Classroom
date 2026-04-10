@@ -4871,12 +4871,13 @@ MonoBehaviour:
   - {fileID: 1440872232}
   - {fileID: 59139273}
   - {fileID: 347966702}
+  questionDatabase: {fileID: 11400000, guid: d4007bb6bc3f1ba46b1a8ee42ff65ded, type: 2}
   gameOverPanel: {fileID: 520705240}
   gameOverText: {fileID: 550619319}
   restartButton: {fileID: 1090271628}
   delayBeforeFirstQuestion: 2
   resultDisplayTime: 2
-  betweenQuestionsPause: 3
+  betweenQuestionsPause: 10
 --- !u!4 &1764054192
 Transform:
   m_ObjectHideFlags: 0
