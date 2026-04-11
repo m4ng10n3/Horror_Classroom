@@ -16,8 +16,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI questionText;
     public Button[] answerButtons = new Button[4];
 
+    [Header("Students")]
+    public StudentManager studentManager;
+
     [Header("Question System")]
     public QuestionDatabase questionDatabase;
+    public SuspicionCounter suspicionCounter;
 
     [Header("Game Over UI")]
     public GameObject gameOverPanel;
@@ -51,6 +55,10 @@ public class GameManager : MonoBehaviour
             restartButton.onClick.AddListener(RestartGame);
         if (gameOverPanel != null)
             gameOverPanel.SetActive(false);
+        if (player != null)
+        {
+            player.OnPlayerStoodUp += OnPlayerStoodUp;
+        }
 
         StartCoroutine(InitialDelay());
     }
@@ -66,6 +74,19 @@ public class GameManager : MonoBehaviour
             questionTimer -= Time.deltaTime;
             if (questionTimer <= 0f)
                 OnAnswerClicked(-1);
+        }
+    }
+
+    void OnPlayerStoodUp()
+    {
+        if (isGameOver) return;
+        if (studentManager == null) return;
+
+        studentManager.DisappearRandomStudent();
+
+        if (studentManager.VisibleCount == 0)
+        {
+            TriggerGameOver("SEI RIMASTO SOLO.");
         }
     }
 
@@ -162,14 +183,13 @@ public class GameManager : MonoBehaviour
                 : currentQuestion.customCorrectFeedback;
             questionText.text = feedback;
             if (teacherStateMachine != null) teacherStateMachine.RegisterCorrectAnswer();
-        }
-        else
-        {
-            string feedback = string.IsNullOrEmpty(currentQuestion.customWrongFeedback)
-                ? "\"Sbagliato.\""
-                : currentQuestion.customWrongFeedback;
-            questionText.text = feedback;
-            if (teacherStateMachine != null) teacherStateMachine.RegisterWrongAnswer();
+
+            // Le cursed questions giuste aumentano il sospetto
+            if (currentQuestion.category == QuestionCategory.CursedEnvironmental
+                && suspicionCounter != null)
+            {
+                suspicionCounter.Increase(1, "cursed question correct");
+            }
         }
 
         foreach (var btn in answerButtons) btn.interactable = false;

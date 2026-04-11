@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 [RequireComponent(typeof(CharacterController))]
 public class FPSController : MonoBehaviour
@@ -28,6 +29,7 @@ public class FPSController : MonoBehaviour
     private float verticalVelocity;
     private float pitch;
     private bool eKeyWasPressed;
+    public event Action OnPlayerStoodUp;
 
     void Awake()
     {
@@ -110,6 +112,7 @@ public class FPSController : MonoBehaviour
         TeleportTo(standPoint);
         isSeated = false;
         Debug.Log("Player si è alzato");
+        OnPlayerStoodUp?.Invoke();
     }
 
     void SitDown()
