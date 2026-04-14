@@ -25,4 +25,12 @@ public class Question : ScriptableObject
 
     [Tooltip("Testo mostrato se il player risponde sbagliato (vuoto = default \"Sbagliato.\")")]
     public string customWrongFeedback;
+
+    [Header("Environment Check (cursed questions)")]
+    [Tooltip("Se diverso da None, la risposta giusta è calcolata a runtime in base allo stato dell'aula")]
+    public EnvironmentCheckType environmentCheck = EnvironmentCheckType.None;
+
+    [Tooltip("Opzione di fallback quando nessuna delle 4 risposte corrisponde al valore reale (es. 'Non ricordo')")]
+    [Range(0, 3)]
+    public int fallbackCorrectIndex = 3;
 }

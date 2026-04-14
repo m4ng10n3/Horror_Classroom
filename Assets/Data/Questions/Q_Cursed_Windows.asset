@@ -17,9 +17,11 @@ MonoBehaviour:
   - 'Tre '
   - 'Quattro '
   - 'Cinque '
-  - Non ci sono finestre
-  correctIndex: 3
+  - Non ricordo
+  correctIndex: 1
   timeLimit: 10
   category: 1
   customCorrectFeedback: '"...Hai visto bene. Troppo bene."'
   customWrongFeedback: 
+  environmentCheck: 1
+  fallbackCorrectIndex: 3

@@ -22,14 +22,14 @@ public class TeacherStateMachine : MonoBehaviour
     private int recoveryCount = 0;
     private int pleasedCount = 0;
 
-    // Evento per notificare chi è interessato del cambio stato
+    // Evento per notificare chi ï¿½ interessato del cambio stato
     public event Action<TeacherState, TeacherState> OnStateChanged;
 
     public TeacherState CurrentState => currentState;
 
     void Start()
     {
-        // Notifica lo stato iniziale (così i listener possono settare subito luci/colori)
+        // Notifica lo stato iniziale (cosï¿½ i listener possono settare subito luci/colori)
         OnStateChanged?.Invoke(currentState, currentState);
     }
 
@@ -39,6 +39,7 @@ public class TeacherStateMachine : MonoBehaviour
         switch (currentState)
         {
             case TeacherState.Neutral:
+                negativePoints = 0;
                 positivePoints++;
                 if (positivePoints >= pointsToPleased)
                     ChangeState(TeacherState.Pleased);
@@ -69,6 +70,7 @@ public class TeacherStateMachine : MonoBehaviour
         switch (currentState)
         {
             case TeacherState.Neutral:
+                positivePoints = 0;
                 negativePoints++;
                 if (negativePoints >= pointsToAngry)
                     ChangeState(TeacherState.Angry);
@@ -80,7 +82,7 @@ public class TeacherStateMachine : MonoBehaviour
                 break;
 
             case TeacherState.Angry:
-                // FASE 6: qui triggereremo "ultima possibilità".
+                // FASE 6: qui triggereremo "ultima possibilitï¿½".
                 // Per ora, game over secco.
                 Debug.Log("[Teacher] Wrong answer in Angry ? GAME OVER (placeholder)");
                 GameManager gm = FindFirstObjectByType<GameManager>();

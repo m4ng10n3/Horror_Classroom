@@ -30,6 +30,7 @@ public class FPSController : MonoBehaviour
     private float pitch;
     private bool eKeyWasPressed;
     public event Action OnPlayerStoodUp;
+    public event Action OnPlayerSatDown;
 
     void Awake()
     {
@@ -121,6 +122,7 @@ public class FPSController : MonoBehaviour
         TeleportTo(seatPoint);
         isSeated = true;
         Debug.Log("Player si è seduto");
+        OnPlayerSatDown?.Invoke();
     }
 
     void TeleportTo(Transform target)

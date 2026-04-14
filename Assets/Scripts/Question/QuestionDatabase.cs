@@ -8,9 +8,8 @@ public class QuestionDatabase : ScriptableObject
     [Tooltip("Trascina qui tutti gli asset Question del progetto")]
     public List<Question> allQuestions = new List<Question>();
 
-    /// <summary>
-    /// Ritorna tutte le domande di una certa categoria
-    /// </summary>
+    private Dictionary<QuestionCategory, Question> lastAsked = new Dictionary<QuestionCategory, Question>();
+
     public List<Question> GetQuestionsByCategory(QuestionCategory category)
     {
         List<Question> result = new List<Question>();
@@ -23,13 +22,23 @@ public class QuestionDatabase : ScriptableObject
     }
 
     /// <summary>
-    /// Ritorna una domanda casuale della categoria specificata.
-    /// Ritorna null se non ci sono domande in quella categoria.
+    /// Ritorna una domanda casuale della categoria, garantendo che non sia
+    /// la stessa dell'ultima mostrata in quella categoria.
     /// </summary>
     public Question GetRandomQuestion(QuestionCategory category)
     {
         List<Question> filtered = GetQuestionsByCategory(category);
         if (filtered.Count == 0) return null;
-        return filtered[Random.Range(0, filtered.Count)];
+
+        lastAsked.TryGetValue(category, out Question last);
+
+        // Se c'è solo una domanda non possiamo evitare la ripetizione
+        List<Question> candidates = filtered.Count > 1 && last != null
+            ? filtered.FindAll(q => q != last)
+            : filtered;
+
+        Question picked = candidates[Random.Range(0, candidates.Count)];
+        lastAsked[category] = picked;
+        return picked;
     }
 }

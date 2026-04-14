@@ -16,12 +16,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI questionText;
     public Button[] answerButtons = new Button[4];
 
-    [Header("Students")]
-    public StudentManager studentManager;
-
     [Header("Question System")]
     public QuestionDatabase questionDatabase;
     public SuspicionCounter suspicionCounter;
+
+    [Header("Students & Environment")]
+    public StudentManager studentManager;
+    public ClassroomMutator classroomMutator;
+    public WindowManager windowManager;
 
     [Header("Game Over UI")]
     public GameObject gameOverPanel;
@@ -55,9 +57,11 @@ public class GameManager : MonoBehaviour
             restartButton.onClick.AddListener(RestartGame);
         if (gameOverPanel != null)
             gameOverPanel.SetActive(false);
+
         if (player != null)
         {
             player.OnPlayerStoodUp += OnPlayerStoodUp;
+            player.OnPlayerSatDown += OnPlayerSatDown;
         }
 
         StartCoroutine(InitialDelay());
@@ -74,19 +78,6 @@ public class GameManager : MonoBehaviour
             questionTimer -= Time.deltaTime;
             if (questionTimer <= 0f)
                 OnAnswerClicked(-1);
-        }
-    }
-
-    void OnPlayerStoodUp()
-    {
-        if (isGameOver) return;
-        if (studentManager == null) return;
-
-        studentManager.DisappearRandomStudent();
-
-        if (studentManager.VisibleCount == 0)
-        {
-            TriggerGameOver("SEI RIMASTO SOLO.");
         }
     }
 
@@ -116,7 +107,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // Scegli categoria in base allo stato della prof
         QuestionCategory category = QuestionCategory.Scholastic;
         if (teacherStateMachine != null)
         {
@@ -169,7 +159,8 @@ public class GameManager : MonoBehaviour
         if (currentQuestion == null) return;
         state = GameState.ShowingResult;
 
-        bool correct = index == currentQuestion.correctIndex;
+        int effectiveCorrect = GetEffectiveCorrectIndex(currentQuestion);
+        bool correct = index == effectiveCorrect;
 
         if (index == -1)
         {
@@ -184,12 +175,19 @@ public class GameManager : MonoBehaviour
             questionText.text = feedback;
             if (teacherStateMachine != null) teacherStateMachine.RegisterCorrectAnswer();
 
-            // Le cursed questions giuste aumentano il sospetto
             if (currentQuestion.category == QuestionCategory.CursedEnvironmental
                 && suspicionCounter != null)
             {
                 suspicionCounter.Increase(1, "cursed question correct");
             }
+        }
+        else
+        {
+            string feedback = string.IsNullOrEmpty(currentQuestion.customWrongFeedback)
+                ? "\"Sbagliato.\""
+                : currentQuestion.customWrongFeedback;
+            questionText.text = feedback;
+            if (teacherStateMachine != null) teacherStateMachine.RegisterWrongAnswer();
         }
 
         foreach (var btn in answerButtons) btn.interactable = false;
@@ -208,6 +206,84 @@ public class GameManager : MonoBehaviour
         state = GameState.BetweenQuestions;
         yield return new WaitForSeconds(betweenQuestionsPause);
         ShowNextQuestion();
+    }
+
+    void OnPlayerStoodUp()
+    {
+        if (isGameOver) return;
+        if (studentManager == null) return;
+
+        studentManager.DisappearRandomStudent();
+
+        if (studentManager.VisibleCount == 0)
+        {
+            TriggerGameOver("SEI RIMASTO SOLO.");
+        }
+    }
+
+    void OnPlayerSatDown()
+    {
+        if (isGameOver) return;
+        if (classroomMutator == null) return;
+
+        if (suspicionCounter != null && suspicionCounter.ShouldMutate)
+        {
+            classroomMutator.ApplyRandomMutation();
+        }
+    }
+
+    int GetEffectiveCorrectIndex(Question q)
+    {
+        if (q == null) return 0;
+
+        if (q.environmentCheck == EnvironmentCheckType.None)
+            return q.correctIndex;
+
+        int realValue = GetEnvironmentValue(q.environmentCheck);
+        if (realValue < 0) return q.correctIndex;
+
+        int matchIndex = FindMatchingOption(q.options, realValue);
+
+        if (matchIndex >= 0)
+        {
+            Debug.Log($"[GM] Environment check {q.environmentCheck}={realValue} → risposta corretta = opzione {matchIndex}");
+            return matchIndex;
+        }
+
+        Debug.Log($"[GM] Environment check {q.environmentCheck}={realValue} → nessuna opzione corrisponde, fallback {q.fallbackCorrectIndex}");
+        return q.fallbackCorrectIndex;
+    }
+
+    int GetEnvironmentValue(EnvironmentCheckType type)
+    {
+        switch (type)
+        {
+            case EnvironmentCheckType.WindowsCount:
+                return windowManager != null ? windowManager.VisibleCount : -1;
+            case EnvironmentCheckType.StudentsCount:
+                return studentManager != null ? studentManager.VisibleCount : -1;
+            case EnvironmentCheckType.EmptyDesksCount:
+                if (studentManager == null) return -1;
+                return studentManager.allStudents.Count - studentManager.VisibleCount;
+            default:
+                return -1;
+        }
+    }
+
+    int FindMatchingOption(string[] options, int value)
+    {
+        string[] wordNumbers = { "zero", "uno", "due", "tre", "quattro", "cinque",
+                                 "sei", "sette", "otto", "nove", "dieci" };
+        string valueWord = (value >= 0 && value < wordNumbers.Length) ? wordNumbers[value] : null;
+        string valueNumeric = value.ToString();
+
+        for (int i = 0; i < options.Length; i++)
+        {
+            string opt = options[i].Trim().ToLower();
+            if (opt == valueNumeric) return i;
+            if (valueWord != null && opt == valueWord) return i;
+        }
+        return -1;
     }
 
     void ShowQuestionPanel()

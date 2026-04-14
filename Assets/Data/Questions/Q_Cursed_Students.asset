@@ -18,8 +18,10 @@ MonoBehaviour:
   - 'Sette '
   - Otto
   - "Non ricordo pi\xF9.."
-  correctIndex: 3
+  correctIndex: 1
   timeLimit: 10
   category: 1
   customCorrectFeedback: 
   customWrongFeedback: 
+  environmentCheck: 2
+  fallbackCorrectIndex: 3
