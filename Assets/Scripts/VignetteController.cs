@@ -39,13 +39,12 @@ public class VignetteController : MonoBehaviour
     {
         if (vignetteImage != null)
         {
-            // Attiva il GameObject della vignetta se era disattivato nell'Inspector
             if (!vignetteImage.gameObject.activeSelf)
                 vignetteImage.gameObject.SetActive(true);
 
             currentColor = neutralColor;
             currentAlpha = 0f;
-            ApplyVisuals();
+            ApplyVisuals(0f);
         }
     }
 
@@ -53,18 +52,21 @@ public class VignetteController : MonoBehaviour
     {
         CalculateTargets();
 
-        // Transizione fluida verso il target
         currentAlpha = Mathf.Lerp(currentAlpha, targetAlpha, Time.deltaTime * transitionSpeed);
         currentColor = Color.Lerp(currentColor, targetColor, Time.deltaTime * transitionSpeed);
 
-        // Pulsazione (usata in Fase 5 durante la finestra esplorazione)
+        float finalAlpha = currentAlpha;
+
         if (isPulsing)
         {
             float pulse = Mathf.Sin(Time.time * pulseSpeed) * 0.5f + 0.5f;
-            currentAlpha += pulse * pulseIntensity;
+            finalAlpha = Mathf.Max(currentAlpha, pulse * pulseIntensity);
         }
 
-        ApplyVisuals();
+        // Limita l'alpha massimo: mai sopra 0.6 così si vede sempre attraverso
+        finalAlpha = Mathf.Clamp(finalAlpha, 0f, 0.6f);
+
+        ApplyVisuals(finalAlpha);
     }
 
     private void CalculateTargets()
@@ -102,12 +104,12 @@ public class VignetteController : MonoBehaviour
         targetAlpha = Mathf.Clamp01(baseAlpha + suspicionBonus);
     }
 
-    private void ApplyVisuals()
+    private void ApplyVisuals(float alpha)
     {
         if (vignetteImage == null) return;
 
-        Color c = targetColor;
-        c.a = Mathf.Clamp01(currentAlpha);
+        Color c = currentColor;
+        c.a = alpha;
         vignetteImage.color = c;
     }
 
@@ -134,6 +136,6 @@ public class VignetteController : MonoBehaviour
     /// </summary>
     public void Flash(float alpha = 0.8f)
     {
-        currentAlpha = alpha;
+        currentAlpha = Mathf.Min(alpha, 0.6f);
     }
 }

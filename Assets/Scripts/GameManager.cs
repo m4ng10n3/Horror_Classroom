@@ -20,6 +20,14 @@ public class GameManager : MonoBehaviour
     public QuestionDatabase questionDatabase;
     public SuspicionCounter suspicionCounter;
 
+    [Header("Exploration Window")]
+    public float explorationDuration = 10f;
+    public float warningStartTime = 3.5f;
+    public VignetteController vignetteController;
+
+    private float explorationTimer = 0f;
+    private bool playerCaughtStanding = false;
+
     [Header("Students & Environment")]
     public StudentManager studentManager;
     public ClassroomMutator classroomMutator;
@@ -39,7 +47,7 @@ public class GameManager : MonoBehaviour
     private Question currentQuestion;
     private float questionTimer = 0f;
     private float questionTimeLimit = 0f;
-    private enum GameState { Waiting, AskingQuestion, ShowingResult, BetweenQuestions }
+    private enum GameState { Waiting, AskingQuestion, ShowingResult, BetweenQuestions, ExplorationWindow }
     private GameState state = GameState.Waiting;
     private bool isGameOver = false;
 
@@ -78,6 +86,26 @@ public class GameManager : MonoBehaviour
             questionTimer -= Time.deltaTime;
             if (questionTimer <= 0f)
                 OnAnswerClicked(-1);
+        }
+
+        if (state == GameState.ExplorationWindow)
+        {
+            explorationTimer -= Time.deltaTime;
+
+            // Attiva pulsazione vignette negli ultimi secondi
+            if (explorationTimer <= warningStartTime && vignetteController != null)
+            {
+                float urgency = 1f - (explorationTimer / warningStartTime);
+                float pulseSpeed = Mathf.Lerp(2f, 8f, urgency);
+                float pulseIntensity = Mathf.Lerp(0.1f, 0.5f, urgency);
+                vignetteController.StartPulsing(pulseSpeed, pulseIntensity);
+            }
+
+            // Tempo scaduto: la prof si gira
+            if (explorationTimer <= 0f)
+            {
+                EndExplorationWindow();
+            }
         }
     }
 
@@ -201,11 +229,16 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(resultDisplayTime);
         HideQuestionPanel();
+
+        // La prof si gira alla lavagna
         if (teacher != null) teacher.FaceBoard();
         if (player != null) player.forceSeated = false;
-        state = GameState.BetweenQuestions;
-        yield return new WaitForSeconds(betweenQuestionsPause);
-        ShowNextQuestion();
+
+        // Aspetta che la prof abbia completato la rotazione verso la lavagna
+        yield return new WaitForSeconds(1.2f);
+
+        // Inizia la finestra di esplorazione
+        StartExplorationWindow();
     }
 
     void OnPlayerStoodUp()
@@ -230,6 +263,57 @@ public class GameManager : MonoBehaviour
         {
             classroomMutator.ApplyRandomMutation();
         }
+    }
+
+    void StartExplorationWindow()
+    {
+        state = GameState.ExplorationWindow;
+        explorationTimer = explorationDuration;
+        playerCaughtStanding = false;
+        Debug.Log($"[GM] Finestra esplorazione aperta: {explorationDuration} secondi");
+    }
+
+    void EndExplorationWindow()
+    {
+        state = GameState.Waiting;
+
+        // Ferma la pulsazione della vignette
+        if (vignetteController != null)
+            vignetteController.StopPulsing();
+
+        // La prof si gira verso la classe
+        if (teacher != null) teacher.FaceClass();
+
+        // Controlla se il player è in piedi dopo un breve delay (tempo della rotazione)
+        StartCoroutine(CheckPlayerAfterRotation());
+    }
+
+    IEnumerator CheckPlayerAfterRotation()
+    {
+        // Aspetta che la prof completi la rotazione verso la classe (~1 sec)
+        yield return new WaitForSeconds(1.2f);
+
+        if (isGameOver) yield break;
+
+        // Se il player è ancora in piedi → MORTE
+        if (player != null && !player.isSeated)
+        {
+            playerCaughtStanding = true;
+            TriggerGameOver("TI HO VISTO ALZARTI.");
+            yield break;
+        }
+
+        // Sopravvissuto: il sospetto cresce
+        if (suspicionCounter != null)
+        {
+            suspicionCounter.Increase(1, "sopravvissuto alla finestra");
+        }
+
+        Debug.Log("[GM] Finestra chiusa, player al sicuro");
+
+        // Breve pausa poi prossima domanda
+        yield return new WaitForSeconds(1f);
+        ShowNextQuestion();
     }
 
     int GetEffectiveCorrectIndex(Question q)

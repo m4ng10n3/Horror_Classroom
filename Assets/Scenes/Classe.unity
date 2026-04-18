@@ -5754,7 +5754,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1386593595}
   - component: {fileID: 1386593594}
-  - component: {fileID: 1386593593}
   - component: {fileID: 1386593592}
   m_Layer: 0
   m_Name: PS1FXCamera
@@ -5807,14 +5806,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &1386593593
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386593591}
-  m_Enabled: 1
 --- !u!20 &1386593594
 Camera:
   m_ObjectHideFlags: 0
@@ -5854,7 +5845,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -7568,6 +7559,9 @@ MonoBehaviour:
   - {fileID: 347966702}
   questionDatabase: {fileID: 11400000, guid: d4007bb6bc3f1ba46b1a8ee42ff65ded, type: 2}
   suspicionCounter: {fileID: 879980192}
+  explorationDuration: 10
+  warningStartTime: 3.5
+  vignetteController: {fileID: 1356203906}
   studentManager: {fileID: 2010312891}
   classroomMutator: {fileID: 148235042}
   windowManager: {fileID: 1489307695}
