@@ -51,6 +51,10 @@ public class GameManager : MonoBehaviour
     private GameState state = GameState.Waiting;
     private bool isGameOver = false;
 
+    // Opzioni e risposta corretta generate a runtime per le domande ambientali
+    private string[] runtimeOptions = null;
+    private int runtimeCorrectIndex = -1;
+
     void Start()
     {
         HideQuestionPanel();
@@ -164,11 +168,22 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // Per le domande ambientali genera opzioni a runtime basate sullo stato attuale
+        runtimeOptions = null;
+        runtimeCorrectIndex = -1;
+        if (currentQuestion.environmentCheck != EnvironmentCheckType.None)
+        {
+            int realValue = GetEnvironmentValue(currentQuestion.environmentCheck);
+            if (realValue >= 0)
+                (runtimeOptions, runtimeCorrectIndex) = GenerateDynamicOptions(realValue);
+        }
+
+        string[] displayOptions = runtimeOptions ?? currentQuestion.options;
         questionText.text = currentQuestion.questionText;
         for (int i = 0; i < answerButtons.Length; i++)
         {
             TextMeshProUGUI btnText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-            btnText.text = (i + 1) + ". " + currentQuestion.options[i];
+            btnText.text = (i + 1) + ". " + displayOptions[i];
             answerButtons[i].interactable = true;
         }
 
@@ -320,22 +335,10 @@ public class GameManager : MonoBehaviour
     {
         if (q == null) return 0;
 
-        if (q.environmentCheck == EnvironmentCheckType.None)
-            return q.correctIndex;
+        if (runtimeCorrectIndex >= 0)
+            return runtimeCorrectIndex;
 
-        int realValue = GetEnvironmentValue(q.environmentCheck);
-        if (realValue < 0) return q.correctIndex;
-
-        int matchIndex = FindMatchingOption(q.options, realValue);
-
-        if (matchIndex >= 0)
-        {
-            Debug.Log($"[GM] Environment check {q.environmentCheck}={realValue} → risposta corretta = opzione {matchIndex}");
-            return matchIndex;
-        }
-
-        Debug.Log($"[GM] Environment check {q.environmentCheck}={realValue} → nessuna opzione corrisponde, fallback {q.fallbackCorrectIndex}");
-        return q.fallbackCorrectIndex;
+        return q.correctIndex;
     }
 
     int GetEnvironmentValue(EnvironmentCheckType type)
@@ -354,20 +357,44 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    int FindMatchingOption(string[] options, int value)
+    (string[], int) GenerateDynamicOptions(int correctValue)
     {
         string[] wordNumbers = { "zero", "uno", "due", "tre", "quattro", "cinque",
                                  "sei", "sette", "otto", "nove", "dieci" };
-        string valueWord = (value >= 0 && value < wordNumbers.Length) ? wordNumbers[value] : null;
-        string valueNumeric = value.ToString();
 
-        for (int i = 0; i < options.Length; i++)
+        // Genera 3 distrattori plausibili (valori vicini al corretto)
+        System.Collections.Generic.HashSet<int> used = new System.Collections.Generic.HashSet<int> { correctValue };
+        System.Collections.Generic.List<int> wrong = new System.Collections.Generic.List<int>();
+
+        int[] nearby = { correctValue + 1, correctValue - 1, correctValue + 2, correctValue - 2, correctValue + 3 };
+        foreach (int c in nearby)
         {
-            string opt = options[i].Trim().ToLower();
-            if (opt == valueNumeric) return i;
-            if (valueWord != null && opt == valueWord) return i;
+            if (c >= 0 && !used.Contains(c)) { used.Add(c); wrong.Add(c); }
+            if (wrong.Count == 3) break;
         }
-        return -1;
+        for (int v = 0; wrong.Count < 3; v++)
+            if (!used.Contains(v)) { used.Add(v); wrong.Add(v); }
+
+        // Mescola le 4 opzioni (Fisher-Yates)
+        System.Collections.Generic.List<int> all = new System.Collections.Generic.List<int>(wrong) { correctValue };
+        for (int i = all.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            int tmp = all[i]; all[i] = all[j]; all[j] = tmp;
+        }
+
+        string[] options = new string[4];
+        int correctIdx = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            int v = all[i];
+            string word = (v >= 0 && v < wordNumbers.Length) ? wordNumbers[v] : v.ToString();
+            options[i] = char.ToUpper(word[0]) + word.Substring(1);
+            if (v == correctValue) correctIdx = i;
+        }
+
+        Debug.Log($"[GM] Opzioni ambientali generate: corretto={correctValue} → slot {correctIdx}");
+        return (options, correctIdx);
     }
 
     void ShowQuestionPanel()
