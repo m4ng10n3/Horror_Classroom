@@ -38,36 +38,10 @@ public class VignetteController : MonoBehaviour
     void Start()
     {
         if (vignetteImage != null)
-        {
-            if (!vignetteImage.gameObject.activeSelf)
-                vignetteImage.gameObject.SetActive(true);
-
-            currentColor = neutralColor;
-            currentAlpha = 0f;
-            ApplyVisuals(0f);
-        }
+            vignetteImage.gameObject.SetActive(false);
     }
 
-    void Update()
-    {
-        CalculateTargets();
-
-        currentAlpha = Mathf.Lerp(currentAlpha, targetAlpha, Time.deltaTime * transitionSpeed);
-        currentColor = Color.Lerp(currentColor, targetColor, Time.deltaTime * transitionSpeed);
-
-        float finalAlpha = currentAlpha;
-
-        if (isPulsing)
-        {
-            float pulse = Mathf.Sin(Time.time * pulseSpeed) * 0.5f + 0.5f;
-            finalAlpha = Mathf.Max(currentAlpha, pulse * pulseIntensity);
-        }
-
-        // Limita l'alpha massimo: mai sopra 0.6 così si vede sempre attraverso
-        finalAlpha = Mathf.Clamp(finalAlpha, 0f, 0.6f);
-
-        ApplyVisuals(finalAlpha);
-    }
+    void Update() { }
 
     private void CalculateTargets()
     {
