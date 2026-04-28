@@ -5,8 +5,23 @@ using System;
 public class StudentManager : MonoBehaviour
 {
     [Header("Students")]
-    [Tooltip("Trascina qui tutti i 7 StudentNPC della scena")]
+    [Tooltip("Lascia vuota: viene popolata automaticamente da tutti i StudentNPC in scena")]
     public List<StudentNPC> allStudents = new List<StudentNPC>();
+
+    void Awake()
+    {
+        var found = FindObjectsByType<StudentNPC>(FindObjectsSortMode.None);
+        if (found.Length > 0)
+        {
+            allStudents.Clear();
+            allStudents.AddRange(found);
+            Debug.Log($"[StudentManager] Trovati {allStudents.Count} studenti in scena.");
+        }
+        else
+        {
+            Debug.LogWarning("[StudentManager] Nessun StudentNPC trovato in scena!");
+        }
+    }
 
     // Evento notifica quando uno studente sparisce
     public event Action<StudentNPC> OnStudentDisappeared;
@@ -41,7 +56,7 @@ public class StudentManager : MonoBehaviour
 
         if (candidates.Count == 0)
         {
-            Debug.Log("[StudentManager] Nessuno studente può sparire");
+            Debug.Log("[StudentManager] Nessuno studente puï¿½ sparire");
             return false;
         }
 

@@ -259,19 +259,22 @@ public class GameManager : MonoBehaviour
     void OnPlayerStoodUp()
     {
         if (isGameOver) return;
-        if (studentManager == null) return;
-
-        studentManager.DisappearRandomStudent();
-
-        if (studentManager.VisibleCount == 0)
-        {
-            TriggerGameOver("SEI RIMASTO SOLO.");
-        }
     }
 
     void OnPlayerSatDown()
     {
         if (isGameOver) return;
+
+        if (studentManager != null)
+        {
+            studentManager.DisappearRandomStudent();
+
+            if (studentManager.VisibleCount == 0)
+            {
+                TriggerGameOver("SEI RIMASTO SOLO.");
+            }
+        }
+
         if (classroomMutator == null) return;
 
         if (suspicionCounter != null && suspicionCounter.ShouldMutate)
@@ -408,6 +411,11 @@ public class GameManager : MonoBehaviour
     }
 
     public void TriggerGameOverExternal(string message)
+    {
+        TriggerGameOver(message);
+    }
+
+    public void TriggerVictory(string message)
     {
         TriggerGameOver(message);
     }
