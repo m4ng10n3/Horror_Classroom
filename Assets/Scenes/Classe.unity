@@ -166,8 +166,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Valentina
   studentColor: {r: 0.6666667, g: 0.3137255, b: 0.6666667, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &59139271
 GameObject:
@@ -1668,8 +1675,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Elena
   studentColor: {r: 0.19607843, g: 0.6666667, b: 0.33333334, a: 1}
-  essential: 0
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
+  essential: 1
   tradeDone: 0
+  requiredItem: 
+  rewardItem: Righello
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &368495223
 GameObject:
@@ -2123,6 +2137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 399139265}
+  - component: {fileID: 399139266}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -2146,6 +2161,22 @@ Transform:
   - {fileID: 1762278037}
   m_Father: {fileID: 310583006}
   m_LocalEulerAnglesHint: {x: 0, y: 20, z: 0}
+--- !u!114 &399139266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399139264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f63f5f091bbcc419c3591db6cbd4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorEscape
+  requiredCraftedItems: 3
+  victoryMessage: SEI SCAPPATO DALLA CLASSE.
+  lockedDialogue: La porta e' bloccata. Mi servono ancora pezzi utili per aprirla.
+  unlockedDialogue: La maniglia cede. Questa e' la mia occasione.
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3170,8 +3201,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Andrea
   studentColor: {r: 0.3137255, g: 0.47058824, b: 0.3137255, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &604952416
 GameObject:
@@ -3332,8 +3370,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Simone
   studentColor: {r: 0.54901963, g: 0.627451, b: 0.23529412, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &609413891
 GameObject:
@@ -3762,8 +3807,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Sara
   studentColor: {r: 0.39215687, g: 0.19607843, b: 0.6666667, a: 1}
-  essential: 0
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
+  essential: 1
   tradeDone: 0
+  requiredItem: 
+  rewardItem: Batteria
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &666896339
 GameObject:
@@ -3812,8 +3864,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Chiara
   studentColor: {r: 0.78431374, g: 0.627451, b: 0.39215687, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &672694559
 GameObject:
@@ -4815,8 +4874,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Alessia
   studentColor: {r: 0.23529412, g: 0.54901963, b: 0.627451, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &829316808
 GameObject:
@@ -5188,8 +5254,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Federico
   studentColor: {r: 0.627451, g: 0.23529412, b: 0.23529412, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &879980190
 GameObject:
@@ -5444,8 +5517,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Francesca
   studentColor: {r: 0.7058824, g: 0.39215687, b: 0.23529412, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &937936963
 GameObject:
@@ -5749,8 +5829,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Aurora
   studentColor: {r: 0.7058824, g: 0.54901963, b: 0.78431374, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &976627799
 GameObject:
@@ -7003,8 +7090,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Paolo
   studentColor: {r: 0.6666667, g: 0.53333336, b: 0.19607843, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 1
   tradeDone: 0
+  requiredItem: Righello
+  rewardItem: Graffetta
+  consumeRequiredItem: 0
   isVisible: 1
 --- !u!1 &1143574784
 GameObject:
@@ -7165,8 +7259,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Giulia
   studentColor: {r: 0.8, g: 0.39215687, b: 0.5882353, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &1153386709
 GameObject:
@@ -7215,8 +7316,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Lucia
   studentColor: {r: 0.6666667, g: 0.19607843, b: 0.19607843, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 1
   tradeDone: 0
+  requiredItem: Filo
+  rewardItem: Nastro Adesivo
+  consumeRequiredItem: 0
   isVisible: 1
 --- !u!1 &1165118755
 GameObject:
@@ -8048,8 +8156,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Sofia
   studentColor: {r: 0.78431374, g: 0.7058824, b: 0.54901963, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &1270428968
 GameObject:
@@ -8517,8 +8632,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Lorenzo
   studentColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &1352977986
 GameObject:
@@ -9491,8 +9613,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Matteo
   studentColor: {r: 0.23529412, g: 0.23529412, b: 0.54901963, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &1536531221
 GameObject:
@@ -9747,7 +9876,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 24, y: 0.1, z: 16}
+  m_LocalScale: {x: 24, y: 0.1, z: 16.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 310583006}
@@ -10274,8 +10403,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Alessandro
   studentColor: {r: 0.47058824, g: 0.39215687, b: 0.3137255, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &1650069730
 GameObject:
@@ -10996,6 +11132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7dfa6af932ebb946a6f9bfa1318bfbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  victoryFadeDuration: 1.5
+  victoryTextDelay: 0.2
   teacher: {fileID: 2007373964}
   teacherStateMachine: {fileID: 2007373966}
   player: {fileID: 2017530964}
@@ -11019,7 +11157,7 @@ MonoBehaviour:
   restartButton: {fileID: 1090271628}
   delayBeforeFirstQuestion: 2
   resultDisplayTime: 2
-  betweenQuestionsPause: 30
+  betweenQuestionsPause: 5
 --- !u!4 &1764054192
 Transform:
   m_ObjectHideFlags: 0
@@ -11226,8 +11364,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Davide
   studentColor: {r: 0.3137255, g: 0.3137255, b: 0.23529412, a: 1}
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
   essential: 0
   tradeDone: 0
+  requiredItem: 
+  rewardItem: 
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &1888011578
 GameObject:
@@ -11646,8 +11791,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Tommi
   studentColor: {r: 0.19607843, g: 0.6666667, b: 0.6666667, a: 1}
-  essential: 0
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
+  essential: 1
   tradeDone: 0
+  requiredItem: Batteria
+  rewardItem: Lampadina
+  consumeRequiredItem: 0
   isVisible: 1
 --- !u!1 &1954423778
 GameObject:
@@ -11856,6 +12008,19 @@ MonoBehaviour:
   - {fileID: 662288691}
   - {fileID: 1934230760}
   - {fileID: 1150971064}
+  - {fileID: 592183929}
+  - {fileID: 666896341}
+  - {fileID: 1533519863}
+  - {fileID: 926354461}
+  - {fileID: 1349093083}
+  - {fileID: 12157030}
+  - {fileID: 608054159}
+  - {fileID: 828600329}
+  - {fileID: 869059901}
+  - {fileID: 1251188087}
+  - {fileID: 1836788582}
+  - {fileID: 954199073}
+  - {fileID: 1639557631}
 --- !u!1 &2012605983
 GameObject:
   m_ObjectHideFlags: 0
@@ -11898,6 +12063,8 @@ GameObject:
   - component: {fileID: 2017530963}
   - component: {fileID: 2017530962}
   - component: {fileID: 2017530964}
+  - component: {fileID: 2017530966}
+  - component: {fileID: 2017530965}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -11967,6 +12134,54 @@ MonoBehaviour:
   isSeated: 1
   forceSeated: 0
   gameplayFrozen: 0
+--- !u!114 &2017530965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017530961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab651939cccd2246890c203a9d0d6ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionController
+  player: {fileID: 2017530964}
+  playerCamera: {fileID: 330585545}
+  inventory: {fileID: 2017530966}
+  gameManager: {fileID: 1764054191}
+  escapeDoor: {fileID: 0}
+  interactionDistance: 3
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  interactKey: 20
+  drawPlaceholderHud: 1
+  messageDuration: 4
+--- !u!114 &2017530966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017530961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3d6e1a2a8de354cb34ff33241c3b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EscapeInventory
+  recipes:
+  - ingredientA: Filo
+    ingredientB: Nastro adesivo
+    resultItem: Maniglia improvvisata
+  - ingredientA: Righello
+    ingredientB: Graffetta
+    resultItem: Leva sottile
+  - ingredientA: Batteria
+    ingredientB: Lampadina
+    resultItem: Segnalatore di emergenza
+  rawItems: []
+  craftedItems: []
 --- !u!1 &2027528575
 GameObject:
   m_ObjectHideFlags: 0
@@ -12046,8 +12261,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Marco
   studentColor: {r: 0.19607843, g: 0.33333334, b: 0.6666667, a: 1}
-  essential: 0
+  openingDialogue: Psst...
+  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
+  completedDialogue: Tieni. Potrebbe servirti.
+  repeatDialogue: Non ho altro da darti.
+  essential: 1
   tradeDone: 0
+  requiredItem: 
+  rewardItem: Filo
+  consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &2062982199
 GameObject:
