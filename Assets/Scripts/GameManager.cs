@@ -8,6 +8,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("End Screen")]
+    public float victoryFadeDuration = 1.5f;
+    public float victoryTextDelay = 0.2f;
+
     [Header("References")]
     public TeacherController teacher;
     public TeacherStateMachine teacherStateMachine;
@@ -51,12 +55,18 @@ public class GameManager : MonoBehaviour
     private GameState state = GameState.Waiting;
     private bool isGameOver = false;
 
+    private Image gameOverBackgroundImage;
+    private Color defaultGameOverBackgroundColor = Color.black;
+    private Color defaultGameOverTextColor = Color.white;
+    private bool endScreenCacheReady = false;
+
     // Opzioni e risposta corretta generate a runtime per le domande ambientali
     private string[] runtimeOptions = null;
     private int runtimeCorrectIndex = -1;
 
     void Start()
     {
+        CacheEndScreenReferences();
         HideQuestionPanel();
 
         for (int i = 0; i < answerButtons.Length; i++)
@@ -417,17 +427,30 @@ public class GameManager : MonoBehaviour
 
     public void TriggerVictory(string message)
     {
-        TriggerGameOver(message);
+        if (isGameOver) return;
+
+        PrepareEndState();
+        StartCoroutine(PlayVictorySequence(message));
     }
 
     void TriggerGameOver(string message)
     {
+        if (isGameOver) return;
+
+        PrepareEndState();
+        ShowDefeatScreen(message);
+    }
+
+    void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void PrepareEndState()
+    {
         isGameOver = true;
         state = GameState.Waiting;
         HideQuestionPanel();
-
-        if (gameOverPanel != null) gameOverPanel.SetActive(true);
-        if (gameOverText != null) gameOverText.text = message;
 
         if (player != null)
         {
@@ -441,8 +464,127 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
     }
 
-    void RestartGame()
+    void ShowDefeatScreen(string message)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        CacheEndScreenReferences();
+
+        if (gameOverBackgroundImage != null)
+        {
+            gameOverBackgroundImage.color = defaultGameOverBackgroundColor;
+        }
+
+        if (gameOverText != null)
+        {
+            gameOverText.color = defaultGameOverTextColor;
+            gameOverText.text = message;
+        }
+
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
+
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+        }
+    }
+
+    IEnumerator PlayVictorySequence(string message)
+    {
+        CacheEndScreenReferences();
+
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(false);
+        }
+
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+        }
+
+        Color backgroundColor = Color.black;
+        Color textColor = Color.white;
+        backgroundColor.a = 0f;
+        textColor.a = 0f;
+
+        if (gameOverBackgroundImage != null)
+        {
+            gameOverBackgroundImage.color = backgroundColor;
+        }
+
+        if (gameOverText != null)
+        {
+            gameOverText.text = message;
+            gameOverText.color = textColor;
+        }
+
+        float duration = Mathf.Max(0.01f, victoryFadeDuration);
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float normalized = Mathf.Clamp01(elapsed / duration);
+            float smooth = Mathf.SmoothStep(0f, 1f, normalized);
+            float textNormalized = Mathf.Clamp01((elapsed - victoryTextDelay) / Mathf.Max(0.01f, duration - victoryTextDelay));
+            float textSmooth = Mathf.SmoothStep(0f, 1f, textNormalized);
+
+            if (gameOverBackgroundImage != null)
+            {
+                Color currentBackground = Color.black;
+                currentBackground.a = smooth;
+                gameOverBackgroundImage.color = currentBackground;
+            }
+
+            if (gameOverText != null)
+            {
+                Color currentText = Color.white;
+                currentText.a = textSmooth;
+                gameOverText.color = currentText;
+            }
+
+            yield return null;
+        }
+
+        if (gameOverBackgroundImage != null)
+        {
+            gameOverBackgroundImage.color = Color.black;
+        }
+
+        if (gameOverText != null)
+        {
+            gameOverText.color = Color.white;
+        }
+
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
+    }
+
+    void CacheEndScreenReferences()
+    {
+        if (endScreenCacheReady)
+        {
+            return;
+        }
+
+        if (gameOverPanel != null)
+        {
+            gameOverBackgroundImage = gameOverPanel.GetComponent<Image>();
+            if (gameOverBackgroundImage != null)
+            {
+                defaultGameOverBackgroundColor = gameOverBackgroundImage.color;
+            }
+        }
+
+        if (gameOverText != null)
+        {
+            defaultGameOverTextColor = gameOverText.color;
+        }
+
+        endScreenCacheReady = true;
     }
 }
