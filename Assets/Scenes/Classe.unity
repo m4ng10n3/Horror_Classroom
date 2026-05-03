@@ -1907,10 +1907,10 @@ MonoBehaviour:
   missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
   completedDialogue: Tieni. Potrebbe servirti.
   repeatDialogue: Non ho altro da darti.
-  essential: 0
+  essential: 1
   tradeDone: 0
   requiredItem: 
-  rewardItem: 
+  rewardItem: Righello
   consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &368495223
@@ -2422,6 +2422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 399139265}
+  - component: {fileID: 399139266}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -2445,6 +2446,22 @@ Transform:
   - {fileID: 1762278037}
   m_Father: {fileID: 310583006}
   m_LocalEulerAnglesHint: {x: 0, y: 20, z: 0}
+--- !u!114 &399139266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399139264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f63f5f091bbcc419c3591db6cbd4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorEscape
+  requiredCraftedItems: 3
+  victoryMessage: SEI SCAPPATO DALLA CLASSE.
+  lockedDialogue: La porta e' bloccata. Mi servono ancora pezzi utili per aprirla.
+  unlockedDialogue: La maniglia cede. Questa e' la mia occasione.
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -4319,10 +4336,10 @@ MonoBehaviour:
   missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
   completedDialogue: Tieni. Potrebbe servirti.
   repeatDialogue: Non ho altro da darti.
-  essential: 0
+  essential: 1
   tradeDone: 0
   requiredItem: 
-  rewardItem: 
+  rewardItem: Batteria
   consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &666896339
@@ -7889,9 +7906,9 @@ MonoBehaviour:
   repeatDialogue: Non ho altro da darti.
   essential: 1
   tradeDone: 0
-  requiredItem: 
-  rewardItem: 
-  consumeRequiredItem: 1
+  requiredItem: Righello
+  rewardItem: Graffetta
+  consumeRequiredItem: 0
   isVisible: 1
 --- !u!1001 &1138843584
 PrefabInstance:
@@ -8172,9 +8189,9 @@ MonoBehaviour:
   repeatDialogue: Non ho altro da darti.
   essential: 1
   tradeDone: 0
-  requiredItem: 
-  rewardItem: 
-  consumeRequiredItem: 1
+  requiredItem: Filo
+  rewardItem: Nastro Adesivo
+  consumeRequiredItem: 0
   isVisible: 1
 --- !u!1 &1165118755
 GameObject:
@@ -11125,7 +11142,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 24, y: 0.1, z: 16}
+  m_LocalScale: {x: 24, y: 0.1, z: 16.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 310583006}
@@ -12381,6 +12398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7dfa6af932ebb946a6f9bfa1318bfbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  victoryFadeDuration: 1.5
+  victoryTextDelay: 0.2
   teacher: {fileID: 2007373964}
   teacherStateMachine: {fileID: 2007373966}
   player: {fileID: 2017530964}
@@ -12393,7 +12412,7 @@ MonoBehaviour:
   - {fileID: 347966702}
   questionDatabase: {fileID: 11400000, guid: d4007bb6bc3f1ba46b1a8ee42ff65ded, type: 2}
   suspicionCounter: {fileID: 879980192}
-  explorationDuration: 10
+  explorationDuration: 60
   warningStartTime: 3.5
   vignetteController: {fileID: 1356203906}
   studentManager: {fileID: 2010312891}
@@ -12404,7 +12423,7 @@ MonoBehaviour:
   restartButton: {fileID: 1090271628}
   delayBeforeFirstQuestion: 2
   resultDisplayTime: 2
-  betweenQuestionsPause: 30
+  betweenQuestionsPause: 5
 --- !u!4 &1764054192
 Transform:
   m_ObjectHideFlags: 0
@@ -13225,11 +13244,11 @@ MonoBehaviour:
   missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
   completedDialogue: Tieni. Potrebbe servirti.
   repeatDialogue: Non ho altro da darti.
-  essential: 0
+  essential: 1
   tradeDone: 0
-  requiredItem: 
-  rewardItem: 
-  consumeRequiredItem: 1
+  requiredItem: Batteria
+  rewardItem: Lampadina
+  consumeRequiredItem: 0
   isVisible: 1
 --- !u!1001 &1934863567
 PrefabInstance:
@@ -13564,6 +13583,19 @@ MonoBehaviour:
   - {fileID: 662288691}
   - {fileID: 1934230760}
   - {fileID: 1150971064}
+  - {fileID: 592183929}
+  - {fileID: 666896341}
+  - {fileID: 1533519863}
+  - {fileID: 926354461}
+  - {fileID: 1349093083}
+  - {fileID: 12157030}
+  - {fileID: 608054159}
+  - {fileID: 828600329}
+  - {fileID: 869059901}
+  - {fileID: 1251188087}
+  - {fileID: 1836788582}
+  - {fileID: 954199073}
+  - {fileID: 1639557631}
 --- !u!1 &2012605983
 GameObject:
   m_ObjectHideFlags: 0
@@ -13606,6 +13638,8 @@ GameObject:
   - component: {fileID: 2017530963}
   - component: {fileID: 2017530962}
   - component: {fileID: 2017530964}
+  - component: {fileID: 2017530966}
+  - component: {fileID: 2017530965}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -13675,6 +13709,54 @@ MonoBehaviour:
   isSeated: 1
   forceSeated: 0
   gameplayFrozen: 0
+--- !u!114 &2017530965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017530961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab651939cccd2246890c203a9d0d6ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionController
+  player: {fileID: 2017530964}
+  playerCamera: {fileID: 330585545}
+  inventory: {fileID: 2017530966}
+  gameManager: {fileID: 1764054191}
+  escapeDoor: {fileID: 399139266}
+  interactionDistance: 3
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  interactKey: 20
+  drawPlaceholderHud: 1
+  messageDuration: 4
+--- !u!114 &2017530966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017530961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3d6e1a2a8de354cb34ff33241c3b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EscapeInventory
+  recipes:
+  - ingredientA: Filo
+    ingredientB: Nastro adesivo
+    resultItem: Maniglia improvvisata
+  - ingredientA: Righello
+    ingredientB: Graffetta
+    resultItem: Leva sottile
+  - ingredientA: Batteria
+    ingredientB: Lampadina
+    resultItem: Segnalatore di emergenza
+  rawItems: []
+  craftedItems: []
 --- !u!1 &2027528575
 GameObject:
   m_ObjectHideFlags: 0
@@ -13758,10 +13840,10 @@ MonoBehaviour:
   missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
   completedDialogue: Tieni. Potrebbe servirti.
   repeatDialogue: Non ho altro da darti.
-  essential: 0
+  essential: 1
   tradeDone: 0
   requiredItem: 
-  rewardItem: 
+  rewardItem: Filo
   consumeRequiredItem: 1
   isVisible: 1
 --- !u!1 &2062982199
