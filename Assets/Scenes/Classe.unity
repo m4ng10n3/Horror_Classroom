@@ -166,35 +166,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Valentina
   studentColor: {r: 0.6666667, g: 0.3137255, b: 0.6666667, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
   isVisible: 1
+--- !u!4 &14494612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
+  m_PrefabInstance: {fileID: 325287615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &25709632 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
+  m_PrefabInstance: {fileID: 1994390419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &33245457
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5401843
+      value: -44.622192
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8016045
+      value: 37.379845
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.3118987
+      value: -57.795383
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -202,11 +229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
       propertyPath: m_LocalRotation.z
@@ -354,25 +381,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59139271}
   m_CullTransparentMesh: 1
+--- !u!4 &63119803 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc9a42717da920740be3b424740ed80f, type: 3}
+  m_PrefabInstance: {fileID: 1934863567}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &75579346 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
+  m_PrefabInstance: {fileID: 1258619224}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &84662663
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.009163487
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5143926
+      value: -44.5964
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.80187523
+      value: 37.380116
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.35755
+      value: -57.74973
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -380,11 +421,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
       propertyPath: m_LocalRotation.z
@@ -639,6 +680,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123270847}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &126123579 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b3d2948159cac2444a607c8934186164, type: 3}
+  m_PrefabInstance: {fileID: 181479426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &131864362
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +934,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137677794}
   m_CullTransparentMesh: 1
+--- !u!4 &138510667 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
+  m_PrefabInstance: {fileID: 1830608037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &148235041
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,19 +1008,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b3d2948159cac2444a607c8934186164, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5029764
+      value: -43.584984
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3d2948159cac2444a607c8934186164, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8096774
+      value: 37.387917
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3d2948159cac2444a607c8934186164, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.509345
+      value: -57.597935
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3d2948159cac2444a607c8934186164, type: 3}
       propertyPath: m_LocalRotation.w
@@ -977,7 +1028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3d2948159cac2444a607c8934186164, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3d2948159cac2444a607c8934186164, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1156,25 +1207,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207386065}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &209351997 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 492a39eaa4fec2d419419cdde7782351, type: 3}
+  m_PrefabInstance: {fileID: 642698357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &218861877
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.1248202
+      value: -44.20683
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.82432747
+      value: 37.402565
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4586174
+      value: -57.648663
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1182,7 +1238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1547,19 +1603,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4382024
+      value: -44.52021
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.83431804
+      value: 37.412556
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9718337
+      value: -58.13545
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1567,7 +1623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1664,7 +1720,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 148ae3bd693769d45b8674dcb8944af2, type: 2}
   m_TargetDisplay: 0
@@ -1903,10 +1959,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Elena
   studentColor: {r: 0.19607843, g: 0.6666667, b: 0.33333334, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 1
   tradeDone: 0
   requiredItem: 
@@ -2088,19 +2161,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4939802
+      value: -44.57599
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.80146617
+      value: 37.379707
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4511292
+      value: -57.65615
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2819,7 +2892,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9396dfda4540cd3428247154636eb774, type: 3}
       propertyPath: m_LocalScale.x
@@ -2835,15 +2908,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9396dfda4540cd3428247154636eb774, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.7833166
+      value: -43.865326
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9396dfda4540cd3428247154636eb774, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.209
+      value: 36.78724
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9396dfda4540cd3428247154636eb774, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.656
+      value: -58.451283
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9396dfda4540cd3428247154636eb774, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2851,7 +2924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9396dfda4540cd3428247154636eb774, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9396dfda4540cd3428247154636eb774, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2877,10 +2950,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Football
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9396dfda4540cd3428247154636eb774, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9396dfda4540cd3428247154636eb774, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2029933388}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9396dfda4540cd3428247154636eb774, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2029933387}
   m_SourcePrefab: {fileID: 100100000, guid: 9396dfda4540cd3428247154636eb774, type: 3}
 --- !u!1 &442562695
 GameObject:
@@ -2963,19 +3046,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5798242
+      value: -44.66183
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8016045
+      value: 37.379845
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.2448547
+      value: -57.862427
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2983,11 +3066,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalRotation.z
@@ -3380,19 +3463,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.82475
+      value: -43.906757
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8272012
+      value: 37.40544
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4878058
+      value: -57.619476
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3400,7 +3483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3431,6 +3514,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
+--- !u!4 &566177140 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
+  m_PrefabInstance: {fileID: 800167736}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &576799864
 GameObject:
   m_ObjectHideFlags: 0
@@ -3669,10 +3757,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Andrea
   studentColor: {r: 0.3137255, g: 0.47058824, b: 0.3137255, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -3838,16 +3943,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Simone
   studentColor: {r: 0.54901963, g: 0.627451, b: 0.23529412, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
   isVisible: 1
+--- !u!4 &608712901 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
+  m_PrefabInstance: {fileID: 1237162553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &609413891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3880,25 +4007,86 @@ Transform:
   - {fileID: 1890955745}
   m_Father: {fileID: 1203865782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &629931595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 629931596}
+  m_Layer: 0
+  m_Name: FBX_Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &629931596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629931595}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 41.097, y: -36.57, z: 60.108997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2029933386}
+  - {fileID: 1655337038}
+  - {fileID: 1151794896}
+  - {fileID: 1089043548}
+  - {fileID: 63119803}
+  - {fileID: 1557093569}
+  - {fileID: 138510667}
+  - {fileID: 25709632}
+  - {fileID: 209351997}
+  - {fileID: 988661499}
+  - {fileID: 2079217116}
+  - {fileID: 75579346}
+  - {fileID: 1552762253}
+  - {fileID: 1462951445}
+  - {fileID: 1195838191}
+  - {fileID: 566177140}
+  - {fileID: 2086600030}
+  - {fileID: 1449705906}
+  - {fileID: 1454769434}
+  - {fileID: 1848009557}
+  - {fileID: 1795699350}
+  - {fileID: 1339683057}
+  - {fileID: 716325717}
+  - {fileID: 802512842}
+  - {fileID: 126123579}
+  - {fileID: 608712901}
+  - {fileID: 1712711457}
+  - {fileID: 834943980}
+  - {fileID: 14494612}
+  - {fileID: 1946088376}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &642698357
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 492a39eaa4fec2d419419cdde7782351, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.377655
+      value: -44.459663
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 492a39eaa4fec2d419419cdde7782351, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8306625
+      value: 37.4089
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 492a39eaa4fec2d419419cdde7782351, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.2990818
+      value: -57.808197
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 492a39eaa4fec2d419419cdde7782351, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3906,7 +4094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 492a39eaa4fec2d419419cdde7782351, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 492a39eaa4fec2d419419cdde7782351, type: 3}
       propertyPath: m_LocalRotation.y
@@ -4332,10 +4520,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Sara
   studentColor: {r: 0.39215687, g: 0.19607843, b: 0.6666667, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 1
   tradeDone: 0
   requiredItem: 
@@ -4389,10 +4594,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Chiara
   studentColor: {r: 0.78431374, g: 0.627451, b: 0.39215687, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -4690,6 +4912,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711999077}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &716325717 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
+  m_PrefabInstance: {fileID: 218861877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &740126415
 GameObject:
   m_ObjectHideFlags: 0
@@ -5155,19 +5382,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.2099955
+      value: -44.292004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8343181
+      value: 37.412556
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9584092
+      value: -58.148872
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5175,7 +5402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
       propertyPath: m_LocalRotation.y
@@ -5244,19 +5471,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5304458
+      value: -44.612453
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.80160457
+      value: 37.379845
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.343925
+      value: -57.763355
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5264,11 +5491,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -5295,6 +5522,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
+--- !u!4 &802512842 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
+  m_PrefabInstance: {fileID: 559740245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &806456409
 GameObject:
   m_ObjectHideFlags: 0
@@ -5456,10 +5688,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Alessia
   studentColor: {r: 0.23529412, g: 0.54901963, b: 0.627451, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -5645,6 +5894,11 @@ MonoBehaviour:
   intensityMin: 0.165
   intensityMax: 0.39
   flickerRate: 0.03
+--- !u!4 &834943980 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
+  m_PrefabInstance: {fileID: 787478581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &847134226
 GameObject:
   m_ObjectHideFlags: 0
@@ -5795,19 +6049,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5351365
+      value: -43.617146
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8063052
+      value: 37.384544
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9194942
+      value: -58.187786
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5815,7 +6069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
       propertyPath: m_LocalRotation.y
@@ -5893,10 +6147,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Federico
   studentColor: {r: 0.627451, g: 0.23529412, b: 0.23529412, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -6084,19 +6355,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.549361
+      value: -44.63137
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.80160457
+      value: 37.379845
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.259714
+      value: -57.84757
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6104,11 +6375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
       propertyPath: m_LocalRotation.z
@@ -6213,10 +6484,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Francesca
   studentColor: {r: 0.7058824, g: 0.39215687, b: 0.23529412, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -6453,19 +6741,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.03319727
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5302293
+      value: -44.612236
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8015906
+      value: 37.37983
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.3258348
+      value: -57.781445
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6473,11 +6765,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
       propertyPath: m_LocalRotation.z
@@ -6582,10 +6874,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Aurora
   studentColor: {r: 0.7058824, g: 0.54901963, b: 0.78431374, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -6598,19 +6907,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.7575495
+      value: -43.839558
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.80657005
+      value: 37.38481
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9652807
+      value: -58.142
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6618,7 +6927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
       propertyPath: m_LocalRotation.y
@@ -6761,6 +7070,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976627799}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &988661499 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7c04e5b963aa2814da1e3e73e7e8e6c6, type: 3}
+  m_PrefabInstance: {fileID: 1332604693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &996346992
 GameObject:
   m_ObjectHideFlags: 0
@@ -7474,6 +7788,11 @@ Transform:
   - {fileID: 849463149}
   m_Father: {fileID: 1707430947}
   m_LocalEulerAnglesHint: {x: 0, y: -20, z: 0}
+--- !u!4 &1089043548 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 601675f0484707f408197f5edba02a08, type: 3}
+  m_PrefabInstance: {fileID: 1838805684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1090271627
 GameObject:
   m_ObjectHideFlags: 0
@@ -7900,10 +8219,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Paolo
   studentColor: {r: 0.6666667, g: 0.53333336, b: 0.19607843, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 1
   tradeDone: 0
   requiredItem: Righello
@@ -7916,19 +8252,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.002323164
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.550446
+      value: -44.632454
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8028301
+      value: 37.38107
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.370179
+      value: -57.737103
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7936,11 +8276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
       propertyPath: m_LocalRotation.z
@@ -8126,16 +8466,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Giulia
   studentColor: {r: 0.8, g: 0.39215687, b: 0.5882353, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
   isVisible: 1
+--- !u!4 &1151794896 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
+  m_PrefabInstance: {fileID: 1370488695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1153386709
 GameObject:
   m_ObjectHideFlags: 0
@@ -8147,7 +8509,7 @@ GameObject:
   - component: {fileID: 1153386710}
   - component: {fileID: 1153386711}
   m_Layer: 0
-  m_Name: Student_Lucia
+  m_Name: Student_Frank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8183,10 +8545,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Lucia
   studentColor: {r: 0.6666667, g: 0.19607843, b: 0.19607843, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 1
   tradeDone: 0
   requiredItem: Filo
@@ -8565,6 +8944,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193590406}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1195838191 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
+  m_PrefabInstance: {fileID: 84662663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1198928776
 GameObject:
   m_ObjectHideFlags: 0
@@ -8736,19 +9120,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5238585
+      value: -44.605865
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.800924
+      value: 37.37916
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.2868624
+      value: -57.82042
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8756,7 +9140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
       propertyPath: m_LocalRotation.y
@@ -8937,19 +9321,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.61623
+      value: -43.69824
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8038556
+      value: 37.382095
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.25136
+      value: -57.85592
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8957,7 +9341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
       propertyPath: m_LocalRotation.y
@@ -9137,10 +9521,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Sofia
   studentColor: {r: 0.78431374, g: 0.7058824, b: 0.54901963, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -9153,19 +9554,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5109794
+      value: -44.592987
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8016865
+      value: 37.379925
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4358618
+      value: -57.671417
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9173,11 +9574,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
       propertyPath: m_LocalRotation.z
@@ -9498,19 +9899,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7c04e5b963aa2814da1e3e73e7e8e6c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5082536
+      value: -44.590263
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c04e5b963aa2814da1e3e73e7e8e6c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.80409455
+      value: 37.382336
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c04e5b963aa2814da1e3e73e7e8e6c6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4203484
+      value: -57.68693
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c04e5b963aa2814da1e3e73e7e8e6c6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9518,7 +9919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c04e5b963aa2814da1e3e73e7e8e6c6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c04e5b963aa2814da1e3e73e7e8e6c6, type: 3}
       propertyPath: m_LocalRotation.y
@@ -9600,6 +10001,11 @@ Transform:
   - {fileID: 1639557630}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1339683057 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
+  m_PrefabInstance: {fileID: 1547992892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1341675442
 GameObject:
   m_ObjectHideFlags: 0
@@ -9727,10 +10133,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Lorenzo
   studentColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -9831,19 +10254,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.7476518
+      value: -43.82966
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.80082065
+      value: 37.37906
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9009572
+      value: -58.20632
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9851,7 +10274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
       propertyPath: m_LocalRotation.y
@@ -10378,19 +10801,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 44ccfee0e5fd1134ab087f02473ca587, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5208783
+      value: -44.602886
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 44ccfee0e5fd1134ab087f02473ca587, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8008182
+      value: 37.37906
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 44ccfee0e5fd1134ab087f02473ca587, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.3920195
+      value: -57.71526
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 44ccfee0e5fd1134ab087f02473ca587, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10614,6 +11037,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440872230}
   m_CullTransparentMesh: 1
+--- !u!4 &1449705906 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
+  m_PrefabInstance: {fileID: 946864310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1454769434 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
+  m_PrefabInstance: {fileID: 33245457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1462951445 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
+  m_PrefabInstance: {fileID: 1207040194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1478377604
 GameObject:
   m_ObjectHideFlags: 0
@@ -10822,10 +11260,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Matteo
   studentColor: {r: 0.23529412, g: 0.23529412, b: 0.54901963, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -10952,19 +11407,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5710354
+      value: -44.653046
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8016045
+      value: 37.379845
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.2274837
+      value: -57.8798
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10972,11 +11427,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
       propertyPath: m_LocalRotation.z
@@ -11003,6 +11458,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
+--- !u!4 &1552762253 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 44ccfee0e5fd1134ab087f02473ca587, type: 3}
+  m_PrefabInstance: {fileID: 1423614333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1554347041
 GameObject:
   m_ObjectHideFlags: 0
@@ -11035,6 +11495,11 @@ Transform:
   - {fileID: 1580665531}
   m_Father: {fileID: 1203865782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1557093569 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
+  m_PrefabInstance: {fileID: 971727979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1576940250
 GameObject:
   m_ObjectHideFlags: 0
@@ -11669,10 +12134,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Alessandro
   studentColor: {r: 0.47058824, g: 0.39215687, b: 0.3137255, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -11781,6 +12263,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!4 &1655337038 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
+  m_PrefabInstance: {fileID: 864358677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1707430946
 GameObject:
   m_ObjectHideFlags: 0
@@ -11822,19 +12309,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.917
+      value: -43.99901
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86657155
+      value: 37.444813
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.977
+      value: -58.13028
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11842,7 +12329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
       propertyPath: m_LocalRotation.y
@@ -12030,6 +12517,80 @@ Transform:
   m_Children:
   - {fileID: 1025248822}
   m_Father: {fileID: 1203865782}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1738970831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738970835}
+  - component: {fileID: 1738970834}
+  - component: {fileID: 1738970833}
+  - component: {fileID: 1738970832}
+  m_Layer: 0
+  m_Name: InventoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1738970832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738970831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a413e632d81d96344b9f453d53441423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryScreenUI
+  toggleKey: 3
+--- !u!114 &1738970833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738970831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb99c86a15345ab4cbd2c514c808a209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemInspectionController
+  inspectionDistance: 1.5
+  normalizedSize: 0.7
+  rotationSpeed: 150
+--- !u!114 &1738970834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738970831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5a4845fdf6b2946b7f021184578f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PhysicalInventory
+--- !u!4 &1738970835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738970831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 41.08201, y: -36.57824, z: 60.10728}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741496766
 GameObject:
@@ -12439,13 +13000,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1795699350 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
+  m_PrefabInstance: {fileID: 488703490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1806064440
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
       propertyPath: m_LocalScale.x
@@ -12461,15 +13027,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.6384
+      value: -43.72041
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.885
+      value: 37.463238
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9702
+      value: -58.13708
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12502,6 +13068,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
       propertyPath: m_Name
       value: Box_Glove
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12658,19 +13228,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.968985
+      value: -44.050995
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.80498993
+      value: 37.38323
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8809863
+      value: -58.226295
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12678,7 +13248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
       propertyPath: m_LocalRotation.y
@@ -12756,10 +13326,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Davide
   studentColor: {r: 0.3137255, g: 0.3137255, b: 0.23529412, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -12772,19 +13359,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 601675f0484707f408197f5edba02a08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.750841
+      value: -43.832848
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 601675f0484707f408197f5edba02a08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.80072916
+      value: 37.378967
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 601675f0484707f408197f5edba02a08, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.926648
+      value: -58.180634
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 601675f0484707f408197f5edba02a08, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12823,6 +13410,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601675f0484707f408197f5edba02a08, type: 3}
+--- !u!4 &1848009557 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
+  m_PrefabInstance: {fileID: 900405505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1888011578
 GameObject:
   m_ObjectHideFlags: 0
@@ -13240,10 +13832,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Tommi
   studentColor: {r: 0.19607843, g: 0.6666667, b: 0.6666667, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 1
   tradeDone: 0
   requiredItem: Batteria
@@ -13256,7 +13865,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fc9a42717da920740be3b424740ed80f, type: 3}
       propertyPath: m_LocalScale.x
@@ -13272,15 +13881,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc9a42717da920740be3b424740ed80f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8188
+      value: -43.90081
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc9a42717da920740be3b424740ed80f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.84
+      value: 37.41824
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc9a42717da920740be3b424740ed80f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.891
+      value: -58.21628
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc9a42717da920740be3b424740ed80f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13288,7 +13897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc9a42717da920740be3b424740ed80f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc9a42717da920740be3b424740ed80f, type: 3}
       propertyPath: m_LocalRotation.y
@@ -13319,6 +13928,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc9a42717da920740be3b424740ed80f, type: 3}
+--- !u!4 &1946088376 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+  m_PrefabInstance: {fileID: 1806064440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1954423778
 GameObject:
   m_ObjectHideFlags: 0
@@ -13389,19 +14003,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 629931596}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4695318
+      value: -43.55154
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.84047294
+      value: 37.418713
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8875275
+      value: -58.219753
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13417,7 +14031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13733,6 +14347,9 @@ MonoBehaviour:
   interactKey: 20
   drawPlaceholderHud: 1
   messageDuration: 4
+  playerName: Eddy
+  playerLineColor: {r: 1, g: 0.91, b: 0.49, a: 1}
+  npcLineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &2017530966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13789,6 +14406,56 @@ Transform:
   - {fileID: 937936964}
   m_Father: {fileID: 1203865782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2029933383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9396dfda4540cd3428247154636eb774, type: 3}
+  m_PrefabInstance: {fileID: 428886668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2029933386 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9396dfda4540cd3428247154636eb774, type: 3}
+  m_PrefabInstance: {fileID: 428886668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2029933387
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029933383}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.85063994
+  m_Height: 1.6315134
+  m_Direction: 1
+  m_Center: {x: -0.0000009536743, y: -0.0000032782555, z: -0.0000009536743}
+--- !u!114 &2029933388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029933383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Pallone da calcio
+  description: Una palla...ora rompo la finestra!
+  canInspect: 1
+  inspectionModelOverride: {fileID: 2029933383}
+  addToEscapeInventory: 0
 --- !u!1 &2058133690
 GameObject:
   m_ObjectHideFlags: 0
@@ -13800,7 +14467,7 @@ GameObject:
   - component: {fileID: 2058133691}
   - component: {fileID: 2058133692}
   m_Layer: 0
-  m_Name: Student_Marco
+  m_Name: Student_Daniel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13834,12 +14501,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  studentName: Marco
+  studentName: Daniel
   studentColor: {r: 0.19607843, g: 0.33333334, b: 0.6666667, a: 1}
-  openingDialogue: Psst...
-  missingItemDialogue: Se mi porti l'oggetto giusto, ti do una mano.
-  completedDialogue: Tieni. Potrebbe servirti.
-  repeatDialogue: Non ho altro da darti.
+  missingItemSequence:
+  - speaker: 1
+    text: Psst... ho bisogno di qualcosa.
+  - speaker: 0
+    text: Di cosa hai bisogno?
+  - speaker: 1
+    text: Se mi porti l'oggetto giusto, ti do una mano.
+  - speaker: 0
+    text: Ok, ci provo.
+  completedSequence:
+  - speaker: 0
+    text: Ho quello che cercavi.
+  - speaker: 1
+    text: Perfetto! Tieni, potrebbe servirti.
+  - speaker: 0
+    text: Grazie, ne avevo bisogno.
+  repeatSequence:
+  - speaker: 1
+    text: Non ho altro da darti.
+  - speaker: 0
+    text: Capisco, grazie comunque.
   essential: 1
   tradeDone: 0
   requiredItem: 
@@ -14144,6 +14828,16 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076252583}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2079217116 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
+  m_PrefabInstance: {fileID: 381045450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2086600030 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
+  m_PrefabInstance: {fileID: 1138843584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2105800806
 GameObject:
   m_ObjectHideFlags: 0
@@ -14409,6 +15103,7 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1352977987}
+  - {fileID: 629931596}
   - {fileID: 2017530963}
   - {fileID: 310583006}
   - {fileID: 2007373965}
@@ -14421,36 +15116,7 @@ SceneRoots:
   - {fileID: 148235043}
   - {fileID: 1356203907}
   - {fileID: 1489307696}
-  - {fileID: 1712711456}
-  - {fileID: 787478581}
-  - {fileID: 325287615}
   - {fileID: 1031883456}
   - {fileID: 1246421232}
   - {fileID: 1386593595}
-  - {fileID: 1806064440}
-  - {fileID: 428886668}
-  - {fileID: 864358677}
-  - {fileID: 1370488695}
-  - {fileID: 1838805684}
-  - {fileID: 1934863567}
-  - {fileID: 971727979}
-  - {fileID: 1830608037}
-  - {fileID: 1994390419}
-  - {fileID: 642698357}
-  - {fileID: 1332604693}
-  - {fileID: 381045450}
-  - {fileID: 1258619224}
-  - {fileID: 1423614333}
-  - {fileID: 1207040194}
-  - {fileID: 84662663}
-  - {fileID: 800167736}
-  - {fileID: 1138843584}
-  - {fileID: 946864310}
-  - {fileID: 33245457}
-  - {fileID: 900405505}
-  - {fileID: 488703490}
-  - {fileID: 1547992892}
-  - {fileID: 218861877}
-  - {fileID: 559740245}
-  - {fileID: 181479426}
-  - {fileID: 1237162553}
+  - {fileID: 1738970835}

@@ -23,10 +23,20 @@ public class PlayerInteractionController : MonoBehaviour
     public bool drawPlaceholderHud = true;
     public float messageDuration = 4f;
 
+    [Header("Dialogue")]
+    public string playerName = "Eddy";
+    public Color playerLineColor = new Color(1f, 0.91f, 0.49f);
+    public Color npcLineColor = Color.white;
+
     private IPlayerInteractable currentInteractable;
     private string currentPrompt = string.Empty;
     private string currentMessage = string.Empty;
     private float messageTimer = 0f;
+
+    private bool isInDialogue = false;
+    private DialogueLine[] activeSequence;
+    private int currentLineIndex;
+    private string currentNPCName = string.Empty;
 
     private RectTransform hudRoot;
     private Image inventoryPanelImage;
@@ -51,7 +61,7 @@ public class PlayerInteractionController : MonoBehaviour
 
     void Update()
     {
-        if (messageTimer > 0f)
+        if (messageTimer > 0f && !isInDialogue)
         {
             messageTimer -= Time.deltaTime;
         }
@@ -66,19 +76,68 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (player.gameplayFrozen || player.isSeated)
         {
-            ClearCurrentInteractable();
+            if (!isInDialogue)
+                ClearCurrentInteractable();
             RefreshHud();
             return;
         }
 
-        UpdateCurrentInteractable();
+        if (!isInDialogue)
+            UpdateCurrentInteractable();
 
         Keyboard keyboard = Keyboard.current;
-        if (keyboard != null && currentInteractable != null && keyboard[interactKey].wasPressedThisFrame)
+        if (keyboard != null && keyboard[interactKey].wasPressedThisFrame)
         {
-            ShowMessage(currentInteractable.Interact(inventory, gameManager));
+            if (isInDialogue)
+            {
+                AdvanceDialogue();
+            }
+            else if (currentInteractable != null)
+            {
+                if (currentInteractable is IDialogueSequenceInteractable seqInteractable)
+                    StartDialogueSequence(seqInteractable);
+                else
+                    ShowMessage(currentInteractable.Interact(inventory, gameManager));
+            }
         }
 
+        RefreshHud();
+    }
+
+    private void StartDialogueSequence(IDialogueSequenceInteractable seqInteractable)
+    {
+        activeSequence = seqInteractable.GetDialogueSequence(inventory, gameManager);
+        currentNPCName = seqInteractable.SpeakerName;
+        currentLineIndex = 0;
+        isInDialogue = activeSequence != null && activeSequence.Length > 0;
+        ShowCurrentDialogueLine();
+    }
+
+    private void AdvanceDialogue()
+    {
+        currentLineIndex++;
+        ShowCurrentDialogueLine();
+    }
+
+    private void ShowCurrentDialogueLine()
+    {
+        if (!isInDialogue || activeSequence == null || currentLineIndex >= activeSequence.Length)
+        {
+            isInDialogue = false;
+            activeSequence = null;
+            currentMessage = string.Empty;
+            messageTimer = 0f;
+            RefreshHud();
+            return;
+        }
+
+        DialogueLine line = activeSequence[currentLineIndex];
+        bool isPlayer = line.speaker == DialogueLine.Speaker.Player;
+        string name = isPlayer ? playerName : currentNPCName;
+        Color col = isPlayer ? playerLineColor : npcLineColor;
+        string hex = ColorUtility.ToHtmlStringRGB(col);
+        currentMessage = $"<color=#{hex}><b>{name}</b>: \"{line.text}\"</color>";
+        messageTimer = float.MaxValue;
         RefreshHud();
     }
 
@@ -415,8 +474,22 @@ public class PlayerInteractionController : MonoBehaviour
 
         bool showGameplayHud = ShouldShowGameplayHud();
         bool showCrosshair = showGameplayHud && player != null && !player.isSeated;
-        bool showPrompt = showCrosshair && !string.IsNullOrWhiteSpace(currentPrompt);
-        bool showDialogue = showGameplayHud && messageTimer > 0f && !string.IsNullOrWhiteSpace(currentMessage);
+        bool showDialogue = showGameplayHud && !string.IsNullOrWhiteSpace(currentMessage) &&
+                            (isInDialogue || messageTimer > 0f);
+
+        string displayPrompt;
+        bool showPrompt;
+        if (isInDialogue)
+        {
+            bool isLastLine = activeSequence == null || currentLineIndex >= activeSequence.Length - 1;
+            displayPrompt = isLastLine ? $"[F] Chiudi" : $"[F] Continua";
+            showPrompt = showGameplayHud;
+        }
+        else
+        {
+            displayPrompt = currentPrompt;
+            showPrompt = showCrosshair && !string.IsNullOrWhiteSpace(currentPrompt);
+        }
 
         if (inventoryPanelImage != null)
         {
@@ -435,7 +508,7 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (crosshairText != null)
         {
-            crosshairText.gameObject.SetActive(showCrosshair);
+            crosshairText.gameObject.SetActive(showCrosshair && !isInDialogue);
         }
 
         if (inventoryText != null)
@@ -445,12 +518,12 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (promptText != null)
         {
-            promptText.text = currentPrompt;
+            promptText.text = displayPrompt;
         }
 
         if (dialogueText != null)
         {
-            dialogueText.text = $"<b>Interazione</b>\n{currentMessage}";
+            dialogueText.text = isInDialogue ? currentMessage : $"<b>Interazione</b>\n{currentMessage}";
         }
     }
 

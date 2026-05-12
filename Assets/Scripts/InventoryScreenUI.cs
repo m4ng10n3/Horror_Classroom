@@ -1,0 +1,261 @@
+using System;
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
+/// <summary>
+/// Schermata inventario aperta con Tab.
+/// Mostra tutti gli oggetti raccolti; cliccando su uno con canInspect=true apre la vista 3D.
+/// Tutta la UI è generata a runtime, nessun prefab richiesto.
+/// </summary>
+public class InventoryScreenUI : MonoBehaviour
+{
+    [Header("Tasto apertura")]
+    public Key toggleKey = Key.Tab;
+
+    private bool isOpen;
+    private FPSController playerController;
+
+    private Canvas inventoryCanvas;
+    private RectTransform itemListContent;
+
+    void Start()
+    {
+        playerController = FindFirstObjectByType<FPSController>();
+        BuildUI();
+
+        if (PhysicalInventory.Instance != null)
+            PhysicalInventory.Instance.OnItemAdded += _ => { if (isOpen) RefreshList(); };
+    }
+
+    void Update()
+    {
+        var kb = Keyboard.current;
+        if (kb == null) return;
+
+        if (kb[toggleKey].wasPressedThisFrame)
+        {
+            if (isOpen) Close();
+            else Open();
+        }
+    }
+
+    private void Open()
+    {
+        // Non aprire se l'ispezione è già attiva
+        if (ItemInspectionController.Instance != null && ItemInspectionController.Instance.IsInspecting)
+            return;
+
+        isOpen = true;
+        inventoryCanvas.gameObject.SetActive(true);
+        if (playerController != null) playerController.gameplayFrozen = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        RefreshList();
+    }
+
+    private void Close()
+    {
+        isOpen = false;
+        inventoryCanvas.gameObject.SetActive(false);
+        if (playerController != null) playerController.gameplayFrozen = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void RefreshList()
+    {
+        foreach (Transform child in itemListContent)
+            Destroy(child.gameObject);
+
+        if (PhysicalInventory.Instance == null) return;
+
+        var items = PhysicalInventory.Instance.Items;
+        for (int i = 0; i < items.Count; i++)
+        {
+            var item = items[i];
+            CreateItemButton(item, i);
+        }
+
+        // Aggiorna l'altezza del contenitore scroll
+        itemListContent.sizeDelta = new Vector2(0f, items.Count * 80f);
+    }
+
+    private void CreateItemButton(CollectedItem item, int index)
+    {
+        var btnGo = new GameObject("Item_" + item.name,
+            typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
+        var btnRect = btnGo.GetComponent<RectTransform>();
+        btnRect.SetParent(itemListContent, false);
+        btnRect.localScale = Vector3.one;
+        btnRect.anchorMin = new Vector2(0f, 1f);
+        btnRect.anchorMax = new Vector2(1f, 1f);
+        btnRect.pivot = new Vector2(0.5f, 1f);
+        btnRect.sizeDelta = new Vector2(0f, 74f);
+        btnRect.anchoredPosition = new Vector2(0f, -index * 80f);
+
+        var img = btnGo.GetComponent<Image>();
+        img.color = new Color(0.12f, 0.12f, 0.18f, 1f);
+
+        var btn = btnGo.GetComponent<Button>();
+        var cols = btn.colors;
+        cols.normalColor    = new Color(0.12f, 0.12f, 0.18f, 1f);
+        cols.highlightedColor = new Color(0.22f, 0.22f, 0.34f, 1f);
+        cols.pressedColor   = new Color(0.08f, 0.08f, 0.12f, 1f);
+        btn.colors = cols;
+
+        var capturedItem = item;
+        btn.onClick.AddListener(() =>
+        {
+            if (!capturedItem.canInspect) return;
+            Close();
+            ItemInspectionController.Instance?.OpenInspection(capturedItem);
+        });
+
+        // Label
+        var labelGo = new GameObject("Label",
+            typeof(RectTransform), typeof(CanvasRenderer), typeof(TextMeshProUGUI));
+        var labelRect = labelGo.GetComponent<RectTransform>();
+        labelRect.SetParent(btnRect, false);
+        labelRect.localScale = Vector3.one;
+        labelRect.anchorMin = Vector2.zero;
+        labelRect.anchorMax = Vector2.one;
+        labelRect.offsetMin = new Vector2(20f, 0f);
+        labelRect.offsetMax = new Vector2(-20f, 0f);
+
+        var label = labelGo.GetComponent<TextMeshProUGUI>();
+        label.fontSize = 24f;
+        label.alignment = TextAlignmentOptions.MidlineLeft;
+        label.color = Color.white;
+        label.raycastTarget = false;
+        label.textWrappingMode = TextWrappingModes.Normal;
+        label.text = item.canInspect
+            ? $"{item.name}  <size=17><color=#888888>[Clicca per ispezionare]</color></size>"
+            : item.name;
+    }
+
+    // ───────── Costruzione UI ─────────
+
+    private void BuildUI()
+    {
+        var canvasGo = new GameObject("InventoryScreenCanvas");
+        DontDestroyOnLoad(canvasGo);
+        inventoryCanvas = canvasGo.AddComponent<Canvas>();
+        inventoryCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        inventoryCanvas.sortingOrder = 40;
+        canvasGo.AddComponent<CanvasScaler>();
+        canvasGo.AddComponent<GraphicRaycaster>();
+        var root = inventoryCanvas.GetComponent<RectTransform>();
+
+        // Overlay scuro
+        MakeImage("Overlay", root, new Color(0f, 0f, 0f, 0.80f), true, stretch: true);
+
+        // Pannello centrale
+        var panel = MakeRect("Panel", root);
+        panel.anchorMin = new Vector2(0.12f, 0.08f);
+        panel.anchorMax = new Vector2(0.88f, 0.92f);
+        panel.offsetMin = panel.offsetMax = Vector2.zero;
+        MakeImage("PanelBG", panel, new Color(0.07f, 0.07f, 0.10f, 1f), false, stretch: true);
+
+        // Titolo
+        var title = MakeTMP("Title", panel, 38f, TextAlignmentOptions.Center, FontStyles.Bold);
+        title.rectTransform.anchorMin = new Vector2(0f, 0.88f);
+        title.rectTransform.anchorMax = Vector2.one;
+        title.rectTransform.offsetMin = title.rectTransform.offsetMax = Vector2.zero;
+        title.text = "Inventario";
+
+        // Hint
+        var hint = MakeTMP("Hint", panel, 18f, TextAlignmentOptions.Center, FontStyles.Normal);
+        hint.rectTransform.anchorMin = new Vector2(0f, 0f);
+        hint.rectTransform.anchorMax = new Vector2(1f, 0.08f);
+        hint.rectTransform.offsetMin = hint.rectTransform.offsetMax = Vector2.zero;
+        hint.text = "[Tab] Chiudi";
+        hint.color = new Color(0.45f, 0.45f, 0.45f);
+
+        // ScrollView
+        var scrollGo = new GameObject("ScrollView",
+            typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(ScrollRect));
+        var scrollRect2 = scrollGo.GetComponent<RectTransform>();
+        scrollRect2.SetParent(panel, false);
+        scrollRect2.localScale = Vector3.one;
+        scrollRect2.anchorMin = new Vector2(0.02f, 0.09f);
+        scrollRect2.anchorMax = new Vector2(0.98f, 0.87f);
+        scrollRect2.offsetMin = scrollRect2.offsetMax = Vector2.zero;
+        scrollGo.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
+
+        var vpGo = new GameObject("Viewport",
+            typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Mask));
+        var vpRect = vpGo.GetComponent<RectTransform>();
+        vpRect.SetParent(scrollRect2, false);
+        vpRect.localScale = Vector3.one;
+        vpRect.anchorMin = Vector2.zero;
+        vpRect.anchorMax = Vector2.one;
+        vpRect.offsetMin = vpRect.offsetMax = Vector2.zero;
+        vpGo.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.01f);
+        vpGo.GetComponent<Mask>().showMaskGraphic = false;
+
+        var contentGo = new GameObject("Content", typeof(RectTransform));
+        itemListContent = contentGo.GetComponent<RectTransform>();
+        itemListContent.SetParent(vpRect, false);
+        itemListContent.localScale = Vector3.one;
+        itemListContent.anchorMin = new Vector2(0f, 1f);
+        itemListContent.anchorMax = Vector2.one;
+        itemListContent.pivot = new Vector2(0.5f, 1f);
+        itemListContent.offsetMin = itemListContent.offsetMax = Vector2.zero;
+        itemListContent.sizeDelta = Vector2.zero;
+
+        var scroll = scrollGo.GetComponent<ScrollRect>();
+        scroll.content = itemListContent;
+        scroll.viewport = vpRect;
+        scroll.horizontal = false;
+        scroll.vertical = true;
+        scroll.scrollSensitivity = 30f;
+        scroll.movementType = ScrollRect.MovementType.Clamped;
+
+        inventoryCanvas.gameObject.SetActive(false);
+    }
+
+    private RectTransform MakeRect(string name, RectTransform parent)
+    {
+        var go = new GameObject(name, typeof(RectTransform));
+        var r = go.GetComponent<RectTransform>();
+        r.SetParent(parent, false);
+        r.localScale = Vector3.one;
+        return r;
+    }
+
+    private Image MakeImage(string name, RectTransform parent, Color color, bool raycast, bool stretch = false)
+    {
+        var go = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        var r = go.GetComponent<RectTransform>();
+        r.SetParent(parent, false);
+        r.localScale = Vector3.one;
+        if (stretch)
+        {
+            r.anchorMin = Vector2.zero; r.anchorMax = Vector2.one;
+            r.offsetMin = r.offsetMax = Vector2.zero;
+        }
+        var img = go.GetComponent<Image>();
+        img.color = color;
+        img.raycastTarget = raycast;
+        return img;
+    }
+
+    private TextMeshProUGUI MakeTMP(string name, RectTransform parent, float size,
+        TextAlignmentOptions align, FontStyles style)
+    {
+        var go = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(TextMeshProUGUI));
+        var r = go.GetComponent<RectTransform>();
+        r.SetParent(parent, false);
+        r.localScale = Vector3.one;
+        var t = go.GetComponent<TextMeshProUGUI>();
+        t.fontSize = size;
+        t.alignment = align;
+        t.fontStyle = style;
+        t.color = Color.white;
+        t.textWrappingMode = TextWrappingModes.Normal;
+        t.raycastTarget = false;
+        return t;
+    }
+}

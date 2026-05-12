@@ -1,35 +1,46 @@
 using UnityEngine;
 
-public class StudentNPC : MonoBehaviour, IPlayerInteractable
+public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceInteractable
 {
     [Header("Identity")]
     public string studentName = "Studente";
     public Color studentColor = Color.white;
 
-    [Header("Dialogue")]
-    [TextArea(2, 4)]
-    public string openingDialogue = "Psst...";
+    [Header("Dialogo — Oggetto Mancante")]
+    public DialogueLine[] missingItemSequence = new DialogueLine[]
+    {
+        new DialogueLine { speaker = DialogueLine.Speaker.NPC,    text = "Psst... ho bisogno di qualcosa." },
+        new DialogueLine { speaker = DialogueLine.Speaker.Player, text = "Di cosa hai bisogno?" },
+        new DialogueLine { speaker = DialogueLine.Speaker.NPC,    text = "Se mi porti l'oggetto giusto, ti do una mano." },
+        new DialogueLine { speaker = DialogueLine.Speaker.Player, text = "Ok, ci provo." }
+    };
 
-    [TextArea(2, 4)]
-    public string missingItemDialogue = "Se mi porti l'oggetto giusto, ti do una mano.";
+    [Header("Dialogo — Baratto Completato")]
+    public DialogueLine[] completedSequence = new DialogueLine[]
+    {
+        new DialogueLine { speaker = DialogueLine.Speaker.Player, text = "Ho quello che cercavi." },
+        new DialogueLine { speaker = DialogueLine.Speaker.NPC,    text = "Perfetto! Tieni, potrebbe servirti." },
+        new DialogueLine { speaker = DialogueLine.Speaker.Player, text = "Grazie, ne avevo bisogno." }
+    };
 
-    [TextArea(2, 4)]
-    public string completedDialogue = "Tieni. Potrebbe servirti.";
+    [Header("Dialogo — Baratto Già Fatto")]
+    public DialogueLine[] repeatSequence = new DialogueLine[]
+    {
+        new DialogueLine { speaker = DialogueLine.Speaker.NPC,    text = "Non ho altro da darti." },
+        new DialogueLine { speaker = DialogueLine.Speaker.Player, text = "Capisco, grazie comunque." }
+    };
 
-    [TextArea(2, 4)]
-    public string repeatDialogue = "Non ho altro da darti.";
-
-    [Header("Trade System (Fase 7)")]
-    [Tooltip("Se true, questo studente e' legato a un baratto e non puo' sparire finche' non l'ha fatto.")]
+    [Header("Trade System")]
+    [Tooltip("Se true, questo studente non può sparire finché non ha completato il baratto.")]
     public bool essential = false;
 
-    [Tooltip("Diventa true quando lo scambio e' stato completato.")]
+    [Tooltip("Diventa true quando lo scambio è stato completato.")]
     public bool tradeDone = false;
 
-    [Tooltip("Lascia vuoto se questo studente regala subito l'oggetto.")]
+    [Tooltip("Lascia vuoto se lo studente regala subito l'oggetto senza richiederne uno.")]
     public string requiredItem = "";
 
-    [Tooltip("Oggetto ricevuto dal player al termine del dialogo/baratto.")]
+    [Tooltip("Oggetto ricevuto dal player al termine del baratto.")]
     public string rewardItem = "";
 
     [Tooltip("Se true, l'oggetto richiesto viene consumato nel baratto.")]
@@ -41,6 +52,8 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable
     private MeshRenderer bodyRenderer;
     private Material bodyMaterialInstance;
 
+    public string SpeakerName => string.IsNullOrWhiteSpace(studentName) ? gameObject.name : studentName;
+
     void Awake()
     {
         bodyRenderer = GetComponentInChildren<MeshRenderer>();
@@ -51,21 +64,14 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable
         }
     }
 
-    /// <summary>
-    /// Puo' sparire? Solo se non e' essential, oppure se e' essential ma ha gia' fatto il baratto.
-    /// </summary>
-    public bool CanDisappear()
-    {
-        return isVisible && (!essential || tradeDone);
-    }
-
+    public bool CanDisappear() => isVisible && (!essential || tradeDone);
     public bool IsVisible => isVisible;
 
     public void Disappear()
     {
         isVisible = false;
         gameObject.SetActive(false);
-        Debug.Log($"[Student] {DisplayName} e' sparito...");
+        Debug.Log($"[Student] {SpeakerName} è sparito...");
     }
 
     public void Reappear()
@@ -74,85 +80,54 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable
         gameObject.SetActive(true);
     }
 
-    public bool CanInteract(EscapeInventory inventory)
-    {
-        return isVisible;
-    }
+    public bool CanInteract(EscapeInventory inventory) => isVisible;
 
-    public string GetInteractionPrompt(EscapeInventory inventory)
-    {
-        return $"[F] Parla con {DisplayName}";
-    }
+    public string GetInteractionPrompt(EscapeInventory inventory) => $"[F] Parla con {SpeakerName}";
 
+    // Fallback usato solo se IDialogueSequenceInteractable non è supportato dal controller.
     public string Interact(EscapeInventory inventory, GameManager gameManager)
+    {
+        DialogueLine[] seq = GetDialogueSequence(inventory, gameManager);
+        if (seq == null || seq.Length == 0)
+            return string.Empty;
+        return $"{SpeakerName}: \"{seq[0].text}\"";
+    }
+
+    public DialogueLine[] GetDialogueSequence(EscapeInventory inventory, GameManager gameManager)
     {
         if (inventory == null)
         {
-            return BuildDialogue("Non so dove metterti gli oggetti.");
+            return new[] { new DialogueLine { speaker = DialogueLine.Speaker.NPC, text = "Non so dove metterti gli oggetti." } };
         }
 
         if (tradeDone)
-        {
-            string repeatLine = string.IsNullOrWhiteSpace(repeatDialogue)
-                ? "Non ho altro da darti."
-                : repeatDialogue;
-            return BuildDialogue(repeatLine);
-        }
+            return repeatSequence;
 
         if (NeedsRequiredItem() && !inventory.HasItem(requiredItem))
-        {
-            string missingLine = string.IsNullOrWhiteSpace(missingItemDialogue)
-                ? $"Se trovi {requiredItem}, te lo scambio."
-                : missingItemDialogue;
-            return BuildDialogue(missingLine);
-        }
+            return missingItemSequence;
 
+        // Esegui il baratto.
         if (NeedsRequiredItem() && consumeRequiredItem)
-        {
             inventory.RemoveItem(requiredItem);
-        }
 
         tradeDone = true;
 
-        string completionLine = string.IsNullOrWhiteSpace(completedDialogue)
-            ? "Tieni. Potrebbe servirti."
-            : completedDialogue;
-
         if (!string.IsNullOrWhiteSpace(rewardItem))
         {
-            string inventoryUpdate = inventory.AddRawItem(rewardItem);
-            return $"{BuildDialogue(completionLine)}\nRicevuto: {rewardItem}\n{inventoryUpdate}";
+            inventory.AddRawItem(rewardItem);
+            // Aggiungi una riga finale di sistema che comunica l'oggetto ricevuto.
+            var extended = new DialogueLine[completedSequence.Length + 1];
+            System.Array.Copy(completedSequence, extended, completedSequence.Length);
+            extended[completedSequence.Length] = new DialogueLine
+            {
+                speaker = DialogueLine.Speaker.NPC,
+                text = $"[Ricevuto: {rewardItem}]"
+            };
+            return extended;
         }
 
-        return BuildDialogue(completionLine);
+        return completedSequence;
     }
 
-    private bool NeedsRequiredItem()
-    {
-        return !string.IsNullOrWhiteSpace(requiredItem);
-    }
-
-    private string BuildDialogue(string mainLine)
-    {
-        string intro = string.IsNullOrWhiteSpace(openingDialogue)
-            ? string.Empty
-            : $"{DisplayName}: \"{openingDialogue}\"";
-
-        string body = $"{DisplayName}: \"{mainLine}\"";
-
-        if (string.IsNullOrWhiteSpace(intro))
-        {
-            return body;
-        }
-
-        return $"{intro}\n{body}";
-    }
-
-    private string DisplayName
-    {
-        get
-        {
-            return string.IsNullOrWhiteSpace(studentName) ? gameObject.name : studentName;
-        }
-    }
+    private bool NeedsRequiredItem() => !string.IsNullOrWhiteSpace(requiredItem);
 }
