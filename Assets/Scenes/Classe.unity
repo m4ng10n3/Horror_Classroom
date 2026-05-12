@@ -258,7 +258,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1454769437}
   m_SourcePrefab: {fileID: 100100000, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
 --- !u!1 &59139271
 GameObject:
@@ -450,7 +453,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1195838194}
   m_SourcePrefab: {fileID: 100100000, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
 --- !u!1 &98482092
 GameObject:
@@ -1057,7 +1063,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b3d2948159cac2444a607c8934186164, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 795665826}
   m_SourcePrefab: {fileID: 100100000, guid: b3d2948159cac2444a607c8934186164, type: 3}
 --- !u!1 &195430399
 GameObject:
@@ -1267,7 +1276,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1865239494}
   m_SourcePrefab: {fileID: 100100000, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
 --- !u!1 &233504155
 GameObject:
@@ -1415,6 +1427,16 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233514947}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &236840229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
+  m_PrefabInstance: {fileID: 1712711456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &242791396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
+  m_PrefabInstance: {fileID: 559740245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &285428871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1674,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1980243255}
   m_SourcePrefab: {fileID: 100100000, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
 --- !u!1 &330585543
 GameObject:
@@ -1791,6 +1816,11 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &335202094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
+  m_PrefabInstance: {fileID: 84662663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &347966700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,6 +2185,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368761580}
   m_CullTransparentMesh: 1
+--- !u!1 &369555040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
+  m_PrefabInstance: {fileID: 787478581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &381045450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2210,7 +2245,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2079217119}
   m_SourcePrefab: {fileID: 100100000, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
 --- !u!1 &381608783
 GameObject:
@@ -2774,6 +2812,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420859854}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &423344689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
+  m_PrefabInstance: {fileID: 1237162553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &425615080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,6 +3008,29 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2029933387}
   m_SourcePrefab: {fileID: 100100000, guid: 9396dfda4540cd3428247154636eb774, type: 3}
+--- !u!1 &435137313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
+  m_PrefabInstance: {fileID: 1258619224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &435137316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435137313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &442562695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,6 +3106,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &445958764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
+  m_PrefabInstance: {fileID: 946864310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &488703490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3095,7 +3166,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d762e19587e591419947138bab02ffc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1795699353}
   m_SourcePrefab: {fileID: 100100000, guid: 8d762e19587e591419947138bab02ffc, type: 3}
 --- !u!1 &509932353
 GameObject:
@@ -3320,6 +3394,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520705240}
   m_CullTransparentMesh: 1
+--- !u!1 &544917312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
+  m_PrefabInstance: {fileID: 1994390419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &544917315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544917312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &550619316
 GameObject:
   m_ObjectHideFlags: 0
@@ -3512,7 +3609,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 802512845}
   m_SourcePrefab: {fileID: 100100000, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
 --- !u!4 &566177140 stripped
 Transform:
@@ -3975,6 +4075,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
   m_PrefabInstance: {fileID: 1237162553}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &608712904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423344689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &609413891
 GameObject:
   m_ObjectHideFlags: 0
@@ -4123,7 +4241,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 492a39eaa4fec2d419419cdde7782351, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1143528010}
   m_SourcePrefab: {fileID: 100100000, guid: 492a39eaa4fec2d419419cdde7782351, type: 3}
 --- !u!1 &648944899
 GameObject:
@@ -4547,6 +4668,11 @@ MonoBehaviour:
   rewardItem: Batteria
   consumeRequiredItem: 1
   isVisible: 1
+--- !u!1 &664017431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
+  m_PrefabInstance: {fileID: 1138843584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &666896339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4735,6 +4861,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672694559}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &675437522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 44ccfee0e5fd1134ab087f02473ca587, type: 3}
+  m_PrefabInstance: {fileID: 1423614333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &675507811
 GameObject:
   m_ObjectHideFlags: 0
@@ -4766,6 +4897,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1352977987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &682077889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
+  m_PrefabInstance: {fileID: 900405505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &690724478
 GameObject:
   m_ObjectHideFlags: 0
@@ -4916,6 +5052,11 @@ MeshFilter:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
   m_PrefabInstance: {fileID: 218861877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &721657381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
+  m_PrefabInstance: {fileID: 1547992892}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &740126415
 GameObject:
@@ -5344,6 +5485,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759415950}
   m_CullTransparentMesh: 1
+--- !u!1 &768711493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
+  m_PrefabInstance: {fileID: 33245457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &771841441
 GameObject:
   m_ObjectHideFlags: 0
@@ -5431,8 +5577,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 834943983}
   m_SourcePrefab: {fileID: 100100000, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
+--- !u!1 &795665823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b3d2948159cac2444a607c8934186164, type: 3}
+  m_PrefabInstance: {fileID: 181479426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &795665826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795665823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
+--- !u!1 &797030551 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
+  m_PrefabInstance: {fileID: 1207040194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &797460378
 GameObject:
   m_ObjectHideFlags: 0
@@ -5520,13 +5697,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 852519301}
   m_SourcePrefab: {fileID: 100100000, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
 --- !u!4 &802512842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eff6eb19c70639c4c86c479b199dd1d1, type: 3}
   m_PrefabInstance: {fileID: 559740245}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &802512845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242791396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &806456409
 GameObject:
   m_ObjectHideFlags: 0
@@ -5899,6 +6097,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
   m_PrefabInstance: {fileID: 787478581}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &834943983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369555040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &847134226
 GameObject:
   m_ObjectHideFlags: 0
@@ -6043,6 +6259,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849463148}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &852519298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
+  m_PrefabInstance: {fileID: 800167736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &852519301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852519298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
+--- !u!1 &853883438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
+  m_PrefabInstance: {fileID: 1830608037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &853883441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853883438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1001 &864358677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6098,7 +6360,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1655337041}
   m_SourcePrefab: {fileID: 100100000, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
 --- !u!1 &869059899
 GameObject:
@@ -6222,133 +6487,6 @@ MonoBehaviour:
   mutationThreshold: 1
   trapThreshold: 3
   currentSuspicion: 0
---- !u!1 &899632436
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 899632437}
-  - component: {fileID: 899632439}
-  - component: {fileID: 899632438}
-  m_Layer: 0
-  m_Name: Spot Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &899632437
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899632436}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.56026703, y: -0, z: -0, w: 0.8283121}
-  m_LocalPosition: {x: 0, y: 0.93, z: -0.373}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1712711457}
-  m_LocalEulerAnglesHint: {x: 68.149, y: 0, z: 0}
---- !u!114 &899632438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899632436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_CustomShadowLayers: 0
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
-  m_RenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_ShadowRenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_Version: 4
-  m_LightLayerMask: 1
-  m_ShadowLayerMask: 1
-  m_RenderingLayers: 1
-  m_ShadowRenderingLayers: 1
---- !u!108 &899632439
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899632436}
-  m_Enabled: 1
-  serializedVersion: 12
-  m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize2D: {x: 0.5, y: 0.5}
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ForceVisible: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_LightUnit: 1
-  m_LuxAtDistance: 1
-  m_EnableSpotReflector: 1
 --- !u!1001 &900405505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6404,7 +6542,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1848009560}
   m_SourcePrefab: {fileID: 100100000, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
 --- !u!1 &909239947
 GameObject:
@@ -6794,7 +6935,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1449705909}
   m_SourcePrefab: {fileID: 100100000, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
 --- !u!1 &950679776
 GameObject:
@@ -6901,6 +7045,11 @@ MonoBehaviour:
   rewardItem: 
   consumeRequiredItem: 1
   isVisible: 1
+--- !u!1 &955632775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
+  m_PrefabInstance: {fileID: 971727979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &971727979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6956,8 +7105,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1557093572}
   m_SourcePrefab: {fileID: 100100000, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
+--- !u!1 &973980476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fc9a42717da920740be3b424740ed80f, type: 3}
+  m_PrefabInstance: {fileID: 1934863567}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &973980479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973980476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &976627799
 GameObject:
   m_ObjectHideFlags: 0
@@ -8028,6 +8203,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092715772}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1100172168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
+  m_PrefabInstance: {fileID: 864358677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1112882542
 GameObject:
   m_ObjectHideFlags: 0
@@ -8305,8 +8485,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2086600033}
   m_SourcePrefab: {fileID: 100100000, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
+--- !u!1 &1143528007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 492a39eaa4fec2d419419cdde7782351, type: 3}
+  m_PrefabInstance: {fileID: 642698357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1143528010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143528007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &1143574784
 GameObject:
   m_ObjectHideFlags: 0
@@ -8949,6 +9155,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 235e547668c9695468559c88d31a2fa4, type: 3}
   m_PrefabInstance: {fileID: 84662663}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1195838194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335202094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &1198928776
 GameObject:
   m_ObjectHideFlags: 0
@@ -9169,7 +9393,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1462951448}
   m_SourcePrefab: {fileID: 100100000, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
 --- !u!1 &1210514285
 GameObject:
@@ -9370,7 +9597,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 608712904}
   m_SourcePrefab: {fileID: 100100000, guid: bcce9f6da691c5d468fd2df34005d652, type: 3}
 --- !u!1 &1246421228
 GameObject:
@@ -9603,7 +9833,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 435137316}
   m_SourcePrefab: {fileID: 100100000, guid: 2ae99a2523ecead469705cb237ac17e4, type: 3}
 --- !u!1 &1270428968
 GameObject:
@@ -9749,6 +9982,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 195430400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1278956538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 601675f0484707f408197f5edba02a08, type: 3}
+  m_PrefabInstance: {fileID: 1838805684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1278956541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278956538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &1290065398
 GameObject:
   m_ObjectHideFlags: 0
@@ -9948,7 +10204,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c04e5b963aa2814da1e3e73e7e8e6c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2114884258}
   m_SourcePrefab: {fileID: 100100000, guid: 7c04e5b963aa2814da1e3e73e7e8e6c6, type: 3}
 --- !u!1 &1332879197
 GameObject:
@@ -10006,6 +10265,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
   m_PrefabInstance: {fileID: 1547992892}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1339683060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721657381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &1341675442
 GameObject:
   m_ObjectHideFlags: 0
@@ -10303,8 +10580,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1460941852}
   m_SourcePrefab: {fileID: 100100000, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
+--- !u!1 &1380499240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+  m_PrefabInstance: {fileID: 1806064440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1380869746
 GameObject:
   m_ObjectHideFlags: 0
@@ -10458,7 +10743,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -10850,7 +11135,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 44ccfee0e5fd1134ab087f02473ca587, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1552762256}
   m_SourcePrefab: {fileID: 100100000, guid: 44ccfee0e5fd1134ab087f02473ca587, type: 3}
 --- !u!1 &1425410837
 GameObject:
@@ -11042,16 +11330,93 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
   m_PrefabInstance: {fileID: 946864310}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1449705909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445958764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!4 &1454769434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
   m_PrefabInstance: {fileID: 33245457}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1454769437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768711493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
+--- !u!1 &1460941849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
+  m_PrefabInstance: {fileID: 1370488695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1460941852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460941849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!4 &1462951445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
   m_PrefabInstance: {fileID: 1207040194}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1462951448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797030551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &1478377604
 GameObject:
   m_ObjectHideFlags: 0
@@ -11456,13 +11821,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1339683060}
   m_SourcePrefab: {fileID: 100100000, guid: 215567916d1cd20449a8fc8a573bc7a0, type: 3}
+--- !u!1 &1550437509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
+  m_PrefabInstance: {fileID: 381045450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1552762253 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 44ccfee0e5fd1134ab087f02473ca587, type: 3}
   m_PrefabInstance: {fileID: 1423614333}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1552762256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675437522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &1554347041
 GameObject:
   m_ObjectHideFlags: 0
@@ -11500,6 +11891,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 000cc37808b6c5940a2e40582ef83973, type: 3}
   m_PrefabInstance: {fileID: 971727979}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1557093572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955632775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &1576940250
 GameObject:
   m_ObjectHideFlags: 0
@@ -12268,6 +12677,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d9bf500f4c79c2c458b3a8a3632f90cc, type: 3}
   m_PrefabInstance: {fileID: 864358677}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1655337041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100172168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
+--- !u!1 &1670108871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d762e19587e591419947138bab02ffc, type: 3}
+  m_PrefabInstance: {fileID: 488703490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1707430946
 GameObject:
   m_ObjectHideFlags: 0
@@ -12361,17 +12793,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 899632437}
-    m_AddedComponents: []
+      addedObject: {fileID: 1712711460}
   m_SourcePrefab: {fileID: 100100000, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
 --- !u!4 &1712711457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 11f12dd17f21fb04ca2200d8e735b8e7, type: 3}
   m_PrefabInstance: {fileID: 1712711456}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1712711460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236840229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &1715726480
 GameObject:
   m_ObjectHideFlags: 0
@@ -13005,6 +13455,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
   m_PrefabInstance: {fileID: 488703490}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1795699353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670108871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1001 &1806064440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13076,7 +13544,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1946088379}
   m_SourcePrefab: {fileID: 100100000, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
 --- !u!1 &1816117767
 GameObject:
@@ -13277,7 +13748,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 853883441}
   m_SourcePrefab: {fileID: 100100000, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
 --- !u!1 &1836788580
 GameObject:
@@ -13408,13 +13882,57 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 601675f0484707f408197f5edba02a08, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1278956541}
   m_SourcePrefab: {fileID: 100100000, guid: 601675f0484707f408197f5edba02a08, type: 3}
 --- !u!4 &1848009557 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
   m_PrefabInstance: {fileID: 900405505}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1848009560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682077889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
+--- !u!1 &1865239491 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
+  m_PrefabInstance: {fileID: 218861877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1865239494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865239491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &1888011578
 GameObject:
   m_ObjectHideFlags: 0
@@ -13926,13 +14444,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc9a42717da920740be3b424740ed80f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 973980479}
   m_SourcePrefab: {fileID: 100100000, guid: fc9a42717da920740be3b424740ed80f, type: 3}
 --- !u!4 &1946088376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
   m_PrefabInstance: {fileID: 1806064440}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1946088379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380499240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 2
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &1954423778
 GameObject:
   m_ObjectHideFlags: 0
@@ -13997,6 +14536,29 @@ Transform:
   - {fileID: 425615081}
   m_Father: {fileID: 1203865782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1980243252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 448e2137b8b5d6146abd2524deecc7f7, type: 3}
+  m_PrefabInstance: {fileID: 325287615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1980243255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980243252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1001 &1994390419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14052,7 +14614,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 544917315}
   m_SourcePrefab: {fileID: 100100000, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
 --- !u!1 &2007373963
 GameObject:
@@ -14315,7 +14880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPSController
   moveSpeed: 2.5
-  mouseSensitivity: 0.4
+  mouseSensitivity: 0.1
   gravity: -20
   cameraTransform: {fileID: 330585546}
   seatPoint: {fileID: 909239948}
@@ -14454,6 +15019,7 @@ MonoBehaviour:
   itemName: Pallone da calcio
   description: Una palla...ora rompo la finestra!
   canInspect: 1
+  inspectionScaleMultiplier: 3
   inspectionModelOverride: {fileID: 2029933383}
   addToEscapeInventory: 0
 --- !u!1 &2058133690
@@ -14833,11 +15399,47 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
   m_PrefabInstance: {fileID: 381045450}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2079217119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550437509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!4 &2086600030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 38585c9e0a3ea594b85d66f43bae13b4, type: 3}
   m_PrefabInstance: {fileID: 1138843584}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2086600033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664017431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &2105800806
 GameObject:
   m_ObjectHideFlags: 0
@@ -14950,6 +15552,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105800806}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2114884255 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c04e5b963aa2814da1e3e73e7e8e6c6, type: 3}
+  m_PrefabInstance: {fileID: 1332604693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2114884258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114884255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Oggetto
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+  addToEscapeInventory: 0
 --- !u!1 &2136255137
 GameObject:
   m_ObjectHideFlags: 0
