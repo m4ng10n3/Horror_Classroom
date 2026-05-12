@@ -11,6 +11,10 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
     [Header("Ispezione 3D")]
     public bool canInspect = true;
 
+    [Min(0.05f)]
+    [Tooltip("Moltiplica la dimensione dell'oggetto nella visualizzazione inventario. 1 = default, 2 = doppio.")]
+    public float inspectionScaleMultiplier = 1f;
+
     [Tooltip("Modello alternativo (lascia vuoto per usare questo oggetto).")]
     public GameObject inspectionModelOverride;
 
@@ -55,6 +59,7 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
         snapshot.name = "__snapshot_" + itemName;
         snapshot.transform.position = new Vector3(0f, -5000f, 0f);
         snapshot.transform.rotation = Quaternion.identity;
+        snapshot.SetActive(true);
 
         // Rimuovi collider dal clone (non servono per l'ispezione)
         foreach (var col in snapshot.GetComponentsInChildren<Collider>())
@@ -70,6 +75,7 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
             name        = itemName,
             description = description,
             canInspect  = canInspect,
+            inspectionScaleMultiplier = inspectionScaleMultiplier,
             worldSource = snapshot
         });
 

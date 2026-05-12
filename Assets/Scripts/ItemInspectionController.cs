@@ -22,13 +22,24 @@ public class ItemInspectionController : MonoBehaviour
     private int           inspectionLayer = -1;
 
     private Canvas          overlayCanvas;
+    private RenderTexture   overlayTexture;
+    private RawImage        modelRenderImage;
+    private Light           overlayLight;
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI descText;
+    private int             overlayTextureWidth;
+    private int             overlayTextureHeight;
 
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
+        ReleaseOverlayTexture();
     }
 
     void Start()
@@ -51,6 +62,8 @@ public class ItemInspectionController : MonoBehaviour
     {
         if (!isInspecting) return;
 
+        EnsureOverlayTexture();
+
         var kb = Keyboard.current;
         if (kb != null && (kb.eKey.wasPressedThisFrame || kb.escapeKey.wasPressedThisFrame))
         {
@@ -62,9 +75,11 @@ public class ItemInspectionController : MonoBehaviour
         if (mouse != null && mouse.leftButton.isPressed && currentModel != null)
         {
             Vector2 delta = mouse.delta.ReadValue();
-            currentModel.transform.Rotate(mainCamera.transform.up,
+            Transform cameraTransform = overlayCamera != null ? overlayCamera.transform : mainCamera.transform;
+
+            currentModel.transform.Rotate(cameraTransform.up,
                 -delta.x * rotationSpeed * Time.deltaTime, Space.World);
-            currentModel.transform.Rotate(mainCamera.transform.right,
+            currentModel.transform.Rotate(cameraTransform.right,
                 delta.y * rotationSpeed * Time.deltaTime, Space.World);
         }
     }
@@ -73,7 +88,7 @@ public class ItemInspectionController : MonoBehaviour
     {
         if (item?.worldSource == null)
         {
-            Debug.LogWarning("[Inspection] worldSource è null.");
+            Debug.LogWarning("[Inspection] worldSource e' null.");
             return;
         }
         if (overlayCamera == null)
@@ -84,21 +99,15 @@ public class ItemInspectionController : MonoBehaviour
 
         if (isInspecting) CloseInspection();
 
-        currentModel = Instantiate(item.worldSource);
-        currentModel.SetActive(true);
-        currentModel.transform.SetParent(overlayCamera.transform, false);
-        currentModel.transform.localPosition = new Vector3(0f, 0f, inspectionDistance);
-        currentModel.transform.localRotation = Quaternion.Euler(15f, -25f, 0f);
-        currentModel.transform.localScale    = Vector3.one;
-
-        NormalizeScale(currentModel);
-        SetLayerRecursive(currentModel, inspectionLayer);
+        EnsureOverlayTexture();
+        currentModel = CreateInspectionModel(item.worldSource, item.inspectionScaleMultiplier);
 
         if (nameText != null) nameText.text = item.name;
         if (descText  != null) descText.text = item.description;
 
         overlayCamera.enabled = true;
-        overlayCanvas.gameObject.SetActive(true);
+        if (overlayLight != null) overlayLight.enabled = true;
+        if (overlayCanvas != null) overlayCanvas.gameObject.SetActive(true);
         FreezePlayer(true);
         isInspecting = true;
     }
@@ -108,17 +117,13 @@ public class ItemInspectionController : MonoBehaviour
         isInspecting = false;
         if (currentModel   != null) { Destroy(currentModel); currentModel = null; }
         if (overlayCamera  != null) overlayCamera.enabled = false;
+        if (overlayLight   != null) overlayLight.enabled = false;
         if (overlayCanvas  != null) overlayCanvas.gameObject.SetActive(false);
         FreezePlayer(false);
     }
 
-    // ─────────────────────────────────────────────────────────────
-    //  Trova automaticamente un layer libero — nessun setup manuale
-    // ─────────────────────────────────────────────────────────────
-
     private int ResolveInspectionLayer()
     {
-        // Controlla se esiste il layer "Inspection" impostato dall'utente
         int named = LayerMask.NameToLayer("Inspection");
         if (named >= 0)
         {
@@ -126,13 +131,12 @@ public class ItemInspectionController : MonoBehaviour
             return named;
         }
 
-        // Altrimenti trova il primo layer utente senza nome (8–31)
         for (int i = 8; i <= 31; i++)
         {
             if (string.IsNullOrEmpty(LayerMask.LayerToName(i)))
             {
                 Debug.Log($"[Inspection] Layer 'Inspection' non trovato in Project Settings. " +
-                           $"Uso layer libero index {i} come fallback automatico.");
+                          $"Uso layer libero index {i} come fallback automatico.");
                 return i;
             }
         }
@@ -140,8 +144,6 @@ public class ItemInspectionController : MonoBehaviour
         Debug.LogError("[Inspection] Nessun layer libero trovato (0-31 tutti occupati)!");
         return 0;
     }
-
-    // ─────────────────────────────────────────────────────────────
 
     private Camera FindMainCamera()
     {
@@ -156,7 +158,6 @@ public class ItemInspectionController : MonoBehaviour
 
     private void SetupOverlayCamera()
     {
-        // Rimuovi il layer di ispezione dalla main camera
         mainCamera.cullingMask &= ~(1 << inspectionLayer);
 
         var go = new GameObject("InspectionOverlayCamera");
@@ -165,35 +166,138 @@ public class ItemInspectionController : MonoBehaviour
         go.transform.localRotation = Quaternion.identity;
 
         overlayCamera                 = go.AddComponent<Camera>();
-        // SolidColor: la camera ridisegna tutto lo schermo con sfondo scuro,
-        // poi renderizza l'oggetto sopra. Il Canvas UI viene dopo ma non ha sfondo.
         overlayCamera.clearFlags      = CameraClearFlags.SolidColor;
-        overlayCamera.backgroundColor = new Color(0.06f, 0.06f, 0.09f, 1f);
+        overlayCamera.backgroundColor = new Color(0f, 0f, 0f, 0f);
         overlayCamera.cullingMask     = 1 << inspectionLayer;
-        overlayCamera.depth           = mainCamera.depth + 1;
+        overlayCamera.depth           = mainCamera.depth + 10f;
         overlayCamera.fieldOfView     = mainCamera.fieldOfView;
         overlayCamera.nearClipPlane   = 0.05f;
         overlayCamera.farClipPlane    = 20f;
+        overlayCamera.allowHDR        = false;
+        overlayCamera.allowMSAA       = false;
         overlayCamera.enabled         = false;
+
+        EnsureOverlayTexture();
+        SetupOverlayLight(go.transform);
 
         Debug.Log($"[Inspection] overlayCamera creata. layer={inspectionLayer}, " +
                   $"cullingMask={overlayCamera.cullingMask}, depth={overlayCamera.depth}");
     }
 
-    private void NormalizeScale(GameObject go)
+    private GameObject CreateInspectionModel(GameObject source, float scaleMultiplier)
     {
-        var renderers = go.GetComponentsInChildren<Renderer>();
-        if (renderers.Length == 0)
+        var pivot = new GameObject("InspectedItemRoot");
+        pivot.transform.SetParent(overlayCamera.transform, false);
+        pivot.transform.localPosition = new Vector3(0f, 0f, inspectionDistance);
+        pivot.transform.localRotation = Quaternion.identity;
+        pivot.transform.localScale    = Vector3.one;
+
+        var model = Instantiate(source, pivot.transform, false);
+        model.name = source.name + "_Inspectable";
+        model.SetActive(true);
+        model.transform.localPosition = Vector3.zero;
+        model.transform.localRotation = Quaternion.identity;
+
+        SetLayerRecursive(pivot, inspectionLayer);
+        NormalizeModelInPivot(pivot.transform, model.transform, scaleMultiplier);
+        pivot.transform.localRotation = Quaternion.Euler(15f, -25f, 0f);
+        return pivot;
+    }
+
+    private void NormalizeModelInPivot(Transform pivot, Transform model, float scaleMultiplier)
+    {
+        Renderer[] renderers = model.GetComponentsInChildren<Renderer>();
+        Bounds bounds = new Bounds();
+        bool hasBounds = false;
+
+        foreach (Renderer renderer in renderers)
         {
-            go.transform.localScale = Vector3.one * normalizedSize;
+            if (renderer == null || !renderer.enabled || !renderer.gameObject.activeInHierarchy)
+                continue;
+
+            if (!hasBounds)
+            {
+                bounds = renderer.bounds;
+                hasBounds = true;
+            }
+            else
+            {
+                bounds.Encapsulate(renderer.bounds);
+            }
+        }
+
+        if (!hasBounds)
+        {
+            pivot.localScale = Vector3.one * GetInspectionSize(scaleMultiplier);
             return;
         }
 
-        Bounds bounds = renderers[0].bounds;
-        foreach (var r in renderers) bounds.Encapsulate(r.bounds);
+        Vector3 localCenter = pivot.InverseTransformPoint(bounds.center);
+        model.localPosition -= localCenter;
 
         float maxDim = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z);
-        go.transform.localScale = Vector3.one * (maxDim > 0f ? normalizedSize / maxDim : normalizedSize);
+        float targetSize = GetInspectionSize(scaleMultiplier);
+        pivot.localScale = Vector3.one * (maxDim > 0f ? targetSize / maxDim : targetSize);
+    }
+
+    private float GetInspectionSize(float scaleMultiplier)
+    {
+        return normalizedSize * Mathf.Max(0.05f, scaleMultiplier);
+    }
+
+    private void SetupOverlayLight(Transform parent)
+    {
+        var lightGo = new GameObject("InspectionOverlayLight");
+        lightGo.transform.SetParent(parent, false);
+        lightGo.transform.localRotation = Quaternion.Euler(35f, -25f, 0f);
+
+        overlayLight = lightGo.AddComponent<Light>();
+        overlayLight.type = LightType.Directional;
+        overlayLight.intensity = 1.3f;
+        overlayLight.cullingMask = 1 << inspectionLayer;
+        overlayLight.enabled = false;
+    }
+
+    private void EnsureOverlayTexture()
+    {
+        int width = Mathf.Max(Screen.width, 640);
+        int height = Mathf.Max(Screen.height, 480);
+
+        if (overlayTexture != null
+            && overlayTextureWidth == width
+            && overlayTextureHeight == height)
+        {
+            return;
+        }
+
+        if (overlayCamera != null)
+            overlayCamera.targetTexture = null;
+
+        ReleaseOverlayTexture();
+
+        overlayTextureWidth = width;
+        overlayTextureHeight = height;
+        overlayTexture = new RenderTexture(width, height, 24, RenderTextureFormat.ARGB32);
+        overlayTexture.name = "InspectionOverlayRT";
+        overlayTexture.filterMode = FilterMode.Bilinear;
+        overlayTexture.useMipMap = false;
+        overlayTexture.autoGenerateMips = false;
+        overlayTexture.Create();
+
+        if (overlayCamera != null)
+            overlayCamera.targetTexture = overlayTexture;
+        if (modelRenderImage != null)
+            modelRenderImage.texture = overlayTexture;
+    }
+
+    private void ReleaseOverlayTexture()
+    {
+        if (overlayTexture == null)
+            return;
+
+        overlayTexture.Release();
+        Destroy(overlayTexture);
+        overlayTexture = null;
     }
 
     private void SetLayerRecursive(GameObject go, int layer)
@@ -210,8 +314,6 @@ public class ItemInspectionController : MonoBehaviour
         Cursor.visible   = freeze;
     }
 
-    // ─────── UI ───────
-
     private void BuildUI()
     {
         var canvasGo = new GameObject("InspectionOverlayUI");
@@ -223,8 +325,11 @@ public class ItemInspectionController : MonoBehaviour
         canvasGo.AddComponent<GraphicRaycaster>();
         var root = overlayCanvas.GetComponent<RectTransform>();
 
-        // Nessuno sfondo UI — ci pensa la camera (ClearFlags.SolidColor).
-        // Il canvas contiene solo la barra testo in basso.
+        var backdrop = MakeImage("Backdrop", root, new Color(0f, 0f, 0f, 0.72f), stretch: true);
+        backdrop.raycastTarget = true;
+
+        modelRenderImage = MakeRawImage("ModelRender", root, stretch: true);
+        modelRenderImage.texture = overlayTexture;
 
         var infoBar = MakeRect("InfoBar", root);
         infoBar.anchorMin = new Vector2(0f, 0f);
@@ -275,6 +380,23 @@ public class ItemInspectionController : MonoBehaviour
         }
         var img = go.GetComponent<Image>();
         img.color = color;
+        return img;
+    }
+
+    private RawImage MakeRawImage(string name, RectTransform parent, bool stretch = false)
+    {
+        var go  = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(RawImage));
+        var r   = go.GetComponent<RectTransform>();
+        r.SetParent(parent, false);
+        r.localScale = Vector3.one;
+        if (stretch)
+        {
+            r.anchorMin = Vector2.zero; r.anchorMax = Vector2.one;
+            r.offsetMin = r.offsetMax = Vector2.zero;
+        }
+        var img = go.GetComponent<RawImage>();
+        img.color = Color.white;
+        img.raycastTarget = false;
         return img;
     }
 
