@@ -12,6 +12,21 @@ public class ItemInspectionController : MonoBehaviour
     public float normalizedSize     = 0.8f;
     public float rotationSpeed      = 120f;
 
+    [Header("Layout testo ispezione")]
+    public Vector2 infoBarAnchorMin = new Vector2(0f, 0f);
+    public Vector2 infoBarAnchorMax = new Vector2(1f, 0.18f);
+    public Vector2 nameTextAnchorMin = new Vector2(0.05f, 0.52f);
+    public Vector2 nameTextAnchorMax = new Vector2(0.95f, 1f);
+    public Vector2 descriptionAnchorMin = new Vector2(0.05f, 0.22f);
+    public Vector2 descriptionAnchorMax = new Vector2(0.95f, 0.52f);
+    public Vector2 hintAnchorMin = new Vector2(0.05f, 0f);
+    public Vector2 hintAnchorMax = new Vector2(0.95f, 0.22f);
+    [Min(1f)] public float nameFontSize = 32f;
+    [Min(1f)] public float descriptionFontSize = 20f;
+    [Min(1f)] public float hintFontSize = 16f;
+    public string rotateHintText = "[Tasto Sinistro] Ruota";
+    public string closeHintText = "[E/Esc] Chiudi";
+
     public bool IsInspecting => isInspecting;
 
     private bool          isInspecting;
@@ -25,8 +40,10 @@ public class ItemInspectionController : MonoBehaviour
     private RenderTexture   overlayTexture;
     private RawImage        modelRenderImage;
     private Light           overlayLight;
+    private InspectableItemAction currentAction;
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI descText;
+    private TextMeshProUGUI hintText;
     private int             overlayTextureWidth;
     private int             overlayTextureHeight;
 
@@ -63,11 +80,19 @@ public class ItemInspectionController : MonoBehaviour
         if (!isInspecting) return;
 
         EnsureOverlayTexture();
+        if (currentAction != null)
+            currentAction.Tick(Time.deltaTime);
 
         var kb = Keyboard.current;
-        if (kb != null && (kb.eKey.wasPressedThisFrame || kb.escapeKey.wasPressedThisFrame))
+        if (kb != null && (kb.eKey.wasPressedThisFrame))
         {
             CloseInspection();
+            return;
+        }
+
+        if (currentAction != null && currentAction.WasActionPressed(kb))
+        {
+            currentAction.Toggle();
             return;
         }
 
@@ -101,9 +126,13 @@ public class ItemInspectionController : MonoBehaviour
 
         EnsureOverlayTexture();
         currentModel = CreateInspectionModel(item.worldSource, item.inspectionScaleMultiplier);
+        currentAction = currentModel.GetComponentInChildren<InspectableItemAction>(true);
+        if (currentAction != null)
+            currentAction.InitializeForInspection();
 
         if (nameText != null) nameText.text = item.name;
         if (descText  != null) descText.text = item.description;
+        UpdateHintText();
 
         overlayCamera.enabled = true;
         if (overlayLight != null) overlayLight.enabled = true;
@@ -115,6 +144,7 @@ public class ItemInspectionController : MonoBehaviour
     public void CloseInspection()
     {
         isInspecting = false;
+        currentAction = null;
         if (currentModel   != null) { Destroy(currentModel); currentModel = null; }
         if (overlayCamera  != null) overlayCamera.enabled = false;
         if (overlayLight   != null) overlayLight.enabled = false;
@@ -332,30 +362,39 @@ public class ItemInspectionController : MonoBehaviour
         modelRenderImage.texture = overlayTexture;
 
         var infoBar = MakeRect("InfoBar", root);
-        infoBar.anchorMin = new Vector2(0f, 0f);
-        infoBar.anchorMax = new Vector2(1f, 0.18f);
+        infoBar.anchorMin = infoBarAnchorMin;
+        infoBar.anchorMax = infoBarAnchorMax;
         infoBar.offsetMin = infoBar.offsetMax = Vector2.zero;
         MakeImage("InfoBarBG", infoBar, new Color(0f, 0f, 0f, 0.88f), stretch: true);
 
-        nameText = MakeTMP("ItemName", infoBar, 32f, TextAlignmentOptions.Center, FontStyles.Bold);
-        nameText.rectTransform.anchorMin = new Vector2(0.05f, 0.52f);
-        nameText.rectTransform.anchorMax = new Vector2(0.95f, 1f);
+        nameText = MakeTMP("ItemName", infoBar, nameFontSize, TextAlignmentOptions.Center, FontStyles.Bold);
+        nameText.rectTransform.anchorMin = nameTextAnchorMin;
+        nameText.rectTransform.anchorMax = nameTextAnchorMax;
         nameText.rectTransform.offsetMin = nameText.rectTransform.offsetMax = Vector2.zero;
 
-        descText = MakeTMP("ItemDesc", infoBar, 20f, TextAlignmentOptions.Center, FontStyles.Normal);
-        descText.rectTransform.anchorMin = new Vector2(0.05f, 0.22f);
-        descText.rectTransform.anchorMax = new Vector2(0.95f, 0.52f);
+        descText = MakeTMP("ItemDesc", infoBar, descriptionFontSize, TextAlignmentOptions.Center, FontStyles.Normal);
+        descText.rectTransform.anchorMin = descriptionAnchorMin;
+        descText.rectTransform.anchorMax = descriptionAnchorMax;
         descText.rectTransform.offsetMin = descText.rectTransform.offsetMax = Vector2.zero;
         descText.color = new Color(0.75f, 0.75f, 0.75f);
 
-        var hint = MakeTMP("Hint", infoBar, 16f, TextAlignmentOptions.Center, FontStyles.Normal);
-        hint.rectTransform.anchorMin = new Vector2(0.05f, 0f);
-        hint.rectTransform.anchorMax = new Vector2(0.95f, 0.22f);
-        hint.rectTransform.offsetMin = hint.rectTransform.offsetMax = Vector2.zero;
-        hint.text  = "[Tasto Sinistro] Ruota   [E] Chiudi";
-        hint.color = new Color(0.45f, 0.45f, 0.45f);
+        hintText = MakeTMP("Hint", infoBar, hintFontSize, TextAlignmentOptions.Center, FontStyles.Normal);
+        hintText.rectTransform.anchorMin = hintAnchorMin;
+        hintText.rectTransform.anchorMax = hintAnchorMax;
+        hintText.rectTransform.offsetMin = hintText.rectTransform.offsetMax = Vector2.zero;
+        hintText.color = new Color(0.45f, 0.45f, 0.45f);
+        UpdateHintText();
 
         overlayCanvas.gameObject.SetActive(false);
+    }
+
+    private void UpdateHintText()
+    {
+        if (hintText == null)
+            return;
+
+        string actionHint = currentAction != null ? $"   {currentAction.HintText}" : "";
+        hintText.text = $"{rotateHintText}{actionHint}   {closeHintText}";
     }
 
     private RectTransform MakeRect(string name, RectTransform parent)

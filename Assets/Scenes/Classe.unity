@@ -3417,6 +3417,60 @@ MonoBehaviour:
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
   addToEscapeInventory: 0
+--- !u!114 &544917316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544917312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f8d3e4c9b1479aa9c1e8d2f4b6c7d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InspectableItemAction
+  actionKey: 1
+  actionLabel: Apri/chiudi
+  animateTransform: 1
+  targetTransform: {fileID: 0}
+  useCurrentPoseAsClosed: 1
+  animatePosition: 0
+  animateRotation: 1
+  closedLocalPosition: {x: 0, y: 0, z: 0}
+  openLocalPosition: {x: 0, y: 0, z: 0}
+  closedLocalEulerAngles: {x: 0, y: 0, z: 0}
+  openLocalEulerAngles: {x: 0, y: 0, z: -110}
+  transitionDuration: 0.25
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animator: {fileID: 0}
+  useAnimatorBool: 0
+  openBoolParameter: IsOpen
+  useAnimatorTriggers: 0
+  openTriggerParameter: Open
+  closeTriggerParameter: Close
 --- !u!1 &550619316
 GameObject:
   m_ObjectHideFlags: 0
@@ -13000,6 +13054,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryScreenUI
   toggleKey: 3
+  referenceResolution: {x: 1920, y: 1080}
+  matchWidthOrHeight: 0.5
+  panelAnchorMin: {x: 0.12, y: 0.08}
+  panelAnchorMax: {x: 0.88, y: 0.92}
+  titleAnchorMin: {x: 0, y: 0.88}
+  titleAnchorMax: {x: 1, y: 1}
+  scrollAnchorMin: {x: 0.02, y: 0.09}
+  scrollAnchorMax: {x: 0.98, y: 0.87}
+  bottomHintAnchorMin: {x: 0, y: 0}
+  bottomHintAnchorMax: {x: 1, y: 0.08}
+  itemRowHeight: 74
+  itemRowSpacing: 80
+  itemTextOffsetMin: {x: 20, y: 0}
+  itemTextOffsetMax: {x: -20, y: 0}
+  titleFontSize: 38
+  bottomHintFontSize: 18
+  itemFontSize: 24
+  itemInspectionHintFontSize: 17
+  inventoryTitle: Inventario
+  closeHint: '[Tab] Chiudi'
+  itemInspectionHint: '[Clicca per ispezionare]'
 --- !u!114 &1738970833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13015,6 +13090,19 @@ MonoBehaviour:
   inspectionDistance: 1.5
   normalizedSize: 0.7
   rotationSpeed: 150
+  infoBarAnchorMin: {x: 0, y: 0}
+  infoBarAnchorMax: {x: 1, y: 0.18}
+  nameTextAnchorMin: {x: 0.05, y: 0.52}
+  nameTextAnchorMax: {x: 0.95, y: 1}
+  descriptionAnchorMin: {x: 0.05, y: 0.22}
+  descriptionAnchorMax: {x: 0.95, y: 0.52}
+  hintAnchorMin: {x: 0.05, y: 0}
+  hintAnchorMax: {x: 0.95, y: 0.22}
+  nameFontSize: 32
+  descriptionFontSize: 20
+  hintFontSize: 16
+  rotateHintText: '[Tasto Sinistro] Ruota'
+  closeHintText: '[E] Chiudi'
 --- !u!114 &1738970834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14618,6 +14706,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 544917315}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 544917316}
   m_SourcePrefab: {fileID: 100100000, guid: 1862d407bfd231a489a43b6a4abe6ed1, type: 3}
 --- !u!1 &2007373963
 GameObject:
