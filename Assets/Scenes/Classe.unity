@@ -192,6 +192,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!4 &14494612 stripped
 Transform:
@@ -2224,6 +2228,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: Righello
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &368495223
 GameObject:
@@ -2778,9 +2786,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f63f5f091bbcc419c3591db6cbd4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorEscape
-  requiredCraftedItems: 3
+  requiredPhysicalItems: 3
   victoryMessage: SEI SCAPPATO DALLA CLASSE.
-  lockedDialogue: La porta e' bloccata. Mi servono ancora pezzi utili per aprirla.
+  requiredPickupItems:
+  - {fileID: 2029933388}
+  requiredItemNames: []
+  progressLabel: Oggetti utili
+  lockedDialogue: La porta e' bloccata. Mi servono ancora oggetti utili per aprirla.
   unlockedDialogue: La maniglia cede. Questa e' la mia occasione.
 --- !u!1 &410087039
 GameObject:
@@ -3235,11 +3247,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &442562695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3802,11 +3814,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!114 &544917316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4332,6 +4344,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &604952416
 GameObject:
@@ -4518,6 +4534,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!4 &608712901 stripped
 Transform:
@@ -4537,11 +4557,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &609413891
 GameObject:
   m_ObjectHideFlags: 0
@@ -5313,6 +5333,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: Batteria
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &664017431 stripped
 GameObject:
@@ -5392,6 +5416,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &672694559
 GameObject:
@@ -6195,11 +6223,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &797030551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
@@ -6315,11 +6343,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1001 &805270287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6576,6 +6604,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &829316808
 GameObject:
@@ -6774,11 +6806,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &847134226
 GameObject:
   m_ObjectHideFlags: 0
@@ -6829,11 +6861,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &853883438 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: be8b8d4d0b035f64688fb7fa3ba58c89, type: 3}
@@ -6852,11 +6884,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1001 &864358677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6990,6 +7022,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &873902482
 GameObject:
@@ -7330,6 +7366,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &937936963
 GameObject:
@@ -7793,6 +7833,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &955632775 stripped
 GameObject:
@@ -7877,11 +7921,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &976627799
 GameObject:
   m_ObjectHideFlags: 0
@@ -9197,6 +9241,10 @@ MonoBehaviour:
   requiredItem: Righello
   rewardItem: Graffetta
   consumeRequiredItem: 0
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1001 &1138843584
 PrefabInstance:
@@ -9280,11 +9328,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1143574784
 GameObject:
   m_ObjectHideFlags: 0
@@ -9543,6 +9591,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!4 &1151794896 stripped
 Transform:
@@ -9622,6 +9674,10 @@ MonoBehaviour:
   requiredItem: Filo
   rewardItem: Nastro Adesivo
   consumeRequiredItem: 0
+  rewardItemPrefab: {fileID: 2114884255}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &1165118755
 GameObject:
@@ -10013,11 +10069,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1198928776
 GameObject:
   m_ObjectHideFlags: 0
@@ -10662,6 +10718,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1001 &1258619224
 PrefabInstance:
@@ -10885,11 +10945,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1290065398
 GameObject:
   m_ObjectHideFlags: 0
@@ -11225,11 +11285,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1341675442
 GameObject:
   m_ObjectHideFlags: 0
@@ -11383,6 +11443,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &1352977986
 GameObject:
@@ -12390,11 +12454,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!4 &1454769434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b5152cb6a103c164da0adee8587d518d, type: 3}
@@ -12413,11 +12477,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1460941849 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8dcc265846ab4c84b9ab1b348a61752f, type: 3}
@@ -12436,11 +12500,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!4 &1462951445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dedd1a06fee6ae743aa960534ed9bea5, type: 3}
@@ -12459,11 +12523,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1478377604
 GameObject:
   m_ObjectHideFlags: 0
@@ -12698,6 +12762,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &1536531221
 GameObject:
@@ -12896,11 +12964,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1554347041
 GameObject:
   m_ObjectHideFlags: 0
@@ -13055,11 +13123,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1580665530
 GameObject:
   m_ObjectHideFlags: 0
@@ -13696,6 +13764,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &1650069730
 GameObject:
@@ -13817,11 +13889,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1670108871 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d762e19587e591419947138bab02ffc, type: 3}
@@ -13944,11 +14016,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1715726480
 GameObject:
   m_ObjectHideFlags: 0
@@ -14685,11 +14757,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1001 &1804458583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15105,6 +15177,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: 
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1001 &1838805684
 PrefabInstance:
@@ -15184,11 +15260,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1865239491 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b5eb9b65c7a32c14882414b948f45df2, type: 3}
@@ -15207,11 +15283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1888011578
 GameObject:
   m_ObjectHideFlags: 0
@@ -15542,6 +15618,10 @@ MonoBehaviour:
   requiredItem: Batteria
   rewardItem: Lampadina
   consumeRequiredItem: 0
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1001 &1934863567
 PrefabInstance:
@@ -15633,11 +15713,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 2
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &1954423778
 GameObject:
   m_ObjectHideFlags: 0
@@ -15720,11 +15800,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1001 &1994390419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15986,7 +16066,6 @@ GameObject:
   - component: {fileID: 2017530963}
   - component: {fileID: 2017530962}
   - component: {fileID: 2017530964}
-  - component: {fileID: 2017530966}
   - component: {fileID: 2017530965}
   m_Layer: 0
   m_Name: Player
@@ -16071,9 +16150,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionController
   player: {fileID: 2017530964}
   playerCamera: {fileID: 330585545}
-  inventory: {fileID: 2017530966}
+  physicalInventory: {fileID: 1738970834}
   gameManager: {fileID: 1764054191}
   escapeDoor: {fileID: 399139266}
+  hudRequiredPickupItems:
+  - {fileID: 2029933388}
+  hudRequiredItemNames: []
   interactionDistance: 3
   interactionMask:
     serializedVersion: 2
@@ -16081,33 +16163,18 @@ MonoBehaviour:
   interactKey: 20
   drawPlaceholderHud: 1
   messageDuration: 4
+  inventoryHudTitle: Inventario
+  inventoryHudRequiredItemsLabel: Oggetti utili
+  inventoryHudCollectedItemsLabel: Oggetti raccolti
+  inventoryHudUnassignedText: Non assegnato.
+  inventoryHudEmptyText: vuoto
+  inventoryHudSeparator: ', '
+  inventoryHudCollectedItemFormat: '{0}'
+  inventoryHudMissingItemFormat: <color=#777777>{0}</color>
+  inventoryHudShowMissingRequiredItems: 1
   playerName: Eddy
   playerLineColor: {r: 1, g: 0.91, b: 0.49, a: 1}
   npcLineColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &2017530966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017530961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3d6e1a2a8de354cb34ff33241c3b7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EscapeInventory
-  recipes:
-  - ingredientA: Filo
-    ingredientB: Nastro adesivo
-    resultItem: Maniglia improvvisata
-  - ingredientA: Righello
-    ingredientB: Graffetta
-    resultItem: Leva sottile
-  - ingredientA: Batteria
-    ingredientB: Lampadina
-    resultItem: Segnalatore di emergenza
-  rawItems: []
-  craftedItems: []
 --- !u!1 &2027528575
 GameObject:
   m_ObjectHideFlags: 0
@@ -16226,11 +16293,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Pallone da calcio
+  itemId: 
   description: Una palla...ora rompo la finestra!
   canInspect: 1
   inspectionScaleMultiplier: 3
   inspectionModelOverride: {fileID: 2029933383}
-  addToEscapeInventory: 0
 --- !u!1 &2058133690
 GameObject:
   m_ObjectHideFlags: 0
@@ -16304,6 +16371,10 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: Filo
   consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 973980476}
+  rewardItemDescription: 
+  rewardItemCanInspect: 1
+  rewardItemInspectionScaleMultiplier: 1
   isVisible: 1
 --- !u!1 &2062982199
 GameObject:
@@ -16687,11 +16758,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1001 &2080004000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16784,11 +16855,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1001 &2091721165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16983,11 +17054,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Oggetto
+  itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
-  addToEscapeInventory: 0
 --- !u!1 &2136255137
 GameObject:
   m_ObjectHideFlags: 0

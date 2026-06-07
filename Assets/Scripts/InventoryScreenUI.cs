@@ -46,6 +46,7 @@ public class InventoryScreenUI : MonoBehaviour
 
     private bool isOpen;
     private FPSController playerController;
+    private PhysicalInventory physicalInventory;
 
     private Canvas inventoryCanvas;
     private RectTransform itemListContent;
@@ -55,8 +56,20 @@ public class InventoryScreenUI : MonoBehaviour
         playerController = FindFirstObjectByType<FPSController>();
         BuildUI();
 
-        if (PhysicalInventory.Instance != null)
-            PhysicalInventory.Instance.OnItemAdded += _ => { if (isOpen) RefreshList(); };
+        physicalInventory = PhysicalInventory.Instance;
+        if (physicalInventory != null)
+        {
+            physicalInventory.OnItemAdded += HandleInventoryChanged;
+            physicalInventory.OnItemRemoved += HandleInventoryChanged;
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (physicalInventory == null) return;
+
+        physicalInventory.OnItemAdded -= HandleInventoryChanged;
+        physicalInventory.OnItemRemoved -= HandleInventoryChanged;
     }
 
     void Update()
@@ -99,9 +112,12 @@ public class InventoryScreenUI : MonoBehaviour
         foreach (Transform child in itemListContent)
             Destroy(child.gameObject);
 
-        if (PhysicalInventory.Instance == null) return;
+        if (physicalInventory == null)
+            physicalInventory = PhysicalInventory.Instance;
 
-        var items = PhysicalInventory.Instance.Items;
+        if (physicalInventory == null) return;
+
+        var items = physicalInventory.Items;
         for (int i = 0; i < items.Count; i++)
         {
             var item = items[i];
@@ -114,6 +130,8 @@ public class InventoryScreenUI : MonoBehaviour
 
     private void CreateItemButton(CollectedItem item, int index)
     {
+        bool canInspect = item.canInspect && item.worldSource != null;
+
         var btnGo = new GameObject("Item_" + item.name,
             typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
         var btnRect = btnGo.GetComponent<RectTransform>();
@@ -138,7 +156,7 @@ public class InventoryScreenUI : MonoBehaviour
         var capturedItem = item;
         btn.onClick.AddListener(() =>
         {
-            if (!capturedItem.canInspect) return;
+            if (!canInspect) return;
             Close();
             ItemInspectionController.Instance?.OpenInspection(capturedItem);
         });
@@ -160,9 +178,15 @@ public class InventoryScreenUI : MonoBehaviour
         label.color = Color.white;
         label.raycastTarget = false;
         label.textWrappingMode = TextWrappingModes.Normal;
-        label.text = item.canInspect
+        label.text = canInspect
             ? $"{item.name}  <size={itemInspectionHintFontSize}><color=#888888>{itemInspectionHint}</color></size>"
             : item.name;
+    }
+
+    private void HandleInventoryChanged(CollectedItem item)
+    {
+        if (isOpen)
+            RefreshList();
     }
 
     // ───────── Costruzione UI ─────────

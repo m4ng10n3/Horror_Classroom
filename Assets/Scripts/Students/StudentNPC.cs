@@ -46,6 +46,20 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     [Tooltip("Se true, l'oggetto richiesto viene consumato nel baratto.")]
     public bool consumeRequiredItem = true;
 
+    [Header("Reward Item — Modello 3D")]
+    [Tooltip("Prefab o oggetto in scena da mostrare nell'inventario fisico dopo il baratto.")]
+    public GameObject rewardItemPrefab;
+
+    [TextArea(2, 3)]
+    [Tooltip("Descrizione mostrata nella scheda inventario.")]
+    public string rewardItemDescription = "";
+
+    [Tooltip("Se true il player può ispezionare l'oggetto in 3D dal Tab.")]
+    public bool rewardItemCanInspect = true;
+
+    [Min(0.05f)]
+    public float rewardItemInspectionScaleMultiplier = 1f;
+
     [Header("State")]
     [SerializeField] private bool isVisible = true;
 
@@ -80,21 +94,22 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         gameObject.SetActive(true);
     }
 
-    public bool CanInteract(EscapeInventory inventory) => isVisible;
+    public bool CanInteract() => isVisible;
 
-    public string GetInteractionPrompt(EscapeInventory inventory) => $"[F] Parla con {SpeakerName}";
+    public string GetInteractionPrompt() => $"[F] Parla con {SpeakerName}";
 
     // Fallback usato solo se IDialogueSequenceInteractable non è supportato dal controller.
-    public string Interact(EscapeInventory inventory, GameManager gameManager)
+    public string Interact(GameManager gameManager)
     {
-        DialogueLine[] seq = GetDialogueSequence(inventory, gameManager);
+        DialogueLine[] seq = GetDialogueSequence(gameManager);
         if (seq == null || seq.Length == 0)
             return string.Empty;
         return $"{SpeakerName}: \"{seq[0].text}\"";
     }
 
-    public DialogueLine[] GetDialogueSequence(EscapeInventory inventory, GameManager gameManager)
+    public DialogueLine[] GetDialogueSequence(GameManager gameManager)
     {
+        PhysicalInventory inventory = ResolvePhysicalInventory();
         if (inventory == null)
         {
             return new[] { new DialogueLine { speaker = DialogueLine.Speaker.NPC, text = "Non so dove metterti gli oggetti." } };
@@ -114,8 +129,7 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
 
         if (!string.IsNullOrWhiteSpace(rewardItem))
         {
-            inventory.AddRawItem(rewardItem);
-            // Aggiungi una riga finale di sistema che comunica l'oggetto ricevuto.
+            GivePhysicalItem(inventory);
             var extended = new DialogueLine[completedSequence.Length + 1];
             System.Array.Copy(completedSequence, extended, completedSequence.Length);
             extended[completedSequence.Length] = new DialogueLine
@@ -130,4 +144,42 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     }
 
     private bool NeedsRequiredItem() => !string.IsNullOrWhiteSpace(requiredItem);
+
+    private void GivePhysicalItem(PhysicalInventory inventory)
+    {
+        if (inventory == null || string.IsNullOrWhiteSpace(rewardItem)) return;
+
+        GameObject snapshot = null;
+        if (rewardItemPrefab != null)
+        {
+            snapshot = Instantiate(rewardItemPrefab);
+            snapshot.name = "__snapshot_" + rewardItem;
+            snapshot.transform.position = new Vector3(0f, -5000f, 0f);
+            snapshot.transform.rotation = Quaternion.identity;
+            snapshot.SetActive(true);
+
+            foreach (var col in snapshot.GetComponentsInChildren<Collider>())
+                Destroy(col);
+            foreach (var pu in snapshot.GetComponentsInChildren<PickupItem>())
+                Destroy(pu);
+
+            DontDestroyOnLoad(snapshot);
+        }
+
+        inventory.AddItem(new CollectedItem
+        {
+            name        = string.IsNullOrWhiteSpace(rewardItem) ? rewardItemPrefab.name : rewardItem,
+            description = rewardItemDescription,
+            canInspect  = rewardItemCanInspect && snapshot != null,
+            inspectionScaleMultiplier = rewardItemInspectionScaleMultiplier,
+            worldSource = snapshot
+        });
+    }
+
+    private PhysicalInventory ResolvePhysicalInventory()
+    {
+        return PhysicalInventory.Instance != null
+            ? PhysicalInventory.Instance
+            : FindFirstObjectByType<PhysicalInventory>();
+    }
 }

@@ -1,18 +1,25 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(FPSController))]
-[RequireComponent(typeof(EscapeInventory))]
 public class PlayerInteractionController : MonoBehaviour
 {
     [Header("References")]
     public FPSController player;
     public Camera playerCamera;
-    public EscapeInventory inventory;
+    public PhysicalInventory physicalInventory;
     public GameManager gameManager;
     public DoorEscape escapeDoor;
+
+    [Header("Oggetti Utili HUD")]
+    [Tooltip("Trascina qui i PickupItem necessari alla risoluzione. Se non vuoto, l'HUD mostra solo questi.")]
+    public List<PickupItem> hudRequiredPickupItems = new List<PickupItem>();
+
+    [Tooltip("Nomi aggiuntivi di oggetti utili non collegati a un PickupItem (es. reward da NPC).")]
+    public List<string> hudRequiredItemNames = new List<string>();
 
     [Header("Interaction")]
     public float interactionDistance = 3f;
@@ -22,6 +29,17 @@ public class PlayerInteractionController : MonoBehaviour
     [Header("Canvas HUD")]
     public bool drawPlaceholderHud = true;
     public float messageDuration = 4f;
+
+    [Header("Inventory HUD Text")]
+    public string inventoryHudTitle = "Inventario";
+    public string inventoryHudRequiredItemsLabel = "Oggetti utili";
+    public string inventoryHudCollectedItemsLabel = "Oggetti raccolti";
+    public string inventoryHudUnassignedText = "Non assegnato.";
+    public string inventoryHudEmptyText = "vuoto";
+    public string inventoryHudSeparator = ", ";
+    public string inventoryHudCollectedItemFormat = "{0}";
+    public string inventoryHudMissingItemFormat = "<color=#777777>{0}</color>";
+    public bool inventoryHudShowMissingRequiredItems = true;
 
     [Header("Dialogue")]
     public string playerName = "Eddy";
@@ -97,7 +115,7 @@ public class PlayerInteractionController : MonoBehaviour
                 if (currentInteractable is IDialogueSequenceInteractable seqInteractable)
                     StartDialogueSequence(seqInteractable);
                 else
-                    ShowMessage(currentInteractable.Interact(inventory, gameManager));
+                    ShowMessage(currentInteractable.Interact(gameManager));
             }
         }
 
@@ -106,7 +124,7 @@ public class PlayerInteractionController : MonoBehaviour
 
     private void StartDialogueSequence(IDialogueSequenceInteractable seqInteractable)
     {
-        activeSequence = seqInteractable.GetDialogueSequence(inventory, gameManager);
+        activeSequence = seqInteractable.GetDialogueSequence(gameManager);
         currentNPCName = seqInteractable.SpeakerName;
         currentLineIndex = 0;
         isInDialogue = activeSequence != null && activeSequence.Length > 0;
@@ -148,11 +166,6 @@ public class PlayerInteractionController : MonoBehaviour
             player = GetComponent<FPSController>();
         }
 
-        if (inventory == null)
-        {
-            inventory = GetComponent<EscapeInventory>();
-        }
-
         if (playerCamera == null)
         {
             if (player != null && player.cameraTransform != null)
@@ -175,6 +188,13 @@ public class PlayerInteractionController : MonoBehaviour
         {
             escapeDoor = FindFirstObjectByType<DoorEscape>();
         }
+
+        if (physicalInventory == null)
+        {
+            physicalInventory = PhysicalInventory.Instance != null
+                ? PhysicalInventory.Instance
+                : FindFirstObjectByType<PhysicalInventory>();
+        }
     }
 
     private void UpdateCurrentInteractable()
@@ -182,10 +202,10 @@ public class PlayerInteractionController : MonoBehaviour
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, interactionMask, QueryTriggerInteraction.Collide)
             && TryGetInteractable(hit.collider, out IPlayerInteractable interactable)
-            && interactable.CanInteract(inventory))
+            && interactable.CanInteract())
         {
             currentInteractable = interactable;
-            currentPrompt = interactable.GetInteractionPrompt(inventory);
+            currentPrompt = interactable.GetInteractionPrompt();
             return;
         }
 
@@ -544,12 +564,108 @@ public class PlayerInteractionController : MonoBehaviour
 
     private string BuildInventoryText()
     {
+        PhysicalInventory inventory = ResolvePhysicalInventory();
         if (inventory == null)
         {
-            return "<b>Inventario</b>\nNon assegnato.";
+            return $"<b>{inventoryHudTitle}</b>\n{inventoryHudUnassignedText}";
         }
 
-        int targetCrafts = escapeDoor != null ? escapeDoor.requiredCraftedItems : 3;
-        return $"<b>Inventario</b>\nOggetti base: {inventory.GetRawItemsSummary()}\nOggetti fuga ({inventory.CraftedItemCount}/{targetCrafts}): {inventory.GetCraftedItemsSummary()}";
+        if (HasHudRequiredItems())
+        {
+            int target = CountHudRequiredItems();
+            int collected = CountCollectedHudRequiredItems(inventory);
+            string summary = BuildHudRequiredItemsSummary(inventory);
+            string progress = target > 0 ? $" ({collected}/{target})" : string.Empty;
+            return $"<b>{inventoryHudTitle}</b>\n{inventoryHudRequiredItemsLabel}{progress}: {summary}";
+        }
+
+        // Fallback: usa DoorEscape se disponibile, altrimenti tutti gli oggetti
+        int targetItemsFallback = escapeDoor != null ? escapeDoor.GetRequiredTargetCount() : 3;
+        int collectedItemsFallback = escapeDoor != null
+            ? escapeDoor.GetCollectedRequiredCount(inventory)
+            : Mathf.Min(inventory.Count, targetItemsFallback);
+
+        string label = escapeDoor != null && escapeDoor.UsesSpecificRequiredItems()
+            ? inventoryHudRequiredItemsLabel
+            : inventoryHudCollectedItemsLabel;
+        string itemsSummaryFallback = escapeDoor != null
+            ? escapeDoor.GetRequiredItemsSummary(
+                inventory,
+                inventoryHudEmptyText,
+                inventoryHudSeparator,
+                inventoryHudCollectedItemFormat,
+                inventoryHudMissingItemFormat,
+                inventoryHudShowMissingRequiredItems)
+            : inventory.GetItemsSummary();
+
+        string progressFallback = targetItemsFallback > 0 ? $" ({collectedItemsFallback}/{targetItemsFallback})" : string.Empty;
+        return $"<b>{inventoryHudTitle}</b>\n{label}{progressFallback}: {itemsSummaryFallback}";
+    }
+
+    private bool HasHudRequiredItems()
+    {
+        foreach (PickupItem p in hudRequiredPickupItems)
+            if (p != null) return true;
+        foreach (string n in hudRequiredItemNames)
+            if (!string.IsNullOrWhiteSpace(n)) return true;
+        return false;
+    }
+
+    private int CountHudRequiredItems()
+    {
+        int count = 0;
+        foreach (PickupItem p in hudRequiredPickupItems)
+            if (p != null) count++;
+        foreach (string n in hudRequiredItemNames)
+            if (!string.IsNullOrWhiteSpace(n)) count++;
+        return count;
+    }
+
+    private int CountCollectedHudRequiredItems(PhysicalInventory inventory)
+    {
+        int count = 0;
+        foreach (PickupItem p in hudRequiredPickupItems)
+            if (p != null && inventory.HasItemId(p.GetInventoryId())) count++;
+        foreach (string n in hudRequiredItemNames)
+            if (!string.IsNullOrWhiteSpace(n) && inventory.HasItem(n)) count++;
+        return count;
+    }
+
+    private string BuildHudRequiredItemsSummary(PhysicalInventory inventory)
+    {
+        List<string> labels = new List<string>();
+        foreach (PickupItem p in hudRequiredPickupItems)
+        {
+            if (p == null) continue;
+            bool collected = inventory.HasItemId(p.GetInventoryId());
+            AddHudItemLabel(labels, p.itemName, collected);
+        }
+        foreach (string n in hudRequiredItemNames)
+        {
+            if (string.IsNullOrWhiteSpace(n)) continue;
+            bool collected = inventory.HasItem(n);
+            AddHudItemLabel(labels, n.Trim(), collected);
+        }
+        return labels.Count == 0 ? inventoryHudEmptyText : string.Join(inventoryHudSeparator, labels);
+    }
+
+    private void AddHudItemLabel(List<string> labels, string itemName, bool collected)
+    {
+        if (!collected && !inventoryHudShowMissingRequiredItems) return;
+        string displayName = string.IsNullOrWhiteSpace(itemName) ? "Oggetto" : itemName.Trim();
+        string format = collected ? inventoryHudCollectedItemFormat : inventoryHudMissingItemFormat;
+        labels.Add(string.IsNullOrWhiteSpace(format) ? displayName : string.Format(format, displayName));
+    }
+
+    private PhysicalInventory ResolvePhysicalInventory()
+    {
+        if (physicalInventory == null)
+        {
+            physicalInventory = PhysicalInventory.Instance != null
+                ? PhysicalInventory.Instance
+                : FindFirstObjectByType<PhysicalInventory>();
+        }
+
+        return physicalInventory;
     }
 }

@@ -5,6 +5,9 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
     [Header("Identità")]
     public string itemName = "Oggetto";
 
+    [Tooltip("ID usato da DoorEscape per riconoscere questo pickup. Se vuoto, viene usato l'ID runtime dell'oggetto in scena.")]
+    public string itemId = "";
+
     [TextArea(2, 3)]
     public string description = "Un oggetto trovato in aula.";
 
@@ -17,10 +20,6 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
 
     [Tooltip("Modello alternativo (lascia vuoto per usare questo oggetto).")]
     public GameObject inspectionModelOverride;
-
-    [Header("Integrazione Inventario Logico")]
-    [Tooltip("Se true aggiunge itemName all'EscapeInventory per i baratti.")]
-    public bool addToEscapeInventory = false;
 
     private bool pickedUp = false;
 
@@ -43,12 +42,22 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
         }
     }
 
-    public bool CanInteract(EscapeInventory inventory) => !pickedUp && isActiveAndEnabled;
-    public string GetInteractionPrompt(EscapeInventory inventory) => $"[F] Raccogli {itemName}";
+    public bool CanInteract() => !pickedUp && isActiveAndEnabled;
+    public string GetInteractionPrompt() => $"[F] Raccogli {itemName}";
 
-    public string Interact(EscapeInventory inventory, GameManager gameManager)
+    public string Interact(GameManager gameManager)
     {
         if (pickedUp) return string.Empty;
+
+        PhysicalInventory inventory = PhysicalInventory.Instance != null
+            ? PhysicalInventory.Instance
+            : FindFirstObjectByType<PhysicalInventory>();
+
+        if (inventory == null)
+        {
+            return "Inventario fisico non trovato.";
+        }
+
         pickedUp = true;
 
         GameObject source = inspectionModelOverride != null ? inspectionModelOverride : gameObject;
@@ -70,8 +79,9 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
 
         DontDestroyOnLoad(snapshot);
 
-        PhysicalInventory.Instance?.AddItem(new CollectedItem
+        inventory.AddItem(new CollectedItem
         {
+            inventoryId  = GetInventoryId(),
             name        = itemName,
             description = description,
             canInspect  = canInspect,
@@ -79,11 +89,15 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
             worldSource = snapshot
         });
 
-        if (addToEscapeInventory && inventory != null)
-            inventory.AddRawItem(itemName);
-
         gameObject.SetActive(false);
 
         return $"Raccolto: {itemName}";
+    }
+
+    public string GetInventoryId()
+    {
+        return string.IsNullOrWhiteSpace(itemId)
+            ? GetInstanceID().ToString()
+            : itemId.Trim();
     }
 }
