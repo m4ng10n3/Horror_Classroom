@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5935971601628711144
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.032452263
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.033382617
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.059750807
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -43.72041
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 37.60731
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -58.178665
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000019470718
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -6.123235e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 6.123235e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_Name
+      value: Box_Glove
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3755075099934467744}
+  m_SourcePrefab: {fileID: 100100000, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+--- !u!1 &6818915381637281209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 689099d2f08dbff4088a28a4cac7df12, type: 3}
+  m_PrefabInstance: {fileID: 5935971601628711144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3755075099934467744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6818915381637281209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Guanto Da Box
+  itemId: 
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 2
+  inspectionModelOverride: {fileID: 0}
