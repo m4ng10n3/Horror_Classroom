@@ -3739,8 +3739,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\"Qui apparir\xE0 la domanda della prof\""
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 094086a8a3f827741a19a9f50936be47, type: 2}
+  m_sharedMaterial: {fileID: 7413249430813429330, guid: 094086a8a3f827741a19a9f50936be47, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15445,7 +15445,6 @@ GameObject:
   - component: {fileID: 1738970835}
   - component: {fileID: 1738970834}
   - component: {fileID: 1738970833}
-  - component: {fileID: 1738970832}
   m_Layer: 0
   m_Name: InventoryManager
   m_TagString: Untagged
@@ -15453,40 +15452,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1738970832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738970831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a413e632d81d96344b9f453d53441423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryScreenUI
-  toggleKey: 3
-  referenceResolution: {x: 1920, y: 1080}
-  matchWidthOrHeight: 0.5
-  panelAnchorMin: {x: 0.12, y: 0.08}
-  panelAnchorMax: {x: 0.88, y: 0.92}
-  titleAnchorMin: {x: 0, y: 0.88}
-  titleAnchorMax: {x: 1, y: 1}
-  scrollAnchorMin: {x: 0.02, y: 0.09}
-  scrollAnchorMax: {x: 0.98, y: 0.87}
-  bottomHintAnchorMin: {x: 0, y: 0}
-  bottomHintAnchorMax: {x: 1, y: 0.08}
-  itemRowHeight: 74
-  itemRowSpacing: 80
-  itemTextOffsetMin: {x: 20, y: 0}
-  itemTextOffsetMax: {x: -20, y: 0}
-  titleFontSize: 38
-  bottomHintFontSize: 18
-  itemFontSize: 24
-  itemInspectionHintFontSize: 17
-  inventoryTitle: Inventario
-  closeHint: '[Tab] Chiudi'
-  itemInspectionHint: '[Clicca per ispezionare]'
 --- !u!114 &1738970833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15499,22 +15464,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb99c86a15345ab4cbd2c514c808a209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInspectionController
-  inspectionDistance: 1.5
-  normalizedSize: 0.7
+  inspectionDistance: 1
+  normalizedSize: 0.8
   rotationSpeed: 150
+  toggleKey: 3
+  uiFont: {fileID: 11400000, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
+  carouselSpacing: 1.2
+  carouselScaleFalloff: 0.55
+  carouselYOffset: 0.1
   infoBarAnchorMin: {x: 0, y: 0}
   infoBarAnchorMax: {x: 1, y: 0.18}
-  nameTextAnchorMin: {x: 0.05, y: 0.52}
-  nameTextAnchorMax: {x: 0.95, y: 1}
-  descriptionAnchorMin: {x: 0.05, y: 0.22}
-  descriptionAnchorMax: {x: 0.95, y: 0.52}
+  infoBarSprite: {fileID: 0}
+  infoBarColor: {r: 1, g: 0, b: 0, a: 0.88}
+  nameAnchorMin: {x: 0.05, y: 0.55}
+  nameAnchorMax: {x: 0.95, y: 1}
+  descAnchorMin: {x: 0.05, y: 0.22}
+  descAnchorMax: {x: 0.95, y: 0.55}
   hintAnchorMin: {x: 0.05, y: 0}
   hintAnchorMax: {x: 0.95, y: 0.22}
-  nameFontSize: 32
+  nameFontSize: 50
   descriptionFontSize: 20
   hintFontSize: 16
+  navigateHintText: "[\u2190 \u2192] Naviga"
   rotateHintText: '[Tasto Sinistro] Ruota'
-  closeHintText: '[E] Chiudi'
+  closeHintText: '[Tab] Chiudi'
 --- !u!114 &1738970834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19421,6 +19394,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8628863127639886662, guid: fec66354396ba2b4b97d17f26a3e930a, type: 3}
+      propertyPath: inspectionScaleMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20061,6 +20038,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 629931596}
     m_Modifications:
+    - target: {fileID: 3755075099934467744, guid: 5220286bf57a4b447a0a4a9603b1216f, type: 3}
+      propertyPath: inspectionScaleMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6190892329144921859, guid: 5220286bf57a4b447a0a4a9603b1216f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -43.72041
