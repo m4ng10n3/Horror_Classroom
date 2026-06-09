@@ -20,6 +20,10 @@ public class ItemInspectionController : MonoBehaviour
     public float carouselScaleFalloff = 0.55f;  // fattore di scala per ogni step dal centro
     public float carouselYOffset      = 0.1f;   // offset verticale di tutti i modelli
 
+    [Header("Carousel – Animazione e Scurimento")]
+    [Min(0f)]          public float scaleAnimSpeed = 8f;
+    [Range(0f, 1f)]    public float dimBrightness  = 0.3f; // 0 = nero, 1 = nessun effetto
+
     [Header("Info bar")]
     public Vector2 infoBarAnchorMin  = new Vector2(0f, 0f);
     public Vector2 infoBarAnchorMax  = new Vector2(1f, 0.18f);
@@ -34,7 +38,7 @@ public class ItemInspectionController : MonoBehaviour
     [Min(1f)] public float nameFontSize        = 30f;
     [Min(1f)] public float descriptionFontSize = 18f;
     [Min(1f)] public float hintFontSize        = 14f;
-    public string navigateHintText = "[← →] Naviga";
+    public string navigateHintText = "[A D] Naviga";
     public string rotateHintText   = "[LMB] Ruota";
     public string closeHintText    = "[E] Chiudi";
 
@@ -59,6 +63,8 @@ public class ItemInspectionController : MonoBehaviour
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI descText;
     private TextMeshProUGUI hintText;
+
+    private float[] scaleAnim; // scala animata per ogni entry, parallelo a carousel
 
     // Ogni voce del carousel: outer gestisce posizione/scala, inner gestisce normalizzazione
     private struct CarouselEntry
@@ -112,6 +118,7 @@ public class ItemInspectionController : MonoBehaviour
             physicalInventory.OnItemAdded   += HandleInventoryChanged;
             physicalInventory.OnItemRemoved += HandleInventoryChanged;
         }
+
     }
 
     void Update()
@@ -130,6 +137,7 @@ public class ItemInspectionController : MonoBehaviour
 
         EnsureOverlayTexture();
         if (currentAction != null) currentAction.Tick(Time.deltaTime);
+        AnimateCarouselScales();
 
         if (kb.eKey.wasPressedThisFrame || kb.escapeKey.wasPressedThisFrame)
         {
@@ -145,9 +153,9 @@ public class ItemInspectionController : MonoBehaviour
 
         if (carousel.Count > 1)
         {
-            if (kb.leftArrowKey.wasPressedThisFrame)
+            if (kb.aKey.wasPressedThisFrame)
                 SwitchToIndex((currentIndex - 1 + carousel.Count) % carousel.Count);
-            else if (kb.rightArrowKey.wasPressedThisFrame)
+            else if (kb.dKey.wasPressedThisFrame)
                 SwitchToIndex((currentIndex + 1) % carousel.Count);
         }
 
@@ -195,6 +203,7 @@ public class ItemInspectionController : MonoBehaviour
         foreach (var e in carousel)
             if (e.Outer != null) Destroy(e.Outer);
         carousel.Clear();
+        scaleAnim = null;
 
         if (overlayCamera != null) overlayCamera.enabled = false;
         if (overlayLight  != null) overlayLight.enabled  = false;
@@ -216,6 +225,7 @@ public class ItemInspectionController : MonoBehaviour
         foreach (var e in carousel)
             if (e.Outer != null) Destroy(e.Outer);
         carousel.Clear();
+        scaleAnim = null;
 
         var items = GetItems();
         for (int i = 0; i < items.Count; i++)
@@ -235,16 +245,26 @@ public class ItemInspectionController : MonoBehaviour
 
     private void PositionCarouselModels()
     {
+        // Inizializza scaleAnim solo se è la prima volta (rebuild): snap immediato alle scale target
+        bool freshAnim = (scaleAnim == null || scaleAnim.Length != carousel.Count);
+        if (freshAnim)
+        {
+            scaleAnim = new float[carousel.Count];
+            for (int i = 0; i < carousel.Count; i++)
+                scaleAnim[i] = Mathf.Pow(carouselScaleFalloff, Mathf.Abs(i - currentIndex));
+        }
+
         for (int i = 0; i < carousel.Count; i++)
         {
             var outer = carousel[i].Outer;
             if (outer == null) continue;
 
-            int   offset = i - currentIndex;
-            float sf     = Mathf.Pow(carouselScaleFalloff, Mathf.Abs(offset));
-
+            int offset = i - currentIndex;
             outer.transform.localPosition = new Vector3(offset * carouselSpacing, carouselYOffset, inspectionDistance);
-            outer.transform.localScale    = Vector3.one * sf;
+
+            // Al primo posizionamento applica scala immediatamente; poi Update() la anima
+            if (freshAnim)
+                outer.transform.localScale = Vector3.one * scaleAnim[i];
         }
 
         currentModel  = currentIndex < carousel.Count ? carousel[currentIndex].Outer  : null;
@@ -252,6 +272,7 @@ public class ItemInspectionController : MonoBehaviour
 
         UpdateInfoBar();
         UpdateHintText();
+        ApplyDimming();
     }
 
     private CarouselEntry BuildCarouselEntry(CollectedItem item)
@@ -284,6 +305,64 @@ public class ItemInspectionController : MonoBehaviour
         if (action != null) action.InitializeForInspection();
 
         return new CarouselEntry { Item = item, Outer = outer, Action = action };
+    }
+
+    private void AnimateCarouselScales()
+    {
+        if (scaleAnim == null) return;
+        bool dirty = false;
+        for (int i = 0; i < carousel.Count && i < scaleAnim.Length; i++)
+        {
+            if (carousel[i].Outer == null) continue;
+            float target = Mathf.Pow(carouselScaleFalloff, Mathf.Abs(i - currentIndex));
+            float next   = Mathf.Lerp(scaleAnim[i], target, Time.deltaTime * scaleAnimSpeed);
+            if (Mathf.Abs(next - scaleAnim[i]) > 0.0005f)
+            {
+                scaleAnim[i] = next;
+                carousel[i].Outer.transform.localScale = Vector3.one * next;
+                dirty = true;
+            }
+        }
+        // la scala anima ogni frame: il dimming è già applicato correttamente su ApplyDimming()
+    }
+
+    private void ApplyDimming()
+    {
+        for (int i = 0; i < carousel.Count; i++)
+        {
+            var outer = carousel[i].Outer;
+            if (outer == null) continue;
+
+            bool isCenter = (i == currentIndex);
+
+            foreach (var r in outer.GetComponentsInChildren<Renderer>())
+            {
+                if (isCenter)
+                {
+                    r.SetPropertyBlock(null); // ripristina i colori originali del materiale
+                }
+                else
+                {
+                    var mpb = new MaterialPropertyBlock();
+                    // Legge il colore base dal materiale condiviso e lo scurisce
+                    Color original = Color.white;
+                    var   mat      = r.sharedMaterial;
+                    if (mat != null)
+                    {
+                        if      (mat.HasProperty("_BaseColor")) original = mat.GetColor("_BaseColor");
+                        else if (mat.HasProperty("_Color"))     original = mat.GetColor("_Color");
+                    }
+                    Color dimmed = new Color(
+                        original.r * dimBrightness,
+                        original.g * dimBrightness,
+                        original.b * dimBrightness,
+                        original.a);
+                    mpb.SetColor("_BaseColor", dimmed);
+                    mpb.SetColor("_Color",     dimmed);
+                    r.SetPropertyBlock(mpb);
+                }
+            }
+        }
     }
 
     private void HandleInventoryChanged(CollectedItem _)
