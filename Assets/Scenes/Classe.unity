@@ -25,8 +25,8 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubtractiveShadowColor: {r: 0.81886786, g: 0.25490198, b: 0.04171584, a: 1}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 73324b55f67f54c7bbf43204788b8bbe, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -15388,7 +15388,7 @@ MonoBehaviour:
   rotationSpeed: 150
   toggleKey: 3
   uiFont: {fileID: 11400000, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
-  carouselSpacing: 1.2
+  carouselSpacing: 0.8
   carouselScaleFalloff: 0.55
   carouselYOffset: 0.1
   infoBarAnchorMin: {x: 0, y: 0}
@@ -16440,7 +16440,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8238993, g: 0.39122257, b: 0.39122257, a: 1}
   m_Intensity: 500
   m_Range: 100
   m_SpotAngle: 30
