@@ -9,26 +9,32 @@ public class FPSController : MonoBehaviour
     public float moveSpeed = 2.5f;
     public float mouseSensitivity = 0.1f;
     public float gravity = -20f;
+    [Tooltip("Distanza dalla sedia a cui il player si posiziona quando si alza")]
+    public float standOffset = 1.2f;
+    [Tooltip("Distanza massima dalla sedia/seatPoint entro cui Ã¨ possibile sedersi")]
+    public float sitRange = 1.5f;
 
     [Header("References")]
     public Transform cameraTransform;
     public Transform seatPoint;
     public Transform standPoint;
+    public Transform chairTransform;
 
     [Header("State")]
     public bool isSeated = true;
 
     [Header("External Lock")]
-    [Tooltip("Se true, il player è forzato a restare seduto e non può alzarsi")]
+    [Tooltip("Se true, il player ï¿½ forzato a restare seduto e non puï¿½ alzarsi")]
     public bool forceSeated = false;
 
-    [Tooltip("Se true, il player è completamente disabilitato (niente movimento, niente mouse)")]
+    [Tooltip("Se true, il player ï¿½ completamente disabilitato (niente movimento, niente mouse)")]
     public bool gameplayFrozen = false;
 
     private CharacterController controller;
     private float verticalVelocity;
     private float pitch;
     private bool eKeyWasPressed;
+    private Vector3 chairOriginalPosition;
     public event Action OnPlayerStoodUp;
     public event Action OnPlayerSatDown;
 
@@ -42,10 +48,11 @@ public class FPSController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        if (chairTransform != null)
+            chairOriginalPosition = chairTransform.position;
+
         if (seatPoint != null)
-        {
             TeleportTo(seatPoint);
-        }
     }
 
     void Update()
@@ -99,7 +106,7 @@ public class FPSController : MonoBehaviour
             {
                 if (isSeated)
                     StandUp();
-                else
+                else if (CanSitDown())
                     SitDown();
             }
         }
@@ -107,12 +114,59 @@ public class FPSController : MonoBehaviour
         eKeyWasPressed = eIsPressed;
     }
 
+    bool CanSitDown()
+    {
+        Vector3 playerFlat = new Vector3(transform.position.x, 0f, transform.position.z);
+
+        // Condizione 1: vicino al seatPoint
+        if (seatPoint != null)
+        {
+            Vector3 seatFlat = new Vector3(seatPoint.position.x, 0f, seatPoint.position.z);
+            if (Vector3.Distance(playerFlat, seatFlat) <= sitRange)
+                return true;
+        }
+
+        // Condizione 2: guardando la sedia da abbastanza vicino
+        if (chairTransform != null)
+        {
+            Vector3 toChair = chairTransform.position - transform.position;
+            toChair.y = 0f;
+            if (toChair.magnitude <= sitRange)
+            {
+                Vector3 forwardFlat = new Vector3(transform.forward.x, 0f, transform.forward.z).normalized;
+                if (Vector3.Dot(forwardFlat, toChair.normalized) >= 0.5f)
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
     void StandUp()
     {
-        if (standPoint == null) return;
-        TeleportTo(standPoint);
+        if (standPoint == null || seatPoint == null) return;
+
+        // Il player si alza sul posto (stessa XZ della sedia, altezza da standPoint)
+        Vector3 standPos = seatPoint.position;
+        standPos.y = standPoint.position.y;
+
+        controller.enabled = false;
+        transform.position = standPos;
+        controller.enabled = true;
+        verticalVelocity = 0f;
+
+        // La sedia si sposta sempre lontano dal banco (direzione seatPoint â†’ standPoint)
+        if (chairTransform != null)
+        {
+            Vector3 awayFromDesk = new Vector3(
+                standPoint.position.x - seatPoint.position.x,
+                0f,
+                standPoint.position.z - seatPoint.position.z).normalized;
+            chairTransform.position = chairOriginalPosition + awayFromDesk * standOffset;
+        }
+
         isSeated = false;
-        Debug.Log("Player si è alzato");
+        Debug.Log("Player siï¿½ alzato");
         OnPlayerStoodUp?.Invoke();
     }
 
@@ -120,8 +174,12 @@ public class FPSController : MonoBehaviour
     {
         if (seatPoint == null) return;
         TeleportTo(seatPoint);
+
+        if (chairTransform != null)
+            chairTransform.position = chairOriginalPosition;
+
         isSeated = true;
-        Debug.Log("Player si è seduto");
+        Debug.Log("Player si ï¿½ seduto");
         OnPlayerSatDown?.Invoke();
     }
 

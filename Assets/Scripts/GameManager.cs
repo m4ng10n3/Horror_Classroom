@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
 
         if (player != null)
         {
+            player.forceSeated = true;
             player.OnPlayerStoodUp += OnPlayerStoodUp;
             player.OnPlayerSatDown += OnPlayerSatDown;
         }
