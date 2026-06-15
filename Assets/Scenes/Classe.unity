@@ -344,11 +344,13 @@ MonoBehaviour:
     text: "Certo, prendi quelli che vuoi. Io non li uso pi\xF9"
   - speaker: 0
     text: Sei la Goat
-  repeatSequence:
-  - speaker: 1
-    text: Per cosa li hai usati i tessuti?
-  - speaker: 0
-    text: Vedrai
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -3689,7 +3691,13 @@ MonoBehaviour:
   completedSequence:
   - speaker: 1
     text: "Perch\xE9 non ascolti la lezione invece di girovagare per l\u2019aula?"
-  repeatSequence: []
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 1
   tradeDone: 0
   requiredItem: 
@@ -5626,7 +5634,13 @@ MonoBehaviour:
     text: Non provare nemmeno ad avvicinarti
   - speaker: 0
     text: ...
-  repeatSequence: []
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -5810,7 +5824,13 @@ MonoBehaviour:
     text: Per sentirmi una Regina
   - speaker: 1
     text: Ed essere messa in vetrina
-  repeatSequence: []
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -6520,7 +6540,13 @@ MonoBehaviour:
     text: Se vuoi queste matite appuntite chiedigli pure il temperino
   - speaker: 0
     text: Grazie
-  repeatSequence: []
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 1
   tradeDone: 0
   requiredItem: 
@@ -6590,7 +6616,13 @@ MonoBehaviour:
   - speaker: 0
     text: OK
   completedSequence: []
-  repeatSequence: []
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: Figurina Gatto
@@ -8095,13 +8127,13 @@ MonoBehaviour:
     text: Guardah, devi essere attento
   - speaker: 1
     text: Fa delle punte da PAURA!
-  repeatSequence:
-  - speaker: 0
-    text: Guardah, Hai ragione
-  - speaker: 0
-    text: "Sto temperino \xE8 affilatissimio"
-  - speaker: 1
-    text: Da PAURA
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: Guanto Da Box
@@ -8674,11 +8706,13 @@ MonoBehaviour:
     text: Sono pronto per lo scambio
   - speaker: 1
     text: HEE HEE
-  repeatSequence:
-  - speaker: 0
-    text: Hee hee
-  - speaker: 1
-    text: AUUU
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: Pallone Da Calcio
@@ -9219,11 +9253,13 @@ MonoBehaviour:
     text: Dammi il pallone ora
   - speaker: 1
     text: Tieni tieni
-  repeatSequence:
-  - speaker: 1
-    text: Oh ma l'inflazione sta mandando alle stelle il prezzo del Cloroformio
-  - speaker: 0
-    text: Daaamn
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: Tessuto
@@ -9583,7 +9619,13 @@ MonoBehaviour:
     text: Wow
   - speaker: 1
     text: "Non sei pi\xF9 invitato"
-  repeatSequence: []
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -11143,13 +11185,13 @@ MonoBehaviour:
     text: Vorresti essere un piromane anche tu vero?
   - speaker: 0
     text: "S\xEC"
-  repeatSequence:
-  - speaker: 1
-    text: "Hai gi\xE0 dato fuoco a qualcosa?"
-  - speaker: 0
-    text: Non ancora
-  - speaker: 0
-    text: Ma dopo vado a dare fuoco al gatto di Sam
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 1
   tradeDone: 0
   requiredItem: 
@@ -11286,7 +11328,13 @@ MonoBehaviour:
     text: 'Posso farti un ritratto? '
   - speaker: 0
     text: 'No '
-  repeatSequence: []
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -11357,13 +11405,13 @@ MonoBehaviour:
     text: A te nulla, se vuoi te le prendo io
   - speaker: 1
     text: Ok
-  repeatSequence:
-  - speaker: 0
-    text: Ma dove hai trovate queste chiavi
-  - speaker: 1
-    text: Che chiavi?
-  - speaker: 0
-    text: Damn
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 1
   tradeDone: 0
   requiredItem: 
@@ -12403,11 +12451,13 @@ MonoBehaviour:
     text: "Damn dimmi di pi\xF9"
   - speaker: 1
     text: ...
-  repeatSequence:
-  - speaker: 1
-    text: Non ho altro da darti.
-  - speaker: 0
-    text: Capisco, grazie comunque.
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -13025,7 +13075,13 @@ MonoBehaviour:
   - speaker: 1
     text: Tienili pure tutti e quattro. Spero ricambierai il favore durante la mia
       interrogazione di domani
-  repeatSequence: []
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -14319,17 +14375,13 @@ MonoBehaviour:
     text: Si, ora dammi in cambio la figurina
   - speaker: 1
     text: Si tieni, ma parta un po' di rispetto
-  repeatSequence:
-  - speaker: 1
-    text: Le mie figurine sono proprio carine carine
-  - speaker: 1
-    text: carine carine
-  - speaker: 1
-    text: carine carine
-  - speaker: 1
-    text: carine carine
-  - speaker: 0
-    text: Ok
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: Bottone
@@ -15254,7 +15306,18 @@ MonoBehaviour:
   studentColor: {r: 0.47058824, g: 0.39215687, b: 0.3137255, a: 1}
   missingItemSequence: []
   completedSequence: []
-  repeatSequence: []
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: non ho niente vai via
+  itemDialogueTriggers:
+  - requiredItemName: Forbice
+    dialogue:
+      lines:
+      - speaker: 1
+        text: crazy shit bro ora che hai le forbici, sei crazy
+    oneShot: 0
+    triggered: 0
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -16657,7 +16720,13 @@ MonoBehaviour:
     text: Si
   - speaker: 0
     text: Crazy
-  repeatSequence: []
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -17179,11 +17248,13 @@ MonoBehaviour:
     text: Dopo raccontami per dove l'hai usato
   - speaker: 0
     text: Damn
-  repeatSequence:
-  - speaker: 1
-    text: Ti sei divertito con il Taglierino?
-  - speaker: 0
-    text: A voglia
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  itemDialogueTriggers: []
   essential: 1
   tradeDone: 0
   requiredItem: 
@@ -18247,11 +18318,18 @@ MonoBehaviour:
       alle cose? \nTe ne sarei grato."
   - speaker: 0
     text: Damn.
-  repeatSequence:
-  - speaker: 1
-    text: Carlos ha dato fuoco al mio cane ieri
-  - speaker: 0
-    text: Damn.
+  repeatSequences:
+  - lines:
+    - speaker: 1
+      text: Non ho altro da darti.
+    - speaker: 0
+      text: Capisco, grazie comunque.
+  - lines:
+    - speaker: 1
+      text: 'zitto '
+    - speaker: 0
+      text: zitto tu
+  itemDialogueTriggers: []
   essential: 1
   tradeDone: 0
   requiredItem: 
