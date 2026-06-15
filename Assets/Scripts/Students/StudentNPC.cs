@@ -1,4 +1,27 @@
+using System;
 using UnityEngine;
+
+[Serializable]
+public class DialogueSequence
+{
+    public DialogueLine[] lines;
+}
+
+[Serializable]
+public class ItemDialogueTrigger
+{
+    [Tooltip("Nome esatto dell'oggetto nell'inventario che attiva questo dialogo.")]
+    public string requiredItemName;
+
+    [Tooltip("Sequenza di dialogo speciale mostrata quando l'oggetto è presente.")]
+    public DialogueSequence dialogue;
+
+    [Tooltip("Se true, questo dialogo si mostra solo la prima volta che l'oggetto è rilevato.")]
+    public bool oneShot = true;
+
+    [HideInInspector]
+    public bool triggered = false;
+}
 
 public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceInteractable
 {
@@ -23,12 +46,19 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         new DialogueLine { speaker = DialogueLine.Speaker.Player, text = "Grazie, ne avevo bisogno." }
     };
 
-    [Header("Dialogo — Baratto Già Fatto")]
-    public DialogueLine[] repeatSequence = new DialogueLine[]
+    [Header("Dialogo — Ripetizioni Dialoghi")]
+    [Tooltip("Sequenze mostrate dopo il baratto, in ordine. L'ultima viene ripetuta una volta esaurite le altre.")]
+    public DialogueSequence[] repeatSequences = new DialogueSequence[]
     {
-        new DialogueLine { speaker = DialogueLine.Speaker.NPC,    text = "Non ho altro da darti." },
-        new DialogueLine { speaker = DialogueLine.Speaker.Player, text = "Capisco, grazie comunque." }
+        new DialogueSequence { lines = new[] {
+            new DialogueLine { speaker = DialogueLine.Speaker.NPC,    text = "Non ho altro da darti." },
+            new DialogueLine { speaker = DialogueLine.Speaker.Player, text = "Capisco, grazie comunque." }
+        }},
     };
+
+    [Header("Dialoghi Speciali — Oggetti in Inventario")]
+    [Tooltip("Dialoghi che si attivano se il player ha un certo oggetto nell'inventario. Controllati per primi, prima del baratto.")]
+    public ItemDialogueTrigger[] itemDialogueTriggers = Array.Empty<ItemDialogueTrigger>();
 
     [Header("Trade System")]
     [Tooltip("Se true, questo studente non può sparire finché non ha completato il baratto.")]
@@ -63,6 +93,7 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     [Header("State")]
     [SerializeField] private bool isVisible = true;
 
+    private int repeatIndex = 0;
     private MeshRenderer bodyRenderer;
     private Material bodyMaterialInstance;
 
@@ -115,13 +146,20 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
             return new[] { new DialogueLine { speaker = DialogueLine.Speaker.NPC, text = "Non so dove metterti gli oggetti." } };
         }
 
-        if (tradeDone)
-            return repeatSequence;
+        // Priorità 1: dialoghi speciali legati a oggetti nell'inventario.
+        DialogueLine[] specialDialogue = TryGetItemDialogue(inventory);
+        if (specialDialogue != null)
+            return specialDialogue;
 
+        // Priorità 2: baratto già completato → ciclo ripetizioni Dark Souls.
+        if (tradeDone)
+            return GetNextRepeatSequence();
+
+        // Priorità 3: oggetto richiesto ancora mancante.
         if (NeedsRequiredItem() && !inventory.HasItem(requiredItem))
             return missingItemSequence;
 
-        // Esegui il baratto.
+        // Priorità 4: esegui il baratto.
         if (NeedsRequiredItem() && consumeRequiredItem)
             inventory.RemoveItem(requiredItem);
 
@@ -141,6 +179,41 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         }
 
         return completedSequence;
+    }
+
+    // Controlla se qualche trigger di oggetto deve scattare e restituisce il dialogo relativo.
+    private DialogueLine[] TryGetItemDialogue(PhysicalInventory inventory)
+    {
+        if (itemDialogueTriggers == null) return null;
+
+        foreach (var trigger in itemDialogueTriggers)
+        {
+            if (trigger == null) continue;
+            if (string.IsNullOrWhiteSpace(trigger.requiredItemName)) continue;
+            if (trigger.oneShot && trigger.triggered) continue;
+            if (!inventory.HasItem(trigger.requiredItemName)) continue;
+            if (trigger.dialogue == null || trigger.dialogue.lines == null || trigger.dialogue.lines.Length == 0) continue;
+
+            trigger.triggered = true;
+            return trigger.dialogue.lines;
+        }
+
+        return null;
+    }
+
+    // Restituisce la prossima sequenza di ripetizione, bloccandosi sull'ultima.
+    private DialogueLine[] GetNextRepeatSequence()
+    {
+        if (repeatSequences == null || repeatSequences.Length == 0)
+            return new[] { new DialogueLine { speaker = DialogueLine.Speaker.NPC, text = "..." } };
+
+        int index = Mathf.Clamp(repeatIndex, 0, repeatSequences.Length - 1);
+        DialogueLine[] lines = repeatSequences[index]?.lines;
+
+        if (repeatIndex < repeatSequences.Length - 1)
+            repeatIndex++;
+
+        return lines ?? Array.Empty<DialogueLine>();
     }
 
     private bool NeedsRequiredItem() => !string.IsNullOrWhiteSpace(requiredItem);
