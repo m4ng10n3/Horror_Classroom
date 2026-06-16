@@ -6,9 +6,15 @@ public class PhysicalInventory : MonoBehaviour
 {
     public static PhysicalInventory Instance { get; private set; }
 
+    [Header("Capacità")]
+    [Min(1)]
+    [Tooltip("Numero massimo di oggetti che il giocatore può portare contemporaneamente.")]
+    public int maxCapacity = 2;
+
     private readonly List<CollectedItem> items = new List<CollectedItem>();
     public IReadOnlyList<CollectedItem> Items => items;
     public int Count => items.Count;
+    public bool IsFull => items.Count >= maxCapacity;
 
     public event Action<CollectedItem> OnItemAdded;
     public event Action<CollectedItem> OnItemRemoved;
@@ -23,11 +29,11 @@ public class PhysicalInventory : MonoBehaviour
         Instance = this;
     }
 
-    public void AddItem(CollectedItem item)
+    public bool AddItem(CollectedItem item)
     {
-        if (item == null)
+        if (item == null || IsFull)
         {
-            return;
+            return false;
         }
 
         if (string.IsNullOrWhiteSpace(item.name))
@@ -37,6 +43,7 @@ public class PhysicalInventory : MonoBehaviour
 
         items.Add(item);
         OnItemAdded?.Invoke(item);
+        return true;
     }
 
     public bool HasItem(string itemName)

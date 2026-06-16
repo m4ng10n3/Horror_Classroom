@@ -58,6 +58,11 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
             return "Inventario fisico non trovato.";
         }
 
+        if (inventory.IsFull)
+        {
+            return $"Inventario pieno! Puoi portare al massimo {inventory.maxCapacity} oggetti.";
+        }
+
         pickedUp = true;
 
         GameObject source = inspectionModelOverride != null ? inspectionModelOverride : gameObject;

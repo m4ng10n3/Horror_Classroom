@@ -159,7 +159,17 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         if (NeedsRequiredItem() && !inventory.HasItem(requiredItem))
             return missingItemSequence;
 
-        // Priorità 4: esegui il baratto.
+        // Priorità 4: inventario pieno → il baratto resta in sospeso finché non si libera spazio.
+        if (!string.IsNullOrWhiteSpace(rewardItem) && inventory.IsFull)
+        {
+            return new[] { new DialogueLine
+            {
+                speaker = DialogueLine.Speaker.NPC,
+                text = $"Hai le mani piene! Liberati di qualcosa e torna a parlarmi."
+            } };
+        }
+
+        // Priorità 5: esegui il baratto.
         if (NeedsRequiredItem() && consumeRequiredItem)
             inventory.RemoveItem(requiredItem);
 
