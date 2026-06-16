@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     // Opzioni e risposta corretta generate a runtime per le domande ambientali
     private string[] runtimeOptions = null;
     private int runtimeCorrectIndex = -1;
+    private int activeOptionCount = 0;
 
     void Start()
     {
@@ -130,10 +131,10 @@ public class GameManager : MonoBehaviour
         var kb = Keyboard.current;
         if (kb == null) return;
 
-        if (kb.digit1Key.wasPressedThisFrame) OnAnswerClicked(0);
-        else if (kb.digit2Key.wasPressedThisFrame) OnAnswerClicked(1);
-        else if (kb.digit3Key.wasPressedThisFrame) OnAnswerClicked(2);
-        else if (kb.digit4Key.wasPressedThisFrame) OnAnswerClicked(3);
+        if (activeOptionCount > 0 && kb.digit1Key.wasPressedThisFrame) OnAnswerClicked(0);
+        else if (activeOptionCount > 1 && kb.digit2Key.wasPressedThisFrame) OnAnswerClicked(1);
+        else if (activeOptionCount > 2 && kb.digit3Key.wasPressedThisFrame) OnAnswerClicked(2);
+        else if (activeOptionCount > 3 && kb.digit4Key.wasPressedThisFrame) OnAnswerClicked(3);
     }
 
     IEnumerator InitialDelay()
@@ -190,12 +191,18 @@ public class GameManager : MonoBehaviour
         }
 
         string[] displayOptions = runtimeOptions ?? currentQuestion.options;
+        activeOptionCount = Mathf.Min(displayOptions.Length, answerButtons.Length);
         questionText.text = currentQuestion.questionText;
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            TextMeshProUGUI btnText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-            btnText.text = (i + 1) + ". " + displayOptions[i];
-            answerButtons[i].interactable = true;
+            bool hasOption = i < activeOptionCount;
+            answerButtons[i].gameObject.SetActive(hasOption);
+            if (hasOption)
+            {
+                TextMeshProUGUI btnText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                btnText.text = (i + 1) + ". " + displayOptions[i];
+                answerButtons[i].interactable = true;
+            }
         }
 
         questionTimeLimit = currentQuestion.timeLimit;
