@@ -284,16 +284,6 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) return;
 
-        if (studentManager != null)
-        {
-            studentManager.DisappearRandomStudent();
-
-            if (studentManager.VisibleCount == 0)
-            {
-                TriggerGameOver("SEI RIMASTO SOLO.");
-            }
-        }
-
         if (classroomMutator == null) return;
 
         if (suspicionCounter != null && suspicionCounter.ShouldMutate)
