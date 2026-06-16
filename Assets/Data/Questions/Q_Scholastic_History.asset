@@ -23,3 +23,5 @@ MonoBehaviour:
   category: 0
   customCorrectFeedback: 
   customWrongFeedback: 
+  environmentCheck: 0
+  fallbackCorrectIndex: 3

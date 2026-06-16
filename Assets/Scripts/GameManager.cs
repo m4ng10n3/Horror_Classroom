@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     public TeacherController teacher;
     public TeacherStateMachine teacherStateMachine;
+    public TeacherChalkAnimator teacherChalk;
     public FPSController player;
     public GameObject questionPanel;
     public TextMeshProUGUI questionText;
@@ -306,6 +307,7 @@ public class GameManager : MonoBehaviour
         state = GameState.ExplorationWindow;
         explorationTimer = explorationDuration;
         playerCaughtStanding = false;
+        if (teacherChalk != null) teacherChalk.PlayScribble(explorationDuration);
         Debug.Log($"[GM] Finestra esplorazione aperta: {explorationDuration} secondi");
     }
 
@@ -316,6 +318,9 @@ public class GameManager : MonoBehaviour
         // Ferma la pulsazione della vignette
         if (vignetteController != null)
             vignetteController.StopPulsing();
+
+        // Ferma lo scarabocchio col gesso (per sicurezza, dovrebbe già essere finito)
+        if (teacherChalk != null) teacherChalk.StopScribble();
 
         // La prof si gira verso la classe
         if (teacher != null) teacher.FaceClass();
@@ -459,6 +464,8 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         state = GameState.Waiting;
         HideQuestionPanel();
+
+        if (teacherChalk != null) teacherChalk.StopScribble();
 
         if (player != null)
         {
