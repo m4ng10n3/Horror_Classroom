@@ -13,6 +13,7 @@ public class ItemInspectionController : MonoBehaviour
     public float          normalizedSize     = 0.8f;
     public float          rotationSpeed      = 120f;
     public Key            toggleKey          = Key.Tab;
+    public Key            dropKey            = Key.R;
     public TMP_FontAsset  uiFont;
 
     [Header("Carousel 3D")]
@@ -40,6 +41,7 @@ public class ItemInspectionController : MonoBehaviour
     [Min(1f)] public float hintFontSize        = 14f;
     public string navigateHintText = "[A D] Naviga";
     public string rotateHintText   = "[LMB] Ruota";
+    public string dropHintText     = "[R] Lascia";
     public string closeHintText    = "[E] Chiudi";
 
     public bool IsInspecting => isInspecting;
@@ -148,6 +150,12 @@ public class ItemInspectionController : MonoBehaviour
         if (currentAction != null && currentAction.WasActionPressed(kb))
         {
             currentAction.Toggle();
+            return;
+        }
+
+        if (kb[dropKey].wasPressedThisFrame)
+        {
+            DropCurrentItem();
             return;
         }
 
@@ -310,7 +318,6 @@ public class ItemInspectionController : MonoBehaviour
     private void AnimateCarouselScales()
     {
         if (scaleAnim == null) return;
-        bool dirty = false;
         for (int i = 0; i < carousel.Count && i < scaleAnim.Length; i++)
         {
             if (carousel[i].Outer == null) continue;
@@ -320,7 +327,6 @@ public class ItemInspectionController : MonoBehaviour
             {
                 scaleAnim[i] = next;
                 carousel[i].Outer.transform.localScale = Vector3.one * next;
-                dirty = true;
             }
         }
         // la scala anima ogni frame: il dimming è già applicato correttamente su ApplyDimming()
@@ -374,6 +380,77 @@ public class ItemInspectionController : MonoBehaviour
         RebuildCarouselModels();
     }
 
+    private void DropCurrentItem()
+    {
+        if (physicalInventory == null)
+        {
+            physicalInventory = PhysicalInventory.Instance;
+        }
+
+        var items = GetItems();
+        if (physicalInventory == null || items.Count == 0 || currentIndex < 0 || currentIndex >= items.Count)
+        {
+            return;
+        }
+
+        CollectedItem item = items[currentIndex];
+        if (item == null)
+        {
+            return;
+        }
+
+        GameObject droppedObject = PrepareDroppedObject(item);
+        if (physicalInventory.RemoveItem(item, false) && droppedObject != null)
+        {
+            droppedObject.SetActive(true);
+        }
+    }
+
+    private GameObject PrepareDroppedObject(CollectedItem item)
+    {
+        GameObject droppedObject = item.worldSource;
+        if (droppedObject == null)
+        {
+            droppedObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            droppedObject.name = item.name;
+            droppedObject.transform.localScale = Vector3.one * 0.25f;
+            item.worldSource = droppedObject;
+        }
+
+        droppedObject.name = string.IsNullOrWhiteSpace(item.name) ? "Oggetto lasciato" : item.name;
+        SetLayerRecursive(droppedObject, 0);
+        droppedObject.transform.SetParent(null, true);
+        droppedObject.transform.position = GetDropPosition();
+        droppedObject.transform.rotation = Quaternion.identity;
+
+        PickupItem pickup = droppedObject.GetComponent<PickupItem>();
+        if (pickup == null)
+        {
+            pickup = droppedObject.AddComponent<PickupItem>();
+        }
+
+        pickup.itemName = string.IsNullOrWhiteSpace(item.name) ? "Oggetto" : item.name;
+        pickup.itemId = item.inventoryId;
+        pickup.description = item.description;
+        pickup.canInspect = item.canInspect;
+        pickup.inspectionScaleMultiplier = item.inspectionScaleMultiplier;
+
+        return droppedObject;
+    }
+
+    private Vector3 GetDropPosition()
+    {
+        Transform source = mainCamera != null ? mainCamera.transform : transform;
+        Vector3 position = source.position + source.forward * 1.1f;
+
+        if (Physics.Raycast(position + Vector3.up, Vector3.down, out RaycastHit hit, 3f, ~0, QueryTriggerInteraction.Ignore))
+        {
+            position = hit.point + Vector3.up * 0.08f;
+        }
+
+        return position;
+    }
+
     private void UpdateInfoBar()
     {
         var items = GetItems();
@@ -392,7 +469,7 @@ public class ItemInspectionController : MonoBehaviour
     {
         if (hintText == null) return;
         string actionHint = currentAction != null ? $"   {currentAction.HintText}" : "";
-        hintText.text = $"{navigateHintText}   {rotateHintText}{actionHint}   {closeHintText}";
+        hintText.text = $"{navigateHintText}   {rotateHintText}{actionHint}   {dropHintText}   {closeHintText}";
     }
 
     private IReadOnlyList<CollectedItem> GetItems()

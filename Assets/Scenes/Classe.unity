@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Nicole
   studentColor: {r: 0.6666667, g: 0.3137255, b: 0.6666667, a: 1}
   missingItemSequence: []
@@ -356,10 +357,13 @@ MonoBehaviour:
   requiredItem: 
   rewardItem: Tessuto
   consumeRequiredItem: 1
-  rewardItemPrefab: {fileID: 0}
+  rewardItemPrefab: {fileID: 919132149155446097, guid: ea27d0c5d25aa08458fa26376a22c96b, type: 3}
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!4 &14494612 stripped
 Transform:
@@ -2372,24 +2376,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4646c1c7c18509b47a2cefe3276f8883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClassroomMutator
-  studentDesks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  windowManager: {fileID: 0}
+  windowManager: {fileID: 1489307695}
   wallRenderers:
   - {fileID: 131864364}
   - {fileID: 1270505399}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 470903655}
+  - {fileID: 1363759730}
   blackboard: {fileID: 771841442}
-  deskShiftAmount: 0.3
+  mapTransform: {fileID: 1787594488}
+  roomLights:
+  - {fileID: 1740910264}
   blackboardTiltMax: 8
   wallTintColor: {r: 0.6, g: 0.15, b: 0.15, a: 1}
+  wallTintStep: 0.5
+  lightTintColor: {r: 0.8, g: 0, b: 0, a: 1}
+  lightTintStep: 0.6
+  mapFlipEuler: {x: 0, y: 0, z: 180}
   mutationsApplied: 0
 --- !u!4 &148235043
 Transform:
@@ -2400,7 +2402,7 @@ Transform:
   m_GameObject: {fileID: 148235041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5.73, z: -5.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2574,6 +2576,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 47.655045, y: 2.1052203, z: 64.923645}
   m_Center: {x: 0.040062357, y: 0.00318159, z: -23.393154}
+--- !u!1 &162620651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
+  m_PrefabInstance: {fileID: 1144362264}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &171108498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2850,7 +2857,6 @@ Transform:
   - {fileID: 606773447}
   - {fileID: 611064432}
   - {fileID: 470903653}
-  - {fileID: 1707430947}
   m_Father: {fileID: 310583006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &209351997 stripped
@@ -3191,7 +3197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.190058
+      value: 5.158
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3199,7 +3205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.9830608
+      value: -3.401
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3849,6 +3855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Jenny
   studentColor: {r: 0.19607843, g: 0.6666667, b: 0.33333334, a: 1}
   missingItemSequence: []
@@ -3871,6 +3878,9 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1 &357395064 stripped
 GameObject:
@@ -4385,14 +4395,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f63f5f091bbcc419c3591db6cbd4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorEscape
-  requiredPhysicalItems: 3
+  requiredPhysicalItems: 1
   victoryMessage: SEI SCAPPATO DALLA CLASSE.
-  requiredPickupItems:
-  - {fileID: 2029933388}
-  requiredItemNames: []
-  progressLabel: Oggetti utili
-  lockedDialogue: La porta e' bloccata. Mi servono ancora oggetti utili per aprirla.
-  unlockedDialogue: La maniglia cede. Questa e' la mia occasione.
+  requiredPickupItems: []
+  requiredItemNames:
+  - Chiave
+  progressLabel: Oggetto finale
+  lockedDialogue: 
+  unlockedDialogue: La chiave gira. La classe resta zitta. Questa e' la mia occasione.
 --- !u!1001 &405827555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5859,6 +5869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: George
   studentColor: {r: 0.3137255, g: 0.47058824, b: 0.3137255, a: 1}
   missingItemSequence: []
@@ -5883,6 +5894,9 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1 &606773446
 GameObject:
@@ -6041,6 +6055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Juliet
   studentColor: {r: 0.54901963, g: 0.627451, b: 0.23529412, a: 1}
   missingItemSequence: []
@@ -6073,6 +6088,9 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!4 &608712901 stripped
 Transform:
@@ -6793,6 +6811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Daniel
   studentColor: {r: 0.39215687, g: 0.19607843, b: 0.6666667, a: 1}
   missingItemSequence: []
@@ -6821,6 +6840,9 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1 &666896339
 GameObject:
@@ -6867,6 +6889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Erika
   studentColor: {r: 0.78431374, g: 0.627451, b: 0.39215687, a: 1}
   missingItemSequence:
@@ -6897,6 +6920,9 @@ MonoBehaviour:
   rewardItemDescription: Una graffetta
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1001 &674828873
 PrefabInstance:
@@ -7845,37 +7871,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1203865782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &755062480
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 755062481}
-  m_Layer: 0
-  m_Name: Window_West_Back
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &755062481
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 755062480}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.17364816, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: -8.25, y: 2, z: 0.33}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1707430947}
-  m_LocalEulerAnglesHint: {x: 0, y: 20, z: 0}
 --- !u!1 &759415950
 GameObject:
   m_ObjectHideFlags: 0
@@ -8423,6 +8418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Leo
   studentColor: {r: 0.23529412, g: 0.54901963, b: 0.627451, a: 1}
   missingItemSequence:
@@ -8477,6 +8473,9 @@ MonoBehaviour:
   rewardItemDescription: Un temperino super affilato, Guardah da PAURA!
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1 &829316808
 GameObject:
@@ -9017,6 +9016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Michel
   studentColor: {r: 0.627451, g: 0.23529412, b: 0.23529412, a: 1}
   missingItemSequence:
@@ -9056,6 +9056,9 @@ MonoBehaviour:
   rewardItemDescription: Scotch per attaccare le cose, o tenerle unite
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1001 &870881476
 PrefabInstance:
@@ -9547,6 +9550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Frank
   studentColor: {r: 0.7058824, g: 0.39215687, b: 0.23529412, a: 1}
   missingItemSequence:
@@ -9604,6 +9608,9 @@ MonoBehaviour:
     con la palla"
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1001 &933510614
 PrefabInstance:
@@ -9935,6 +9942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Mark
   studentColor: {r: 0.7058824, g: 0.54901963, b: 0.78431374, a: 1}
   missingItemSequence: []
@@ -9969,6 +9977,9 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1001 &966201663
 PrefabInstance:
@@ -10755,37 +10766,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1700545301}
   m_SourcePrefab: {fileID: 100100000, guid: 35f010f2e82b79942a84f8864cf281f4, type: 3}
---- !u!1 &1067709096
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1067709097}
-  m_Layer: 0
-  m_Name: Window_East_Back
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1067709097
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067709096}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.17364825, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 7.611, y: 2, z: 2.088}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1707430947}
-  m_LocalEulerAnglesHint: {x: 0, y: -20, z: 0}
 --- !u!1001 &1075160462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11328,6 +11308,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
   m_PrefabInstance: {fileID: 1096059316}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1104202132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
+  m_PrefabInstance: {fileID: 942772028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1107866642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4439b1781d79a4143821b3f81c06b68c, type: 3}
@@ -11499,6 +11484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Carlos
   studentColor: {r: 0.6666667, g: 0.53333336, b: 0.19607843, a: 1}
   missingItemSequence: []
@@ -11535,6 +11521,9 @@ MonoBehaviour:
   rewardItemDescription: Del maestro Carlos
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1001 &1144362264
 PrefabInstance:
@@ -11654,6 +11643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Will
   studentColor: {r: 0.8, g: 0.39215687, b: 0.5882353, a: 1}
   missingItemSequence: []
@@ -11678,6 +11668,9 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!4 &1151794896 stripped
 Transform:
@@ -11729,6 +11722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Brad
   studentColor: {r: 0.6666667, g: 0.19607843, b: 0.19607843, a: 1}
   missingItemSequence: []
@@ -11755,6 +11749,9 @@ MonoBehaviour:
   rewardItemDescription: Chiavi che ha trovato Brad
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1001 &1157625460
 PrefabInstance:
@@ -12402,6 +12399,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
   m_PrefabInstance: {fileID: 1215294449}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1231820546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
+  m_PrefabInstance: {fileID: 1215294449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1235494912
 GameObject:
   m_ObjectHideFlags: 0
@@ -12765,6 +12767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Owen
   studentColor: {r: 0.78431374, g: 0.7058824, b: 0.54901963, a: 1}
   missingItemSequence: []
@@ -12801,6 +12804,9 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1 &1270428968
 GameObject:
@@ -13465,6 +13471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Rachel
   studentColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   missingItemSequence: []
@@ -13484,7 +13491,7 @@ MonoBehaviour:
       nulla. '
   - speaker: 1
     text: Tienili pure tutti e quattro. Spero ricambierai il favore durante la mia
-      interrogazione di domani
+      interrogazione di domani.
   repeatSequences:
   - lines:
     - speaker: 1
@@ -13501,6 +13508,9 @@ MonoBehaviour:
   rewardItemDescription: Un bottone di Rachel
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1 &1352977986
 GameObject:
@@ -13762,6 +13772,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
   m_PrefabInstance: {fileID: 1363759728}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1363759730 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
+  m_PrefabInstance: {fileID: 1363759728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1365502621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13821,6 +13836,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e98b2f070ed384446823d225c06ff3e5, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e98b2f070ed384446823d225c06ff3e5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e98b2f070ed384446823d225c06ff3e5, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14283,37 +14302,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1094687, y: 1.6786237, z: 2.1716444}
   m_Center: {x: 0.16460611, y: -0.1669824, z: -0.27207407}
---- !u!1 &1425410837
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1425410838}
-  m_Layer: 0
-  m_Name: Window_West_Front
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1425410838
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425410837}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.17364816, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: -7.21, y: 2, z: 3.17}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1707430947}
-  m_LocalEulerAnglesHint: {x: 0, y: 20, z: 0}
 --- !u!1 &1433254342
 GameObject:
   m_ObjectHideFlags: 0
@@ -14707,10 +14695,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindowManager
   allWindows:
-  - {fileID: 1888011578}
-  - {fileID: 1067709096}
-  - {fileID: 1425410837}
-  - {fileID: 755062480}
+  - {fileID: 162620651}
+  - {fileID: 1968466740}
+  - {fileID: 1231820546}
+  - {fileID: 1104202132}
 --- !u!4 &1489307696
 Transform:
   m_ObjectHideFlags: 0
@@ -14869,6 +14857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Maria
   studentColor: {r: 0.23529412, g: 0.23529412, b: 0.54901963, a: 1}
   missingItemSequence:
@@ -14908,6 +14897,9 @@ MonoBehaviour:
   rewardItemDescription: Figurina bellissima di un bellissimo gattino
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1 &1536531221
 GameObject:
@@ -15249,7 +15241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
       propertyPath: m_Name
-      value: Finestra (7)
+      value: Finestras (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15820,6 +15812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Amanda
   studentColor: {r: 0.47058824, g: 0.39215687, b: 0.3137255, a: 1}
   missingItemSequence: []
@@ -15845,6 +15838,9 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1 &1646257260
 GameObject:
@@ -16006,41 +16002,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 47.655045, y: 2.1052203, z: 64.923645}
   m_Center: {x: 0.040062357, y: 0.00318159, z: -23.393154}
---- !u!1 &1707430946
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1707430947}
-  m_Layer: 0
-  m_Name: Windows
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1707430947
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707430946}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1888011579}
-  - {fileID: 1067709097}
-  - {fileID: 1425410838}
-  - {fileID: 755062481}
-  m_Father: {fileID: 195430400}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1712711457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7257021032095605579, guid: 273eda8b277b9eb438e71435773fb79b, type: 3}
@@ -16325,6 +16286,7 @@ MonoBehaviour:
   normalizedSize: 0.8
   rotationSpeed: 150
   toggleKey: 3
+  dropKey: 32
   uiFont: {fileID: 11400000, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
   carouselSpacing: 0.8
   carouselScaleFalloff: 0.55
@@ -16346,6 +16308,7 @@ MonoBehaviour:
   hintFontSize: 16
   navigateHintText: "[\u2190 \u2192] Naviga"
   rotateHintText: '[Tasto Sinistro] Ruota'
+  dropHintText: '[R] Lascia'
   closeHintText: '[Tab] Chiudi'
 --- !u!114 &1738970834
 MonoBehaviour:
@@ -16448,7 +16411,7 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 0.81961554, g: 0.8207547, b: 0.5071645, a: 1}
-  m_Intensity: 81.99
+  m_Intensity: 85
   m_Range: 26.95
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -16941,7 +16904,7 @@ MonoBehaviour:
   - {fileID: 347966702}
   questionDatabase: {fileID: 11400000, guid: d4007bb6bc3f1ba46b1a8ee42ff65ded, type: 2}
   suspicionCounter: {fileID: 879980192}
-  explorationDuration: 30
+  explorationDuration: 60
   warningStartTime: 3.5
   vignetteController: {fileID: 1356203906}
   studentManager: {fileID: 2010312891}
@@ -16984,6 +16947,11 @@ MonoBehaviour:
   startScale: 0.8
   minScale: 0.33
   decrementPerSit: 0.05
+--- !u!4 &1787594488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 62730bad6c2c1a542bde8cc0cf9172a5, type: 3}
+  m_PrefabInstance: {fileID: 1840138583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1790400432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17434,6 +17402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Matilda
   studentColor: {r: 0.3137255, g: 0.3137255, b: 0.23529412, a: 1}
   missingItemSequence: []
@@ -17462,6 +17431,9 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1001 &1840138583
 PrefabInstance:
@@ -17733,37 +17705,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c7ac2130f6f33245a929f313340985a, type: 3}
---- !u!1 &1888011578
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1888011579}
-  m_Layer: 0
-  m_Name: Window_East_Front
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1888011579
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888011578}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.17364825, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 9.064, y: 2, z: -1.923}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1707430947}
-  m_LocalEulerAnglesHint: {x: 0, y: -20, z: 0}
 --- !u!1001 &1904856966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18021,6 +17962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Eva
   studentColor: {r: 0.19607843, g: 0.6666667, b: 0.6666667, a: 1}
   missingItemSequence: []
@@ -18059,6 +18001,9 @@ MonoBehaviour:
   rewardItemDescription: Uno dei tanti taglierini di Eva
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1001 &1943784884
 PrefabInstance:
@@ -18287,6 +18232,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1203865782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1968466740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
+  m_PrefabInstance: {fileID: 1556846601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1977270255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18749,7 +18699,9 @@ MonoBehaviour:
   playerCamera: {fileID: 330585545}
   gameManager: {fileID: 1764054191}
   escapeDoor: {fileID: 399139266}
-  interactionDistance: 1
+  interactionDistance: 1.5
+  interactionRadius: 0.25
+  maxInteractionHits: 24
   interactionMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -18841,17 +18793,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3390838407144433259, guid: fec66354396ba2b4b97d17f26a3e930a, type: 3}
   m_PrefabInstance: {fileID: 600522247597295042}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2029933388 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8628863127639886662, guid: fec66354396ba2b4b97d17f26a3e930a, type: 3}
-  m_PrefabInstance: {fileID: 600522247597295042}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
 --- !u!1001 &2047323978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19133,6 +19074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
+  useSceneChainPreset: 1
   studentName: Sam
   studentColor: {r: 0.19607843, g: 0.33333334, b: 0.6666667, a: 1}
   missingItemSequence: []
@@ -19167,6 +19109,9 @@ MonoBehaviour:
   rewardItemDescription: Forbici per tagliare tutto
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 2
+  addFallbackInteractionCollider: 1
+  fallbackInteractionRadius: 0.45
+  fallbackInteractionHeight: 1.6
   isVisible: 1
 --- !u!1 &2059868873
 GameObject:

@@ -64,10 +64,31 @@ public class PhysicalInventory : MonoBehaviour
             return false;
         }
 
+        return RemoveAt(index, true);
+    }
+
+    public bool RemoveItem(CollectedItem item, bool destroyWorldSource = true)
+    {
+        if (item == null)
+        {
+            return false;
+        }
+
+        int index = items.IndexOf(item);
+        if (index < 0)
+        {
+            return false;
+        }
+
+        return RemoveAt(index, destroyWorldSource);
+    }
+
+    private bool RemoveAt(int index, bool destroyWorldSource)
+    {
         CollectedItem removedItem = items[index];
         items.RemoveAt(index);
 
-        if (removedItem.worldSource != null)
+        if (destroyWorldSource && removedItem.worldSource != null)
         {
             Destroy(removedItem.worldSource);
         }

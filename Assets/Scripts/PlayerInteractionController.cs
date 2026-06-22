@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,6 +16,10 @@ public class PlayerInteractionController : MonoBehaviour
 
     [Header("Interaction")]
     public float interactionDistance = 3f;
+    [Min(0f)]
+    public float interactionRadius = 0.25f;
+    [Min(1)]
+    public int maxInteractionHits = 24;
     public LayerMask interactionMask = ~0;
     public Key interactKey = Key.F;
 
@@ -35,6 +41,7 @@ public class PlayerInteractionController : MonoBehaviour
     private DialogueLine[] activeSequence;
     private int currentLineIndex;
     private string currentNPCName = string.Empty;
+    private RaycastHit[] interactionHits;
 
     private RectTransform hudRoot;
     private Image promptPanelImage;
@@ -51,6 +58,7 @@ public class PlayerInteractionController : MonoBehaviour
     void Awake()
     {
         AutoAssignReferences();
+        EnsureInteractionHitBuffer();
         EnsureCanvasHud();
         RefreshHud();
     }
@@ -172,9 +180,7 @@ public class PlayerInteractionController : MonoBehaviour
     private void UpdateCurrentInteractable()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, interactionMask, QueryTriggerInteraction.Collide)
-            && TryGetInteractable(hit.collider, out IPlayerInteractable interactable)
-            && interactable.CanInteract())
+        if (TryFindInteractable(ray, out IPlayerInteractable interactable))
         {
             currentInteractable = interactable;
             currentPrompt = interactable.GetInteractionPrompt();
@@ -184,12 +190,30 @@ public class PlayerInteractionController : MonoBehaviour
         ClearCurrentInteractable();
     }
 
-    private bool TryGetInteractable(Collider hitCollider, out IPlayerInteractable interactable)
+    private bool TryFindInteractable(Ray ray, out IPlayerInteractable interactable)
     {
-        MonoBehaviour[] behaviours = hitCollider.GetComponentsInParent<MonoBehaviour>();
-        for (int i = 0; i < behaviours.Length; i++)
+        EnsureInteractionHitBuffer();
+
+        int hitCount = interactionRadius > 0f
+            ? Physics.SphereCastNonAlloc(ray, interactionRadius, interactionHits, interactionDistance, interactionMask, QueryTriggerInteraction.Collide)
+            : Physics.RaycastNonAlloc(ray, interactionHits, interactionDistance, interactionMask, QueryTriggerInteraction.Collide);
+
+        if (hitCount <= 0)
         {
-            if (behaviours[i] is IPlayerInteractable candidate)
+            interactable = null;
+            return false;
+        }
+
+        Array.Sort(interactionHits, 0, hitCount, RaycastHitDistanceComparer.Instance);
+        for (int i = 0; i < hitCount; i++)
+        {
+            Collider hitCollider = interactionHits[i].collider;
+            if (hitCollider == null)
+            {
+                continue;
+            }
+
+            if (TryGetInteractable(hitCollider, out IPlayerInteractable candidate) && candidate.CanInteract())
             {
                 interactable = candidate;
                 return true;
@@ -198,6 +222,61 @@ public class PlayerInteractionController : MonoBehaviour
 
         interactable = null;
         return false;
+    }
+
+    private bool TryGetInteractable(Collider hitCollider, out IPlayerInteractable interactable)
+    {
+        if (TryGetInteractableFromBehaviours(hitCollider.GetComponentsInParent<MonoBehaviour>(true), out interactable))
+        {
+            return true;
+        }
+
+        if (TryGetInteractableFromBehaviours(hitCollider.GetComponentsInChildren<MonoBehaviour>(true), out interactable))
+        {
+            return true;
+        }
+
+        Rigidbody attachedRigidbody = hitCollider.attachedRigidbody;
+        if (attachedRigidbody != null)
+        {
+            Transform root = attachedRigidbody.transform;
+            if (TryGetInteractableFromBehaviours(root.GetComponentsInParent<MonoBehaviour>(true), out interactable))
+            {
+                return true;
+            }
+
+            if (TryGetInteractableFromBehaviours(root.GetComponentsInChildren<MonoBehaviour>(true), out interactable))
+            {
+                return true;
+            }
+        }
+
+        interactable = null;
+        return false;
+    }
+
+    private bool TryGetInteractableFromBehaviours(IEnumerable<MonoBehaviour> behaviours, out IPlayerInteractable interactable)
+    {
+        foreach (MonoBehaviour behaviour in behaviours)
+        {
+            if (behaviour is IPlayerInteractable candidate)
+            {
+                interactable = candidate;
+                return true;
+            }
+        }
+
+        interactable = null;
+        return false;
+    }
+
+    private void EnsureInteractionHitBuffer()
+    {
+        int capacity = Mathf.Max(1, maxInteractionHits);
+        if (interactionHits == null || interactionHits.Length != capacity)
+        {
+            interactionHits = new RaycastHit[capacity];
+        }
     }
 
     private void ClearCurrentInteractable()
@@ -504,6 +583,16 @@ public class PlayerInteractionController : MonoBehaviour
         }
 
         return true;
+    }
+
+    private sealed class RaycastHitDistanceComparer : IComparer<RaycastHit>
+    {
+        public static readonly RaycastHitDistanceComparer Instance = new RaycastHitDistanceComparer();
+
+        public int Compare(RaycastHit left, RaycastHit right)
+        {
+            return left.distance.CompareTo(right.distance);
+        }
     }
 
 }

@@ -4,50 +4,62 @@ using UnityEngine;
 public class ClassroomMutator : MonoBehaviour
 {
     [Header("References")]
-    [Tooltip("I banchi degli studenti (tutti tranne quello del player)")]
-    public List<GameObject> studentDesks = new List<GameObject>();
     public WindowManager windowManager;
 
-
-    [Tooltip("I MeshRenderer dei muri")]
+    [Tooltip("I MeshRenderer dei muri che possono tingersi di rosso sangue")]
     public List<MeshRenderer> wallRenderers = new List<MeshRenderer>();
 
-    [Tooltip("Il transform della lavagna")]
+    [Tooltip("Il transform della lavagna (viene inclinata)")]
     public Transform blackboard;
 
+    [Tooltip("La mappa appesa al muro (viene capovolta a testa in giù)")]
+    public Transform mapTransform;
+
+    [Tooltip("Le luci della stanza che diventano rosse (componenti Light)")]
+    public List<Light> roomLights = new List<Light>();
+
     [Header("Settings")]
-    public float deskShiftAmount = 0.3f;
     public float blackboardTiltMax = 8f;
-    public Color wallTintColor = new Color(0.6f, 0.15f, 0.15f);
+
+    [Tooltip("Colore verso cui i muri sfumano")]
+    public Color wallTintColor = new Color(0.5f, 0f, 0f);
+    [Tooltip("Quanto si avvicina al rosso ad ogni mutazione (1 = subito pieno)")]
+    [Range(0f, 1f)] public float wallTintStep = 0.5f;
+
+    [Tooltip("Colore verso cui le luci sfumano")]
+    public Color lightTintColor = new Color(0.8f, 0f, 0f);
+    [Range(0f, 1f)] public float lightTintStep = 0.6f;
+
+    [Tooltip("Rotazione applicata alla mappa per capovolgerla. Regola l'asse se la mappa non si gira come previsto.")]
+    public Vector3 mapFlipEuler = new Vector3(0f, 0f, 180f);
 
     [Header("State")]
     [SerializeField] private int mutationsApplied = 0;
 
     // Stato originale salvato per reset
-    private Dictionary<GameObject, Vector3> originalDeskPositions = new Dictionary<GameObject, Vector3>();
     private Dictionary<MeshRenderer, Color> originalWallColors = new Dictionary<MeshRenderer, Color>();
+    private Dictionary<Light, Color> originalLightColors = new Dictionary<Light, Color>();
     private Quaternion originalBlackboardRotation;
+    private Quaternion originalMapRotation;
+    private bool mapFlipped = false;
 
-    private enum MutationType { MoveDeskSlightly, TintWall, TiltBlackboard, RotateDesk, DisappearWindow }
+    private enum MutationType { TiltBlackboard, TintWall, DisappearWindow, FlipMap, TintLights }
 
     public int MutationsApplied => mutationsApplied;
 
     void Awake()
     {
-        foreach (var desk in studentDesks)
-        {
-            if (desk != null)
-                originalDeskPositions[desk] = desk.transform.position;
-        }
-
         foreach (var wall in wallRenderers)
-        {
-            if (wall != null)
-                originalWallColors[wall] = wall.material.color;
-        }
+            if (wall != null) originalWallColors[wall] = wall.material.color;
+
+        foreach (var light in roomLights)
+            if (light != null) originalLightColors[light] = light.color;
 
         if (blackboard != null)
             originalBlackboardRotation = blackboard.rotation;
+
+        if (mapTransform != null)
+            originalMapRotation = mapTransform.rotation;
     }
 
     public void ApplyRandomMutation()
@@ -56,55 +68,24 @@ public class ClassroomMutator : MonoBehaviour
 
         switch (type)
         {
-            case MutationType.MoveDeskSlightly:
-                MoveDeskSlightly();
+            case MutationType.TiltBlackboard:
+                TiltBlackboard();
                 break;
             case MutationType.TintWall:
                 TintRandomWall();
                 break;
-            case MutationType.TiltBlackboard:
-                TiltBlackboard();
-                break;
-            case MutationType.RotateDesk:
-                RotateRandomDesk();
-                break;
             case MutationType.DisappearWindow:
                 DisappearRandomWindow();
+                break;
+            case MutationType.FlipMap:
+                FlipMap();
+                break;
+            case MutationType.TintLights:
+                TintLights();
                 break;
         }
 
         mutationsApplied++;
-    }
-
-    private void MoveDeskSlightly()
-    {
-        List<GameObject> active = new List<GameObject>();
-        foreach (var d in studentDesks)
-            if (d != null && d.activeSelf) active.Add(d);
-
-        if (active.Count == 0) return;
-
-        GameObject target = active[UnityEngine.Random.Range(0, active.Count)];
-        Vector3 offset = new Vector3(
-            UnityEngine.Random.Range(-1f, 1f),
-            0f,
-            UnityEngine.Random.Range(-1f, 1f)
-        ).normalized * deskShiftAmount;
-
-        target.transform.position += offset;
-        Debug.Log($"[Mutator] Banco spostato: {target.name}");
-    }
-
-    private void TintRandomWall()
-    {
-        if (wallRenderers.Count == 0) return;
-
-        MeshRenderer target = wallRenderers[UnityEngine.Random.Range(0, wallRenderers.Count)];
-        if (target == null) return;
-
-        Color current = target.material.color;
-        target.material.color = Color.Lerp(current, wallTintColor, 0.3f);
-        Debug.Log($"[Mutator] Muro tinto: {target.gameObject.name}");
     }
 
     private void TiltBlackboard()
@@ -118,20 +99,16 @@ public class ClassroomMutator : MonoBehaviour
         Debug.Log($"[Mutator] Lavagna inclinata di {tilt:F1} gradi");
     }
 
-    private void RotateRandomDesk()
+    private void TintRandomWall()
     {
-        List<GameObject> active = new List<GameObject>();
-        foreach (var d in studentDesks)
-            if (d != null && d.activeSelf) active.Add(d);
+        if (wallRenderers.Count == 0) return;
 
-        if (active.Count == 0) return;
+        MeshRenderer target = wallRenderers[UnityEngine.Random.Range(0, wallRenderers.Count)];
+        if (target == null) return;
 
-        GameObject target = active[UnityEngine.Random.Range(0, active.Count)];
-        float angle = UnityEngine.Random.Range(10f, 35f);
-        if (UnityEngine.Random.value > 0.5f) angle = -angle;
-
-        target.transform.Rotate(0f, angle, 0f);
-        Debug.Log($"[Mutator] Banco ruotato: {target.name} di {angle:F1} gradi");
+        Color current = target.material.color;
+        target.material.color = Color.Lerp(current, wallTintColor, wallTintStep);
+        Debug.Log($"[Mutator] Muro tinto di rosso: {target.gameObject.name}");
     }
 
     private void DisappearRandomWindow()
@@ -140,20 +117,45 @@ public class ClassroomMutator : MonoBehaviour
         windowManager.DisappearRandomWindow();
     }
 
+    private void FlipMap()
+    {
+        if (mapTransform == null) return;
+
+        mapFlipped = !mapFlipped;
+        mapTransform.rotation = mapFlipped
+            ? originalMapRotation * Quaternion.Euler(mapFlipEuler)
+            : originalMapRotation;
+        Debug.Log($"[Mutator] Mappa {(mapFlipped ? "capovolta a testa in giù" : "raddrizzata")}");
+    }
+
+    private void TintLights()
+    {
+        if (roomLights.Count == 0) return;
+
+        bool any = false;
+        foreach (var light in roomLights)
+        {
+            if (light == null) continue;
+            light.color = Color.Lerp(light.color, lightTintColor, lightTintStep);
+            any = true;
+        }
+        if (any) Debug.Log("[Mutator] Luci tinte di rosso");
+    }
+
     public void ResetAllMutations()
     {
-        foreach (var pair in originalDeskPositions)
-            if (pair.Key != null) pair.Key.transform.position = pair.Value;
-
         foreach (var pair in originalWallColors)
             if (pair.Key != null) pair.Key.material.color = pair.Value;
+
+        foreach (var pair in originalLightColors)
+            if (pair.Key != null) pair.Key.color = pair.Value;
 
         if (blackboard != null)
             blackboard.rotation = originalBlackboardRotation;
 
-        // Reset rotazione banchi
-        foreach (var desk in studentDesks)
-            if (desk != null) desk.transform.rotation = Quaternion.identity;
+        if (mapTransform != null)
+            mapTransform.rotation = originalMapRotation;
+        mapFlipped = false;
 
         mutationsApplied = 0;
     }
