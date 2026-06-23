@@ -22,6 +22,8 @@ public class PlayerInteractionController : MonoBehaviour
     public int maxInteractionHits = 24;
     public LayerMask interactionMask = ~0;
     public Key interactKey = Key.F;
+    [Tooltip("Tasto per l'azione secondaria opzionale (es. chiudere un cassetto senza raccogliere). Deve combaciare col testo del prompt secondario.")]
+    public Key secondaryInteractKey = Key.Q;
 
     [Header("Canvas HUD")]
     public bool drawPlaceholderHud = true;
@@ -105,6 +107,14 @@ public class PlayerInteractionController : MonoBehaviour
             }
         }
 
+        if (keyboard != null && !isInDialogue
+            && currentInteractable is ISecondaryInteractable secondaryInteractable
+            && secondaryInteractable.CanInteractSecondary()
+            && keyboard[secondaryInteractKey].wasPressedThisFrame)
+        {
+            ShowMessage(secondaryInteractable.InteractSecondary(gameManager));
+        }
+
         RefreshHud();
     }
 
@@ -184,6 +194,12 @@ public class PlayerInteractionController : MonoBehaviour
         {
             currentInteractable = interactable;
             currentPrompt = interactable.GetInteractionPrompt();
+            if (interactable is ISecondaryInteractable secondaryInteractable && secondaryInteractable.CanInteractSecondary())
+            {
+                string secondaryPrompt = secondaryInteractable.GetSecondaryPrompt();
+                if (!string.IsNullOrWhiteSpace(secondaryPrompt))
+                    currentPrompt += "\n" + secondaryPrompt;
+            }
             return;
         }
 
