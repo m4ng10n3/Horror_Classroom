@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using System;
 
 [RequireComponent(typeof(CharacterController))]
@@ -9,6 +10,26 @@ public class FPSController : MonoBehaviour
     public float moveSpeed = 2.5f;
     public float mouseSensitivity = 0.1f;
     public float gravity = -20f;
+
+    [Header("Running / Stamina")]
+    [Tooltip("Moltiplicatore di velocità durante la corsa (tieni premuto Shift)")]
+    public float runSpeedMultiplier = 2f;
+    [Tooltip("Secondi di corsa continua per riempire la barra ed essere scoperti. Accovacciato la svuota nello stesso tempo.")]
+    public float maxRunTime = 2f;
+    [Tooltip("Quanto velocemente la barra sale camminando rispetto alla corsa (0.25 = un quarto)")]
+    [Range(0f, 1f)] public float walkFillMultiplier = 0.25f;
+    [Tooltip("Quanto lentamente la barra scende stando fermi in piedi, rispetto al crouch (0.15 = molto lenta)")]
+    [Range(0f, 1f)] public float idleDrainMultiplier = 0.15f;
+    [Tooltip("Moltiplicatore di velocità mentre sei accovacciato (Ctrl)")]
+    public float crouchSpeedMultiplier = 0.5f;
+    [Tooltip("Di quanto si abbassa la camera quando sei accovacciato (in metri)")]
+    public float crouchCameraDrop = 0.6f;
+    [Tooltip("Velocità di transizione dell'abbassamento/rialzo della camera")]
+    public float crouchTransitionSpeed = 8f;
+    [Tooltip("Immagine UI (Image Type = Filled) che mostra la barra di corsa")]
+    public Image runBarFill;
+    [Tooltip("Se true il player può correre")]
+    public bool canRun = true;
     [Tooltip("Distanza dalla sedia a cui il player si posiziona quando si alza")]
     public float standOffset = 1.2f;
     [Tooltip("Distanza massima dalla sedia/seatPoint entro cui è possibile sedersi")]
@@ -38,6 +59,18 @@ public class FPSController : MonoBehaviour
     public event Action OnPlayerStoodUp;
     public event Action OnPlayerSatDown;
 
+    // Corsa
+    private float runStamina = 0f; // 0..maxRunTime
+    private bool runLimitTriggered = false;
+    private float standCameraY; // altezza locale della camera da in piedi
+    public bool IsRunning { get; private set; }
+    public bool IsCrouching { get; private set; }
+    public bool IsMoving { get; private set; }
+    public float RunStaminaNormalized => maxRunTime > 0f ? Mathf.Clamp01(runStamina / maxRunTime) : 0f;
+
+    // Scatta quando la barra di corsa si riempie del tutto: la prof ti scopre.
+    public event Action OnRunLimitExceeded;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -50,6 +83,9 @@ public class FPSController : MonoBehaviour
 
         if (chairTransform != null)
             chairOriginalPosition = chairTransform.position;
+
+        if (cameraTransform != null)
+            standCameraY = cameraTransform.localPosition.y;
 
         if (seatPoint != null)
             TeleportTo(seatPoint);
@@ -69,10 +105,57 @@ public class FPSController : MonoBehaviour
 
         HandleSitStandToggle();
 
+        IsRunning = false;
+        IsCrouching = false;
+        IsMoving = false;
         if (!isSeated)
         {
             HandleMovement();
         }
+
+        UpdateRunStamina();
+        UpdateCrouchCamera();
+    }
+
+    void UpdateCrouchCamera()
+    {
+        if (cameraTransform == null) return;
+
+        float targetY = IsCrouching ? standCameraY - crouchCameraDrop : standCameraY;
+        Vector3 lp = cameraTransform.localPosition;
+        lp.y = Mathf.Lerp(lp.y, targetY, crouchTransitionSpeed * Time.deltaTime);
+        cameraTransform.localPosition = lp;
+    }
+
+    void UpdateRunStamina()
+    {
+        // Seduto o accovacciato (Ctrl) = la barra si svuota.
+        // Corsa = riempimento pieno; camminata = riempimento a metà;
+        // fermo in piedi = svuotamento lentissimo.
+        float delta;
+        if (isSeated || IsCrouching)
+            delta = -Time.deltaTime;
+        else if (IsRunning)
+            delta = Time.deltaTime;
+        else if (IsMoving)
+            delta = Time.deltaTime * walkFillMultiplier;
+        else
+            delta = -Time.deltaTime * idleDrainMultiplier;
+
+        runStamina += delta;
+        runStamina = Mathf.Clamp(runStamina, 0f, maxRunTime);
+
+        // Limite superato: la prof ti scopre (una sola volta finché non si svuota).
+        if (runStamina >= maxRunTime && !runLimitTriggered)
+        {
+            runLimitTriggered = true;
+            OnRunLimitExceeded?.Invoke();
+        }
+        if (runStamina <= 0f)
+            runLimitTriggered = false;
+
+        if (runBarFill != null)
+            runBarFill.fillAmount = RunStaminaNormalized;
     }
 
     void HandleLook()
@@ -205,12 +288,26 @@ public class FPSController : MonoBehaviour
 
         Vector3 move = (transform.right * input.x + transform.forward * input.y).normalized;
 
+        bool isMoving = input.sqrMagnitude > 0.01f;
+        IsMoving = isMoving;
+        bool crouching = kb != null && (kb.leftCtrlKey.isPressed || kb.rightCtrlKey.isPressed);
+        IsCrouching = crouching;
+
+        // Accovacciato non si può correre.
+        bool wantsToRun = canRun && isMoving && !crouching && kb != null &&
+                          (kb.leftShiftKey.isPressed || kb.rightShiftKey.isPressed);
+        IsRunning = wantsToRun;
+
+        float currentSpeed = moveSpeed;
+        if (crouching) currentSpeed *= crouchSpeedMultiplier;
+        else if (wantsToRun) currentSpeed *= runSpeedMultiplier;
+
         if (controller.isGrounded && verticalVelocity < 0f)
             verticalVelocity = -2f;
 
         verticalVelocity += gravity * Time.deltaTime;
         move.y = verticalVelocity;
 
-        controller.Move(move * moveSpeed * Time.deltaTime);
+        controller.Move(move * currentSpeed * Time.deltaTime);
     }
 }

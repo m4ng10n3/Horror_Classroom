@@ -105,6 +105,11 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     private MeshRenderer bodyRenderer;
     private Material bodyMaterialInstance;
 
+    // Effetti collaterali calcolati da GetDialogueSequence e applicati solo a
+    // dialogo concluso (OnDialogueCompleted). Se il dialogo viene interrotto
+    // restano in sospeso e vengono scartati alla successiva chiamata.
+    private System.Action pendingCommit;
+
     public string SpeakerName => string.IsNullOrWhiteSpace(studentName) ? gameObject.name : studentName;
 
     void Awake()
@@ -556,6 +561,9 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
 
     public DialogueLine[] GetDialogueSequence(GameManager gameManager)
     {
+        // Ogni calcolo riparte da zero: nessun effetto collaterale ancora in sospeso.
+        pendingCommit = null;
+
         PhysicalInventory inventory = ResolvePhysicalInventory();
         if (inventory == null)
         {
@@ -586,15 +594,21 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
             } };
         }
 
-        // Priorità 5: esegui il baratto.
-        if (NeedsRequiredItem() && consumeRequiredItem)
-            inventory.RemoveItem(requiredItem);
-
-        tradeDone = true;
-
-        if (!string.IsNullOrWhiteSpace(rewardItem))
+        // Priorità 5: baratto. Calcola le battute ma applica gli effetti solo a fine dialogo.
+        bool hasReward = !string.IsNullOrWhiteSpace(rewardItem);
+        pendingCommit = () =>
         {
-            GivePhysicalItem(inventory);
+            if (NeedsRequiredItem() && consumeRequiredItem)
+                inventory.RemoveItem(requiredItem);
+
+            tradeDone = true;
+
+            if (hasReward)
+                GivePhysicalItem(inventory);
+        };
+
+        if (hasReward)
+        {
             var extended = new DialogueLine[completedSequence.Length + 1];
             System.Array.Copy(completedSequence, extended, completedSequence.Length);
             extended[completedSequence.Length] = new DialogueLine
@@ -606,6 +620,15 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         }
 
         return completedSequence;
+    }
+
+    // Applica gli effetti collaterali del dialogo appena concluso. Se il dialogo è
+    // stato interrotto (player allontanato) questo non viene chiamato e lo stato
+    // resta invariato, così alla prossima interazione si riparte dall'inizio.
+    public void OnDialogueCompleted(GameManager gameManager)
+    {
+        pendingCommit?.Invoke();
+        pendingCommit = null;
     }
 
     // Controlla se qualche trigger di oggetto deve scattare e restituisce il dialogo relativo.
@@ -621,7 +644,9 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
             if (!inventory.HasItem(trigger.requiredItemName)) continue;
             if (trigger.dialogue == null || trigger.dialogue.lines == null || trigger.dialogue.lines.Length == 0) continue;
 
-            trigger.triggered = true;
+            // Il trigger oneShot si "consuma" solo a dialogo concluso.
+            var capturedTrigger = trigger;
+            pendingCommit = () => capturedTrigger.triggered = true;
             return trigger.dialogue.lines;
         }
 
@@ -629,6 +654,7 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     }
 
     // Restituisce la prossima sequenza di ripetizione, bloccandosi sull'ultima.
+    // L'avanzamento dell'indice avviene solo a dialogo concluso.
     private DialogueLine[] GetNextRepeatSequence()
     {
         if (repeatSequences == null || repeatSequences.Length == 0)
@@ -637,8 +663,11 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         int index = Mathf.Clamp(repeatIndex, 0, repeatSequences.Length - 1);
         DialogueLine[] lines = repeatSequences[index]?.lines;
 
-        if (repeatIndex < repeatSequences.Length - 1)
-            repeatIndex++;
+        pendingCommit = () =>
+        {
+            if (repeatIndex < repeatSequences.Length - 1)
+                repeatIndex++;
+        };
 
         return lines ?? Array.Empty<DialogueLine>();
     }

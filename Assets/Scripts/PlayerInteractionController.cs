@@ -24,6 +24,8 @@ public class PlayerInteractionController : MonoBehaviour
     public Key interactKey = Key.F;
     [Tooltip("Tasto per l'azione secondaria opzionale (es. chiudere un cassetto senza raccogliere). Deve combaciare col testo del prompt secondario.")]
     public Key secondaryInteractKey = Key.Q;
+    [Tooltip("Distanza oltre la quale un dialogo in corso viene chiuso se il player si allontana dall'interlocutore. Se <= 0 usa interactionDistance.")]
+    public float dialogueMaxDistance = 0f;
 
     [Header("Canvas HUD")]
     public bool drawPlaceholderHud = true;
@@ -43,6 +45,9 @@ public class PlayerInteractionController : MonoBehaviour
     private DialogueLine[] activeSequence;
     private int currentLineIndex;
     private string currentNPCName = string.Empty;
+    private IDialogueSequenceInteractable currentDialogueSource;
+    private Transform currentSpeakerTransform;
+    private Collider currentSpeakerCollider;
     private RaycastHit[] interactionHits;
 
     private RectTransform hudRoot;
@@ -90,6 +95,8 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (!isInDialogue)
             UpdateCurrentInteractable();
+        else if (HasWalkedAwayFromSpeaker())
+            EndDialogue();
 
         Keyboard keyboard = Keyboard.current;
         if (keyboard != null && keyboard[interactKey].wasPressedThisFrame)
@@ -121,7 +128,11 @@ public class PlayerInteractionController : MonoBehaviour
     private void StartDialogueSequence(IDialogueSequenceInteractable seqInteractable)
     {
         activeSequence = seqInteractable.GetDialogueSequence(gameManager);
+        currentDialogueSource = seqInteractable;
         currentNPCName = seqInteractable.SpeakerName;
+        MonoBehaviour speakerBehaviour = seqInteractable as MonoBehaviour;
+        currentSpeakerTransform = speakerBehaviour != null ? speakerBehaviour.transform : null;
+        currentSpeakerCollider = speakerBehaviour != null ? speakerBehaviour.GetComponentInChildren<Collider>() : null;
         currentLineIndex = 0;
         isInDialogue = activeSequence != null && activeSequence.Length > 0;
         ShowCurrentDialogueLine();
@@ -133,15 +144,50 @@ public class PlayerInteractionController : MonoBehaviour
         ShowCurrentDialogueLine();
     }
 
+    private bool HasWalkedAwayFromSpeaker()
+    {
+        if (currentSpeakerTransform == null)
+            return false;
+
+        float maxDistance = dialogueMaxDistance > 0f ? dialogueMaxDistance : interactionDistance;
+        Vector3 origin = playerCamera != null ? playerCamera.transform.position : transform.position;
+
+        // Misura dal punto piu' vicino del collider dell'NPC: il pivot e' ai piedi,
+        // mentre la camera del player e' all'altezza degli occhi, quindi la distanza
+        // dal pivot sarebbe falsata e chiuderebbe il dialogo subito.
+        Vector3 target = currentSpeakerCollider != null
+            ? currentSpeakerCollider.ClosestPoint(origin)
+            : currentSpeakerTransform.position;
+
+        return Vector3.Distance(origin, target) > maxDistance;
+    }
+
+    // Chiusura per completamento: applica gli effetti collaterali del dialogo.
+    private void CompleteDialogue()
+    {
+        currentDialogueSource?.OnDialogueCompleted(gameManager);
+        EndDialogue();
+    }
+
+    // Chiusura senza commit: usata quando il dialogo viene interrotto (player
+    // allontanato). Lo stato dell'NPC resta invariato, così riparte dall'inizio.
+    private void EndDialogue()
+    {
+        isInDialogue = false;
+        activeSequence = null;
+        currentDialogueSource = null;
+        currentSpeakerTransform = null;
+        currentSpeakerCollider = null;
+        currentMessage = string.Empty;
+        messageTimer = 0f;
+        RefreshHud();
+    }
+
     private void ShowCurrentDialogueLine()
     {
         if (!isInDialogue || activeSequence == null || currentLineIndex >= activeSequence.Length)
         {
-            isInDialogue = false;
-            activeSequence = null;
-            currentMessage = string.Empty;
-            messageTimer = 0f;
-            RefreshHud();
+            CompleteDialogue();
             return;
         }
 

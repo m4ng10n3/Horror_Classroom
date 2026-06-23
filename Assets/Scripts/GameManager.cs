@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
             player.forceSeated = true;
             player.OnPlayerStoodUp += OnPlayerStoodUp;
             player.OnPlayerSatDown += OnPlayerSatDown;
+            player.OnRunLimitExceeded += OnPlayerRanTooMuch;
         }
 
         StartCoroutine(InitialDelay());
@@ -278,6 +279,15 @@ public class GameManager : MonoBehaviour
     void OnPlayerStoodUp()
     {
         if (isGameOver) return;
+    }
+
+    void OnPlayerRanTooMuch()
+    {
+        if (isGameOver) return;
+
+        // La prof si gira di scatto verso la classe e ti scopre.
+        if (teacher != null) teacher.FaceClass();
+        TriggerGameOver("TI HO SENTITO CORRERE.");
     }
 
     void OnPlayerSatDown()
