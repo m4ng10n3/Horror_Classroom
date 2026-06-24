@@ -68,8 +68,30 @@ public class FPSController : MonoBehaviour
     public bool IsMoving { get; private set; }
     public float RunStaminaNormalized => maxRunTime > 0f ? Mathf.Clamp01(runStamina / maxRunTime) : 0f;
 
+    // True quando la barra di esposizione è al massimo (player sul punto di essere scoperto).
+    public bool IsExposureMaxed => runStamina >= maxRunTime;
+
     // Scatta quando la barra di corsa si riempie del tutto: la prof ti scopre.
     public event Action OnRunLimitExceeded;
+
+    // Aggiunge esposizione alla barra dall'esterno (es. furto in corso). Replica la
+    // soglia di "scoperto" di UpdateRunStamina, riusando lo stesso guard runLimitTriggered
+    // così l'evento non scatta due volte e si resetta quando la barra si svuota.
+    public void AddExposure(float amount)
+    {
+        if (amount <= 0f) return;
+
+        runStamina = Mathf.Clamp(runStamina + amount, 0f, maxRunTime);
+
+        if (runBarFill != null)
+            runBarFill.fillAmount = RunStaminaNormalized;
+
+        if (runStamina >= maxRunTime && !runLimitTriggered)
+        {
+            runLimitTriggered = true;
+            OnRunLimitExceeded?.Invoke();
+        }
+    }
 
     void Awake()
     {
