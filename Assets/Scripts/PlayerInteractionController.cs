@@ -30,6 +30,10 @@ public class PlayerInteractionController : MonoBehaviour
     [Header("Canvas HUD")]
     public bool drawPlaceholderHud = true;
     public float messageDuration = 4f;
+    [Tooltip("Se assegnato, sovrascrive la Source Image del box dialoghi (altrimenti copia lo sprite del QuestionPanel).")]
+    public Sprite dialogueBoxSprite;
+    [Tooltip("Se assegnato, sovrascrive la Source Image del box interazioni (altrimenti copia lo sprite degli AnswerButtons).")]
+    public Sprite promptBoxSprite;
 
     [Header("Dialogue")]
     public string playerName = "Eddy";
@@ -483,7 +487,7 @@ public class PlayerInteractionController : MonoBehaviour
             new Vector2(360f, 56f),
             new Vector2(0.5f, 0f));
         promptPanelImage = promptPanel.GetComponent<Image>();
-        ApplyImageStyle(promptPanelImage, answerButtonStyle, new Color(0.15686275f, 0.15686275f, 0.23529412f, 0.95f));
+        ApplyImageStyle(promptPanelImage, answerButtonStyle, new Color(0.15686275f, 0.15686275f, 0.23529412f, 0.95f), promptBoxSprite);
         promptText = CreateText(
             "InteractionPromptText",
             promptPanel,
@@ -501,7 +505,7 @@ public class PlayerInteractionController : MonoBehaviour
             new Vector2(980f, 172f),
             new Vector2(0.5f, 0f));
         dialoguePanelImage = dialoguePanel.GetComponent<Image>();
-        ApplyImageStyle(dialoguePanelImage, questionPanelStyle, new Color(0f, 0f, 0f, 0.78f));
+        ApplyImageStyle(dialoguePanelImage, questionPanelStyle, new Color(0f, 0f, 0f, 0.78f), dialogueBoxSprite);
         dialogueText = CreateText(
             "DialogueText",
             dialoguePanel,
@@ -586,7 +590,7 @@ public class PlayerInteractionController : MonoBehaviour
         return text;
     }
 
-    private void ApplyImageStyle(Image target, Image source, Color fallbackColor)
+    private void ApplyImageStyle(Image target, Image source, Color fallbackColor, Sprite overrideSprite = null)
     {
         if (target == null)
         {
@@ -605,7 +609,19 @@ public class PlayerInteractionController : MonoBehaviour
             target.type = Image.Type.Sliced;
         }
 
-        target.color = fallbackColor;
+        // Lo sprite assegnato nell'Inspector ha la precedenza sulla copia dall'UI del quiz.
+        if (overrideSprite != null)
+        {
+            target.sprite = overrideSprite;
+            target.type = Image.Type.Sliced;
+            // Niente tint: mostra lo sprite custom come e' stato disegnato.
+            target.color = Color.white;
+        }
+        else
+        {
+            target.color = fallbackColor;
+        }
+
         target.raycastTarget = false;
     }
 
