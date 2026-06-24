@@ -37,6 +37,8 @@ public class PlayerInteractionController : MonoBehaviour
     public Color npcLineColor = Color.white;
 
     private IPlayerInteractable currentInteractable;
+    private IHoldInteractable activeHold;
+    private float holdTimer;
     private string currentPrompt = string.Empty;
     private string currentMessage = string.Empty;
     private float messageTimer = 0f;
@@ -87,6 +89,7 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (player.gameplayFrozen || player.isSeated)
         {
+            CancelHold();
             if (!isInDialogue)
                 ClearCurrentInteractable();
             RefreshHud();
@@ -99,13 +102,18 @@ public class PlayerInteractionController : MonoBehaviour
             EndDialogue();
 
         Keyboard keyboard = Keyboard.current;
-        if (keyboard != null && keyboard[interactKey].wasPressedThisFrame)
+
+        // Interazioni "tieni premuto" (es. furto) gestite a parte: se una è in corso o
+        // appena avviata, consuma il frame e salta il tap istantaneo.
+        bool holdConsumed = !isInDialogue && HandleHoldInteraction(keyboard);
+
+        if (!holdConsumed && keyboard != null && keyboard[interactKey].wasPressedThisFrame)
         {
             if (isInDialogue)
             {
                 AdvanceDialogue();
             }
-            else if (currentInteractable != null)
+            else if (currentInteractable != null && !(currentInteractable is IHoldInteractable))
             {
                 if (currentInteractable is IDialogueSequenceInteractable seqInteractable)
                     StartDialogueSequence(seqInteractable);
@@ -142,6 +150,80 @@ public class PlayerInteractionController : MonoBehaviour
     {
         currentLineIndex++;
         ShowCurrentDialogueLine();
+    }
+
+    // Gestisce le interazioni a pressione prolungata (IHoldInteractable). Ritorna true se
+    // un hold è stato avviato o è in corso questo frame, così il chiamante salta il tap.
+    private bool HandleHoldInteraction(Keyboard keyboard)
+    {
+        if (keyboard == null)
+        {
+            CancelHold();
+            return false;
+        }
+
+        bool keyHeld = keyboard[interactKey].isPressed;
+
+        // Avvio di un nuovo hold: serve una nuova pressione mentre si punta un IHoldInteractable.
+        if (activeHold == null)
+        {
+            if (!keyboard[interactKey].wasPressedThisFrame)
+                return false;
+            if (!(currentInteractable is IHoldInteractable holdable))
+                return false;
+
+            if (!holdable.CanBeginHold(out string blockReason))
+            {
+                if (!string.IsNullOrWhiteSpace(blockReason))
+                    ShowMessage(blockReason);
+                return true; // pressione consumata dal tentativo bloccato
+            }
+
+            activeHold = holdable;
+            holdTimer = 0f;
+            // continua sotto col primo tick
+        }
+
+        // Interruzione: tasto rilasciato, bersaglio non più puntato/in range, o non più interagibile.
+        if (!keyHeld || (object)currentInteractable != (object)activeHold || !activeHold.CanInteract())
+        {
+            CancelHold();
+            return false;
+        }
+
+        holdTimer += Time.deltaTime;
+        float progress = activeHold.HoldDuration > 0f
+            ? Mathf.Clamp01(holdTimer / activeHold.HoldDuration)
+            : 1f;
+
+        // Tick: l'oggetto può richiedere l'annullamento (es. esposizione al massimo).
+        if (!activeHold.OnHoldTick(Time.deltaTime, progress))
+        {
+            CancelHold();
+            return true;
+        }
+
+        // Feedback di avanzamento nel prompt (la barra di esposizione fa il resto).
+        currentPrompt = $"{currentInteractable.GetInteractionPrompt()}  {Mathf.RoundToInt(progress * 100f)}%";
+
+        if (holdTimer >= activeHold.HoldDuration)
+        {
+            IHoldInteractable finished = activeHold;
+            activeHold = null;
+            finished.OnHoldCompleted(gameManager);
+        }
+
+        return true;
+    }
+
+    private void CancelHold()
+    {
+        if (activeHold == null)
+            return;
+
+        IHoldInteractable cancelled = activeHold;
+        activeHold = null;
+        cancelled.OnHoldCancelled();
     }
 
     private bool HasWalkedAwayFromSpeaker()

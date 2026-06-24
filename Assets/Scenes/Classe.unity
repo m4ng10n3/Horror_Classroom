@@ -364,6 +364,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!4 &14494612 stripped
 Transform:
@@ -4239,6 +4240,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1 &357395064 stripped
 GameObject:
@@ -6231,6 +6233,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &604079461
 PrefabInstance:
@@ -6482,6 +6485,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!4 &608712901 stripped
 Transform:
@@ -7016,15 +7020,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15686275, g: 0.15686275, b: 0.23529412, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 7be8c15b38f732b45aaf68bdf2e61412, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7277,6 +7281,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &662382486
 PrefabInstance:
@@ -7471,6 +7476,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &674828873
 PrefabInstance:
@@ -9181,6 +9187,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1 &829316808
 GameObject:
@@ -9764,6 +9771,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &870881476
 PrefabInstance:
@@ -10407,6 +10415,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &933510614
 PrefabInstance:
@@ -10776,6 +10785,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &966201663
 PrefabInstance:
@@ -12408,6 +12418,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &1144362264
 PrefabInstance:
@@ -12555,6 +12566,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!4 &1151794896 stripped
 Transform:
@@ -12636,6 +12648,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &1157625460
 PrefabInstance:
@@ -13694,6 +13707,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1 &1270428968
 GameObject:
@@ -14256,15 +14270,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.7058824}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 64eda71d4b800d14faf57997db3839c2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -14442,6 +14456,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1 &1352977986
 GameObject:
@@ -14508,6 +14523,12 @@ MonoBehaviour:
   vignetteImage: {fileID: 442562696}
   teacherStateMachine: {fileID: 2007373966}
   suspicionCounter: {fileID: 879980192}
+  stealColor: {r: 0, g: 0, b: 0, a: 1}
+  stealMaxAlpha: 0.43
+  stealFadeSpeed: 6
+  autoGenerateSprite: 1
+  vignetteInnerRadius: 1
+  vignetteSoftness: 0.01
   neutralAlpha: 0
   pleasedAlpha: 0.15
   angryAlpha: 0.4
@@ -15919,6 +15940,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 47.655045, y: 2.1052203, z: 64.923645}
   m_Center: {x: 0.040062357, y: 0.00318159, z: -23.393154}
+--- !u!1 &1481098182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
+  m_PrefabInstance: {fileID: 2071860162}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1481098186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481098182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1a5d1d74f1b254a8cce090acb7cb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StealableItem
+  itemName: Patatine
+  itemDescription: Un oggetto preso di nascosto dal banco di qualcuno.
+  stealDuration: 2
+  noiseRate: 0.6
+  suspicionCost: 1
+  owner: {fileID: 2058133692}
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 1481098182}
 --- !u!1 &1489307694
 GameObject:
   m_ObjectHideFlags: 0
@@ -16281,6 +16328,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &1535059784
 PrefabInstance:
@@ -16938,6 +16986,153 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 47.655045, y: 2.1052203, z: 64.923645}
   m_Center: {x: 0.040062357, y: 0.00318159, z: -23.393154}
+--- !u!1 &1606633540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1606633543}
+  - component: {fileID: 1606633542}
+  - component: {fileID: 1606633541}
+  m_Layer: 0
+  m_Name: BackgroundMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1606633541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606633540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8103c17b78537154fb2d1015c03af58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundMusicController
+  musicClip: {fileID: 8300000, guid: 9e4569213ea2849468d193828ae13aba, type: 3}
+  volume: 0.5
+  basePitch: 1
+  stealPitch: 1.5
+  pitchLerpSpeed: 4
+--- !u!82 &1606633542
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606633540}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.305
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1606633543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606633540}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.74271, y: 1.06331, z: -3.94214}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1615825755
 GameObject:
   m_ObjectHideFlags: 0
@@ -17425,6 +17620,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &1643757312
 PrefabInstance:
@@ -19191,6 +19387,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1001 &1840138583
 PrefabInstance:
@@ -19761,6 +19958,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1 &1934704879
 GameObject:
@@ -21106,6 +21304,7 @@ MonoBehaviour:
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
+  deskItems: []
   isVisible: 1
 --- !u!1 &2059868873
 GameObject:
@@ -21382,7 +21581,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1481098186}
   m_SourcePrefab: {fileID: 100100000, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
 --- !u!1001 &2075272623
 PrefabInstance:
@@ -24318,3 +24520,4 @@ SceneRoots:
   - {fileID: 665608736}
   - {fileID: 543225169}
   - {fileID: 2071860162}
+  - {fileID: 1606633543}

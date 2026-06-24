@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -98,8 +99,17 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     public float fallbackInteractionRadius = 0.45f;
     public float fallbackInteractionHeight = 1.6f;
 
+    [Header("Steal System")]
+    [Tooltip("Oggetti rubabili appartenenti a questo studente. Quando sparisce diventano raccoglibili gratis. Si popola anche da solo se imposti 'owner' sullo StealableItem.")]
+    [SerializeField] private List<StealableItem> deskItems = new List<StealableItem>();
+
     [Header("State")]
     [SerializeField] private bool isVisible = true;
+
+    // Quante volte questo studente ha visto il player rubare qualcosa. Aggancio per un
+    // futuro sistema di reazione del testimone (Calmo / Insospettito / Agitato / Sta-per-parlare).
+    private int timesWitnessed = 0;
+    public int TimesWitnessed => timesWitnessed;
 
     private int repeatIndex = 0;
     private MeshRenderer bodyRenderer;
@@ -536,8 +546,38 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     public void Disappear()
     {
         isVisible = false;
+
+        // Gli oggetti rubabili rimasti diventano raccoglibili gratis: niente hold,
+        // niente esposizione, niente sospetto. Sono GameObject separati dall'NPC,
+        // quindi restano attivi anche dopo che lo studente è stato disattivato.
+        if (deskItems != null)
+        {
+            foreach (StealableItem item in deskItems)
+            {
+                if (item != null)
+                    item.ConvertToFreePickup();
+            }
+        }
+
         gameObject.SetActive(false);
         Debug.Log($"[Student] {SpeakerName} è sparito...");
+    }
+
+    // Registra un oggetto rubabile come appartenente a questo studente. Chiamato
+    // automaticamente da StealableItem.Awake quando 'owner' è impostato.
+    public void RegisterStealable(StealableItem item)
+    {
+        if (item == null) return;
+        if (deskItems == null) deskItems = new List<StealableItem>();
+        if (!deskItems.Contains(item))
+            deskItems.Add(item);
+    }
+
+    // Aggancio minimo per la reazione del testimone: per ora conta e logga soltanto.
+    public void Witness()
+    {
+        timesWitnessed++;
+        Debug.Log($"[Student] {SpeakerName} ha visto un furto! (timesWitnessed={timesWitnessed})");
     }
 
     public void Reappear()
