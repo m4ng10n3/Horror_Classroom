@@ -328,7 +328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Nicole
   studentColor: {r: 0.6666667, g: 0.3137255, b: 0.6666667, a: 1}
   missingItemSequence: []
@@ -355,6 +354,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: Tessuto
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 919132149155446097, guid: ea27d0c5d25aa08458fa26376a22c96b, type: 3}
@@ -371,75 +372,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1322351245150383324, guid: ef508ddb573a8ab459283c9d22e9dccf, type: 3}
   m_PrefabInstance: {fileID: 3144827298424242796}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &21627188
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.11908834
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.048637956
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.06437491
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.2667
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1081
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.8832
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.73376787
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.544614
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.2420787
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.32615668
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 399.891
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 67.826
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 75.351
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
-      propertyPath: m_Name
-      value: Dito
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9697eb993c6f26348991be1801d99e8f, type: 3}
 --- !u!1001 &24360251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1545,9 +1477,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: 
+  consumeItemOnOpen: 0
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &86377657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1589,9 +1525,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: 
+  consumeItemOnOpen: 0
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &94239269
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3589,63 +3529,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05919468, y: 0.108418696, z: 0.1403353}
   m_Center: {x: -0.019067997, y: 0.040308703, z: -0.044028863}
---- !u!1001 &267649445
-PrefabInstance:
+--- !u!114 &264746672
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -12.313
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -11.354
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
-      propertyPath: m_Name
-      value: piramide
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d866bf92b1e50994eb00c71e642fce26, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264746660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Macchinina
+  itemId: 
+  description: La macchinina preferita di Brad
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 264746660}
 --- !u!1001 &283397233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3775,6 +3676,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1203865782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &287249406
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.7321746
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.967
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2614628
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      propertyPath: m_Name
+      value: Corda_Saltare
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 958664231}
+  m_SourcePrefab: {fileID: 100100000, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
 --- !u!1 &308475111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 097cc0699dc754a4cb7fb40079c13a74, type: 3}
@@ -4106,9 +4067,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: 
+  consumeItemOnOpen: 0
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &339901103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4150,9 +4115,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: 
+  consumeItemOnOpen: 0
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &344186651
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4340,7 +4309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Jenny
   studentColor: {r: 0.19607843, g: 0.6666667, b: 0.33333334, a: 1}
   missingItemSequence: []
@@ -4357,6 +4325,8 @@ MonoBehaviour:
   essential: 1
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: 
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 0}
@@ -5751,63 +5721,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520705240}
   m_CullTransparentMesh: 1
---- !u!1001 &520805946
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.202406
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.0039403
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.0120547
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
-      propertyPath: m_Name
-      value: Voodoo (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 192a2e999f1b1c84e9cea4a6b92c8863, type: 3}
 --- !u!1001 &543225169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5863,8 +5776,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1286332797}
   m_SourcePrefab: {fileID: 100100000, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
+--- !u!1 &547947547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6818915381637281209, guid: 5220286bf57a4b447a0a4a9603b1216f, type: 3}
+  m_PrefabInstance: {fileID: 4367893940507197074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &550619316
 GameObject:
   m_ObjectHideFlags: 0
@@ -6368,7 +6289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: George
   studentColor: {r: 0.3137255, g: 0.47058824, b: 0.3137255, a: 1}
   missingItemSequence:
@@ -6407,9 +6327,11 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: Forbice
-  rewardItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
+  rewardItem: Guanto da box
   consumeRequiredItem: 1
-  rewardItemPrefab: {fileID: 0}
+  rewardItemPrefab: {fileID: 547947547}
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
@@ -6473,7 +6395,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 338513d716cacea428964f2254952628, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1821248851}
   m_SourcePrefab: {fileID: 100100000, guid: 338513d716cacea428964f2254952628, type: 3}
 --- !u!1 &606773446
 GameObject:
@@ -6632,7 +6557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Juliet
   studentColor: {r: 0.54901963, g: 0.627451, b: 0.23529412, a: 1}
   missingItemSequence: []
@@ -6659,6 +6583,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: 
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 0}
@@ -7248,9 +7174,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: 
+  consumeItemOnOpen: 0
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &658310582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7432,7 +7362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Daniel
   studentColor: {r: 0.39215687, g: 0.19607843, b: 0.6666667, a: 1}
   missingItemSequence: []
@@ -7454,10 +7383,12 @@ MonoBehaviour:
   itemDialogueTriggers: []
   essential: 1
   tradeDone: 0
-  requiredItem: 
-  rewardItem: 
+  requiredItem: Temperino
+  additionalRequiredItems: []
+  tradeSteps: []
+  rewardItem: Peluche Spaventoso
   consumeRequiredItem: 1
-  rewardItemPrefab: {fileID: 0}
+  rewardItemPrefab: {fileID: 1821248847}
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
@@ -7625,7 +7556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Erika
   studentColor: {r: 0.78431374, g: 0.627451, b: 0.39215687, a: 1}
   missingItemSequence:
@@ -7650,6 +7580,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: Figurina Gatto
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: Graffetta
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 1631098342629411151, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
@@ -7852,66 +7784,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
   m_PrefabInstance: {fileID: 683265671}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &687204019
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 687204020}
-  - component: {fileID: 687204021}
-  m_Layer: 0
-  m_Name: Decal Projector (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &687204020
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 687204019}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.4611073, y: -0.59504676, z: -0.28589794, w: 0.59292644}
-  m_LocalPosition: {x: -3.394, y: -6.584, z: 0.727}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1977391269}
-  m_LocalEulerAnglesHint: {x: 11.921, y: -97.836, z: -65.143}
---- !u!114 &687204021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 687204019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: f958925cd8ceb8e4bb157368434712d7, type: 2}
-  m_DrawDistance: 1000
-  m_FadeScale: 0.9
-  m_StartAngleFade: 180
-  m_EndAngleFade: 180
-  m_UVScale: {x: 1, y: 1}
-  m_UVBias: {x: 0, y: 0}
-  m_RenderingLayerMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_ScaleMode: 0
-  m_Offset: {x: 0, y: 0, z: 0.255}
-  m_Size: {x: 1, y: 1, z: 0.51}
-  m_FadeFactor: 1
-  version: 1
-  m_DecalLayerMask: 1
 --- !u!1 &688421083
 GameObject:
   m_ObjectHideFlags: 0
@@ -8292,15 +8164,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.0237
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.959
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.10785
+      value: -2.786
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8337,7 +8209,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d762e19587e591419947138bab02ffc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 771003360}
   m_SourcePrefab: {fileID: 100100000, guid: 8d762e19587e591419947138bab02ffc, type: 3}
 --- !u!1 &711999077
 GameObject:
@@ -8838,6 +8713,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759415950}
   m_CullTransparentMesh: 1
+--- !u!1 &771003356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d762e19587e591419947138bab02ffc, type: 3}
+  m_PrefabInstance: {fileID: 706831822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &771003360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771003356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Matita
+  itemId: 
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 771003356}
 --- !u!1 &771841441
 GameObject:
   m_ObjectHideFlags: 0
@@ -9372,7 +9270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Leo
   studentColor: {r: 0.23529412, g: 0.54901963, b: 0.627451, a: 1}
   missingItemSequence:
@@ -9421,6 +9318,9 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: Guanto Da Box
+  additionalRequiredItems:
+  - Corda da salto
+  tradeSteps: []
   rewardItem: Temperino
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 4456630930037526114, guid: df1185af74e6cae4a85f28c7a997ec22, type: 3}
@@ -9971,7 +9871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Michel
   studentColor: {r: 0.627451, g: 0.23529412, b: 0.23529412, a: 1}
   missingItemSequence:
@@ -10005,6 +9904,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: Pallone Da Calcio
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: Scotch
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 634613405823244441, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
@@ -10283,9 +10184,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: 
+  consumeItemOnOpen: 0
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &899867657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10528,9 +10433,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: 
+  consumeItemOnOpen: 0
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &912404199
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10597,7 +10506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Frank
   studentColor: {r: 0.7058824, g: 0.39215687, b: 0.23529412, a: 1}
   missingItemSequence:
@@ -10648,6 +10556,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: Tessuto
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: Palla Da Calcio
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 2613632856586992849, guid: fec66354396ba2b4b97d17f26a3e930a, type: 3}
@@ -10990,7 +10900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Mark
   studentColor: {r: 0.7058824, g: 0.54901963, b: 0.78431374, a: 1}
   missingItemSequence: []
@@ -11019,6 +10928,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: 
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 0}
@@ -11030,66 +10941,32 @@ MonoBehaviour:
   fallbackInteractionHeight: 1.6
   deskItems: []
   isVisible: 1
---- !u!1 &957944272
+--- !u!1 &958664230 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
+  m_PrefabInstance: {fileID: 287249406}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 957944273}
-  - component: {fileID: 957944274}
-  m_Layer: 0
-  m_Name: Decal Projector (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &957944273
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957944272}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.06554568, y: -0.6305901, z: 0.1953827, w: 0.7482551}
-  m_LocalPosition: {x: -3.1959991, y: -6.699, z: 0.988}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1977391269}
-  m_LocalEulerAnglesHint: {x: 8.53, y: -78.562, z: 22.287}
---- !u!114 &957944274
+--- !u!114 &958664231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957944272}
+  m_GameObject: {fileID: 958664230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1a5d1d74f1b254a8cce090acb7cb1d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: f958925cd8ceb8e4bb157368434712d7, type: 2}
-  m_DrawDistance: 1000
-  m_FadeScale: 0.9
-  m_StartAngleFade: 180
-  m_EndAngleFade: 180
-  m_UVScale: {x: 1, y: 1}
-  m_UVBias: {x: 0, y: 0}
-  m_RenderingLayerMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_ScaleMode: 0
-  m_Offset: {x: 0, y: 0, z: 0.255}
-  m_Size: {x: 1, y: 1, z: 0.51}
-  m_FadeFactor: 1
-  version: 1
-  m_DecalLayerMask: 1
+  m_EditorClassIdentifier: Assembly-CSharp::StealableItem
+  itemName: Corda da Salto
+  itemDescription: Una corda presa di nascosto dal banco di George.
+  stealDuration: 2
+  noiseRate: 0.6
+  suspicionCost: 1
+  owner: {fileID: 592183929}
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 919132149155446097, guid: 383ed11daa63fa54d885e68788490bbb, type: 3}
 --- !u!1001 &966201663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11386,9 +11263,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: 
+  consumeItemOnOpen: 0
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &1016282204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12581,9 +12462,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: 
+  consumeItemOnOpen: 0
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &1118598544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12681,7 +12566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Carlos
   studentColor: {r: 0.6666667, g: 0.53333336, b: 0.19607843, a: 1}
   missingItemSequence: []
@@ -12712,10 +12596,12 @@ MonoBehaviour:
   essential: 1
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: Accendino
   consumeRequiredItem: 0
   rewardItemPrefab: {fileID: 7961290571484670256, guid: efe8e86cd4a614f4bb6582f7571d644e, type: 3}
-  rewardItemDescription: Del maestro Carlos
+  rewardItemDescription: Fuoco del maestro piromane Carlos
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
   addFallbackInteractionCollider: 1
@@ -12841,7 +12727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Will
   studentColor: {r: 0.8, g: 0.39215687, b: 0.5882353, a: 1}
   missingItemSequence: []
@@ -12860,6 +12745,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: 
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 0}
@@ -12921,7 +12808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Brad
   studentColor: {r: 0.6666667, g: 0.19607843, b: 0.19607843, a: 1}
   missingItemSequence: []
@@ -12942,6 +12828,38 @@ MonoBehaviour:
   essential: 1
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps:
+  - requiredItem: Macchinina
+    consumeItem: 1
+    requestDialogue:
+      lines:
+      - speaker: 1
+        text: damm o cloroform
+    receivedDialogue:
+      lines:
+      - speaker: 1
+        text: bell assaj
+  - requiredItem: Patatine
+    consumeItem: 1
+    requestDialogue:
+      lines:
+      - speaker: 1
+        text: damm e patatatin
+    receivedDialogue:
+      lines:
+      - speaker: 1
+        text: buon
+  - requiredItem: Cloroformio
+    consumeItem: 1
+    requestDialogue:
+      lines:
+      - speaker: 1
+        text: damm o cloroform
+    receivedDialogue:
+      lines:
+      - speaker: 1
+        text: bell assaj
   rewardItem: Chiave
   consumeRequiredItem: 0
   rewardItemPrefab: {fileID: 1544191590021391022, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
@@ -13970,7 +13888,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Owen
   studentColor: {r: 0.78431374, g: 0.7058824, b: 0.54901963, a: 1}
   missingItemSequence: []
@@ -14001,6 +13918,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: 
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 0}
@@ -14155,6 +14074,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 195430400}
   m_LocalEulerAnglesHint: {x: -4.03, y: 0, z: 0}
+--- !u!1 &1286332793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
+  m_PrefabInstance: {fileID: 543225169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1286332797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286332793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Cloroformio
+  itemId: 
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
+--- !u!1 &1305016952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+  m_PrefabInstance: {fileID: 1964049945}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1305016953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+  m_PrefabInstance: {fileID: 1964049945}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1305016954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305016952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Coltello
+  itemId: 
+  description: Un coltello nascosto in un cassetto...
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
 --- !u!1001 &1309000126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14366,9 +14336,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: Patatine
+  consumeItemOnOpen: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &1330366627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14390,6 +14364,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8145395, y: 0.2222427, z: 0.6663168}
   m_Center: {x: -0.3723865, y: 0.111121334, z: 0.3331584}
+--- !u!4 &1330366628 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 254345077711328927, guid: f968a8440d3720d4897268643e060a63, type: 3}
+  m_PrefabInstance: {fileID: 1535059784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1331190719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14719,7 +14698,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Rachel
   studentColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   missingItemSequence: []
@@ -14750,6 +14728,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: Bottone
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 8855981923538525247, guid: 7b6ebb55309c6b14aafe2c3c6a5439b9, type: 3}
@@ -16588,7 +16568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Maria
   studentColor: {r: 0.23529412, g: 0.23529412, b: 0.54901963, a: 1}
   missingItemSequence:
@@ -16621,8 +16600,10 @@ MonoBehaviour:
   itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
-  requiredItem: Bottone
-  rewardItem: 
+  requiredItem: Accendino
+  additionalRequiredItems: []
+  tradeSteps: []
+  rewardItem: Figurina Gatto
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 15000181717594280, guid: 9d3a573cd2b9a4f4ca116853121b9b26, type: 3}
   rewardItemDescription: Figurina bellissima di un bellissimo gattino
@@ -16697,6 +16678,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -15.108
       objectReference: {fileID: 0}
+    - target: {fileID: 254345077711328927, guid: f968a8440d3720d4897268643e060a63, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.22439
+      objectReference: {fileID: 0}
+    - target: {fileID: 254345077711328927, guid: f968a8440d3720d4897268643e060a63, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.941
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f968a8440d3720d4897268643e060a63, type: 3}
       propertyPath: m_Name
       value: Armadietto_Cassetto (1)
@@ -16731,6 +16720,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2794524143261851858, guid: f968a8440d3720d4897268643e060a63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 834943980}
+    - targetCorrespondingSourceObject: {fileID: 254345077711328927, guid: f968a8440d3720d4897268643e060a63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1305016953}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -6064153176478479626, guid: f968a8440d3720d4897268643e060a63, type: 3}
       insertIndex: -1
@@ -17894,7 +17886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Amanda
   studentColor: {r: 0.47058824, g: 0.39215687, b: 0.3137255, a: 1}
   missingItemSequence: []
@@ -17914,6 +17905,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: 
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 0}
@@ -18131,66 +18124,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675781793}
   m_CullTransparentMesh: 1
---- !u!1 &1697577176
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1697577177}
-  - component: {fileID: 1697577178}
-  m_Layer: 0
-  m_Name: Decal Projector (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1697577177
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697577176}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.11524081, y: -0.6590146, z: 0.038961623, w: 0.74222726}
-  m_LocalPosition: {x: -3.196, y: -6.648, z: 0.95899963}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1977391269}
-  m_LocalEulerAnglesHint: {x: 12.851, y: -83.827, z: -5.536}
---- !u!114 &1697577178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697577176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: 1d3fbc77c07b1434d9c18f478bc40c11, type: 2}
-  m_DrawDistance: 1000
-  m_FadeScale: 0.9
-  m_StartAngleFade: 180
-  m_EndAngleFade: 180
-  m_UVScale: {x: 1, y: 1}
-  m_UVBias: {x: 0, y: 0}
-  m_RenderingLayerMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_ScaleMode: 0
-  m_Offset: {x: 0, y: 0, z: 0.255}
-  m_Size: {x: 1, y: 1, z: 0.51}
-  m_FadeFactor: 1
-  version: 1
-  m_DecalLayerMask: 1
 --- !u!1001 &1698379096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19642,6 +19575,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 31495c59f4777a14fad09126a348ba9c, type: 3}
   m_PrefabInstance: {fileID: 1814654022}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1821248847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 338513d716cacea428964f2254952628, type: 3}
+  m_PrefabInstance: {fileID: 604079461}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1821248851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821248847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
+  itemName: Peluche Spaventoso
+  itemId: 
+  description: Un oggetto trovato in aula.
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 1821248847}
 --- !u!1 &1824029436
 GameObject:
   m_ObjectHideFlags: 0
@@ -19718,7 +19674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Matilda
   studentColor: {r: 0.3137255, g: 0.3137255, b: 0.23529412, a: 1}
   missingItemSequence: []
@@ -19741,6 +19696,8 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: 
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 0}
@@ -20279,7 +20236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Eva
   studentColor: {r: 0.19607843, g: 0.6666667, b: 0.6666667, a: 1}
   missingItemSequence: []
@@ -20312,6 +20268,8 @@ MonoBehaviour:
   essential: 1
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: Taglierino
   consumeRequiredItem: 0
   rewardItemPrefab: {fileID: 8264412883646412846, guid: 662d5c349e1e373449192935b70e0670, type: 3}
@@ -20677,6 +20635,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1203865782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1964049945
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1330366628}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.007899552
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.030007804
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.40239525
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.04968357
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2932663
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9850272
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.17239931
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      propertyPath: m_Name
+      value: Coltello (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1305016954}
+  m_SourcePrefab: {fileID: 100100000, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
 --- !u!1 &1968466740 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
@@ -20816,15 +20850,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77ccf1690d7bde941850253f1604d9ea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2080747003}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77ccf1690d7bde941850253f1604d9ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1697577177}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77ccf1690d7bde941850253f1604d9ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 957944273}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77ccf1690d7bde941850253f1604d9ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 687204020}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77ccf1690d7bde941850253f1604d9ea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 35910498}
@@ -21643,7 +21668,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  useSceneChainPreset: 1
   studentName: Sam
   studentColor: {r: 0.19607843, g: 0.33333334, b: 0.6666667, a: 1}
   missingItemSequence: []
@@ -21672,6 +21696,8 @@ MonoBehaviour:
   essential: 1
   tradeDone: 0
   requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps: []
   rewardItem: Forbice
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 536422992950265702, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
@@ -21739,9 +21765,13 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
+  requiredItemName: 
+  consumeItemOnOpen: 0
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
+  lockedPrompt: '[F] Cassetto bloccato'
+  lockedMessage: "Il cassetto \xE8 bloccato. Mi serve qualcosa per forzare la serratura."
 --- !u!65 &2063427180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22451,6 +22481,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5db21606038a7994e8dfd0a7f8a984e8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 264746668}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5db21606038a7994e8dfd0a7f8a984e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 264746672}
   m_SourcePrefab: {fileID: 100100000, guid: 5db21606038a7994e8dfd0a7f8a984e8, type: 3}
 --- !u!4 &2086600030 stripped
 Transform:
@@ -23987,6 +24020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box_Glove
       objectReference: {fileID: 0}
+    - target: {fileID: 6818915381637281209, guid: 5220286bf57a4b447a0a4a9603b1216f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24676,63 +24713,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 109016133581cd54aaca16606cddb691, type: 3}
---- !u!1001 &8403235688664268543
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8497642724650467005, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.174576
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497642724650467005, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.0039405
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497642724650467005, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.9006314
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497642724650467005, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497642724650467005, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497642724650467005, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497642724650467005, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497642724650467005, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497642724650467005, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497642724650467005, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9126089058429789191, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
-      propertyPath: m_Name
-      value: Voodoo
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 79e67c64e573df745b2ec8b3859b30e1, type: 3}
 --- !u!1001 &8612421224795245224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25015,7 +24995,4 @@ SceneRoots:
   - {fileID: 543225169}
   - {fileID: 2071860162}
   - {fileID: 1606633543}
-  - {fileID: 8403235688664268543}
-  - {fileID: 520805946}
-  - {fileID: 21627188}
-  - {fileID: 267649445}
+  - {fileID: 287249406}
