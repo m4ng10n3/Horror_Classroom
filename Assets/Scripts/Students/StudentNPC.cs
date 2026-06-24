@@ -9,6 +9,22 @@ public class DialogueSequence
 }
 
 [Serializable]
+public class TradeStep
+{
+    [Tooltip("Oggetto richiesto in questo passo della catena.")]
+    public string requiredItem;
+
+    [Tooltip("Se true, l'oggetto di questo passo viene consumato alla consegna.")]
+    public bool consumeItem = true;
+
+    [Tooltip("Dialogo mostrato finché manca l'oggetto: è la RICHIESTA di questo passo.")]
+    public DialogueSequence requestDialogue;
+
+    [Tooltip("Dialogo mostrato quando consegni l'oggetto. Di solito introduce la richiesta successiva.")]
+    public DialogueSequence receivedDialogue;
+}
+
+[Serializable]
 public class ItemDialogueTrigger
 {
     [Tooltip("Nome esatto dell'oggetto nell'inventario che attiva questo dialogo.")]
@@ -27,9 +43,6 @@ public class ItemDialogueTrigger
 public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceInteractable
 {
     [Header("Identity")]
-    [Tooltip("Applica la catena principale di scambi in base al nome dello studente in scena.")]
-    public bool useSceneChainPreset = true;
-
     public string studentName = "Studente";
     public Color studentColor = Color.white;
 
@@ -74,10 +87,17 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     [Tooltip("Lascia vuoto se lo studente regala subito l'oggetto senza richiederne uno.")]
     public string requiredItem = "";
 
+    [Tooltip("Oggetti richiesti aggiuntivi. Lo studente completa il baratto solo se il player ha TUTTI gli oggetti (questi + 'Required Item'). Lascia vuoto per richiederne uno solo.")]
+    public string[] additionalRequiredItems = Array.Empty<string>();
+
+    [Header("Trade Chain — Richieste in Sequenza")]
+    [Tooltip("Se popolato, lo studente chiede questi oggetti UNO ALLA VOLTA, in ordine. Ogni consegna sblocca la richiesta successiva. Il reward viene dato solo dopo l'ultimo passo. Sostituisce 'Required Item' singolo.")]
+    public TradeStep[] tradeSteps = Array.Empty<TradeStep>();
+
     [Tooltip("Oggetto ricevuto dal player al termine del baratto.")]
     public string rewardItem = "";
 
-    [Tooltip("Se true, l'oggetto richiesto viene consumato nel baratto.")]
+    [Tooltip("Se true, gli oggetti richiesti vengono consumati nel baratto.")]
     public bool consumeRequiredItem = true;
 
     [Header("Reward Item — Modello 3D")]
@@ -112,6 +132,7 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     public int TimesWitnessed => timesWitnessed;
 
     private int repeatIndex = 0;
+    private int tradeStepIndex = 0;
     private MeshRenderer bodyRenderer;
     private Material bodyMaterialInstance;
 
@@ -124,11 +145,6 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
 
     void Awake()
     {
-        if (useSceneChainPreset)
-        {
-            ApplySceneChainPreset();
-        }
-
         bodyRenderer = GetComponentInChildren<MeshRenderer>();
         if (bodyRenderer != null)
         {
@@ -137,6 +153,20 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         }
 
         EnsureInteractionCollider();
+    }
+
+#if UNITY_EDITOR
+    // Bake da editor: scrive nei campi dell'inspector i valori della catena di
+    // scambi in base al nome dello studente. Da eseguire UNA volta; dopodiché i
+    // dati vivono nella scena e si modificano liberamente dall'inspector.
+    [ContextMenu("Bake Trade Chain → Inspector")]
+    public void BakeChainPresetFromName()
+    {
+        ApplySceneChainPreset();
+        UnityEditor.EditorUtility.SetDirty(this);
+        if (!Application.isPlaying)
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(gameObject.scene);
+        Debug.Log($"[StudentNPC] Catena di scambi applicata a {SpeakerName}. Salva la scena (Ctrl+S).");
     }
 
     private void ApplySceneChainPreset()
@@ -512,6 +542,8 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         essential = true;
         consumeRequiredItem = true;
         requiredItem = required;
+        additionalRequiredItems = Array.Empty<string>();
+        tradeSteps = Array.Empty<TradeStep>();
         rewardItem = reward;
         rewardItemDescription = description;
         missingItemSequence = missing ?? Array.Empty<DialogueLine>();
@@ -539,6 +571,7 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     {
         return new DialogueLine { speaker = DialogueLine.Speaker.NPC, text = text };
     }
+#endif
 
     public bool CanDisappear() => isVisible && (!essential || tradeDone);
     public bool IsVisible => isVisible;
@@ -619,12 +652,17 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         if (tradeDone)
             return GetNextRepeatSequence();
 
-        // Priorità 3: oggetto richiesto ancora mancante.
-        if (NeedsRequiredItem() && !inventory.HasItem(requiredItem))
+        // Priorità 2.5: catena di richieste in sequenza (se configurata).
+        if (UsesTradeChain)
+            return GetTradeChainSequence(inventory);
+
+        // Priorità 3: oggetti richiesti ancora mancanti (servono TUTTI).
+        if (NeedsRequiredItem() && !HasAllRequiredItems(inventory))
             return missingItemSequence;
 
         // Priorità 4: inventario pieno → il baratto resta in sospeso finché non si libera spazio.
-        bool willFreeSlotWithTrade = NeedsRequiredItem() && consumeRequiredItem && inventory.HasItem(requiredItem);
+        // Se arriviamo qui con NeedsRequiredItem, tutti gli oggetti richiesti sono in mano.
+        bool willFreeSlotWithTrade = NeedsRequiredItem() && consumeRequiredItem;
         if (!string.IsNullOrWhiteSpace(rewardItem) && inventory.IsFull && !willFreeSlotWithTrade)
         {
             return new[] { new DialogueLine
@@ -639,7 +677,10 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         pendingCommit = () =>
         {
             if (NeedsRequiredItem() && consumeRequiredItem)
-                inventory.RemoveItem(requiredItem);
+            {
+                foreach (string item in GetRequiredItems())
+                    inventory.RemoveItem(item);
+            }
 
             tradeDone = true;
 
@@ -712,7 +753,104 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         return lines ?? Array.Empty<DialogueLine>();
     }
 
-    private bool NeedsRequiredItem() => !string.IsNullOrWhiteSpace(requiredItem);
+    private bool UsesTradeChain => tradeSteps != null && tradeSteps.Length > 0;
+
+    // Gestisce la catena di richieste in sequenza: ogni passo chiede un oggetto, lo
+    // consuma alla consegna e sblocca il passo successivo. Il reward (rewardItem)
+    // viene dato solo a conclusione dell'ultimo passo. Come per gli altri dialoghi,
+    // gli effetti collaterali sono applicati solo a dialogo concluso (pendingCommit).
+    private DialogueLine[] GetTradeChainSequence(PhysicalInventory inventory)
+    {
+        int index = Mathf.Clamp(tradeStepIndex, 0, tradeSteps.Length - 1);
+        TradeStep step = tradeSteps[index];
+        if (step == null)
+            return Array.Empty<DialogueLine>();
+
+        bool needsItem = !string.IsNullOrWhiteSpace(step.requiredItem);
+
+        // Oggetto di questo passo ancora mancante → mostra la richiesta.
+        if (needsItem && !inventory.HasItem(step.requiredItem))
+            return step.requestDialogue?.lines ?? Array.Empty<DialogueLine>();
+
+        bool isLastStep = index >= tradeSteps.Length - 1;
+        bool hasReward = isLastStep && !string.IsNullOrWhiteSpace(rewardItem);
+
+        // Solo all'ultimo passo, con un reward da consegnare: se l'inventario è pieno
+        // e questo passo non libera uno slot, il baratto resta in sospeso.
+        bool willFreeSlot = needsItem && step.consumeItem;
+        if (hasReward && inventory.IsFull && !willFreeSlot)
+        {
+            return new[] { new DialogueLine
+            {
+                speaker = DialogueLine.Speaker.NPC,
+                text = "Hai gia' due oggetti in mano. Lascia qualcosa dallo zaino e torna da me."
+            } };
+        }
+
+        TradeStep capturedStep = step;
+        bool finalStep = isLastStep;
+        pendingCommit = () =>
+        {
+            if (needsItem && capturedStep.consumeItem)
+                inventory.RemoveItem(capturedStep.requiredItem);
+
+            if (finalStep)
+            {
+                tradeDone = true;
+                if (!string.IsNullOrWhiteSpace(rewardItem))
+                    GivePhysicalItem(inventory);
+            }
+            else
+            {
+                tradeStepIndex++;
+            }
+        };
+
+        DialogueLine[] received = capturedStep.receivedDialogue?.lines ?? Array.Empty<DialogueLine>();
+
+        if (finalStep && !string.IsNullOrWhiteSpace(rewardItem))
+        {
+            var extended = new DialogueLine[received.Length + 1];
+            System.Array.Copy(received, extended, received.Length);
+            extended[received.Length] = new DialogueLine
+            {
+                speaker = DialogueLine.Speaker.NPC,
+                text = $"[Ricevuto: {rewardItem}]"
+            };
+            return extended;
+        }
+
+        return received;
+    }
+
+    // Elenca tutti gli oggetti richiesti non vuoti: 'requiredItem' più gli additionalRequiredItems.
+    private IEnumerable<string> GetRequiredItems()
+    {
+        if (!string.IsNullOrWhiteSpace(requiredItem))
+            yield return requiredItem;
+
+        if (additionalRequiredItems != null)
+        {
+            foreach (string item in additionalRequiredItems)
+                if (!string.IsNullOrWhiteSpace(item))
+                    yield return item;
+        }
+    }
+
+    private bool NeedsRequiredItem()
+    {
+        foreach (string _ in GetRequiredItems())
+            return true;
+        return false;
+    }
+
+    private bool HasAllRequiredItems(PhysicalInventory inventory)
+    {
+        foreach (string item in GetRequiredItems())
+            if (!inventory.HasItem(item))
+                return false;
+        return true;
+    }
 
     private void EnsureInteractionCollider()
     {
