@@ -114,6 +114,53 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     [Min(0.05f)]
     public float rewardItemInspectionScaleMultiplier = 1f;
 
+    [Header("Cava Occhio — Coltello")]
+    [Tooltip("Se true, avendo il coltello in inventario si può cavare un occhio a questo studente invece di parlarci.")]
+    public bool canGougeEye = true;
+
+    [Tooltip("Oggetto accettato in inventario (es. il coltello) per poter cavare l'occhio.")]
+    public string gougeRequiredItem = "Coltello";
+
+    [Tooltip("Oggetti accettati alternativi: basta avere UNO QUALSIASI fra questi o 'Gouge Required Item' (logica OR) per poter cavare l'occhio.")]
+    public string[] gougeAlternativeItems = Array.Empty<string>();
+
+    [Tooltip("Se true l'oggetto usato viene consumato dopo aver cavato l'occhio.")]
+    public bool consumeItemsOnGouge = true;
+
+    [Tooltip("Diventa true quando l'occhio è stato cavato a questo studente.")]
+    public bool eyeGouged = false;
+
+    [Header("Cava Occhio — Premio (Occhio)")]
+    [Tooltip("Nome dell'oggetto-occhio ricevuto dopo aver cavato l'occhio. Lascia vuoto per non dare nessun premio.")]
+    public string gougeRewardItem = "Occhio";
+
+    [Tooltip("Prefab/FBX dell'occhio mostrato nell'inventario fisico dopo l'azione.")]
+    public GameObject gougeRewardPrefab;
+
+    [TextArea(2, 3)]
+    [Tooltip("Descrizione dell'occhio mostrata nella scheda inventario.")]
+    public string gougeRewardDescription = "";
+
+    [Tooltip("Se true il player può ispezionare l'occhio in 3D dal Tab.")]
+    public bool gougeRewardCanInspect = true;
+
+    [Min(0.05f)]
+    public float gougeRewardInspectionScaleMultiplier = 1f;
+
+    [Header("Cava Occhio — Dialoghi")]
+    [Tooltip("Battute mostrate mentre cavi l'occhio. L'eventuale '[Ricevuto: ...]' viene aggiunto in coda.")]
+    public DialogueSequence gougeDialogue = new DialogueSequence
+    {
+        lines = new[]
+        {
+            new DialogueLine { speaker = DialogueLine.Speaker.Player, text = "Stai fermo. Sarà solo un secondo." },
+            new DialogueLine { speaker = DialogueLine.Speaker.NPC,    text = "No... no, ti prego, NO—" }
+        }
+    };
+
+    [Tooltip("Dialoghi mostrati DOPO aver cavato l'occhio, in ordine. L'ultimo viene ripetuto. Se vuoto, lo studente torna ai dialoghi normali.")]
+    public DialogueSequence[] afterGougeSequences = Array.Empty<DialogueSequence>();
+
     [Header("Interaction Collider")]
     public bool addFallbackInteractionCollider = true;
     public float fallbackInteractionRadius = 0.45f;
@@ -133,6 +180,7 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
 
     private int repeatIndex = 0;
     private int tradeStepIndex = 0;
+    private int afterGougeIndex = 0;
     private MeshRenderer bodyRenderer;
     private Material bodyMaterialInstance;
 
@@ -621,7 +669,14 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
 
     public bool CanInteract() => isVisible;
 
-    public string GetInteractionPrompt() => $"[F] Parla con {SpeakerName}";
+    public string GetInteractionPrompt()
+    {
+        // Col coltello in mano, su uno studente non ancora mutilato, l'azione cambia.
+        if (CanGougeNow())
+            return $"[F] Cava un occhio a {SpeakerName}";
+
+        return $"[F] Parla con {SpeakerName}";
+    }
 
     // Fallback usato solo se IDialogueSequenceInteractable non è supportato dal controller.
     public string Interact(GameManager gameManager)
@@ -642,6 +697,16 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         {
             return new[] { new DialogueLine { speaker = DialogueLine.Speaker.NPC, text = "Non so dove metterti gli oggetti." } };
         }
+
+        // Priorità 0: cava occhio. Col coltello in inventario, su uno studente non
+        // ancora mutilato, l'interazione diventa "cava occhio" e dà l'occhio in premio.
+        if (CanGougeNow(inventory))
+            return GetGougeSequence(inventory);
+
+        // Priorità 0.5: una volta cavato l'occhio, se sono configurati dei dialoghi
+        // successivi, hanno la precedenza su tutto il resto (baratto incluso).
+        if (eyeGouged && HasAfterGougeSequences)
+            return GetAfterGougeSequence();
 
         // Priorità 1: dialoghi speciali legati a oggetti nell'inventario.
         DialogueLine[] specialDialogue = TryGetItemDialogue(inventory);
@@ -748,6 +813,109 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         {
             if (repeatIndex < repeatSequences.Length - 1)
                 repeatIndex++;
+        };
+
+        return lines ?? Array.Empty<DialogueLine>();
+    }
+
+    private bool HasAfterGougeSequences => afterGougeSequences != null && afterGougeSequences.Length > 0;
+
+    // Elenca tutti gli oggetti accettati per il gouge (non vuoti): il principale più
+    // le alternative. Basta possederne uno qualsiasi.
+    private IEnumerable<string> GetGougeAcceptedItems()
+    {
+        if (!string.IsNullOrWhiteSpace(gougeRequiredItem))
+            yield return gougeRequiredItem;
+
+        if (gougeAlternativeItems != null)
+        {
+            foreach (string item in gougeAlternativeItems)
+                if (!string.IsNullOrWhiteSpace(item))
+                    yield return item;
+        }
+    }
+
+    // True se in questo momento il player può cavare l'occhio: feature attiva, occhio
+    // non ancora cavato e ALMENO UNO degli oggetti accettati presente nell'inventario.
+    private bool CanGougeNow() => CanGougeNow(ResolvePhysicalInventory());
+
+    private bool CanGougeNow(PhysicalInventory inventory)
+    {
+        if (!canGougeEye || eyeGouged) return false;
+        if (inventory == null) return false;
+
+        foreach (string item in GetGougeAcceptedItems())
+            if (inventory.HasItem(item))
+                return true;
+
+        return false;
+    }
+
+    // Dialogo dell'atto di cavare l'occhio. Come per gli altri dialoghi, gli effetti
+    // (consumo coltello, eyeGouged, consegna occhio) sono applicati solo a dialogo
+    // concluso tramite pendingCommit.
+    private DialogueLine[] GetGougeSequence(PhysicalInventory inventory)
+    {
+        bool hasReward = !string.IsNullOrWhiteSpace(gougeRewardItem) && gougeRewardPrefab != null;
+
+        // L'occhio occupa uno slot: se l'inventario è pieno e gli oggetti richiesti non
+        // vengono consumati (quindi non si libera spazio), il premio non entra. Avvisa e basta.
+        bool willFreeSlot = consumeItemsOnGouge;
+        if (hasReward && inventory.IsFull && !willFreeSlot)
+        {
+            return new[] { new DialogueLine
+            {
+                speaker = DialogueLine.Speaker.NPC,
+                text = "Hai già le mani piene. Lascia qualcosa dallo zaino prima."
+            } };
+        }
+
+        pendingCommit = () =>
+        {
+            if (consumeItemsOnGouge)
+            {
+                // Consuma l'oggetto effettivamente usato (RemoveItem ignora quelli assenti).
+                foreach (string item in GetGougeAcceptedItems())
+                    if (inventory.RemoveItem(item))
+                        break;
+            }
+
+            eyeGouged = true;
+            afterGougeIndex = 0;
+
+            if (hasReward)
+                GivePhysicalItem(inventory, gougeRewardItem, gougeRewardDescription,
+                    gougeRewardPrefab, gougeRewardCanInspect, gougeRewardInspectionScaleMultiplier);
+        };
+
+        DialogueLine[] lines = gougeDialogue?.lines ?? Array.Empty<DialogueLine>();
+
+        if (hasReward)
+        {
+            var extended = new DialogueLine[lines.Length + 1];
+            System.Array.Copy(lines, extended, lines.Length);
+            extended[lines.Length] = new DialogueLine
+            {
+                speaker = DialogueLine.Speaker.NPC,
+                text = $"[Ricevuto: {gougeRewardItem}]"
+            };
+            return extended;
+        }
+
+        return lines;
+    }
+
+    // Dialoghi mostrati dopo aver cavato l'occhio. Avanzano come le ripetizioni
+    // (si bloccano sull'ultimo) e l'avanzamento avviene solo a dialogo concluso.
+    private DialogueLine[] GetAfterGougeSequence()
+    {
+        int index = Mathf.Clamp(afterGougeIndex, 0, afterGougeSequences.Length - 1);
+        DialogueLine[] lines = afterGougeSequences[index]?.lines;
+
+        pendingCommit = () =>
+        {
+            if (afterGougeIndex < afterGougeSequences.Length - 1)
+                afterGougeIndex++;
         };
 
         return lines ?? Array.Empty<DialogueLine>();
@@ -867,13 +1035,28 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
 
     private void GivePhysicalItem(PhysicalInventory inventory)
     {
-        if (inventory == null || string.IsNullOrWhiteSpace(rewardItem)) return;
+        GivePhysicalItem(inventory, rewardItem, rewardItemDescription, rewardItemPrefab,
+            rewardItemCanInspect, rewardItemInspectionScaleMultiplier);
+    }
+
+    // Consegna un oggetto fisico all'inventario, creando uno snapshot 3D dal prefab
+    // (per l'ispezione dal Tab). Condiviso fra baratto e "cava occhio".
+    private void GivePhysicalItem(
+        PhysicalInventory inventory,
+        string itemName,
+        string description,
+        GameObject prefab,
+        bool canInspect,
+        float inspectionScaleMultiplier)
+    {
+        if (inventory == null) return;
+        if (string.IsNullOrWhiteSpace(itemName) && prefab == null) return;
 
         GameObject snapshot = null;
-        if (rewardItemPrefab != null)
+        if (prefab != null)
         {
-            snapshot = Instantiate(rewardItemPrefab);
-            snapshot.name = "__snapshot_" + rewardItem;
+            snapshot = Instantiate(prefab);
+            snapshot.name = "__snapshot_" + (string.IsNullOrWhiteSpace(itemName) ? prefab.name : itemName);
             snapshot.transform.position = new Vector3(0f, -5000f, 0f);
             snapshot.transform.rotation = Quaternion.identity;
             snapshot.SetActive(true);
@@ -888,10 +1071,10 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
 
         inventory.AddItem(new CollectedItem
         {
-            name        = string.IsNullOrWhiteSpace(rewardItem) ? rewardItemPrefab.name : rewardItem,
-            description = rewardItemDescription,
-            canInspect  = rewardItemCanInspect && snapshot != null,
-            inspectionScaleMultiplier = rewardItemInspectionScaleMultiplier,
+            name        = string.IsNullOrWhiteSpace(itemName) ? prefab.name : itemName,
+            description = description,
+            canInspect  = canInspect && snapshot != null,
+            inspectionScaleMultiplier = inspectionScaleMultiplier,
             worldSource = snapshot
         });
     }
