@@ -362,6 +362,23 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -4333,6 +4350,23 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -6335,6 +6369,23 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -6591,6 +6642,23 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -7392,6 +7460,23 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -7588,6 +7673,23 @@ MonoBehaviour:
   rewardItemDescription: Una graffetta
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -9327,6 +9429,23 @@ MonoBehaviour:
   rewardItemDescription: Un temperino super affilato, Guardah da PAURA!
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -9912,6 +10031,23 @@ MonoBehaviour:
   rewardItemDescription: Scotch per attaccare le cose, o tenerle unite
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -10565,6 +10701,23 @@ MonoBehaviour:
     con la palla"
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -10936,6 +11089,23 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -12604,6 +12774,23 @@ MonoBehaviour:
   rewardItemDescription: Fuoco del maestro piromane Carlos
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -12753,6 +12940,23 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -12866,6 +13070,23 @@ MonoBehaviour:
   rewardItemDescription: Chiavi che ha trovato Brad
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -13926,6 +14147,23 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -14336,7 +14574,7 @@ MonoBehaviour:
   openX: -19.707
   speed: 2
   pickupInside: {fileID: 0}
-  requiredItemName: Patatine
+  requiredItemName: Graffetta
   consumeItemOnOpen: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
@@ -14736,6 +14974,23 @@ MonoBehaviour:
   rewardItemDescription: Un bottone di Rachel
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -16609,6 +16864,23 @@ MonoBehaviour:
   rewardItemDescription: Figurina bellissima di un bellissimo gattino
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -17913,6 +18185,23 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -18049,6 +18338,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
   m_PrefabInstance: {fileID: 2499708712819015463}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1655998199
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1631098342629411151, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_Name
+      value: Graffetta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.658669
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.067
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.6027327
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000019470718
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -6.123235e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 6.123235e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
 --- !u!1 &1675781793
 GameObject:
   m_ObjectHideFlags: 0
@@ -19704,6 +20050,23 @@ MonoBehaviour:
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -20276,6 +20639,23 @@ MonoBehaviour:
   rewardItemDescription: Uno dei tanti taglierini di Eva
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio
+  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -21704,6 +22084,23 @@ MonoBehaviour:
   rewardItemDescription: Forbici per tagliare tutto
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 2
+  canGougeEye: 1
+  gougeRequiredItem: Coltello
+  gougeAlternativeItems: []
+  consumeItemsOnGouge: 1
+  eyeGouged: 0
+  gougeRewardItem: Occhio Scavato
+  gougeRewardPrefab: {fileID: 4410183855087663513, guid: d8b99a179ccd6f64d8fc522f3de52c2b, type: 3}
+  gougeRewardDescription: 
+  gougeRewardCanInspect: 1
+  gougeRewardInspectionScaleMultiplier: 1
+  gougeDialogue:
+    lines:
+    - speaker: 0
+      text: "Stai fermo. Sar\xE0 solo un secondo."
+    - speaker: 1
+      text: No... no, ti prego, NO!!!!
+  afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
   fallbackInteractionHeight: 1.6
@@ -24996,3 +25393,4 @@ SceneRoots:
   - {fileID: 2071860162}
   - {fileID: 1606633543}
   - {fileID: 287249406}
+  - {fileID: 1655998199}
