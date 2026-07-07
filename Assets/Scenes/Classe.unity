@@ -330,31 +330,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Nicole
   studentColor: {r: 0.6666667, g: 0.3137255, b: 0.6666667, a: 1}
-  missingItemSequence:
-  - speaker: 0
-    text: Hey Nicole
-  - speaker: 0
-    text: Hai qualche ritaglio di tessuto che ti avanza
-  - speaker: 0
-    text: ' Vorrei prenderne un paio'
-  - speaker: 1
-    text: Certo, prendi quelli che vuoi
-  - speaker: 1
-    text: "Io non li uso pi\xF9"
-  - speaker: 0
-    text: Sei la Goat
-  - speaker: 1
-    text: Aspetta!
-  - speaker: 0
-    text: Cosa?
-  - speaker: 1
-    text: 'Hai una matita da prestarmi in cambio?
+  missingItemSequence: [{speaker: 0, text: Hey Nicole}, {speaker: 0, text: Hai qualche
+        ritaglio di tessuto che ti avanza}, {speaker: 0, text: ' Vorrei prenderne
+        un paio'}, {speaker: 1, text: 'Certo, prendi quelli che vuoi'}, {speaker: 1, text: "Io
+        non li uso pi\xF9"}, {speaker: 0, text: Sei la Goat}, {speaker: 1, text: Aspetta!},
+    {speaker: 0, text: 'Cosa?'}, {speaker: 1, text: 'Hai una matita da prestarmi in
+        cambio?
 
-'
-  - speaker: 0
-    text: "S\xEC"
-  - speaker: 0
-    text: Torno con la matita ferma qua
+'}, {speaker: 0, text: "S\xEC"}, {speaker: 0, text: Torno con la matita ferma qua}]
   completedSequence:
   - speaker: 0
     text: Hey Nicole
@@ -404,8 +387,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -2932,7 +2914,7 @@ PrefabInstance:
       value: 4.574
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -3014,7 +2996,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -3314,7 +3296,7 @@ PrefabInstance:
       value: -1.131
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -4448,8 +4430,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -6293,7 +6274,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -6585,8 +6566,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -6804,8 +6784,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -7578,39 +7557,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Daniel
   studentColor: {r: 0.39215687, g: 0.19607843, b: 0.6666667, a: 1}
-  missingItemSequence:
-  - speaker: 0
-    text: Heyy Daaaan
-  - speaker: 0
-    text: Hai presente il tuo pupazzetto?
-  - speaker: 1
-    text: "Beh s\xEC\u2026 \xE8 mio"
-  - speaker: 0
-    text: Voglio fare uno scherzo a Brad
-  - speaker: 0
-    text: Me lo presti?
-  - speaker: 1
-    text: Che tipo di scherzo?
-  - speaker: 0
-    text: Oh, lo vedrai!
-  - speaker: 1
-    text: Brad non lo sopporto
-  - speaker: 1
-    text: "Quindi qualsiasi scherzo mi andr\xE0 bene"
-  - speaker: 0
-    text: Ottimooo
-  - speaker: 1
-    text: "Avrei bisogno per\xF2\u2026"
-  - speaker: 0
-    text: "Ovviamente\u2026"
-  - speaker: 0
-    text: "Pi\xF9 scontato del Black Friday"
-  - speaker: 0
-    text: Che vuoi in cambio?
-  - speaker: 1
-    text: Il temperino di Leo
-  - speaker: 0
-    text: "Sar\xE0 fatto!"
+  missingItemSequence: [{speaker: 0, text: Heyy Daaaan}, {speaker: 0, text: 'Hai presente
+        il tuo pupazzetto?'}, {speaker: 1, text: "Beh s\xEC\u2026 \xE8 mio"}, {speaker: 0, text: Voglio
+        fare uno scherzo a Brad}, {speaker: 0, text: 'Me lo presti?'}, {speaker: 1, text: 'Che
+        tipo di scherzo?'}, {speaker: 0, text: 'Oh, lo vedrai!'}, {speaker: 1, text: Brad
+        non lo sopporto}, {speaker: 1, text: "Quindi qualsiasi scherzo mi andr\xE0
+        bene"}, {speaker: 0, text: Ottimooo}, {speaker: 1, text: "Avrei bisogno per\xF2\u2026"},
+    {speaker: 0, text: "Ovviamente\u2026"}, {speaker: 0, text: "Pi\xF9 scontato del
+        Black Friday"}, {speaker: 0, text: 'Che vuoi in cambio?'}, {speaker: 1, text: Il
+        temperino di Leo}, {speaker: 0, text: "Sar\xE0 fatto!"}]
   completedSequence:
   - speaker: 0
     text: Ecco a te il temperino
@@ -7656,8 +7611,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -7677,75 +7631,6 @@ MonoBehaviour:
   fallbackInteractionHeight: 1.6
   deskItems: []
   isVisible: 1
---- !u!1001 &665608736
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.1231897
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.0139020495
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.05280932
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.0443
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.999
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.5137
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      propertyPath: m_Name
-      value: Coltello
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
 --- !u!1 &666896339
 GameObject:
   m_ObjectHideFlags: 0
@@ -7804,28 +7689,14 @@ MonoBehaviour:
     text: Una figurina carina con il gattino carino della collezione carina di Maria.
   - speaker: 0
     text: OK
-  completedSequence:
-  - speaker: 0
-    text: "Ciao Erika puoi prestarmi per favore una delle tue graffette? \nHo portato
-      la figurina"
-  - speaker: 1
-    text: Quella con il gattino carino?
-  - speaker: 0
-    text: "S\xEC\u2026"
-  - speaker: 0
-    text: "Quella con il gattino\u2026"
-  - speaker: 0
-    text: "Carino\u2026"
-  - speaker: 1
-    text: 'Tieni la graffetta allora
+  completedSequence: [{speaker: 0, text: "Ciao Erika puoi prestarmi per favore una
+        delle tue graffette? \nHo portato la figurina"}, {speaker: 1, text: 'Quella
+        con il gattino carino?'}, {speaker: 0, text: "S\xEC\u2026"}, {speaker: 0, text: "Quella
+        con il gattino\u2026"}, {speaker: 0, text: "Carino\u2026"}, {speaker: 1, text: 'Tieni
+        la graffetta allora
 
-'
-  - speaker: 1
-    text: Fai attenzione a non farti male
-  - speaker: 0
-    text: "Ok\u2026"
-  - speaker: 0
-    text: "Ciao\u2026"
+'}, {speaker: 1, text: Fai attenzione a non farti male}, {speaker: 0, text: "Ok\u2026"},
+    {speaker: 0, text: "Ciao\u2026"}]
   repeatSequences:
   - lines:
     - speaker: 1
@@ -7851,8 +7722,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -9343,7 +9213,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -9598,22 +9468,10 @@ MonoBehaviour:
       text: Guardah, non vedo l'ora di menare le mani
     - speaker: 0
       text: Stammi lontano
-  itemDialogueTriggers:
-  - requiredItemName: Corda da salto
-    dialogue:
-      lines:
-      - speaker: 1
-        text: Guardah, voglio anche una corda per saltare
-      - speaker: 1
-        text: Per allenarmi per bene
-      - speaker: 0
-        text: E dove la prendo?
-      - speaker: 1
-        text: "Guardah, non \xE8 un mio problema"
-      - speaker: 1
-        text: Cerca in giro
-    oneShot: 0
-    triggered: 0
+  itemDialogueTriggers: [{requiredItemName: Corda da salto, dialogue: {lines: [{speaker: 1, text: 'Guardah,
+              voglio anche una corda per saltare'}, {speaker: 1, text: Per allenarmi
+              per bene}, {speaker: 0, text: 'E dove la prendo?'}, {speaker: 1, text: "Guardah,
+              non \xE8 un mio problema"}, {speaker: 1, text: Cerca in giro}]}, oneShot: 0, triggered: 0}]
   essential: 0
   tradeDone: 0
   requiredItem: Guanto Da Box
@@ -9633,8 +9491,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -10241,8 +10098,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -10970,14 +10826,13 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: Tessuto
-  additionalRequiredItems:
-  - Cloroformio
+  additionalRequiredItems: [Cloroformio]
   tradeSteps: []
   rewardItem: Pallone Da Calcio
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 2613632856586992849, guid: fec66354396ba2b4b97d17f26a3e930a, type: 3}
-  rewardItemDescription: "Chiss\xE0 come fa Frank a vincere se nemmeno si allena
-    con la palla"
+  rewardItemDescription: "Chiss\xE0 come fa Frank a vincere se nemmeno si allena con
+    la palla"
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
   rewardUpgradePath:
@@ -10987,8 +10842,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -11381,8 +11235,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -12776,7 +12629,7 @@ PrefabInstance:
       value: -6.713
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -13067,8 +12920,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -13208,27 +13060,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Will
   studentColor: {r: 0.8, g: 0.39215687, b: 0.5882353, a: 1}
-  missingItemSequence:
-  - speaker: 0
-    text: Hey Will.
-  - speaker: 0
-    text: Le mangi ancora quelle patatine?
-  - speaker: 1
-    text: No. Le vuoi?
-  - speaker: 0
-    text: "S\xEC, per favore."
-  - speaker: 1
-    text: Portami il libro rosso.
-  - speaker: 0
-    text: "Perch\xE9 nessuno in questa classe \xE8 generoso?"
-  - speaker: 1
-    text: Mi porti il libro rosso o no?
-  - speaker: 0
-    text: "\u2026"
-  - speaker: 0
-    text: Dove lo trovo?
-  - speaker: 1
-    text: "Se non \xE8 nel tuo cuore, sar\xE0 \xF9da qualche parte nell\u2019aula"
+  missingItemSequence: [{speaker: 0, text: Hey Will.}, {speaker: 0, text: 'Le mangi
+        ancora quelle patatine?'}, {speaker: 1, text: 'No. Le vuoi?'}, {speaker: 0, text: "S\xEC,
+        per favore."}, {speaker: 1, text: Portami il libro rosso.}, {speaker: 0, text: "Perch\xE9
+        nessuno in questa classe \xE8 generoso?"}, {speaker: 1, text: 'Mi porti il
+        libro rosso o no?'}, {speaker: 0, text: "\u2026"}, {speaker: 0, text: 'Dove
+        lo trovo?'}, {speaker: 1, text: "Se non \xE8 nel tuo cuore, sar\xE0 \xF9da
+        qualche parte nell\u2019aula"}]
   completedSequence:
   - speaker: 0
     text: Tieni il libro rosso
@@ -13263,8 +13101,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -13349,12 +13186,8 @@ MonoBehaviour:
   essential: 1
   tradeDone: 0
   requiredItem: 
-  additionalRequiredItems:
-  - Macchinina Verde
-  - Patatine
-  - Peluche
-  - Occhio 1
-  - Occhio 2
+  additionalRequiredItems: [Macchinina Verde, Patatine, Peluche, Occhio 1, Occhio
+      2]
   tradeSteps:
   - requiredItem: Macchinina
     consumeItem: 1
@@ -13403,8 +13236,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 0
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -13477,11 +13309,11 @@ PrefabInstance:
       value: random_ahh_kid_2
       objectReference: {fileID: 0}
     - target: {fileID: 1240313812646357207, guid: 7e42e67c0379b78478c2aa779ee48936, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+      propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b6297684e657ec345bcbcae5277a29d9, type: 2}
     - target: {fileID: 2722059303693140563, guid: 7e42e67c0379b78478c2aa779ee48936, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+      propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8316795d1512db74aba2126267ef70d3, type: 2}
     m_RemovedComponents: []
@@ -14517,7 +14349,7 @@ MonoBehaviour:
   - speaker: 0
     text: "Damn dimmi di pi\xF9"
   - speaker: 1
-    text: ...
+    text: '...'
   repeatSequences:
   - lines:
     - speaker: 1
@@ -14543,8 +14375,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -15386,8 +15217,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -15656,7 +15486,7 @@ PrefabInstance:
       value: 4.574
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -17286,8 +17116,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -18616,8 +18445,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -19855,8 +19683,7 @@ Transform:
   m_LocalPosition: {x: -0.097, y: 0.067, z: 1.268}
   m_LocalScale: {x: 0.1, y: 2, z: 1.2}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 398803101}
+  m_Children: [{fileID: 398803101}]
   m_Father: {fileID: 399139265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1762278038
@@ -20095,7 +19922,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -20574,8 +20401,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -21124,33 +20950,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Eva
   studentColor: {r: 0.19607843, g: 0.6666667, b: 0.6666667, a: 1}
-  missingItemSequence:
-  - speaker: 0
-    text: Quanti taglierini hai sul banco!
-  - speaker: 1
-    text: "Si una \xE8 per il braccio sinistro"
-  - speaker: 1
-    text: "Una \xE8 per quello destro"
-  - speaker: 1
-    text: Uno per i piedi
-  - speaker: 1
-    text: L'altro per la gola
-  - speaker: 0
-    text: Me ne presti uno?
-  - speaker: 1
-    text: Ti do quello che ho in tasca
-  - speaker: 1
-    text: Ma prima ho bisogno di uno scotch
-  - speaker: 0
-    text: Scotch?
-  - speaker: 1
-    text: "S\xEC devo riattaccare una lama che si \xE8 staccata"
-  - speaker: 0
-    text: "Non credo basti lo scotch\u2026 "
-  - speaker: 1
-    text: Portalo e basta
-  - speaker: 1
-    text: O ti taglio la gola
+  missingItemSequence: [{speaker: 0, text: Quanti taglierini hai sul banco!}, {speaker: 1, text: "Si
+        una \xE8 per il braccio sinistro"}, {speaker: 1, text: "Una \xE8 per quello
+        destro"}, {speaker: 1, text: Uno per i piedi}, {speaker: 1, text: L'altro
+        per la gola}, {speaker: 0, text: 'Me ne presti uno?'}, {speaker: 1, text: Ti
+        do quello che ho in tasca}, {speaker: 1, text: Ma prima ho bisogno di uno
+        scotch}, {speaker: 0, text: 'Scotch?'}, {speaker: 1, text: "S\xEC devo riattaccare
+        una lama che si \xE8 staccata"}, {speaker: 0, text: "Non credo basti lo scotch\u2026 "},
+    {speaker: 1, text: Portalo e basta}, {speaker: 1, text: O ti taglio la gola}]
   completedSequence:
   - speaker: 1
     text: Vedo che hai dello scotch in mano
@@ -21185,8 +20992,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -22356,7 +22162,7 @@ PrefabInstance:
       value: 1.179
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -22631,8 +22437,7 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems:
-  - Taglierino
+  gougeAlternativeItems: [Taglierino]
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio Scavato
@@ -22785,7 +22590,7 @@ PrefabInstance:
       value: -1.131
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -22859,7 +22664,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -23271,7 +23076,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -24340,59 +24145,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91b2615a883f38142b994c93b9aeb837, type: 3}
---- !u!1001 &3144827298424242796
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 629931596}
-    m_Modifications:
-    - target: {fileID: 1322351245150383324, guid: ef508ddb573a8ab459283c9d22e9dccf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -44.168
-      objectReference: {fileID: 0}
-    - target: {fileID: 1322351245150383324, guid: ef508ddb573a8ab459283c9d22e9dccf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 37.547
-      objectReference: {fileID: 0}
-    - target: {fileID: 1322351245150383324, guid: ef508ddb573a8ab459283c9d22e9dccf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -57.298
-      objectReference: {fileID: 0}
-    - target: {fileID: 1894868121361085285, guid: 91b2615a883f38142b994c93b9aeb837, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1894868121361085285, guid: 91b2615a883f38142b994c93b9aeb837, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1894868121361085285, guid: 91b2615a883f38142b994c93b9aeb837, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1894868121361085285, guid: 91b2615a883f38142b994c93b9aeb837, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 1894868121361085285, guid: 91b2615a883f38142b994c93b9aeb837, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1894868121361085285, guid: 91b2615a883f38142b994c93b9aeb837, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1894868121361085285, guid: 91b2615a883f38142b994c93b9aeb837, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 91b2615a883f38142b994c93b9aeb837, type: 3}
 --- !u!1001 &1922092667317660751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24507,63 +24259,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ded8f071c24696c4caa3f7cd56215d39, type: 3}
---- !u!1001 &2499708712819015463
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 629931596}
-    m_Modifications:
-    - target: {fileID: 1544191590021391022, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_Name
-      value: Key
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -43.617146
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 37.528618
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -58.22937
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2172356513605007380, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
 --- !u!1001 &3144827298424242796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24574,15 +24269,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1322351245150383324, guid: ef508ddb573a8ab459283c9d22e9dccf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.52021
+      value: -44.168
       objectReference: {fileID: 0}
     - target: {fileID: 1322351245150383324, guid: ef508ddb573a8ab459283c9d22e9dccf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 37.55663
+      value: 37.547
       objectReference: {fileID: 0}
     - target: {fileID: 1322351245150383324, guid: ef508ddb573a8ab459283c9d22e9dccf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -58.177032
+      value: -57.298
       objectReference: {fileID: 0}
     - target: {fileID: 1322351245150383324, guid: ef508ddb573a8ab459283c9d22e9dccf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24983,177 +24678,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6e1917deda2c8144ab29ddfb89354db, type: 3}
---- !u!1001 &6227650122157000875
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 629931596}
-    m_Modifications:
-    - target: {fileID: 536422992950265702, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_Name
-      value: Forbice
-      objectReference: {fileID: 0}
-    - target: {fileID: 881035859008642524, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -44.602886
-      objectReference: {fileID: 0}
-    - target: {fileID: 881035859008642524, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 37.523132
-      objectReference: {fileID: 0}
-    - target: {fileID: 881035859008642524, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -57.756844
-      objectReference: {fileID: 0}
-    - target: {fileID: 881035859008642524, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.00000019470718
-      objectReference: {fileID: 0}
-    - target: {fileID: 881035859008642524, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 881035859008642524, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 881035859008642524, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 881035859008642524, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 881035859008642524, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 881035859008642524, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9e7d7eb8366de174cb638226d7bbf373, type: 3}
---- !u!1001 &6723080193678569841
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 629931596}
-    m_Modifications:
-    - target: {fileID: 7253513474601165337, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_Name
-      value: Gesso_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062139047124727971, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -44.592987
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062139047124727971, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 37.524
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062139047124727971, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -57.713
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062139047124727971, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062139047124727971, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062139047124727971, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062139047124727971, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062139047124727971, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062139047124727971, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062139047124727971, guid: f06ae427336264642a2f798d6270af4e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f06ae427336264642a2f798d6270af4e, type: 3}
---- !u!1001 &6765451412119136461
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 629931596}
-    m_Modifications:
-    - target: {fileID: 253689403677590051, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -44.590263
-      objectReference: {fileID: 0}
-    - target: {fileID: 253689403677590051, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 37.52641
-      objectReference: {fileID: 0}
-    - target: {fileID: 253689403677590051, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -57.728516
-      objectReference: {fileID: 0}
-    - target: {fileID: 253689403677590051, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 253689403677590051, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 253689403677590051, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 253689403677590051, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 253689403677590051, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 253689403677590051, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 253689403677590051, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 634613405823244441, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
-      propertyPath: m_Name
-      value: Scotch
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 62e8f8f193f526b488b89c188884d139, type: 3}
 --- !u!1001 &7039556019838002958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25263,8 +24787,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3325694203657721305, guid: 850313a2b44a1154387464ac1e7ff8fd, type: 3}
+    m_RemovedComponents: [{fileID: 3325694203657721305, guid: 850313a2b44a1154387464ac1e7ff8fd, type: 3}]
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -25496,8 +25019,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Libro_2_Verde
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2088397361443573438, guid: b7e220495a42a5445997c5e0763e22a2, type: 3}
+    m_RemovedComponents: [{fileID: 2088397361443573438, guid: b7e220495a42a5445997c5e0763e22a2, type: 3}]
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -25554,8 +25076,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Libro_4_Blue
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8402675885839244777, guid: 109016133581cd54aaca16606cddb691, type: 3}
+    m_RemovedComponents: [{fileID: 8402675885839244777, guid: 109016133581cd54aaca16606cddb691, type: 3}]
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -25846,7 +25367,6 @@ SceneRoots:
   - {fileID: 7039556019838002958}
   - {fileID: 2399513194307903474}
   - {fileID: 6107270375256570645}
-  - {fileID: 665608736}
   - {fileID: 543225169}
   - {fileID: 2071860162}
   - {fileID: 1606633543}
