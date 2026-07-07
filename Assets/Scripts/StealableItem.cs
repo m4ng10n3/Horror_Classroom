@@ -72,6 +72,11 @@ public class StealableItem : MonoBehaviour, IHoldInteractable
         {
             owner.RegisterStealable(this);
         }
+
+        // Alone rosso/agitato: distingue gli oggetti rubabili dai raccoglibili (oro).
+        // Quando l'oggetto diventa pickup gratuito (ConvertToFreePickup), PickupItem.Awake
+        // riporta l'alone al profilo oro.
+        ItemHighlight.Ensure(gameObject, ItemHighlight.Kind.Stealable);
     }
 
     public bool CanInteract() => !stolen && isActiveAndEnabled;

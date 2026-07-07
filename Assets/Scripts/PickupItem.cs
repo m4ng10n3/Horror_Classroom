@@ -44,6 +44,9 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
                 gameObject.AddComponent<BoxCollider>();
             }
         }
+
+        // Alone oro/scintillante che distingue i raccoglibili dagli oggetti di scena.
+        ItemHighlight.Ensure(gameObject, ItemHighlight.Kind.Pickup);
     }
 
     public bool CanInteract() => !pickedUp && isActiveAndEnabled;

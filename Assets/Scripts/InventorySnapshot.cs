@@ -25,6 +25,13 @@ public static class InventorySnapshot
         foreach (var st in snapshot.GetComponentsInChildren<StealableItem>())
             Object.Destroy(st);
 
+        // L'alone scintillante serve solo in scena: va tolto dall'anteprima inventario,
+        // sia il componente sia gli overlay già clonati con l'oggetto.
+        foreach (var highlight in snapshot.GetComponentsInChildren<ItemHighlight>(true))
+            Object.Destroy(highlight);
+        foreach (var overlay in snapshot.GetComponentsInChildren<ItemHighlightOverlay>(true))
+            Object.Destroy(overlay.gameObject);
+
         Object.DontDestroyOnLoad(snapshot);
         return snapshot;
     }
