@@ -330,53 +330,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Nicole
   studentColor: {r: 0.6666667, g: 0.3137255, b: 0.6666667, a: 1}
-  missingItemSequence: [{speaker: 0, text: Hey Nicole}, {speaker: 0, text: Hai qualche
-        ritaglio di tessuto che ti avanza}, {speaker: 0, text: ' Vorrei prenderne
-        un paio'}, {speaker: 1, text: 'Certo, prendi quelli che vuoi'}, {speaker: 1, text: "Io
-        non li uso pi\xF9"}, {speaker: 0, text: Sei la Goat}, {speaker: 1, text: Aspetta!},
-    {speaker: 0, text: 'Cosa?'}, {speaker: 1, text: 'Hai una matita da prestarmi in
-        cambio?
-
-'}, {speaker: 0, text: "S\xEC"}, {speaker: 0, text: Torno con la matita ferma qua}]
-  completedSequence:
+  missingItemSequence:
   - speaker: 0
     text: Hey Nicole
   - speaker: 0
-    text: 'Hai ancora qualche ritaglio di tessuto che ti avanza?
-
-'
+    text: Hai qualche
+  completedSequence:
   - speaker: 0
-    text: ' Vorrei prenderne un paio'
+    text: Ho quello che cercavi.
   - speaker: 1
-    text: "Certo, prendi quelli che vuoi. Io non li uso pi\xF9"
+    text: Perfetto! Tieni, potrebbe servirti.
   - speaker: 0
-    text: Sei la Goat
-  - speaker: 1
-    text: Hai una matita da prestarmi in cambio?
-  - speaker: 0
-    text: Ecco la matita
-  - speaker: 1
-    text: Grazie tieni il tessuto
+    text: Grazie, ne avevo bisogno.
   repeatSequences:
   - lines:
     - speaker: 1
       text: Non ho altro da darti.
     - speaker: 0
       text: Capisco, grazie comunque.
-  - lines:
-    - speaker: 1
-      text: La tua matita fa schifo
-    - speaker: 0
-      text: Damn
   itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
-  requiredItem: Matitina
+  requiredItem: 
   additionalRequiredItems: []
   tradeSteps: []
-  rewardItem: Tessuto
+  rewardItem: 
   consumeRequiredItem: 1
-  rewardItemPrefab: {fileID: 919132149155446097, guid: ea27d0c5d25aa08458fa26376a22c96b, type: 3}
+  rewardItemPrefab: {fileID: 0}
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
@@ -387,11 +367,11 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems: []
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
-  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardPrefab: {fileID: 0}
   gougeRewardDescription: 
   gougeRewardCanInspect: 1
   gougeRewardInspectionScaleMultiplier: 1
@@ -400,7 +380,7 @@ MonoBehaviour:
     - speaker: 0
       text: "Stai fermo. Sar\xE0 solo un secondo."
     - speaker: 1
-      text: No... no, ti prego, NO!!!!
+      text: "No... no, ti prego, NO\u2014"
   afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
@@ -1036,7 +1016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -230, y: -150}
+  m_AnchoredPosition: {x: -230, y: -113.1}
   m_SizeDelta: {x: 440, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &59139273
@@ -1096,15 +1076,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15686275, g: 0.15686275, b: 0.23529412, a: 1}
+  m_Color: {r: 0.61006284, g: 0.54675436, b: 0.54675436, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 526f2f227e097664da97d0678eaac3e9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2351,15 +2331,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"4. Risposta D"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
-  m_sharedMaterial: {fileID: -5383969719504479820, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
+  m_sharedMaterial: {fileID: 2196063469194852143, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2376,8 +2356,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2914,7 +2894,7 @@ PrefabInstance:
       value: 4.574
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -2996,7 +2976,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -3296,7 +3276,7 @@ PrefabInstance:
       value: -1.131
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -4209,7 +4189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 230, y: -150}
+  m_AnchoredPosition: {x: 230, y: -113.1}
   m_SizeDelta: {x: 440, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &347966702
@@ -4269,15 +4249,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15686275, g: 0.15686275, b: 0.23529412, a: 1}
+  m_Color: {r: 0.61006284, g: 0.54675436, b: 0.54675436, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 526f2f227e097664da97d0678eaac3e9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4430,7 +4410,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -4541,7 +4522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -20.6}
   m_SizeDelta: {x: -80, y: 120}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &368761582
@@ -4564,17 +4545,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"Qui apparir\xE0 la domanda della prof\""
+  m_text: "Qui apparir\xE0 la domanda della prof"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 094086a8a3f827741a19a9f50936be47, type: 2}
-  m_sharedMaterial: {fileID: 7413249430813429330, guid: 094086a8a3f827741a19a9f50936be47, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cbd5a8873874b2c4bab969609dba17fe, type: 2}
+  m_sharedMaterial: {fileID: -837750439736294152, guid: cbd5a8873874b2c4bab969609dba17fe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4591,10 +4572,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 57
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -4703,15 +4684,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"1. Risposta A"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
-  m_sharedMaterial: {fileID: -5383969719504479820, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
+  m_sharedMaterial: {fileID: 2196063469194852143, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4728,8 +4709,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4840,15 +4821,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"3. Risposta C"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
-  m_sharedMaterial: {fileID: -5383969719504479820, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
+  m_sharedMaterial: {fileID: 2196063469194852143, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4865,8 +4846,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6274,7 +6255,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -6566,7 +6547,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -6784,7 +6766,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -7262,7 +7245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -230, y: -50}
+  m_AnchoredPosition: {x: -230, y: 3.9}
   m_SizeDelta: {x: 440, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &648944901
@@ -7322,14 +7305,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.61006284, g: 0.54675436, b: 0.54675436, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7be8c15b38f732b45aaf68bdf2e61412, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 526f2f227e097664da97d0678eaac3e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7557,65 +7540,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Daniel
   studentColor: {r: 0.39215687, g: 0.19607843, b: 0.6666667, a: 1}
-  missingItemSequence: [{speaker: 0, text: Heyy Daaaan}, {speaker: 0, text: 'Hai presente
-        il tuo pupazzetto?'}, {speaker: 1, text: "Beh s\xEC\u2026 \xE8 mio"}, {speaker: 0, text: Voglio
-        fare uno scherzo a Brad}, {speaker: 0, text: 'Me lo presti?'}, {speaker: 1, text: 'Che
-        tipo di scherzo?'}, {speaker: 0, text: 'Oh, lo vedrai!'}, {speaker: 1, text: Brad
-        non lo sopporto}, {speaker: 1, text: "Quindi qualsiasi scherzo mi andr\xE0
-        bene"}, {speaker: 0, text: Ottimooo}, {speaker: 1, text: "Avrei bisogno per\xF2\u2026"},
-    {speaker: 0, text: "Ovviamente\u2026"}, {speaker: 0, text: "Pi\xF9 scontato del
-        Black Friday"}, {speaker: 0, text: 'Che vuoi in cambio?'}, {speaker: 1, text: Il
-        temperino di Leo}, {speaker: 0, text: "Sar\xE0 fatto!"}]
+  missingItemSequence:
+  - speaker: 0
+    text: Heyy Daaaan
+  - speaker: 0
+    text: Hai presente il tuo pupazzetto?
+  - speaker: 1
+    text: "Beh s\xEC\u2026 \xE8 mio"
+  - speaker: 0
+    text: Voglio
   completedSequence:
   - speaker: 0
-    text: Ecco a te il temperino
+    text: Ho quello che cercavi.
   - speaker: 1
-    text: Ed ecco a te il pupazzo
+    text: Perfetto! Tieni, potrebbe servirti.
   - speaker: 0
-    text: Grazie
+    text: Grazie, ne avevo bisogno.
   repeatSequences:
   - lines:
     - speaker: 1
-      text: 'Ti piace il mio pupazzo? '
+      text: Non ho altro da darti.
     - speaker: 0
-      text: Non molto
+      text: Capisco, grazie comunque.
   itemDialogueTriggers: []
-  essential: 1
+  essential: 0
   tradeDone: 0
-  requiredItem: Temperino
+  requiredItem: 
   additionalRequiredItems: []
   tradeSteps: []
-  rewardItem: Peluche
+  rewardItem: 
   consumeRequiredItem: 1
-  rewardItemPrefab: {fileID: 4377251714646253860, guid: d5de0a8d28973c040857394df80e827d, type: 3}
-  rewardItemDescription: Un po' bagnato di sangue, e con 2 buchi vuoti al posto degli
-    occhi
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
   rewardUpgradePath:
     actionKey: 1
     actionLabel: Inserisci occhio
-    stages:
-    - requiredItem: Occhio
-      name: 
-      description: 1 occhio
-      model: {fileID: 919132149155446097, guid: 0d7491d024ce09b4c9aafd5cb4fc52b8, type: 3}
-      canInspect: 1
-      inspectionScaleMultiplier: 1
-    - requiredItem: Occhio
-      name: 
-      description: 2 occhi
-      model: {fileID: 919132149155446097, guid: 338513d716cacea428964f2254952628, type: 3}
-      canInspect: 1
-      inspectionScaleMultiplier: 1
+    stages: []
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems: []
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
-  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardPrefab: {fileID: 0}
   gougeRewardDescription: 
   gougeRewardCanInspect: 1
   gougeRewardInspectionScaleMultiplier: 1
@@ -7624,7 +7594,7 @@ MonoBehaviour:
     - speaker: 0
       text: "Stai fermo. Sar\xE0 solo un secondo."
     - speaker: 1
-      text: No... no, ti prego, NO!!!!
+      text: "No... no, ti prego, NO\u2014"
   afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
@@ -7689,14 +7659,28 @@ MonoBehaviour:
     text: Una figurina carina con il gattino carino della collezione carina di Maria.
   - speaker: 0
     text: OK
-  completedSequence: [{speaker: 0, text: "Ciao Erika puoi prestarmi per favore una
-        delle tue graffette? \nHo portato la figurina"}, {speaker: 1, text: 'Quella
-        con il gattino carino?'}, {speaker: 0, text: "S\xEC\u2026"}, {speaker: 0, text: "Quella
-        con il gattino\u2026"}, {speaker: 0, text: "Carino\u2026"}, {speaker: 1, text: 'Tieni
-        la graffetta allora
+  completedSequence:
+  - speaker: 0
+    text: "Ciao Erika puoi prestarmi per favore una delle tue graffette? \nHo portato
+      la figurina"
+  - speaker: 1
+    text: Quella con il gattino carino?
+  - speaker: 0
+    text: "S\xEC\u2026"
+  - speaker: 0
+    text: "Quella con il gattino\u2026"
+  - speaker: 0
+    text: "Carino\u2026"
+  - speaker: 1
+    text: 'Tieni la graffetta allora
 
-'}, {speaker: 1, text: Fai attenzione a non farti male}, {speaker: 0, text: "Ok\u2026"},
-    {speaker: 0, text: "Ciao\u2026"}]
+'
+  - speaker: 1
+    text: Fai attenzione a non farti male
+  - speaker: 0
+    text: "Ok\u2026"
+  - speaker: 0
+    text: "Ciao\u2026"
   repeatSequences:
   - lines:
     - speaker: 1
@@ -7722,7 +7706,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -8784,15 +8769,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"2. Risposta B"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
-  m_sharedMaterial: {fileID: -5383969719504479820, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
+  m_sharedMaterial: {fileID: 2196063469194852143, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8809,8 +8794,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9213,7 +9198,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -9468,20 +9453,43 @@ MonoBehaviour:
       text: Guardah, non vedo l'ora di menare le mani
     - speaker: 0
       text: Stammi lontano
-  itemDialogueTriggers: [{requiredItemName: Corda da salto, dialogue: {lines: [{speaker: 1, text: 'Guardah,
-              voglio anche una corda per saltare'}, {speaker: 1, text: Per allenarmi
-              per bene}, {speaker: 0, text: 'E dove la prendo?'}, {speaker: 1, text: "Guardah,
-              non \xE8 un mio problema"}, {speaker: 1, text: Cerca in giro}]}, oneShot: 0, triggered: 0}]
+  itemDialogueTriggers:
+  - requiredItemName: Corda da salto
+    dialogue:
+      lines:
+      - speaker: 1
+        text: Guardah, voglio anche una corda per saltare
+      - speaker: 1
+        text: Per allenarmi
+    oneShot: 1
+    triggered: 0
   essential: 0
   tradeDone: 0
-  requiredItem: Guanto Da Box
-  additionalRequiredItems:
-  - Corda da salto
-  tradeSteps: []
+  requiredItem: 
+  additionalRequiredItems: []
+  tradeSteps:
+  - requiredItem: Guanto da box
+    consumeItem: 1
+    requestDialogue:
+      lines:
+      - speaker: 1
+        text: dammi il guanto
+    receivedDialogue:
+      lines: []
+    completed: 0
+  - requiredItem: Corda da Salto
+    consumeItem: 1
+    requestDialogue:
+      lines:
+      - speaker: 1
+        text: dammi il cordo
+    receivedDialogue:
+      lines: []
+    completed: 0
   rewardItem: Temperino
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 4456630930037526114, guid: df1185af74e6cae4a85f28c7a997ec22, type: 3}
-  rewardItemDescription: Un temperino super affilato, Guardah da PAURA!
+  rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
   rewardUpgradePath:
@@ -9491,11 +9499,11 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems: []
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
-  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardPrefab: {fileID: 0}
   gougeRewardDescription: 
   gougeRewardCanInspect: 1
   gougeRewardInspectionScaleMultiplier: 1
@@ -9504,7 +9512,7 @@ MonoBehaviour:
     - speaker: 0
       text: "Stai fermo. Sar\xE0 solo un secondo."
     - speaker: 1
-      text: No... no, ti prego, NO!!!!
+      text: "No... no, ti prego, NO\u2014"
   afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
@@ -10098,7 +10106,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -10826,13 +10835,14 @@ MonoBehaviour:
   essential: 0
   tradeDone: 0
   requiredItem: Tessuto
-  additionalRequiredItems: [Cloroformio]
+  additionalRequiredItems:
+  - Cloroformio
   tradeSteps: []
   rewardItem: Pallone Da Calcio
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 2613632856586992849, guid: fec66354396ba2b4b97d17f26a3e930a, type: 3}
-  rewardItemDescription: "Chiss\xE0 come fa Frank a vincere se nemmeno si allena con
-    la palla"
+  rewardItemDescription: "Chiss\xE0 come fa Frank a vincere se nemmeno si allena
+    con la palla"
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
   rewardUpgradePath:
@@ -10842,7 +10852,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -11235,7 +11246,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -12629,7 +12641,7 @@ PrefabInstance:
       value: -6.713
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -12920,7 +12932,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -13060,13 +13073,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Will
   studentColor: {r: 0.8, g: 0.39215687, b: 0.5882353, a: 1}
-  missingItemSequence: [{speaker: 0, text: Hey Will.}, {speaker: 0, text: 'Le mangi
-        ancora quelle patatine?'}, {speaker: 1, text: 'No. Le vuoi?'}, {speaker: 0, text: "S\xEC,
-        per favore."}, {speaker: 1, text: Portami il libro rosso.}, {speaker: 0, text: "Perch\xE9
-        nessuno in questa classe \xE8 generoso?"}, {speaker: 1, text: 'Mi porti il
-        libro rosso o no?'}, {speaker: 0, text: "\u2026"}, {speaker: 0, text: 'Dove
-        lo trovo?'}, {speaker: 1, text: "Se non \xE8 nel tuo cuore, sar\xE0 \xF9da
-        qualche parte nell\u2019aula"}]
+  missingItemSequence:
+  - speaker: 0
+    text: Hey Will.
+  - speaker: 0
+    text: Le mangi ancora quelle patatine?
+  - speaker: 1
+    text: No. Le vuoi?
+  - speaker: 0
+    text: "S\xEC, per favore."
+  - speaker: 1
+    text: Portami il libro rosso.
+  - speaker: 0
+    text: "Perch\xE9 nessuno in questa classe \xE8 generoso?"
+  - speaker: 1
+    text: Mi porti il libro rosso o no?
+  - speaker: 0
+    text: "\u2026"
+  - speaker: 0
+    text: Dove lo trovo?
+  - speaker: 1
+    text: "Se non \xE8 nel tuo cuore, sar\xE0 \xF9da qualche parte nell\u2019aula"
   completedSequence:
   - speaker: 0
     text: Tieni il libro rosso
@@ -13101,7 +13128,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -13186,8 +13214,13 @@ MonoBehaviour:
   essential: 1
   tradeDone: 0
   requiredItem: 
-  additionalRequiredItems: [Macchinina Verde, Patatine, Peluche, Occhio 1, Occhio
-      2]
+  additionalRequiredItems:
+  - Macchinina Verde
+  - Patatine
+  - Peluche
+  - Occhio 1
+  - Occhio
+  - 2
   tradeSteps:
   - requiredItem: Macchinina
     consumeItem: 1
@@ -13236,7 +13269,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 0
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -13309,11 +13343,11 @@ PrefabInstance:
       value: random_ahh_kid_2
       objectReference: {fileID: 0}
     - target: {fileID: 1240313812646357207, guid: 7e42e67c0379b78478c2aa779ee48936, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b6297684e657ec345bcbcae5277a29d9, type: 2}
     - target: {fileID: 2722059303693140563, guid: 7e42e67c0379b78478c2aa779ee48936, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8316795d1512db74aba2126267ef70d3, type: 2}
     m_RemovedComponents: []
@@ -14349,7 +14383,7 @@ MonoBehaviour:
   - speaker: 0
     text: "Damn dimmi di pi\xF9"
   - speaker: 1
-    text: '...'
+    text: ...
   repeatSequences:
   - lines:
     - speaker: 1
@@ -14375,7 +14409,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -15033,7 +15068,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 64eda71d4b800d14faf57997db3839c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75f1af87e25c8e346b8f56356a2383cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15217,7 +15252,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -15486,7 +15522,7 @@ PrefabInstance:
       value: 4.574
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -16354,7 +16390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 230, y: -50}
+  m_AnchoredPosition: {x: 230, y: 3.9}
   m_SizeDelta: {x: 440, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1440872232
@@ -16414,15 +16450,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15686275, g: 0.15686275, b: 0.23529412, a: 1}
+  m_Color: {r: 0.61006284, g: 0.54675436, b: 0.54675436, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 526f2f227e097664da97d0678eaac3e9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -17116,7 +17152,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -18445,7 +18482,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -19192,7 +19230,7 @@ MonoBehaviour:
   rotationSpeed: 150
   toggleKey: 3
   dropKey: 32
-  uiFont: {fileID: 11400000, guid: 55e46fba6d3ac964fa123e14fbbb184b, type: 2}
+  uiFont: {fileID: 11400000, guid: f85b19072c3a0514f9242b8281a93ffd, type: 2}
   carouselSpacing: 0.8
   carouselScaleFalloff: 0.55
   carouselYOffset: 0.1
@@ -19201,7 +19239,7 @@ MonoBehaviour:
   infoBarAnchorMin: {x: 0, y: 0}
   infoBarAnchorMax: {x: 1, y: 0.18}
   infoBarSprite: {fileID: 0}
-  infoBarColor: {r: 1, g: 0, b: 0, a: 0.88}
+  infoBarColor: {r: 0.22012573, g: 0.20072758, b: 0.19728248, a: 0.88}
   nameAnchorMin: {x: 0.05, y: 0.55}
   nameAnchorMax: {x: 0.95, y: 1}
   descAnchorMin: {x: 0.05, y: 0.22}
@@ -19683,7 +19721,8 @@ Transform:
   m_LocalPosition: {x: -0.097, y: 0.067, z: 1.268}
   m_LocalScale: {x: 0.1, y: 2, z: 1.2}
   m_ConstrainProportionsScale: 0
-  m_Children: [{fileID: 398803101}]
+  m_Children:
+  - {fileID: 398803101}
   m_Father: {fileID: 399139265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1762278038
@@ -19922,7 +19961,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -20401,7 +20440,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
@@ -20950,39 +20990,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
   studentName: Eva
   studentColor: {r: 0.19607843, g: 0.6666667, b: 0.6666667, a: 1}
-  missingItemSequence: [{speaker: 0, text: Quanti taglierini hai sul banco!}, {speaker: 1, text: "Si
-        una \xE8 per il braccio sinistro"}, {speaker: 1, text: "Una \xE8 per quello
-        destro"}, {speaker: 1, text: Uno per i piedi}, {speaker: 1, text: L'altro
-        per la gola}, {speaker: 0, text: 'Me ne presti uno?'}, {speaker: 1, text: Ti
-        do quello che ho in tasca}, {speaker: 1, text: Ma prima ho bisogno di uno
-        scotch}, {speaker: 0, text: 'Scotch?'}, {speaker: 1, text: "S\xEC devo riattaccare
-        una lama che si \xE8 staccata"}, {speaker: 0, text: "Non credo basti lo scotch\u2026 "},
-    {speaker: 1, text: Portalo e basta}, {speaker: 1, text: O ti taglio la gola}]
+  missingItemSequence:
+  - speaker: 0
+    text: Quanti taglierini hai sul banco!
+  - speaker: 1
+    text: "Si una \xE8 per il braccio sinistro"
+  - speaker: 1
+    text: "Una \xE8 per quello destro"
+  - speaker: 1
+    text: Uno per i piedi
+  - speaker: 1
+    text: L'altro
   completedSequence:
-  - speaker: 1
-    text: Vedo che hai dello scotch in mano
   - speaker: 0
-    text: Si
+    text: Ho quello che cercavi.
   - speaker: 1
-    text: Tieni ti do questo taglierino per quello scotch
+    text: Perfetto! Tieni, potrebbe servirti.
   - speaker: 0
-    text: Figo
+    text: Grazie, ne avevo bisogno.
   repeatSequences:
   - lines:
     - speaker: 1
-      text: Raccontami come hai usato il taglierino
+      text: Non ho altro da darti.
     - speaker: 0
-      text: Sei pazza
+      text: Capisco, grazie comunque.
   itemDialogueTriggers: []
-  essential: 1
+  essential: 0
   tradeDone: 0
-  requiredItem: Nastro Adesivo
+  requiredItem: 
   additionalRequiredItems: []
   tradeSteps: []
-  rewardItem: Taglierino
-  consumeRequiredItem: 0
-  rewardItemPrefab: {fileID: 8264412883646412846, guid: 662d5c349e1e373449192935b70e0670, type: 3}
-  rewardItemDescription: Uno dei tanti taglierini di Eva
+  rewardItem: 
+  consumeRequiredItem: 1
+  rewardItemPrefab: {fileID: 0}
+  rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
   rewardUpgradePath:
@@ -20992,11 +21033,11 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems: []
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio
-  gougeRewardPrefab: {fileID: 543946042260495957, guid: 75b15e17d3113e04d86b74d19b163c37, type: 3}
+  gougeRewardPrefab: {fileID: 0}
   gougeRewardDescription: 
   gougeRewardCanInspect: 1
   gougeRewardInspectionScaleMultiplier: 1
@@ -21005,7 +21046,7 @@ MonoBehaviour:
     - speaker: 0
       text: "Stai fermo. Sar\xE0 solo un secondo."
     - speaker: 1
-      text: No... no, ti prego, NO!!!!
+      text: "No... no, ti prego, NO\u2014"
   afterGougeSequences: []
   addFallbackInteractionCollider: 1
   fallbackInteractionRadius: 0.45
@@ -22031,11 +22072,11 @@ MonoBehaviour:
   dialogueMaxDistance: 0
   drawPlaceholderHud: 1
   messageDuration: 2
-  dialogueBoxSprite: {fileID: 21300000, guid: 64eda71d4b800d14faf57997db3839c2, type: 3}
-  promptBoxSprite: {fileID: 0}
+  dialogueBoxSprite: {fileID: 21300000, guid: 75f1af87e25c8e346b8f56356a2383cb, type: 3}
+  promptBoxSprite: {fileID: 21300000, guid: 0dfdf3740b129c745ad6ff1dc30ea1d3, type: 3}
   playerName: Eddy
-  playerLineColor: {r: 1, g: 0.91, b: 0.49, a: 1}
-  npcLineColor: {r: 1, g: 1, b: 1, a: 1}
+  playerLineColor: {r: 0.2578616, g: 0.22242592, b: 0.057572853, a: 1}
+  npcLineColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &2027528575
 GameObject:
   m_ObjectHideFlags: 0
@@ -22162,7 +22203,7 @@ PrefabInstance:
       value: 1.179
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -22437,7 +22478,8 @@ MonoBehaviour:
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
-  gougeAlternativeItems: [Taglierino]
+  gougeAlternativeItems:
+  - Taglierino
   consumeItemsOnGouge: 1
   eyeGouged: 0
   gougeRewardItem: Occhio Scavato
@@ -22590,7 +22632,7 @@ PrefabInstance:
       value: -1.131
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -22664,7 +22706,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -23076,7 +23118,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 9db347da57985de41bc65f7b2d9369cd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a079b1d859863f41a5a9958ce8c2a4c, type: 3}
@@ -24153,6 +24195,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 970890883340911601, guid: b7bcfedc51b9e1949bcff6c2764c8ff3, type: 3}
+      propertyPath: itemName
+      value: Macchinina
+      objectReference: {fileID: 0}
+    - target: {fileID: 970890883340911601, guid: b7bcfedc51b9e1949bcff6c2764c8ff3, type: 3}
+      propertyPath: description
+      value: Macchina verde, spero sia a GPL che il Diesel costa troppo ultimamente
+      objectReference: {fileID: 0}
     - target: {fileID: 4918260304050642780, guid: b7bcfedc51b9e1949bcff6c2764c8ff3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.65843
@@ -24787,7 +24837,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: [{fileID: 3325694203657721305, guid: 850313a2b44a1154387464ac1e7ff8fd, type: 3}]
+    m_RemovedComponents:
+    - {fileID: 3325694203657721305, guid: 850313a2b44a1154387464ac1e7ff8fd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -25019,7 +25070,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Libro_2_Verde
       objectReference: {fileID: 0}
-    m_RemovedComponents: [{fileID: 2088397361443573438, guid: b7e220495a42a5445997c5e0763e22a2, type: 3}]
+    m_RemovedComponents:
+    - {fileID: 2088397361443573438, guid: b7e220495a42a5445997c5e0763e22a2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -25076,7 +25128,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Libro_4_Blue
       objectReference: {fileID: 0}
-    m_RemovedComponents: [{fileID: 8402675885839244777, guid: 109016133581cd54aaca16606cddb691, type: 3}]
+    m_RemovedComponents:
+    - {fileID: 8402675885839244777, guid: 109016133581cd54aaca16606cddb691, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
   m_Name: Q_Scholastic_France
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: "\"Qual \xE8 la capitale della Francia?\""
+  questionText: "Qual \xE8 la capitale della Francia?"
   options:
   - 'Londra '
   - 'Berlino '

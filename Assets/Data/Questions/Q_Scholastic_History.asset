@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
   m_Name: Q_Scholastic_History
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: "\"In che anno \xE8 iniziata la Seconda Guerra Mondiale?\""
+  questionText: "In che anno \xE8 iniziata la Seconda Guerra Mondiale?"
   options:
   - '1914 '
   - '1939 '

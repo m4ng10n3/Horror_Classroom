@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
   m_Name: Q_Angry_Door
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: "\"SAI COSA C'\xC8 FUORI DA QUELLA PORTA?\""
+  questionText: "SAI COSA C'\xC8 FUORI DA QUELLA PORTA?"
   options:
   - Il corridoio
   - 'Casa '
@@ -23,3 +23,5 @@ MonoBehaviour:
   category: 2
   customCorrectFeedback: 
   customWrongFeedback: '"Sbagliato. Come al solito."'
+  environmentCheck: 0
+  fallbackCorrectIndex: 3

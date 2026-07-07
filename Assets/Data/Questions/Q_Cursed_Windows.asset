@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
   m_Name: Q_Cursed_Windows
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: '"Quante finestre ha questa stanza? Contale bene."'
+  questionText: Quante finestre ha questa stanza? Contale bene.
   options:
   - 'Tre '
   - 'Quattro '

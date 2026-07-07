@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
   m_Name: Q_Scholastic_Math
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: '"Bene, bambini. Quanto fa 7 per 8?"'
+  questionText: Bene, bambini. Quanto fa 7 per 8?
   options:
   - '54 '
   - 56

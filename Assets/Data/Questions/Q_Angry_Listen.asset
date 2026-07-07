@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
   m_Name: Q_Angry_Listen
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: '"MI STAI ASCOLTANDO?"'
+  questionText: MI STAI ASCOLTANDO?
   options:
   - "S\xEC professoressa"
   - Certo
@@ -23,3 +23,5 @@ MonoBehaviour:
   category: 2
   customCorrectFeedback: 
   customWrongFeedback: 
+  environmentCheck: 0
+  fallbackCorrectIndex: 3
