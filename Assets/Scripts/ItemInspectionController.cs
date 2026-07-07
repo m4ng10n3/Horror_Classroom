@@ -79,6 +79,7 @@ public class ItemInspectionController : MonoBehaviour
 
     private GameObject            currentModel;
     private InspectableItemAction currentAction;
+    private CollectedItem         currentItem;
 
     // ── lifecycle ─────────────────────────────────────────────────────────────
 
@@ -153,6 +154,14 @@ public class ItemInspectionController : MonoBehaviour
             return;
         }
 
+        if (CanUpgradeCurrent()
+            && currentItem.upgradePath.actionKey != Key.None
+            && kb[currentItem.upgradePath.actionKey].wasPressedThisFrame)
+        {
+            UpgradeCurrentItem();
+            return;
+        }
+
         if (kb[dropKey].wasPressedThisFrame)
         {
             DropCurrentItem();
@@ -207,6 +216,7 @@ public class ItemInspectionController : MonoBehaviour
         isInspecting  = false;
         currentModel  = null;
         currentAction = null;
+        currentItem   = null;
 
         foreach (var e in carousel)
             if (e.Outer != null) Destroy(e.Outer);
@@ -277,6 +287,7 @@ public class ItemInspectionController : MonoBehaviour
 
         currentModel  = currentIndex < carousel.Count ? carousel[currentIndex].Outer  : null;
         currentAction = currentIndex < carousel.Count ? carousel[currentIndex].Action : null;
+        currentItem   = currentIndex < carousel.Count ? carousel[currentIndex].Item   : null;
 
         UpdateInfoBar();
         UpdateHintText();
@@ -434,6 +445,7 @@ public class ItemInspectionController : MonoBehaviour
         pickup.description = item.description;
         pickup.canInspect = item.canInspect;
         pickup.inspectionScaleMultiplier = item.inspectionScaleMultiplier;
+        pickup.upgradePath = item.upgradePath;
 
         return droppedObject;
     }
@@ -469,7 +481,59 @@ public class ItemInspectionController : MonoBehaviour
     {
         if (hintText == null) return;
         string actionHint = currentAction != null ? $"   {currentAction.HintText}" : "";
-        hintText.text = $"{navigateHintText}   {rotateHintText}{actionHint}   {dropHintText}   {closeHintText}";
+        string upgradeHint = CanUpgradeCurrent()
+            ? $"   [{currentItem.upgradePath.actionKey}] {currentItem.upgradePath.actionLabel}"
+            : "";
+        hintText.text = $"{navigateHintText}   {rotateHintText}{actionHint}{upgradeHint}   {dropHintText}   {closeHintText}";
+    }
+
+    // ── potenziamento oggetto (es. inserire occhi nel peluche) ─────────────────
+
+    // True se l'oggetto a fuoco ha uno stadio di potenziamento disponibile e il player
+    // possiede l'oggetto richiesto per applicarlo.
+    private bool CanUpgradeCurrent()
+    {
+        ItemUpgradePath path = currentItem?.upgradePath;
+        if (path == null || !path.HasNext) return false;
+
+        if (physicalInventory == null) physicalInventory = PhysicalInventory.Instance;
+        return physicalInventory != null && physicalInventory.HasItem(path.Next.requiredItem);
+    }
+
+    private void UpgradeCurrentItem()
+    {
+        if (!CanUpgradeCurrent()) return;
+
+        CollectedItem item = currentItem;
+        ItemUpgradePath path = item.upgradePath;
+        ItemUpgradeStage next = path.Next;
+
+        // 1) Potenzia l'oggetto sul posto: nuovo modello, nome, descrizione. Lo stato
+        //    (nextStageIndex) avanza sul CollectedItem, così segue l'oggetto.
+        GameObject oldSource = item.worldSource;
+        item.worldSource = InventorySnapshot.Create(next.model, next.name);
+        if (!string.IsNullOrWhiteSpace(next.name)) item.name = next.name;
+        item.description = next.description;
+        item.canInspect = next.canInspect && item.worldSource != null;
+        item.inspectionScaleMultiplier = next.inspectionScaleMultiplier;
+        path.nextStageIndex++;
+        if (oldSource != null) Destroy(oldSource);
+
+        // 2) Consuma un oggetto richiesto (innesca un rebuild via HandleInventoryChanged).
+        physicalInventory.RemoveItem(next.requiredItem);
+
+        // 3) Mantieni il fuoco sull'oggetto potenziato e ridisegna il carosello.
+        int idx = IndexOfItem(item);
+        if (idx >= 0) currentIndex = idx;
+        RebuildCarouselModels();
+    }
+
+    private int IndexOfItem(CollectedItem item)
+    {
+        var items = GetItems();
+        for (int i = 0; i < items.Count; i++)
+            if (items[i] == item) return i;
+        return -1;
     }
 
     private IReadOnlyList<CollectedItem> GetItems()
@@ -547,8 +611,17 @@ public class ItemInspectionController : MonoBehaviour
         foreach (Renderer r in renderers)
         {
             if (r == null || !r.enabled || !r.gameObject.activeInHierarchy) continue;
-            if (!hasBounds) { bounds = r.bounds; hasBounds = true; }
-            else              bounds.Encapsulate(r.bounds);
+
+            // I bounds della mesh (geometria) trasformati in world danno una dimensione
+            // stabile e coerente fra modelli della stessa famiglia. Per le
+            // SkinnedMeshRenderer i bounds runtime (r.bounds) possono essere gonfiati dal
+            // rig/bind-pose o non ancora calcolati (prima del primo render), facendo
+            // apparire il modello microscopico dopo la normalizzazione.
+            Mesh mesh = GetRendererMesh(r);
+            if (mesh != null)
+                EncapsulateMeshWorldBounds(r.transform, mesh.bounds, ref bounds, ref hasBounds);
+            else if (!hasBounds) { bounds = r.bounds; hasBounds = true; }
+            else                   bounds.Encapsulate(r.bounds);
         }
 
         if (!hasBounds)
@@ -563,6 +636,30 @@ public class ItemInspectionController : MonoBehaviour
         float maxDim     = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z);
         float targetSize = GetInspectionSize(scaleMultiplier);
         pivot.localScale = Vector3.one * (maxDim > 0f ? targetSize / maxDim : targetSize);
+    }
+
+    // Mesh associata a un Renderer (sharedMesh per le skinned, MeshFilter per le statiche).
+    private static Mesh GetRendererMesh(Renderer r)
+    {
+        if (r is SkinnedMeshRenderer smr) return smr.sharedMesh;
+        return r.TryGetComponent(out MeshFilter mf) ? mf.sharedMesh : null;
+    }
+
+    // Espande 'bounds' (world-space) con gli 8 angoli del box mesh-local trasformati in world.
+    private static void EncapsulateMeshWorldBounds(Transform t, Bounds meshBounds, ref Bounds bounds, ref bool hasBounds)
+    {
+        Vector3 c = meshBounds.center;
+        Vector3 e = meshBounds.extents;
+        for (int i = 0; i < 8; i++)
+        {
+            Vector3 corner = c + new Vector3(
+                (i & 1) == 0 ? -e.x : e.x,
+                (i & 2) == 0 ? -e.y : e.y,
+                (i & 4) == 0 ? -e.z : e.z);
+            Vector3 world = t.TransformPoint(corner);
+            if (!hasBounds) { bounds = new Bounds(world, Vector3.zero); hasBounds = true; }
+            else             bounds.Encapsulate(world);
+        }
     }
 
     private float GetInspectionSize(float scaleMultiplier) =>

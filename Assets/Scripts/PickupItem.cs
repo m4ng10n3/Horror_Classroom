@@ -21,6 +21,10 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
     [Tooltip("Modello alternativo (lascia vuoto per usare questo oggetto).")]
     public GameObject inspectionModelOverride;
 
+    // Catena di potenziamento trasportata a runtime: serve a non perdere lo stato (es.
+    // bambola con un occhio) quando l'oggetto viene lasciato e poi ripreso.
+    [HideInInspector] public ItemUpgradePath upgradePath;
+
     private bool pickedUp = false;
 
     void Awake()
@@ -66,23 +70,7 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
         pickedUp = true;
 
         GameObject source = inspectionModelOverride != null ? inspectionModelOverride : gameObject;
-
-        // Crea snapshot ATTIVO e posizionalo a y=-5000, fuori dal far clip plane di qualsiasi camera.
-        // Un oggetto attivo permette a Instantiate di creare un clone attivo e visibile.
-        GameObject snapshot = Instantiate(source);
-        snapshot.name = "__snapshot_" + itemName;
-        snapshot.transform.position = new Vector3(0f, -5000f, 0f);
-        snapshot.transform.rotation = Quaternion.identity;
-        snapshot.SetActive(true);
-
-        // Rimuovi collider dal clone (non servono per l'ispezione)
-        foreach (var col in snapshot.GetComponentsInChildren<Collider>())
-            Destroy(col);
-        // Rimuovi solo PickupItem per evitare doppio raccoglimento
-        foreach (var pu in snapshot.GetComponentsInChildren<PickupItem>())
-            Destroy(pu);
-
-        DontDestroyOnLoad(snapshot);
+        GameObject snapshot = InventorySnapshot.Create(source, itemName);
 
         inventory.AddItem(new CollectedItem
         {
@@ -91,7 +79,8 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
             description = description,
             canInspect  = canInspect,
             inspectionScaleMultiplier = inspectionScaleMultiplier,
-            worldSource = snapshot
+            worldSource = snapshot,
+            upgradePath = upgradePath
         });
 
         gameObject.SetActive(false);

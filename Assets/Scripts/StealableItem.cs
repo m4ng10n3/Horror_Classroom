@@ -189,22 +189,7 @@ public class StealableItem : MonoBehaviour, IHoldInteractable
     private void AddToInventory(PhysicalInventory inventory)
     {
         GameObject source = inspectionModelOverride != null ? inspectionModelOverride : gameObject;
-
-        // Snapshot attivo fuori dal far clip plane, identico al pattern di PickupItem/StudentNPC.
-        GameObject snapshot = Instantiate(source);
-        snapshot.name = "__snapshot_" + itemName;
-        snapshot.transform.position = new Vector3(0f, -5000f, 0f);
-        snapshot.transform.rotation = Quaternion.identity;
-        snapshot.SetActive(true);
-
-        foreach (var col in snapshot.GetComponentsInChildren<Collider>())
-            Destroy(col);
-        foreach (var st in snapshot.GetComponentsInChildren<StealableItem>())
-            Destroy(st);
-        foreach (var pu in snapshot.GetComponentsInChildren<PickupItem>())
-            Destroy(pu);
-
-        DontDestroyOnLoad(snapshot);
+        GameObject snapshot = InventorySnapshot.Create(source, itemName);
 
         inventory.AddItem(new CollectedItem
         {

@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
-  itemName: Scotch
+  itemName: Nastro Adesivo
   itemId: 
   description: Un oggetto trovato in aula.
   canInspect: 1

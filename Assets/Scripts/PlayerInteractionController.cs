@@ -29,7 +29,7 @@ public class PlayerInteractionController : MonoBehaviour
 
     [Header("Canvas HUD")]
     public bool drawPlaceholderHud = true;
-    public float messageDuration = 4f;
+    public float messageDuration = 2f;
     [Tooltip("Se assegnato, sovrascrive la Source Image del box dialoghi (altrimenti copia lo sprite del QuestionPanel).")]
     public Sprite dialogueBoxSprite;
     [Tooltip("Se assegnato, sovrascrive la Source Image del box interazioni (altrimenti copia lo sprite degli AnswerButtons).")]
@@ -726,7 +726,7 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (dialogueText != null)
         {
-            dialogueText.text = isInDialogue ? currentMessage : $"<b>Interazione</b>\n{currentMessage}";
+            dialogueText.text = currentMessage;
         }
     }
 

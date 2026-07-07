@@ -22,6 +22,10 @@ public class TradeStep
 
     [Tooltip("Dialogo mostrato quando consegni l'oggetto. Di solito introduce la richiesta successiva.")]
     public DialogueSequence receivedDialogue;
+
+    [Tooltip("Diventa true quando questo passo è stato risolto. I passi si risolvono in qualsiasi ordine.")]
+    [HideInInspector]
+    public bool completed = false;
 }
 
 [Serializable]
@@ -114,6 +118,10 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     [Min(0.05f)]
     public float rewardItemInspectionScaleMultiplier = 1f;
 
+    [Header("Reward — Catena Potenziamento (opzionale)")]
+    [Tooltip("Se ha degli stadi, il reward può essere potenziato nell'inventario consumando altri oggetti (es. inserire occhi nel peluche: peluche -> bambola con un occhio -> bambola con due occhi). Lascia gli stadi vuoti per un reward normale.")]
+    public ItemUpgradePath rewardUpgradePath = new ItemUpgradePath();
+
     [Header("Cava Occhio — Coltello")]
     [Tooltip("Se true, avendo il coltello in inventario si può cavare un occhio a questo studente invece di parlarci.")]
     public bool canGougeEye = true;
@@ -179,7 +187,6 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     public int TimesWitnessed => timesWitnessed;
 
     private int repeatIndex = 0;
-    private int tradeStepIndex = 0;
     private int afterGougeIndex = 0;
     private MeshRenderer bodyRenderer;
     private Material bodyMaterialInstance;
@@ -923,25 +930,38 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
 
     private bool UsesTradeChain => tradeSteps != null && tradeSteps.Length > 0;
 
-    // Gestisce la catena di richieste in sequenza: ogni passo chiede un oggetto, lo
-    // consuma alla consegna e sblocca il passo successivo. Il reward (rewardItem)
-    // viene dato solo a conclusione dell'ultimo passo. Come per gli altri dialoghi,
+    // Gestisce la catena di richieste in modo ORDINE-INDIPENDENTE: ogni passo chiede un
+    // oggetto e lo consuma alla consegna. Se il player ha in mano l'oggetto di un passo
+    // ancora aperto (in qualsiasi ordine), quel baratto si risolve. Il reward (rewardItem)
+    // viene dato solo quando TUTTI i passi sono stati risolti. Come per gli altri dialoghi,
     // gli effetti collaterali sono applicati solo a dialogo concluso (pendingCommit).
     private DialogueLine[] GetTradeChainSequence(PhysicalInventory inventory)
     {
-        int index = Mathf.Clamp(tradeStepIndex, 0, tradeSteps.Length - 1);
-        TradeStep step = tradeSteps[index];
+        // Cerca un passo non ancora risolto di cui il player possiede l'oggetto richiesto.
+        // I passi senza oggetto (requiredItem vuoto) sono sempre risolvibili.
+        TradeStep step = null;
+        foreach (TradeStep s in tradeSteps)
+        {
+            if (s == null || s.completed) continue;
+            if (string.IsNullOrWhiteSpace(s.requiredItem) || inventory.HasItem(s.requiredItem))
+            {
+                step = s;
+                break;
+            }
+        }
+
+        // Nessun oggetto utile in mano → mostra la richiesta del primo passo ancora aperto.
         if (step == null)
-            return Array.Empty<DialogueLine>();
+        {
+            TradeStep firstOpen = FirstUnresolvedStep();
+            return firstOpen?.requestDialogue?.lines ?? Array.Empty<DialogueLine>();
+        }
 
         bool needsItem = !string.IsNullOrWhiteSpace(step.requiredItem);
 
-        // Oggetto di questo passo ancora mancante → mostra la richiesta.
-        if (needsItem && !inventory.HasItem(step.requiredItem))
-            return step.requestDialogue?.lines ?? Array.Empty<DialogueLine>();
-
-        bool isLastStep = index >= tradeSteps.Length - 1;
-        bool hasReward = isLastStep && !string.IsNullOrWhiteSpace(rewardItem);
+        // È il passo finale se, risolto questo, non resta nessun altro passo aperto.
+        bool finalStep = CountUnresolvedStepsExcluding(step) == 0;
+        bool hasReward = finalStep && !string.IsNullOrWhiteSpace(rewardItem);
 
         // Solo all'ultimo passo, con un reward da consegnare: se l'inventario è pieno
         // e questo passo non libera uno slot, il baratto resta in sospeso.
@@ -956,21 +976,18 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         }
 
         TradeStep capturedStep = step;
-        bool finalStep = isLastStep;
         pendingCommit = () =>
         {
             if (needsItem && capturedStep.consumeItem)
                 inventory.RemoveItem(capturedStep.requiredItem);
+
+            capturedStep.completed = true;
 
             if (finalStep)
             {
                 tradeDone = true;
                 if (!string.IsNullOrWhiteSpace(rewardItem))
                     GivePhysicalItem(inventory);
-            }
-            else
-            {
-                tradeStepIndex++;
             }
         };
 
@@ -989,6 +1006,26 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         }
 
         return received;
+    }
+
+    // Primo passo della catena non ancora risolto (in ordine di inspector), usato per
+    // mostrare una richiesta quando il player non ha in mano nessun oggetto utile.
+    private TradeStep FirstUnresolvedStep()
+    {
+        foreach (TradeStep s in tradeSteps)
+            if (s != null && !s.completed)
+                return s;
+        return null;
+    }
+
+    // Conta i passi ancora aperti, escludendone uno (quello che si sta per risolvere).
+    private int CountUnresolvedStepsExcluding(TradeStep exclude)
+    {
+        int count = 0;
+        foreach (TradeStep s in tradeSteps)
+            if (s != null && s != exclude && !s.completed)
+                count++;
+        return count;
     }
 
     // Elenca tutti gli oggetti richiesti non vuoti: 'requiredItem' più gli additionalRequiredItems.
@@ -1036,38 +1073,25 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     private void GivePhysicalItem(PhysicalInventory inventory)
     {
         GivePhysicalItem(inventory, rewardItem, rewardItemDescription, rewardItemPrefab,
-            rewardItemCanInspect, rewardItemInspectionScaleMultiplier);
+            rewardItemCanInspect, rewardItemInspectionScaleMultiplier, rewardUpgradePath);
     }
 
     // Consegna un oggetto fisico all'inventario, creando uno snapshot 3D dal prefab
-    // (per l'ispezione dal Tab). Condiviso fra baratto e "cava occhio".
+    // (per l'ispezione dal Tab). Condiviso fra baratto e "cava occhio". L'upgradePath
+    // opzionale abilita la catena di potenziamento (solo per il reward del baratto).
     private void GivePhysicalItem(
         PhysicalInventory inventory,
         string itemName,
         string description,
         GameObject prefab,
         bool canInspect,
-        float inspectionScaleMultiplier)
+        float inspectionScaleMultiplier,
+        ItemUpgradePath upgradePath = null)
     {
         if (inventory == null) return;
         if (string.IsNullOrWhiteSpace(itemName) && prefab == null) return;
 
-        GameObject snapshot = null;
-        if (prefab != null)
-        {
-            snapshot = Instantiate(prefab);
-            snapshot.name = "__snapshot_" + (string.IsNullOrWhiteSpace(itemName) ? prefab.name : itemName);
-            snapshot.transform.position = new Vector3(0f, -5000f, 0f);
-            snapshot.transform.rotation = Quaternion.identity;
-            snapshot.SetActive(true);
-
-            foreach (var col in snapshot.GetComponentsInChildren<Collider>())
-                Destroy(col);
-            foreach (var pu in snapshot.GetComponentsInChildren<PickupItem>())
-                Destroy(pu);
-
-            DontDestroyOnLoad(snapshot);
-        }
+        GameObject snapshot = InventorySnapshot.Create(prefab, itemName);
 
         inventory.AddItem(new CollectedItem
         {
@@ -1075,7 +1099,8 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
             description = description,
             canInspect  = canInspect && snapshot != null,
             inspectionScaleMultiplier = inspectionScaleMultiplier,
-            worldSource = snapshot
+            worldSource = snapshot,
+            upgradePath = (upgradePath != null && upgradePath.IsConfigured) ? upgradePath.Clone() : null
         });
     }
 
