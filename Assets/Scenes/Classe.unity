@@ -7599,20 +7599,37 @@ MonoBehaviour:
   studentColor: {r: 0.39215687, g: 0.19607843, b: 0.6666667, a: 1}
   missingItemSequence:
   - speaker: 0
-    text: Heyy Daaaan
+    text: Heyy Daaaan!
   - speaker: 0
     text: Hai presente il tuo pupazzetto?
   - speaker: 1
-    text: "Beh s\xEC\u2026 \xE8 mio"
+    text: "Beh s\xEC\u2026 \xE8 mio."
   - speaker: 0
-    text: Voglio
+    text: 'Voglio fare uno scherzo a Brad
+
+      Me lo presti?'
+  - speaker: 1
+    text: Che tipo di scherzo?
+  - speaker: 0
+    text: Oh, lo vedrai!
+  - speaker: 1
+    text: "Brad non lo sopporto!\r\nQuindi qualsiasi scherzo mi andr\xE0 bene"
+  - speaker: 0
+    text: Ottimooo
+  - speaker: 1
+    text: "Avrei bisogno per\xF2\u2026\r\n"
+  - speaker: 0
+    text: "Ovviamente\u2026\r\nPi\xF9 scontato del Black Friday!\r\nChe vuoi in cambio?"
+  - speaker: 1
+    text: Il temperino di Leo!!!
+  - speaker: 0
+    text: "Sar\xE0 fatto!!"
   completedSequence:
   - speaker: 0
-    text: Ho quello che cercavi.
+    text: Ecco a te il temperino
   - speaker: 1
-    text: Perfetto! Tieni, potrebbe servirti.
-  - speaker: 0
-    text: Grazie, ne avevo bisogno.
+    text: "Ed ecco a te il pupazzo!\nNon vedo l\u2019ora di vedere che scherzo gli
+      farai!"
   repeatSequences:
   - lines:
     - speaker: 1

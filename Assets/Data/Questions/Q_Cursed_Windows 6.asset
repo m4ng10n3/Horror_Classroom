@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
-  m_Name: Q_Scholastic_Math
+  m_Name: Q_Cursed_Windows 6
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: Bene, bambini. Quanto fa 7 per 8?
+  questionText: "Quanto pu\xF2 essere forte un morso umano?\r\n"
   options:
-  - '54 '
-  - 56
-  - '58 '
-  - 48
-  correctIndex: 3
-  timeLimit: 15
-  category: 0
-  customCorrectFeedback: 
+  - '700-900 newton '
+  - '400 newton '
+  - '500-600 newton '
+  - '1200 newton '
+  correctIndex: 0
+  timeLimit: 10
+  category: 1
+  customCorrectFeedback: '"...Hai visto bene. Troppo bene."'
   customWrongFeedback: 
-  environmentCheck: 0
+  environmentCheck: 1
   fallbackCorrectIndex: 3

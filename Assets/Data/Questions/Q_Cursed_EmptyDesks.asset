@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
   m_Name: Q_Cursed_EmptyDesks
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: Quanti banchi vuoti vedi...?
+  questionText: Quanti litri di sangue dovresti perdere per svenire?
   options:
-  - 'Zero '
-  - Uno
-  - Non lo so
-  - Stanno aumentando
-  correctIndex: 0
+  - '2,5L '
+  - '0,5L '
+  - 2L
+  - 3L
+  correctIndex: 1
   timeLimit: 8
   category: 1
   customCorrectFeedback: 

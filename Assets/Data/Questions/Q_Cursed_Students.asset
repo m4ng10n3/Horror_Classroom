@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
   m_Name: Q_Cursed_Students
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: Quanti compagni ci sono in classe con te...?
+  questionText: "Qual \xE8 l'osso pi\xF9 difficile da rompere?"
   options:
-  - Sei
-  - 'Sette '
-  - Otto
-  - "Non ricordo pi\xF9.."
-  correctIndex: 1
+  - 'Il radio '
+  - "L\u2019ulna"
+  - 'Il femore '
+  - 'La tibia '
+  correctIndex: 2
   timeLimit: 10
   category: 1
   customCorrectFeedback: 

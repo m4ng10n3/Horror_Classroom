@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
-  m_Name: Q_Scholastic_Math
+  m_Name: Q_Cursed_Windows 1
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: Bene, bambini. Quanto fa 7 per 8?
+  questionText: "Qual \xE8 la parte del corpo che impiega pi\xF9 tempo a decomporsi?"
   options:
-  - '54 '
-  - 56
-  - '58 '
-  - 48
-  correctIndex: 3
-  timeLimit: 15
-  category: 0
-  customCorrectFeedback: 
+  - 'La pelle '
+  - 'I capelli '
+  - I denti
+  - 'Gli occhi '
+  correctIndex: 2
+  timeLimit: 10
+  category: 1
+  customCorrectFeedback: '"...Hai visto bene. Troppo bene."'
   customWrongFeedback: 
-  environmentCheck: 0
+  environmentCheck: 1
   fallbackCorrectIndex: 3

@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
-  m_Name: Q_Scholastic_Math
+  m_Name: Q_Cursed_Windows 4
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: Bene, bambini. Quanto fa 7 per 8?
+  questionText: "Qual \xE8 l'ultimo senso che si ritiene possa smettere di funzionare
+    prima della morte?"
   options:
-  - '54 '
-  - 56
-  - '58 '
-  - 48
+  - 'Il tatto '
+  - 'Il gusto '
+  - "L\u2019olfatto"
+  - L'udito
   correctIndex: 3
-  timeLimit: 15
-  category: 0
-  customCorrectFeedback: 
+  timeLimit: 10
+  category: 1
+  customCorrectFeedback: '"...Hai visto bene. Troppo bene."'
   customWrongFeedback: 
-  environmentCheck: 0
+  environmentCheck: 1
   fallbackCorrectIndex: 3

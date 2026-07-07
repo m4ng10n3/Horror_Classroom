@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
-  m_Name: Q_Scholastic_Math
+  m_Name: Q_Scholastic_Math 10
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: Bene, bambini. Quanto fa 7 per 8?
+  questionText: "Qual \xE8 il mare che bagna la costa ovest dell\u2019Italia?"
   options:
-  - '54 '
-  - 56
-  - '58 '
-  - 48
-  correctIndex: 3
+  - 'Mar Ionio '
+  - 'Mar Adriatico '
+  - 'Mar Tirreno '
+  - Mar Mediterraneo
+  correctIndex: 2
   timeLimit: 15
   category: 0
   customCorrectFeedback: 

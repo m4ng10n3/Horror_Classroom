@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4497ef227909e459e512a8a741480c, type: 3}
   m_Name: Q_Cursed_Windows
   m_EditorClassIdentifier: Assembly-CSharp::Question
-  questionText: Quante finestre ha questa stanza? Contale bene.
+  questionText: "Qual \xE8 l'osso pi\xF9 facile da rompere?"
   options:
-  - 'Tre '
-  - 'Quattro '
-  - 'Cinque '
-  - Non ricordo
-  correctIndex: 1
+  - 'La clavicola '
+  - 'Il metatarso '
+  - 'La rotula '
+  - 'Lo sterno '
+  correctIndex: 0
   timeLimit: 10
   category: 1
   customCorrectFeedback: '"...Hai visto bene. Troppo bene."'
