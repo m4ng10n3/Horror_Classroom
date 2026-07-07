@@ -24,6 +24,12 @@ public class ItemUpgradeStage
 
     [Min(0.05f)]
     public float inspectionScaleMultiplier = 1f;
+
+    // Gli elementi aggiunti a un array da Inspector NON ereditano i default C#: restano a
+    // 0/""/false. Questi accessor rendono innocui i valori non impostati, così uno stadio
+    // appena aggiunto non finisce microscopico (scala 0) o non-ispezionabile per sbaglio.
+    public float EffectiveInspectionScale => inspectionScaleMultiplier > 0.001f ? inspectionScaleMultiplier : 1f;
+    public bool HasRequiredItem => !string.IsNullOrWhiteSpace(requiredItem);
 }
 
 // Catena di potenziamenti applicabile a un oggetto dell'inventario. Ogni passo consuma

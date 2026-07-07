@@ -3227,6 +3227,63 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.58, z: 0}
+--- !u!1001 &212631283
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.521
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.162
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
+      propertyPath: m_Name
+      value: Cestino (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c542760414e51b4795ac7cb592ea2f0, type: 3}
 --- !u!1001 &214781469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6058,7 +6115,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"NON DOVEVI ALZARTI."'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cbd5a8873874b2c4bab969609dba17fe, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6125,7 +6182,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &551163291 stripped
@@ -7565,19 +7622,31 @@ MonoBehaviour:
   itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
-  requiredItem: 
+  requiredItem: Temperino
   additionalRequiredItems: []
   tradeSteps: []
-  rewardItem: 
+  rewardItem: Peluche
   consumeRequiredItem: 1
-  rewardItemPrefab: {fileID: 0}
+  rewardItemPrefab: {fileID: 4377251714646253860, guid: d5de0a8d28973c040857394df80e827d, type: 3}
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
   rewardUpgradePath:
     actionKey: 1
     actionLabel: Inserisci occhio
-    stages: []
+    stages:
+    - requiredItem: Occhio
+      name: Peluche Monocchio
+      description: Un peluche sporco di sangue con un vero occhio...
+      model: {fileID: 7291020164574707256, guid: ba6729a09749803488dc3736a5e93d3e, type: 3}
+      canInspect: 1
+      inspectionScaleMultiplier: 1
+    - requiredItem: Occhio
+      name: Peluche Occhiuto
+      description: Un peluche sporco di sangue, mi guarda...
+      model: {fileID: 6297903230607754839, guid: d6e1917deda2c8144ab29ddfb89354db, type: 3}
+      canInspect: 1
+      inspectionScaleMultiplier: 1
     nextStageIndex: 0
   canGougeEye: 1
   gougeRequiredItem: Coltello
@@ -13217,10 +13286,7 @@ MonoBehaviour:
   additionalRequiredItems:
   - Macchinina Verde
   - Patatine
-  - Peluche
-  - Occhio 1
-  - Occhio
-  - 2
+  - Peluche Spaventoso
   tradeSteps:
   - requiredItem: Macchinina
     consumeItem: 1
@@ -13244,7 +13310,7 @@ MonoBehaviour:
       - speaker: 1
         text: buon
     completed: 0
-  - requiredItem: Bambolina
+  - requiredItem: Peluche Spaventoso
     consumeItem: 1
     requestDialogue:
       lines:
@@ -15901,7 +15967,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"Ricomincia"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f85b19072c3a0514f9242b8281a93ffd, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -15968,7 +16034,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1390731266
@@ -19004,6 +19070,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715726480}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1719551003
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8264412883646412846, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_Name
+      value: Taglierino (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.7925534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.989
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.6624718
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 662d5c349e1e373449192935b70e0670, type: 3}
 --- !u!1001 &1721942110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19231,6 +19354,7 @@ MonoBehaviour:
   toggleKey: 3
   dropKey: 32
   uiFont: {fileID: 11400000, guid: f85b19072c3a0514f9242b8281a93ffd, type: 2}
+  debugInspectionSizing: 0
   carouselSpacing: 0.8
   carouselScaleFalloff: 0.55
   carouselYOffset: 0.1
@@ -19253,6 +19377,8 @@ MonoBehaviour:
   rotateHintText: '[Tasto Sinistro] Ruota'
   dropHintText: '[R] Lascia'
   closeHintText: '[Tab] Chiudi'
+  emptyTitleText: Inventario
+  emptyDescText: Vuoto
 --- !u!114 &1738970834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21964,6 +22090,7 @@ GameObject:
   - component: {fileID: 2017530962}
   - component: {fileID: 2017530964}
   - component: {fileID: 2017530965}
+  - component: {fileID: 2017530966}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -22072,11 +22199,37 @@ MonoBehaviour:
   dialogueMaxDistance: 0
   drawPlaceholderHud: 1
   messageDuration: 2
+  dialogueFontSize: 50
   dialogueBoxSprite: {fileID: 21300000, guid: 75f1af87e25c8e346b8f56356a2383cb, type: 3}
-  promptBoxSprite: {fileID: 21300000, guid: 0dfdf3740b129c745ad6ff1dc30ea1d3, type: 3}
+  promptBoxSprite: {fileID: 21300000, guid: e79375dfb6e51b14cba053af67bd97bd, type: 3}
   playerName: Eddy
   playerLineColor: {r: 0.2578616, g: 0.22242592, b: 0.057572853, a: 1}
   npcLineColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &2017530966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017530961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83245a84291031c4c9411993c10d0809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSystem
+  controller: {fileID: 2017530962}
+  player: {fileID: 2017530964}
+  source: {fileID: 0}
+  steps:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  stepDistance: 1.8
+  stepDistanceVariation: 0.15
+  minSpeed: 0.2
+  pitchRange: {x: 0.9, y: 1.1}
+  volumeRange: {x: 0.85, y: 1}
 --- !u!1 &2027528575
 GameObject:
   m_ObjectHideFlags: 0
@@ -25431,3 +25584,5 @@ SceneRoots:
   - {fileID: 915938662}
   - {fileID: 1922092667317660751}
   - {fileID: 8274462991425412012}
+  - {fileID: 212631283}
+  - {fileID: 1719551003}

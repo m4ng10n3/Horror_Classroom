@@ -16,6 +16,9 @@ public class ItemInspectionController : MonoBehaviour
     public Key            dropKey            = Key.R;
     public TMP_FontAsset  uiFont;
 
+    [Tooltip("Logga in Console la dimensione calcolata per ogni modello dell'inventario (per diagnosticare modelli microscopici/giganti).")]
+    public bool           debugInspectionSizing = false;
+
     [Header("Carousel 3D")]
     public float carouselSpacing      = 1.2f;   // distanza orizzontale tra modelli (unità mondo)
     public float carouselScaleFalloff = 0.55f;  // fattore di scala per ogni step dal centro
@@ -43,6 +46,10 @@ public class ItemInspectionController : MonoBehaviour
     public string rotateHintText   = "[LMB] Ruota";
     public string dropHintText     = "[R] Lascia";
     public string closeHintText    = "[E] Chiudi";
+
+    [Header("Inventario vuoto")]
+    public string emptyTitleText = "Inventario";
+    public string emptyDescText  = "Vuoto";
 
     public bool IsInspecting => isInspecting;
 
@@ -80,6 +87,7 @@ public class ItemInspectionController : MonoBehaviour
     private GameObject            currentModel;
     private InspectableItemAction currentAction;
     private CollectedItem         currentItem;
+    private Mesh                  bakeScratch; // mesh riusata per il bake delle skinned mesh
 
     // ── lifecycle ─────────────────────────────────────────────────────────────
 
@@ -93,6 +101,7 @@ public class ItemInspectionController : MonoBehaviour
     {
         if (Instance == this) Instance = null;
         ReleaseOverlayTexture();
+        if (bakeScratch != null) Destroy(bakeScratch);
         if (physicalInventory != null)
         {
             physicalInventory.OnItemAdded   -= HandleInventoryChanged;
@@ -190,9 +199,10 @@ public class ItemInspectionController : MonoBehaviour
 
     public void OpenInventory()
     {
-        if (isInspecting || GetItems().Count == 0) return;
+        if (isInspecting) return;
 
-        currentIndex = Mathf.Clamp(currentIndex, 0, GetItems().Count - 1);
+        int count    = GetItems().Count;
+        currentIndex = count > 0 ? Mathf.Clamp(currentIndex, 0, count - 1) : 0;
         FreezePlayer(true);
         EnsureOverlayTexture();
         overlayCamera.enabled = true;
@@ -386,8 +396,7 @@ public class ItemInspectionController : MonoBehaviour
     {
         if (!isInspecting) return;
         var items = GetItems();
-        if (items.Count == 0) { CloseInspection(); return; }
-        currentIndex = Mathf.Clamp(currentIndex, 0, items.Count - 1);
+        currentIndex = items.Count == 0 ? 0 : Mathf.Clamp(currentIndex, 0, items.Count - 1);
         RebuildCarouselModels();
     }
 
@@ -468,8 +477,8 @@ public class ItemInspectionController : MonoBehaviour
         var items = GetItems();
         if (items.Count == 0 || currentIndex >= items.Count)
         {
-            if (nameText != null) nameText.text = "";
-            if (descText != null) descText.text  = "";
+            if (nameText != null) nameText.text = emptyTitleText;
+            if (descText != null) descText.text  = emptyDescText;
             return;
         }
         var cur = items[currentIndex];
@@ -480,6 +489,12 @@ public class ItemInspectionController : MonoBehaviour
     private void UpdateHintText()
     {
         if (hintText == null) return;
+        if (GetItems().Count == 0)
+        {
+            hintText.text = closeHintText;
+            return;
+        }
+        LogUpgradeEligibility();
         string actionHint = currentAction != null ? $"   {currentAction.HintText}" : "";
         string upgradeHint = CanUpgradeCurrent()
             ? $"   [{currentItem.upgradePath.actionKey}] {currentItem.upgradePath.actionLabel}"
@@ -495,9 +510,25 @@ public class ItemInspectionController : MonoBehaviour
     {
         ItemUpgradePath path = currentItem?.upgradePath;
         if (path == null || !path.HasNext) return false;
+        if (!path.Next.HasRequiredItem) return false;
 
         if (physicalInventory == null) physicalInventory = PhysicalInventory.Instance;
         return physicalInventory != null && physicalInventory.HasItem(path.Next.requiredItem);
+    }
+
+    // Spiega in Console perché il prompt di inserimento è (o non è) mostrato per l'oggetto
+    // a fuoco. Attivare 'debugInspectionSizing' e aprire l'inventario sull'oggetto.
+    private void LogUpgradeEligibility()
+    {
+        if (!debugInspectionSizing) return;
+        ItemUpgradePath path = currentItem?.upgradePath;
+        string req = (path != null && path.HasNext) ? path.Next.requiredItem : "-";
+        bool hasReq = path != null && path.HasNext && path.Next.HasRequiredItem
+                      && physicalInventory != null && physicalInventory.HasItem(req);
+        Debug.Log($"[Inspection] upgrade item='{currentItem?.name}' hasPath={path != null} " +
+                  $"stages={(path?.stages?.Length ?? 0)} nextIdx={(path?.nextStageIndex ?? -1)} " +
+                  $"hasNext={(path != null && path.HasNext)} requiredItem='{req}' " +
+                  $"inventoryHasIt={hasReq} => showPrompt={CanUpgradeCurrent()}");
     }
 
     private void UpgradeCurrentItem()
@@ -514,8 +545,8 @@ public class ItemInspectionController : MonoBehaviour
         item.worldSource = InventorySnapshot.Create(next.model, next.name);
         if (!string.IsNullOrWhiteSpace(next.name)) item.name = next.name;
         item.description = next.description;
-        item.canInspect = next.canInspect && item.worldSource != null;
-        item.inspectionScaleMultiplier = next.inspectionScaleMultiplier;
+        item.canInspect = item.worldSource != null;
+        item.inspectionScaleMultiplier = next.EffectiveInspectionScale;
         path.nextStageIndex++;
         if (oldSource != null) Destroy(oldSource);
 
@@ -612,16 +643,19 @@ public class ItemInspectionController : MonoBehaviour
         {
             if (r == null || !r.enabled || !r.gameObject.activeInHierarchy) continue;
 
-            // I bounds della mesh (geometria) trasformati in world danno una dimensione
-            // stabile e coerente fra modelli della stessa famiglia. Per le
-            // SkinnedMeshRenderer i bounds runtime (r.bounds) possono essere gonfiati dal
-            // rig/bind-pose o non ancora calcolati (prima del primo render), facendo
-            // apparire il modello microscopico dopo la normalizzazione.
-            Mesh mesh = GetRendererMesh(r);
-            if (mesh != null)
-                EncapsulateMeshWorldBounds(r.transform, mesh.bounds, ref bounds, ref hasBounds);
-            else if (!hasBounds) { bounds = r.bounds; hasBounds = true; }
-            else                   bounds.Encapsulate(r.bounds);
+            // Le SkinnedMeshRenderer usano la geometria realmente POSATA (BakeMesh): i
+            // bounds salvati all'import (r.bounds / localBounds) negli FBX rigati possono
+            // essere sbagliati e far apparire il modello microscopico. Le mesh statiche
+            // restano su r.bounds, invariate.
+            bool skinned = r is SkinnedMeshRenderer smr0 && smr0.sharedMesh != null;
+            Bounds worldBounds = skinned ? SkinnedWorldBounds((SkinnedMeshRenderer)r) : r.bounds;
+
+            if (debugInspectionSizing)
+                Debug.Log($"[Inspection]   renderer '{r.name}' type={r.GetType().Name} " +
+                          $"r.bounds={r.bounds.size} used={(skinned ? "baked" : "r.bounds")}={worldBounds.size}");
+
+            if (!hasBounds) { bounds = worldBounds; hasBounds = true; }
+            else            bounds.Encapsulate(worldBounds);
         }
 
         if (!hasBounds)
@@ -636,30 +670,36 @@ public class ItemInspectionController : MonoBehaviour
         float maxDim     = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z);
         float targetSize = GetInspectionSize(scaleMultiplier);
         pivot.localScale = Vector3.one * (maxDim > 0f ? targetSize / maxDim : targetSize);
+
+        if (debugInspectionSizing)
+            Debug.Log($"[Inspection] '{model.name}' renderers={renderers.Length} mult={scaleMultiplier} " +
+                      $"boundsSize={bounds.size} maxDim={maxDim:F5} targetSize={targetSize:F4} pivotScale={pivot.localScale.x:F5}");
     }
 
-    // Mesh associata a un Renderer (sharedMesh per le skinned, MeshFilter per le statiche).
-    private static Mesh GetRendererMesh(Renderer r)
+    // Bounds world-space della geometria realmente posata di una skinned mesh. BakeMesh
+    // produce i vertici nello spazio locale del renderer (senza scala del transform),
+    // quindi li riportiamo in world con localToWorldMatrix.
+    private Bounds SkinnedWorldBounds(SkinnedMeshRenderer smr)
     {
-        if (r is SkinnedMeshRenderer smr) return smr.sharedMesh;
-        return r.TryGetComponent(out MeshFilter mf) ? mf.sharedMesh : null;
-    }
+        if (bakeScratch == null) bakeScratch = new Mesh { name = "__inspectionBakeScratch" };
+        smr.BakeMesh(bakeScratch);
+        bakeScratch.RecalculateBounds();
 
-    // Espande 'bounds' (world-space) con gli 8 angoli del box mesh-local trasformati in world.
-    private static void EncapsulateMeshWorldBounds(Transform t, Bounds meshBounds, ref Bounds bounds, ref bool hasBounds)
-    {
-        Vector3 c = meshBounds.center;
-        Vector3 e = meshBounds.extents;
+        Bounds local  = bakeScratch.bounds;
+        Matrix4x4 m   = smr.transform.localToWorldMatrix;
+        Vector3 c     = local.center;
+        Vector3 e     = local.extents;
+
+        Bounds world  = new Bounds(m.MultiplyPoint3x4(c), Vector3.zero);
         for (int i = 0; i < 8; i++)
         {
             Vector3 corner = c + new Vector3(
                 (i & 1) == 0 ? -e.x : e.x,
                 (i & 2) == 0 ? -e.y : e.y,
                 (i & 4) == 0 ? -e.z : e.z);
-            Vector3 world = t.TransformPoint(corner);
-            if (!hasBounds) { bounds = new Bounds(world, Vector3.zero); hasBounds = true; }
-            else             bounds.Encapsulate(world);
+            world.Encapsulate(m.MultiplyPoint3x4(corner));
         }
+        return world;
     }
 
     private float GetInspectionSize(float scaleMultiplier) =>

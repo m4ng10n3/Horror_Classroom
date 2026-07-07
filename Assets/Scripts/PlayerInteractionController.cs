@@ -30,6 +30,9 @@ public class PlayerInteractionController : MonoBehaviour
     [Header("Canvas HUD")]
     public bool drawPlaceholderHud = true;
     public float messageDuration = 2f;
+    [Tooltip("Font size del testo dei dialoghi (DialogueText) generato a runtime nell'InteractionHUD.")]
+    [Min(1f)]
+    public float dialogueFontSize = 27f;
     [Tooltip("Se assegnato, sovrascrive la Source Image del box dialoghi (altrimenti copia lo sprite del QuestionPanel).")]
     public Sprite dialogueBoxSprite;
     [Tooltip("Se assegnato, sovrascrive la Source Image del box interazioni (altrimenti copia lo sprite degli AnswerButtons).")]
@@ -484,7 +487,7 @@ public class PlayerInteractionController : MonoBehaviour
             new Vector2(0.5f, 0f),
             new Vector2(0.5f, 0f),
             new Vector2(0f, 224f),
-            new Vector2(360f, 56f),
+            new Vector2(360f, 100f),
             new Vector2(0.5f, 0f));
         promptPanelImage = promptPanel.GetComponent<Image>();
         ApplyImageStyle(promptPanelImage, answerButtonStyle, new Color(0.15686275f, 0.15686275f, 0.23529412f, 0.95f), promptBoxSprite);
@@ -492,7 +495,7 @@ public class PlayerInteractionController : MonoBehaviour
             "InteractionPromptText",
             promptPanel,
             answerButtonTextStyle != null ? answerButtonTextStyle : questionTextStyle,
-            24f,
+            38f,
             TextAlignmentOptions.Center);
         StretchToParent(promptText.rectTransform);
 
@@ -510,7 +513,7 @@ public class PlayerInteractionController : MonoBehaviour
             "DialogueText",
             dialoguePanel,
             questionTextStyle,
-            27f,
+            dialogueFontSize,
             TextAlignmentOptions.TopLeft);
         SetTextPadding(dialogueText.rectTransform, 32f, 22f, 32f, 22f);
 
