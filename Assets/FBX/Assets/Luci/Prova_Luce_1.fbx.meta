@@ -3,7 +3,17 @@ guid: e98b2f070ed384446823d225c06ff3e5
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chalk_Green
+    second: {fileID: 2100000, guid: 75814783ea413a6419371f18d57b1bdd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Luce
+    second: {fileID: 2100000, guid: 35735426f7ad5634491a90d991a13249, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
