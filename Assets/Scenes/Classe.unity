@@ -6583,8 +6583,8 @@ MonoBehaviour:
   - lines:
     - speaker: 1
       text: "Con questa forbice diventer\xF2 un assassino"
-    - speaker: 1
-      text: Bravo nerd!
+    - speaker: 0
+      text: Bravo!
   itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
@@ -13350,7 +13350,7 @@ MonoBehaviour:
     receivedDialogue:
       lines:
       - speaker: 1
-        text: buon
+        text: buone le patatine
     completed: 0
   - requiredItem: Peluche Spaventoso
     consumeItem: 1
@@ -13358,7 +13358,7 @@ MonoBehaviour:
       lines:
       - speaker: 1
         text: "voglio il peluche di Daniel.. ma con due occhi sarebbe molto pi\xF9
-          bella"
+          bello!"
     receivedDialogue:
       lines:
       - speaker: 1
@@ -14381,6 +14381,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
   m_PrefabInstance: {fileID: 1248147632}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1249474678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1249474680}
+  - component: {fileID: 1249474679}
+  m_Layer: 0
+  m_Name: PauseMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1249474679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249474678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 956f4b5efe1e180468db356e46620b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
+  menuFont: {fileID: 11400000, guid: cbd5a8873874b2c4bab969609dba17fe, type: 2}
+  buttonFont: {fileID: 11400000, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
+  buttonSprite: {fileID: 21300000, guid: 526f2f227e097664da97d0678eaac3e9, type: 3}
+  player: {fileID: 2017530964}
+--- !u!4 &1249474680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249474678}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.07743, y: 3.55, z: -5.54312}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1250917612
 GameObject:
   m_ObjectHideFlags: 0
@@ -25628,3 +25676,4 @@ SceneRoots:
   - {fileID: 8274462991425412012}
   - {fileID: 212631283}
   - {fileID: 1719551003}
+  - {fileID: 1249474680}
