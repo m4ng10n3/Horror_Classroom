@@ -1489,11 +1489,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -1542,11 +1537,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -2626,15 +2616,12 @@ MonoBehaviour:
   mapTransform: {fileID: 1787594488}
   roomLights:
   - {fileID: 1740910264}
-  teacherChalk: {fileID: 2007373968}
   blackboardTiltMax: 8
   wallTintColor: {r: 0.6, g: 0.15, b: 0.15, a: 1}
   wallTintStep: 0.5
   lightTintColor: {r: 0.8, g: 0, b: 0, a: 1}
   lightTintStep: 0.6
   mapFlipEuler: {x: 0, y: 0, z: 180}
-  bloodChalkColor: {r: 0.5, g: 0, b: 0, a: 1}
-  bloodChalkEmission: {r: 1, g: 0, b: 0, a: 1}
   mutationsApplied: 0
 --- !u!4 &148235043
 Transform:
@@ -4149,11 +4136,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -4202,11 +4184,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -4511,6 +4488,66 @@ MonoBehaviour:
   fallbackInteractionHeight: 1.6
   deskItems: []
   isVisible: 1
+--- !u!1001 &356650115
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.292045
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.023891766
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.7994764
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      propertyPath: m_Name
+      value: Kid_3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1921455956}
+  m_SourcePrefab: {fileID: 100100000, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
 --- !u!1 &357395064 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 097cc0699dc754a4cb7fb40079c13a74, type: 3}
@@ -6065,9 +6102,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1286332797}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1286332801}
   m_SourcePrefab: {fileID: 100100000, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
 --- !u!1 &547947547 stripped
 GameObject:
@@ -6609,8 +6643,8 @@ MonoBehaviour:
   - lines:
     - speaker: 1
       text: "Con questa forbice diventer\xF2 un assassino"
-    - speaker: 0
-      text: Bravo!
+    - speaker: 1
+      text: Bravo nerd!
   itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
@@ -7435,11 +7469,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -8587,6 +8616,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5289121967250940860, guid: 850313a2b44a1154387464ac1e7ff8fd, type: 3}
   m_PrefabInstance: {fileID: 7280172364568954988}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &718173068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+  m_PrefabInstance: {fileID: 1116382370}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &718173069
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718173068}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 921bbf1ad97854346b6e75b967066d55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &718547995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10538,11 +10594,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -10792,11 +10843,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -11738,11 +11784,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -12846,6 +12887,78 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5028821, y: 1.7467946, z: 2.317914}
   m_Center: {x: 0.1283455, y: -0.20106758, z: -0.34520853}
+--- !u!1001 &1116382370
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.74
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.411
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.294323
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -728894930146092122, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0872
+      objectReference: {fileID: 0}
+    - target: {fileID: -728894930146092122, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5845
+      objectReference: {fileID: 0}
+    - target: {fileID: -728894930146092122, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0047
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_Name
+      value: Kid_2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 718173069}
+  m_SourcePrefab: {fileID: 100100000, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
 --- !u!1001 &1116895456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12937,11 +13050,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -13401,7 +13509,7 @@ MonoBehaviour:
     receivedDialogue:
       lines:
       - speaker: 1
-        text: buone le patatine
+        text: buon
     completed: 0
   - requiredItem: Peluche Spaventoso
     consumeItem: 1
@@ -13409,7 +13517,7 @@ MonoBehaviour:
       lines:
       - speaker: 1
         text: "voglio il peluche di Daniel.. ma con due occhi sarebbe molto pi\xF9
-          bello!"
+          bella"
     receivedDialogue:
       lines:
       - speaker: 1
@@ -13508,7 +13616,7 @@ PrefabInstance:
     - target: {fileID: 2722059303693140563, guid: 7e42e67c0379b78478c2aa779ee48936, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8316795d1512db74aba2126267ef70d3, type: 2}
+      objectReference: {fileID: 2100000, guid: 862382b8f7143dc468082d167caf899f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14432,54 +14540,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
   m_PrefabInstance: {fileID: 1248147632}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1249474678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1249474680}
-  - component: {fileID: 1249474679}
-  m_Layer: 0
-  m_Name: PauseMenu
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1249474679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249474678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 956f4b5efe1e180468db356e46620b12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
-  menuFont: {fileID: 11400000, guid: cbd5a8873874b2c4bab969609dba17fe, type: 2}
-  buttonFont: {fileID: 11400000, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
-  buttonSprite: {fileID: 21300000, guid: 526f2f227e097664da97d0678eaac3e9, type: 3}
-  player: {fileID: 2017530964}
---- !u!4 &1249474680
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249474678}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.07743, y: 3.55, z: -5.54312}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1250917612
 GameObject:
   m_ObjectHideFlags: 0
@@ -14808,28 +14868,6 @@ MonoBehaviour:
     actionLabel: Inserisci occhio
     stages: []
     nextStageIndex: 0
---- !u!64 &1286332801
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286332793}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2726277716269829465, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
 --- !u!1 &1305016952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
@@ -14863,28 +14901,6 @@ MonoBehaviour:
     actionLabel: Inserisci occhio
     stages: []
     nextStageIndex: 0
---- !u!64 &1305016957
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305016952}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6198401070834743824, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
 --- !u!1001 &1309000126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15098,11 +15114,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: Graffetta
   consumeItemOnOpen: 1
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -15409,10 +15420,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
       propertyPath: m_Name
       value: ScribblingChalk
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17041,6 +17048,78 @@ MonoBehaviour:
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 1481098182}
+--- !u!1001 &1484973463
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.284
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.411
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.294323
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -728894930146092122, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0872
+      objectReference: {fileID: 0}
+    - target: {fileID: -728894930146092122, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5845
+      objectReference: {fileID: 0}
+    - target: {fileID: -728894930146092122, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0047
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      propertyPath: m_Name
+      value: Kid_2 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1807937756}
+  m_SourcePrefab: {fileID: 100100000, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
 --- !u!1 &1489307694
 GameObject:
   m_ObjectHideFlags: 0
@@ -19282,7 +19361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.956
+      value: 0.989
       objectReference: {fileID: 0}
     - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20389,6 +20468,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f1fe1356277e954da1a825d2ea7195e, type: 3}
   m_PrefabInstance: {fileID: 1804458583}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1807937755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d6352c1a94bd904bb18012c6da9fbc4, type: 3}
+  m_PrefabInstance: {fileID: 1484973463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1807937756
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807937755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 921bbf1ad97854346b6e75b967066d55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1809845316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21263,6 +21369,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909364122}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1921455954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bd2ac537b317c634a895c3cc7b01e471, type: 3}
+  m_PrefabInstance: {fileID: 356650115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1921455956
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921455954}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e9527d2f7060134487f5f5d9f74751e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1934230758
 GameObject:
   m_ObjectHideFlags: 0
@@ -21802,9 +21935,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1305016954}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1305016957}
   m_SourcePrefab: {fileID: 100100000, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
 --- !u!1 &1968466740 stripped
 GameObject:
@@ -22179,8 +22309,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5db6e396d778a7046b85e2680ded00b4, type: 3}
   - {fileID: 8300000, guid: cd0967bec5b88d549adcf8ac4ed896dc, type: 3}
   audioFadeSpeed: 10
-  chalkColor: {r: 1, g: 1, b: 1, a: 1}
-  chalkEmission: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &2010312889
 GameObject:
   m_ObjectHideFlags: 0
@@ -22909,11 +23037,6 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
-  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
-  audioSource: {fileID: 0}
-  soundVolume: 1
-  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -23404,6 +23527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: random_ahh_kid
       objectReference: {fileID: 0}
+    - target: {fileID: 6164996480583612547, guid: 5d960d36b4ef4ae47ad2f36ffd2ad568, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c6a4aa035fc370c4cb3dea9c04c3dbd0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25790,4 +25917,6 @@ SceneRoots:
   - {fileID: 8274462991425412012}
   - {fileID: 212631283}
   - {fileID: 1719551003}
-  - {fileID: 1249474680}
+  - {fileID: 1116382370}
+  - {fileID: 1484973463}
+  - {fileID: 356650115}

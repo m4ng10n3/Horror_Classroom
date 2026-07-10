@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5d960d36b4ef4ae47ad2f36ffd2ad568
+guid: 1d6352c1a94bd904bb18012c6da9fbc4
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,23 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CANVAS_WHITE
-    second: {fileID: 2100000, guid: 0b2446006e4d4384e85ac1d23270237f, type: 2}
+      name: CANVAS_WHITE.001
+    second: {fileID: 2100000, guid: 2b506e0103725344f8e2476a15d12711, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: 343fd16baf2e84444b4c28b9327628f5, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Image_Intercambiabile_Prova
-    second: {fileID: 2800000, guid: b87ecacf527d3964e9845f7a211cae5c, type: 3}
+    second: {fileID: 2100000, guid: ad6d76afc3982a74c8eef3cc62c67797, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: LowPoly_CANVAS
-    second: {fileID: 2800000, guid: e852dbed2f65a81478d978fad9e22871, type: 3}
+    second: {fileID: 2800000, guid: b0d039ee066ba9245aaacf2be017e4cf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Low_Poly_LowPolySkin_Face_2
+    second: {fileID: 2800000, guid: 64a99d6c2a14dde46818a37bbfb7f933, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
