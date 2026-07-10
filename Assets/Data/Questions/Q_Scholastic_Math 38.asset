@@ -20,7 +20,7 @@ MonoBehaviour:
   - 'Nessuna delle due '
   correctIndex: 0
   timeLimit: 15
-  category: 0
+  category: 1
   customCorrectFeedback: 
   customWrongFeedback: 
   environmentCheck: 0

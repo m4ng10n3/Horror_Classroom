@@ -219,7 +219,7 @@ public class FPSController : MonoBehaviour
         eKeyWasPressed = eIsPressed;
     }
 
-    bool CanSitDown()
+    public bool CanSitDown()
     {
         Vector3 playerFlat = new Vector3(transform.position.x, 0f, transform.position.z);
 

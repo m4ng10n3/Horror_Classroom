@@ -45,6 +45,11 @@ public class ClassroomMutator : MonoBehaviour
 
     private enum MutationType { TiltBlackboard, TintWall, DisappearWindow, FlipMap, TintLights }
 
+    // "Sacchetto" di mutazioni mescolate: ogni tipo esce una volta prima che se ne ripeta uno.
+    private readonly List<MutationType> mutationBag = new List<MutationType>();
+    private bool hasLastMutation = false;
+    private MutationType lastMutation;
+
     public int MutationsApplied => mutationsApplied;
 
     void Awake()
@@ -64,7 +69,7 @@ public class ClassroomMutator : MonoBehaviour
 
     public void ApplyRandomMutation()
     {
-        MutationType type = (MutationType)UnityEngine.Random.Range(0, 5);
+        MutationType type = NextMutationType();
 
         switch (type)
         {
@@ -85,7 +90,48 @@ public class ClassroomMutator : MonoBehaviour
                 break;
         }
 
+        Debug.Log($"[Mutator] Mutazione #{mutationsApplied + 1} avvenuta: {type}");
+
+        lastMutation = type;
+        hasLastMutation = true;
         mutationsApplied++;
+    }
+
+    // Estrae la prossima mutazione dal sacchetto; quando è vuoto lo rimescola.
+    private MutationType NextMutationType()
+    {
+        if (mutationBag.Count == 0)
+            RefillBag();
+
+        int last = mutationBag.Count - 1;
+        MutationType next = mutationBag[last];
+        mutationBag.RemoveAt(last);
+        return next;
+    }
+
+    private void RefillBag()
+    {
+        mutationBag.Clear();
+        foreach (MutationType t in System.Enum.GetValues(typeof(MutationType)))
+            mutationBag.Add(t);
+
+        // Mescola (Fisher-Yates)
+        for (int i = mutationBag.Count - 1; i > 0; i--)
+        {
+            int j = UnityEngine.Random.Range(0, i + 1);
+            MutationType tmp = mutationBag[i];
+            mutationBag[i] = mutationBag[j];
+            mutationBag[j] = tmp;
+        }
+
+        // La prossima estratta è in fondo alla lista: evita che ripeta l'ultima del giro precedente.
+        int drawIndex = mutationBag.Count - 1;
+        if (hasLastMutation && mutationBag.Count > 1 && mutationBag[drawIndex] == lastMutation)
+        {
+            MutationType tmp = mutationBag[drawIndex];
+            mutationBag[drawIndex] = mutationBag[0];
+            mutationBag[0] = tmp;
+        }
     }
 
     private void TiltBlackboard()
@@ -156,6 +202,9 @@ public class ClassroomMutator : MonoBehaviour
         if (mapTransform != null)
             mapTransform.rotation = originalMapRotation;
         mapFlipped = false;
+
+        mutationBag.Clear();
+        hasLastMutation = false;
 
         mutationsApplied = 0;
     }

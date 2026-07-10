@@ -23,5 +23,5 @@ MonoBehaviour:
   category: 1
   customCorrectFeedback: '"...Hai visto bene. Troppo bene."'
   customWrongFeedback: 
-  environmentCheck: 1
+  environmentCheck: 0
   fallbackCorrectIndex: 3

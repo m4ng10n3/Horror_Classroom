@@ -18,7 +18,7 @@ MonoBehaviour:
   - 56
   - '58 '
   - 48
-  correctIndex: 3
+  correctIndex: 1
   timeLimit: 15
   category: 0
   customCorrectFeedback: 

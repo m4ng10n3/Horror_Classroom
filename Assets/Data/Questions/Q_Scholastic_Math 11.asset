@@ -18,7 +18,7 @@ MonoBehaviour:
   - Plutone
   - Marte
   - Venere
-  correctIndex: 1
+  correctIndex: 2
   timeLimit: 15
   category: 0
   customCorrectFeedback: 

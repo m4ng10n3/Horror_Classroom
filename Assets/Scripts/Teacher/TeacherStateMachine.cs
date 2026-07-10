@@ -46,14 +46,9 @@ public class TeacherStateMachine : MonoBehaviour
                 break;
 
             case TeacherState.Pleased:
+                // Resta compiaciuta: continua a pescare dal pool "cursed".
+                // Si esce da Pleased SOLO sbagliando (vedi RegisterWrongAnswer).
                 pleasedCount++;
-                if (pleasedCount >= pleasedTriggerPoints)
-                {
-                    // FASE 5: qui apriremo la finestra esplorazione.
-                    // Per ora torniamo a Neutral come segnaposto.
-                    Debug.Log("[Teacher] Pleased trigger reached (placeholder: return to Neutral)");
-                    ChangeState(TeacherState.Neutral);
-                }
                 break;
 
             case TeacherState.Angry:

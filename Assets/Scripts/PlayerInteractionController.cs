@@ -62,8 +62,10 @@ public class PlayerInteractionController : MonoBehaviour
     private RectTransform hudRoot;
     private Image promptPanelImage;
     private Image dialoguePanelImage;
+    private Image sitStandPanelImage;
     private TextMeshProUGUI promptText;
     private TextMeshProUGUI dialogueText;
+    private TextMeshProUGUI sitStandText;
     private TextMeshProUGUI crosshairText;
 
     void Reset()
@@ -531,6 +533,26 @@ public class PlayerInteractionController : MonoBehaviour
             TextAlignmentOptions.Center);
         StretchToParent(crosshairText.rectTransform);
         crosshairText.text = "+";
+
+        // Prompt del tasto E per sedersi/alzarsi. Separato dall'InteractionPromptPanel
+        // (che serve al tasto F) perché va mostrato anche da seduti, quando quello è nascosto.
+        RectTransform sitStandPanel = CreatePanel(
+            "SitStandPromptPanel",
+            hudRoot,
+            new Vector2(0.5f, 0f),
+            new Vector2(0.5f, 0f),
+            new Vector2(0f, 340f),
+            new Vector2(360f, 80f),
+            new Vector2(0.5f, 0f));
+        sitStandPanelImage = sitStandPanel.GetComponent<Image>();
+        ApplyImageStyle(sitStandPanelImage, answerButtonStyle, new Color(0.15686275f, 0.15686275f, 0.23529412f, 0.95f), promptBoxSprite);
+        sitStandText = CreateText(
+            "SitStandPromptText",
+            sitStandPanel,
+            answerButtonTextStyle != null ? answerButtonTextStyle : questionTextStyle,
+            38f,
+            TextAlignmentOptions.Center);
+        StretchToParent(sitStandText.rectTransform);
     }
 
     private Canvas ResolveTargetCanvas()
@@ -730,6 +752,38 @@ public class PlayerInteractionController : MonoBehaviour
         if (dialogueText != null)
         {
             dialogueText.text = currentMessage;
+        }
+
+        // Prompt E: "[E] Alzati" da seduti, "[E] Siediti" in piedi quando puoi sederti
+        // (vicino al seatPoint o guardando la sedia). Nascosto durante i dialoghi.
+        bool showSitStand = false;
+        string sitStandPrompt = string.Empty;
+        if (showGameplayHud && !isInDialogue && player != null)
+        {
+            if (player.isSeated)
+            {
+                // Se il player è bloccato seduto (es. durante il quiz) non offrire l'alzata.
+                if (!player.forceSeated)
+                {
+                    sitStandPrompt = "[E] Alzati";
+                    showSitStand = true;
+                }
+            }
+            else if (player.CanSitDown())
+            {
+                sitStandPrompt = "[E] Siediti";
+                showSitStand = true;
+            }
+        }
+
+        if (sitStandPanelImage != null)
+        {
+            sitStandPanelImage.gameObject.SetActive(showSitStand);
+        }
+
+        if (sitStandText != null)
+        {
+            sitStandText.text = sitStandPrompt;
         }
     }
 

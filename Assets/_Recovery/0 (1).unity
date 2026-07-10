@@ -1017,7 +1017,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -230, y: -113.1}
-  m_SizeDelta: {x: 440, y: 89.2}
+  m_SizeDelta: {x: 440, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &59139273
 MonoBehaviour:
@@ -4247,7 +4247,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 230, y: -113.1}
-  m_SizeDelta: {x: 440, y: 89.2}
+  m_SizeDelta: {x: 440, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &347966702
 MonoBehaviour:
@@ -7303,7 +7303,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -230, y: 3.9}
-  m_SizeDelta: {x: 440, y: 89.2}
+  m_SizeDelta: {x: 440, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &648944901
 MonoBehaviour:
@@ -8433,9 +8433,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d762e19587e591419947138bab02ffc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 771003360}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d762e19587e591419947138bab02ffc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 771003364}
   m_SourcePrefab: {fileID: 100100000, guid: 8d762e19587e591419947138bab02ffc, type: 3}
 --- !u!1 &711999077
 GameObject:
@@ -8964,28 +8961,6 @@ MonoBehaviour:
     actionLabel: Inserisci occhio
     stages: []
     nextStageIndex: 0
---- !u!64 &771003364
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771003356}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7994650926060863905, guid: 8d762e19587e591419947138bab02ffc, type: 3}
 --- !u!1 &771841441
 GameObject:
   m_ObjectHideFlags: 0
@@ -16167,13 +16142,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398044997}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.010820795, y: 0, z: 0, w: 0.9999415}
-  m_LocalPosition: {x: 0, y: 0, z: -0.005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 1.5, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 771841442}
-  m_LocalEulerAnglesHint: {x: -1.24, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1398044999
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16220,7 +16195,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: de1c30d720c201b438427870f0240e13, type: 2}
+  - {fileID: 2100000, guid: f8359987db1545c4591169dc20d9c5d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16499,7 +16474,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 230, y: 3.9}
-  m_SizeDelta: {x: 440, y: 89.2}
+  m_SizeDelta: {x: 440, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1440872232
 MonoBehaviour:
@@ -20057,7 +20032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RenderScaleDegrader
   player: {fileID: 2017530964}
   startScale: 0.8
-  minScale: 0.6
+  minScale: 0.33
   decrementPerSit: 0.05
 --- !u!4 &1787594488 stripped
 Transform:
@@ -22174,7 +22149,7 @@ Transform:
   m_GameObject: {fileID: 2017530961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.847, z: -3.475}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
