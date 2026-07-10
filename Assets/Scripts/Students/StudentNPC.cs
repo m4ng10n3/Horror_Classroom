@@ -188,6 +188,12 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
 
     private int repeatIndex = 0;
     private int afterGougeIndex = 0;
+
+    // Cursore sulle richieste della trade chain: quando il player non ha in mano
+    // nessun oggetto utile, lo studente cita i passi ancora aperti UNO A OGNI
+    // interazione (non resta bloccato sulla prima richiesta). Avanza solo a
+    // dialogo concluso, come gli altri indici.
+    private int requestCycleIndex = 0;
     private MeshRenderer bodyRenderer;
     private Material bodyMaterialInstance;
 
@@ -950,11 +956,25 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
             }
         }
 
-        // Nessun oggetto utile in mano → mostra la richiesta del primo passo ancora aperto.
+        // Nessun oggetto utile in mano → cita i passi ancora aperti UNO A OGNI
+        // interazione, ciclandoli, così il player sente tutte le richieste e non
+        // resta bloccato sulla prima. Il cursore avanza solo a dialogo concluso.
         if (step == null)
         {
-            TradeStep firstOpen = FirstUnresolvedStep();
-            return firstOpen?.requestDialogue?.lines ?? Array.Empty<DialogueLine>();
+            var openSteps = new List<TradeStep>();
+            foreach (TradeStep s in tradeSteps)
+                if (s != null && !s.completed)
+                    openSteps.Add(s);
+
+            if (openSteps.Count == 0)
+                return Array.Empty<DialogueLine>();
+
+            int cursor = ((requestCycleIndex % openSteps.Count) + openSteps.Count) % openSteps.Count;
+            TradeStep viewStep = openSteps[cursor];
+
+            pendingCommit = () => requestCycleIndex++;
+
+            return viewStep.requestDialogue?.lines ?? Array.Empty<DialogueLine>();
         }
 
         bool needsItem = !string.IsNullOrWhiteSpace(step.requiredItem);
@@ -1006,16 +1026,6 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
         }
 
         return received;
-    }
-
-    // Primo passo della catena non ancora risolto (in ordine di inspector), usato per
-    // mostrare una richiesta quando il player non ha in mano nessun oggetto utile.
-    private TradeStep FirstUnresolvedStep()
-    {
-        foreach (TradeStep s in tradeSteps)
-            if (s != null && !s.completed)
-                return s;
-        return null;
     }
 
     // Conta i passi ancora aperti, escludendone uno (quello che si sta per risolvere).
