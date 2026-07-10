@@ -2616,12 +2616,15 @@ MonoBehaviour:
   mapTransform: {fileID: 1787594488}
   roomLights:
   - {fileID: 1740910264}
+  teacherChalk: {fileID: 2007373968}
   blackboardTiltMax: 8
   wallTintColor: {r: 0.6, g: 0.15, b: 0.15, a: 1}
   wallTintStep: 0.5
   lightTintColor: {r: 0.8, g: 0, b: 0, a: 1}
   lightTintStep: 0.6
   mapFlipEuler: {x: 0, y: 0, z: 180}
+  bloodChalkColor: {r: 0.5, g: 0, b: 0, a: 1}
+  bloodChalkEmission: {r: 1, g: 0, b: 0, a: 1}
   mutationsApplied: 0
 --- !u!4 &148235043
 Transform:
@@ -6042,6 +6045,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1286332797}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1286332801}
   m_SourcePrefab: {fileID: 100100000, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
 --- !u!1 &547947547 stripped
 GameObject:
@@ -14757,6 +14763,28 @@ MonoBehaviour:
     actionLabel: Inserisci occhio
     stages: []
     nextStageIndex: 0
+--- !u!64 &1286332801
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286332793}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2726277716269829465, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
 --- !u!1 &1305016952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
@@ -14790,6 +14818,28 @@ MonoBehaviour:
     actionLabel: Inserisci occhio
     stages: []
     nextStageIndex: 0
+--- !u!64 &1305016957
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305016952}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6198401070834743824, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
 --- !u!1001 &1309000126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15309,6 +15359,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
       propertyPath: m_Name
       value: ScribblingChalk
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1b53b58e802138045bba6fb97ac309f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19178,7 +19232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.989
+      value: 0.956
       objectReference: {fileID: 0}
     - target: {fileID: 8789556526585455252, guid: 662d5c349e1e373449192935b70e0670, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20064,7 +20118,7 @@ MonoBehaviour:
   - {fileID: 347966702}
   questionDatabase: {fileID: 11400000, guid: d4007bb6bc3f1ba46b1a8ee42ff65ded, type: 2}
   suspicionCounter: {fileID: 879980192}
-  explorationDuration: 60
+  explorationDuration: 5
   warningStartTime: 3.5
   vignetteController: {fileID: 1356203906}
   studentManager: {fileID: 2010312891}
@@ -21698,6 +21752,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1305016954}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1305016957}
   m_SourcePrefab: {fileID: 100100000, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
 --- !u!1 &1968466740 stripped
 GameObject:
@@ -22072,6 +22129,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5db6e396d778a7046b85e2680ded00b4, type: 3}
   - {fileID: 8300000, guid: cd0967bec5b88d549adcf8ac4ed896dc, type: 3}
   audioFadeSpeed: 10
+  chalkColor: {r: 1, g: 1, b: 1, a: 1}
+  chalkEmission: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &2010312889
 GameObject:
   m_ObjectHideFlags: 0

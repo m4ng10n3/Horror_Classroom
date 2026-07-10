@@ -18,6 +18,9 @@ public class ClassroomMutator : MonoBehaviour
     [Tooltip("Le luci della stanza che diventano rosse (componenti Light)")]
     public List<Light> roomLights = new List<Light>();
 
+    [Tooltip("L'animatore del gesso della prof (per la mutazione 'gesso rosso sangue')")]
+    public TeacherChalkAnimator teacherChalk;
+
     [Header("Settings")]
     public float blackboardTiltMax = 8f;
 
@@ -33,6 +36,13 @@ public class ClassroomMutator : MonoBehaviour
     [Tooltip("Rotazione applicata alla mappa per capovolgerla. Regola l'asse se la mappa non si gira come previsto.")]
     public Vector3 mapFlipEuler = new Vector3(0f, 0f, 180f);
 
+    [Tooltip("Colore (albedo) del gesso quando la prof passa al 'gesso rosso elettrico'")]
+    public Color bloodChalkColor = new Color(1f, 0f, 0f);
+
+    [Tooltip("Emissione del gesso 'elettrico': lo rende auto-illuminato e ben visibile al buio (HDR, alza l'intensità per più glow)")]
+    [ColorUsage(true, true)]
+    public Color bloodChalkEmission = new Color(1f, 0f, 0f);
+
     [Header("State")]
     [SerializeField] private int mutationsApplied = 0;
 
@@ -42,8 +52,10 @@ public class ClassroomMutator : MonoBehaviour
     private Quaternion originalBlackboardRotation;
     private Quaternion originalMapRotation;
     private bool mapFlipped = false;
+    private Color originalChalkColor = Color.white;
+    private Color originalChalkEmission = Color.black;
 
-    private enum MutationType { TiltBlackboard, TintWall, DisappearWindow, FlipMap, TintLights }
+    private enum MutationType { TiltBlackboard, TintWall, DisappearWindow, FlipMap, TintLights, BloodChalk }
 
     // "Sacchetto" di mutazioni mescolate: ogni tipo esce una volta prima che se ne ripeta uno.
     private readonly List<MutationType> mutationBag = new List<MutationType>();
@@ -65,6 +77,12 @@ public class ClassroomMutator : MonoBehaviour
 
         if (mapTransform != null)
             originalMapRotation = mapTransform.rotation;
+
+        if (teacherChalk != null)
+        {
+            originalChalkColor = teacherChalk.ChalkColor;
+            originalChalkEmission = teacherChalk.ChalkEmission;
+        }
     }
 
     public void ApplyRandomMutation()
@@ -87,6 +105,9 @@ public class ClassroomMutator : MonoBehaviour
                 break;
             case MutationType.TintLights:
                 TintLights();
+                break;
+            case MutationType.BloodChalk:
+                MakeChalkBloody();
                 break;
         }
 
@@ -188,6 +209,14 @@ public class ClassroomMutator : MonoBehaviour
         if (any) Debug.Log("[Mutator] Luci tinte di rosso");
     }
 
+    private void MakeChalkBloody()
+    {
+        if (teacherChalk == null) return;
+
+        teacherChalk.SetChalkColor(bloodChalkColor, bloodChalkEmission);
+        Debug.Log("[Mutator] La prof ora scrive col gesso rosso elettrico");
+    }
+
     public void ResetAllMutations()
     {
         foreach (var pair in originalWallColors)
@@ -202,6 +231,9 @@ public class ClassroomMutator : MonoBehaviour
         if (mapTransform != null)
             mapTransform.rotation = originalMapRotation;
         mapFlipped = false;
+
+        if (teacherChalk != null)
+            teacherChalk.SetChalkColor(originalChalkColor, originalChalkEmission);
 
         mutationBag.Clear();
         hasLastMutation = false;

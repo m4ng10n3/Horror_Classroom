@@ -63,6 +63,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6883470802890828062}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6382348631663589351}
   m_SourcePrefab: {fileID: 100100000, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}
 --- !u!1 &2064348490931094214 stripped
 GameObject:
@@ -87,3 +90,30 @@ MonoBehaviour:
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
+  upgradePath:
+    actionKey: 1
+    actionLabel: Inserisci occhio
+    stages: []
+    nextStageIndex: 0
+--- !u!64 &-6382348631663589351
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064348490931094214}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7387706064836869012, guid: 75f78502d5f108942810a0ebf04aef49, type: 3}

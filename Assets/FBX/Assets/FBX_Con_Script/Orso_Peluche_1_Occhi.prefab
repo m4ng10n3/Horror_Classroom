@@ -59,6 +59,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0d7491d024ce09b4c9aafd5cb4fc52b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2170381018752840735}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0d7491d024ce09b4c9aafd5cb4fc52b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 669574420393337396}
   m_SourcePrefab: {fileID: 100100000, guid: 0d7491d024ce09b4c9aafd5cb4fc52b8, type: 3}
 --- !u!1 &7291020164574707256 stripped
 GameObject:
@@ -88,3 +91,25 @@ MonoBehaviour:
     actionLabel: Inserisci occhio
     stages: []
     nextStageIndex: 0
+--- !u!64 &669574420393337396
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7291020164574707256}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4444728127320036556, guid: 0d7491d024ce09b4c9aafd5cb4fc52b8, type: 3}

@@ -45,6 +45,23 @@ public class TeacherChalkAnimator : MonoBehaviour
     [Tooltip("Velocità del fade tra tratto e pausa (volume/secondo). Evita il click che si sente con Pause/UnPause secchi")]
     public float audioFadeSpeed = 10f;
 
+    [Header("Colore del gesso")]
+    [Tooltip("Colore (albedo) dei tratti di gesso.")]
+    [SerializeField] private Color chalkColor = Color.white;
+
+    [Tooltip("Emissione dei tratti: se diversa da nero il gesso si auto-illumina, restando ben " +
+             "visibile anche al buio (es. gesso rosso 'elettrico'). HDR: alza l'intensità per un effetto più acceso.")]
+    [ColorUsage(true, true)] [SerializeField] private Color chalkEmission = Color.black;
+
+    public Color ChalkColor => chalkColor;
+    public Color ChalkEmission => chalkEmission;
+
+    public void SetChalkColor(Color color, Color emission)
+    {
+        chalkColor = color;
+        chalkEmission = emission;
+    }
+
     private Coroutine activeRoutine;
     private float baseChalkVolume = 1f;
 
@@ -191,10 +208,35 @@ public class TeacherChalkAnimator : MonoBehaviour
         line.shadowCastingMode = ShadowCastingMode.Off;
         line.receiveShadows = false;
         if (chalkLineMaterial != null)
-            line.material = chalkLineMaterial;
+        {
+            line.sharedMaterial = chalkLineMaterial;
+            // Il materiale del gesso usa URP/Lit, che ignora i vertex color (startColor/endColor):
+            // il colore va imposto sul materiale. line.material istanzia una copia di proprietà del
+            // renderer (distrutta con lo stroke, niente leak) senza toccare l'asset condiviso.
+            Material mat = line.material;
+            mat.color = chalkColor;            // _BaseColor (albedo), la [MainColor] di URP/Lit
+            ApplyEmission(mat, chalkEmission); // auto-illuminazione: gesso ben visibile al buio
+        }
         line.positionCount = 0;
 
         return line;
+    }
+
+    // Imposta (o azzera) l'emissione del materiale del gesso. Con emissione != nero il tratto si
+    // auto-illumina e resta visibile anche al buio, indipendente dalla luce di scena (URP/Lit).
+    void ApplyEmission(Material mat, Color emission)
+    {
+        if (emission.maxColorComponent > 0f)
+        {
+            mat.EnableKeyword("_EMISSION");
+            mat.globalIlluminationFlags = MaterialGlobalIlluminationFlags.RealtimeEmissive;
+            mat.SetColor("_EmissionColor", emission);
+        }
+        else
+        {
+            mat.DisableKeyword("_EMISSION");
+            mat.SetColor("_EmissionColor", Color.black);
+        }
     }
 
     void AddScribblePoint(LineRenderer line, Vector3 worldPos)
