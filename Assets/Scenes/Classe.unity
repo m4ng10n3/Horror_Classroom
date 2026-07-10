@@ -1489,6 +1489,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -1537,6 +1542,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -4139,6 +4149,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -4187,6 +4202,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -7415,6 +7435,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -10513,6 +10538,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -10762,6 +10792,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -11703,6 +11738,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -12897,6 +12937,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -15053,6 +15098,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: Graffetta
   consumeItemOnOpen: 1
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'
@@ -20118,7 +20168,7 @@ MonoBehaviour:
   - {fileID: 347966702}
   questionDatabase: {fileID: 11400000, guid: d4007bb6bc3f1ba46b1a8ee42ff65ded, type: 2}
   suspicionCounter: {fileID: 879980192}
-  explorationDuration: 5
+  explorationDuration: 60
   warningStartTime: 3.5
   vignetteController: {fileID: 1356203906}
   studentManager: {fileID: 2010312891}
@@ -22859,6 +22909,11 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
+  audioSource: {fileID: 0}
+  soundVolume: 1
+  spatialBlend: 1
   openPrompt: '[F] Apri cassetto'
   closePrompt: '[F] Chiudi cassetto'
   secondaryClosePrompt: '[Q] Chiudi senza raccogliere'

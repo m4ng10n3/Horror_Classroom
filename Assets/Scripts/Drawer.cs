@@ -22,6 +22,24 @@ public class Drawer : MonoBehaviour, IPlayerInteractable, ISecondaryInteractable
     [Tooltip("Se attivo, l'oggetto richiesto viene consumato (rimosso dall'inventario) la prima volta che apri il cassetto.")]
     public bool consumeItemOnOpen = false;
 
+    [Header("Audio")]
+    [Tooltip("Suono riprodotto quando il cassetto inizia ad aprirsi (es. opendrawer).")]
+    public AudioClip openClip;
+
+    [Tooltip("Suono riprodotto quando il cassetto inizia a chiudersi (es. closedrawer).")]
+    public AudioClip closeClip;
+
+    [Tooltip("AudioSource usata per i suoni. Se vuota viene presa/aggiunta su questo oggetto in automatico.")]
+    public AudioSource audioSource;
+
+    [Range(0f, 1f)]
+    [Tooltip("Volume dei suoni di apertura/chiusura.")]
+    public float soundVolume = 1f;
+
+    [Range(0f, 1f)]
+    [Tooltip("0 = suono 2D (uguale ovunque), 1 = suono 3D posizionale (si sente più forte vicino al cassetto).")]
+    public float spatialBlend = 1f;
+
     [Header("Testi")]
     public string openPrompt = "[F] Apri cassetto";
     public string closePrompt = "[F] Chiudi cassetto";
@@ -52,6 +70,18 @@ public class Drawer : MonoBehaviour, IPlayerInteractable, ISecondaryInteractable
         {
             pickupInside = GetComponentInChildren<PickupItem>(true);
         }
+
+        // AudioSource: usa quella assegnata, altrimenti prendi/aggiungi quella sul cassetto.
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = spatialBlend;
     }
 
     void Start()
@@ -177,11 +207,21 @@ public class Drawer : MonoBehaviour, IPlayerInteractable, ISecondaryInteractable
     private void StartSlide(Vector3 target, bool opening)
     {
         isOpen = opening;
+        PlaySlideSound(opening);
         if (slideRoutine != null)
         {
             StopCoroutine(slideRoutine);
         }
         slideRoutine = StartCoroutine(SlideTo(target));
+    }
+
+    private void PlaySlideSound(bool opening)
+    {
+        AudioClip clip = opening ? openClip : closeClip;
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip, soundVolume);
+        }
     }
 
     private IEnumerator SlideTo(Vector3 target)
