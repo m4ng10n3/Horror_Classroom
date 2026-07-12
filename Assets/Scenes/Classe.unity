@@ -1791,8 +1791,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -1844,8 +1844,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -4889,7 +4889,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: cd0967bec5b88d549adcf8ac4ed896dc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.418
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5022,8 +5022,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -5075,8 +5075,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -5341,9 +5341,9 @@ MonoBehaviour:
   repeatSequences:
   - lines:
     - speaker: 1
-      text: Non ho altro da darti.
+      text: Non ho niente da darti!
     - speaker: 0
-      text: Capisco, grazie comunque.
+      text: Capisco...
   itemDialogueTriggers: []
   essential: 1
   tradeDone: 0
@@ -5555,7 +5555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e24cbbfd01ef843a8e3c92d78c2a1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.555546
+      value: -4.547
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e24cbbfd01ef843a8e3c92d78c2a1c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5563,23 +5563,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e24cbbfd01ef843a8e3c92d78c2a1c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.77
+      value: -12.117
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e24cbbfd01ef843a8e3c92d78c2a1c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.69870216
+      value: 0.70735383
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e24cbbfd01ef843a8e3c92d78c2a1c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.69879794
+      value: 0.7067615
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e24cbbfd01ef843a8e3c92d78c2a1c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.10869983
+      value: -0.008326714
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e24cbbfd01ef843a8e3c92d78c2a1c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.10807915
+      value: 0.008333693
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e24cbbfd01ef843a8e3c92d78c2a1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5591,7 +5591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e24cbbfd01ef843a8e3c92d78c2a1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -17.586
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c0e24cbbfd01ef843a8e3c92d78c2a1c, type: 3}
       propertyPath: m_Name
@@ -8492,7 +8492,7 @@ MonoBehaviour:
     text: 'Damn '
   completedSequence:
   - speaker: 0
-    text: Tieni le forbici....sono pronto dammi i pugni!
+    text: Tieni le forbici....sono pronto. Prendiamoci a pugni!
   - speaker: 1
     text: Ehi nerd sei abbastanza in gamba, tieni il guantone, vediamo quanti pugni
       riesci a tirare, per stavolta passi.
@@ -8783,21 +8783,23 @@ MonoBehaviour:
   missingItemSequence: []
   completedSequence:
   - speaker: 1
-    text: Ciao sono Juliet
+    text: Ciao sono Juliet.
   - speaker: 1
-    text: Mi piace usare il Gabinet
+    text: Mi piace usare il Gabinet.
   - speaker: 1
-    text: A volte esce Violet
+    text: A volte esce Violet.
   - speaker: 1
-    text: Voglio essere Una ballerina
+    text: Voglio essere una ballerina.
   - speaker: 1
-    text: Per sentirmi una Regina
+    text: Per sentirmi una Regina.
   - speaker: 1
-    text: Ed essere messa in vetrina
+    text: Ed essere messa in vetrina.
+  - speaker: 0
+    text: Se lo dici tu..
   repeatSequences:
   - lines:
     - speaker: 1
-      text: Non ho altro da darti.
+      text: Non ho niente da darti.
     - speaker: 0
       text: Capisco, grazie comunque.
   itemDialogueTriggers: []
@@ -9436,8 +9438,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -9530,7 +9532,7 @@ MonoBehaviour:
   - speaker: 0
     text: Oh, lo vedrai!
   - speaker: 1
-    text: "Brad non lo sopporto!\r\nQuindi qualsiasi scherzo mi andr\xE0 bene"
+    text: "Brad non lo sopporto!\r\nQuindi qualsiasi scherzo mi andr\xE0 bene."
   - speaker: 0
     text: Ottimooo
   - speaker: 1
@@ -9543,7 +9545,7 @@ MonoBehaviour:
     text: "Sar\xE0 fatto!!"
   completedSequence:
   - speaker: 0
-    text: Ecco a te il temperino
+    text: Ecco a te il temperino.
   - speaker: 1
     text: "Ed ecco a te il pupazzo!\nNon vedo l\u2019ora di vedere che scherzo gli
       farai!"
@@ -9670,7 +9672,7 @@ MonoBehaviour:
   completedSequence:
   - speaker: 0
     text: "Ciao Erika puoi prestarmi per favore una delle tue graffette? \nHo portato
-      la figurina"
+      la figurina."
   - speaker: 1
     text: Quella con il gattino carino?
   - speaker: 0
@@ -9680,11 +9682,11 @@ MonoBehaviour:
   - speaker: 0
     text: "Carino\u2026"
   - speaker: 1
-    text: 'Tieni la graffetta allora
+    text: 'Tieni la graffetta allora.
 
 '
   - speaker: 1
-    text: Fai attenzione a non farti male
+    text: Fai attenzione a non farti male.
   - speaker: 0
     text: "Ok\u2026"
   - speaker: 0
@@ -9694,7 +9696,7 @@ MonoBehaviour:
     - speaker: 1
       text: 'Ti sei tagliato con la graffetta? '
     - speaker: 0
-      text: Non ancora
+      text: Non ancora.
   itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
@@ -12072,7 +12074,7 @@ MonoBehaviour:
   - speaker: 0
     text: Ciao Leo puoi prestarmi per favore il temperino?
   - speaker: 1
-    text: Guardah
+    text: Guardah!
   - speaker: 1
     text: "Sto temperino \xE8 demoniaco"
   - speaker: 1
@@ -12088,7 +12090,7 @@ MonoBehaviour:
   - speaker: 1
     text: Forse riesco finalmente a smussare la punta da PAURA delle matite
   - speaker: 0
-    text: Ok, faccio quello che posso
+    text: Ok, faccio quello che posso.
   completedSequence:
   - speaker: 0
     text: Eccoci, spero che io sia in tempo per darti i Guantoni
@@ -12107,19 +12109,10 @@ MonoBehaviour:
   repeatSequences:
   - lines:
     - speaker: 1
-      text: Guardah, non vedo l'ora di menare le mani
+      text: Guardah, non vedo l'ora di menare le mani!
     - speaker: 0
-      text: Stammi lontano
-  itemDialogueTriggers:
-  - requiredItemName: Corda da salto
-    dialogue:
-      lines:
-      - speaker: 1
-        text: Guardah, voglio anche una corda per saltare
-      - speaker: 1
-        text: Per allenarmi
-    oneShot: 1
-    triggered: 0
+      text: Stammi lontano!
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -12132,8 +12125,27 @@ MonoBehaviour:
     consumeItem: 1
     requestDialogue:
       lines:
+      - speaker: 0
+        text: Ciao Leo puoi prestarmi per favore il temperino?
       - speaker: 1
-        text: dammi il guanto
+        text: Guardah!
+      - speaker: 1
+        text: "Sto temperino \xE8 demoniaco!"
+      - speaker: 1
+        text: 'Fa delle punte che... '
+      - speaker: 1
+        text: Fanno PAURA!
+      - speaker: 0
+        text: Damn!
+      - speaker: 1
+        text: Guardah!
+      - speaker: 1
+        text: Se mi riesci a dare il guantone da box di Daniel.
+      - speaker: 1
+        text: "Forse cos\xEC a suon di pugni riesco finalmente a smussare la punta
+          da PAURA delle matite!"
+      - speaker: 0
+        text: Ok...
     receivedDialogue:
       lines: []
     completed: 0
@@ -12142,12 +12154,26 @@ MonoBehaviour:
     requestDialogue:
       lines:
       - speaker: 1
-        text: dammi il cordo
+        text: Guardah, voglio anche una corda per saltare.
+      - speaker: 1
+        text: Sai.. per allenarmi per bene!
+      - speaker: 0
+        text: E dove la prendo?
+      - speaker: 1
+        text: "Guardah, non \xE8 un mio problema!"
+      - speaker: 1
+        text: Cerca in giro!
+      - speaker: 0
+        text: ...
     receivedDialogue:
       lines: []
     completed: 0
   finalChainDialogue:
-    lines: []
+    lines:
+    - speaker: 0
+      text: Ecco quello che volevi, ora dammi il temperino!
+    - speaker: 1
+      text: Guardah! Te lo sei meritato!
   rewardItem: Temperino
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 4456630930037526114, guid: df1185af74e6cae4a85f28c7a997ec22, type: 3}
@@ -12710,7 +12736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f08159fc81c1cd45bb3925403434858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudentNPC
-  studentName: Michel
+  studentName: Michael
   studentColor: {r: 0.627451, g: 0.23529412, b: 0.23529412, a: 1}
   missingItemSequence:
   - speaker: 0
@@ -13110,8 +13136,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -13364,8 +13390,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -13515,40 +13541,40 @@ MonoBehaviour:
   - speaker: 1
     text: We ma non sei venuto a fare il tifo al mio torneo!
   - speaker: 0
-    text: Scusa dovevo lavorare
+    text: Scusa dovevo lavorare.
   - speaker: 1
-    text: Damn
+    text: Damn.
   - speaker: 1
-    text: Ma i bambini non lavorano
+    text: Ma i bambini non lavorano.
   - speaker: 0
-    text: Damn
+    text: Damn.
   - speaker: 0
-    text: Dammi il tuo pallone
+    text: Dammi il tuo pallone.
   - speaker: 1
-    text: We ma stai parlando con il vincitore del tonero
+    text: We ma stai parlando con il vincitore del torneo.
   - speaker: 0
-    text: Eh ma lo voglio lo stesso
+    text: Eh..ma lo voglio lo stesso.
   - speaker: 1
-    text: Beh allora se mi vai a prendere dei pezzi di tessuto da Nicole
+    text: Beh allora se mi vai a prendere dei pezzi di tessuto da Nicole.
   - speaker: 0
-    text: Ti do in prestito la palla
+    text: Ti do in prestito la palla.
   - speaker: 0
     text: "E perch\xE9 vorresti dei pezzi di tessuto?"
   - speaker: 1
-    text: Mi servono per metterci il cloroformio
+    text: Mi servono per metterci il cloroformio.
   - speaker: 1
-    text: Secondo te come ho vinto il torneo
+    text: Secondo te come ho vinto il torneo?
   - speaker: 0
-    text: Damn
+    text: Damn...
   completedSequence:
   - speaker: 0
-    text: Tieni, ho preso il tessuto
+    text: Tieni, ho preso il tessuto.
   - speaker: 1
-    text: Crazy, Ora posso prepararmi al prossimo torneo
+    text: Crazy, Ora posso prepararmi al prossimo torneo.
   - speaker: 0
-    text: Dammi il pallone ora
+    text: Dammi il pallone ora.
   - speaker: 1
-    text: Tieni tieni
+    text: Tieni tieni.
   repeatSequences:
   - lines:
     - speaker: 1
@@ -14058,23 +14084,23 @@ MonoBehaviour:
   missingItemSequence: []
   completedSequence:
   - speaker: 1
-    text: Dovresti venire a pesca con mio padre la prossima domenica
+    text: Dovresti venire a pesca con mio padre la prossima domenica.
   - speaker: 0
-    text: A me piace mangiare il salmone
+    text: A me piace mangiare il salmone.
   - speaker: 1
-    text: Figo a me piace mangiare lo sgombro
+    text: Figo, a me piace mangiare lo sgombro.
   - speaker: 0
     text: Che schifo!
   - speaker: 0
-    text: Scommetto che hai l'alito puzzolente
+    text: Scommetto che hai l'alito puzzolente!
   - speaker: 1
-    text: Wow
+    text: Wow! Che modi!
   - speaker: 1
-    text: "Non sei pi\xF9 invitato"
+    text: "Non sei pi\xF9 invitato!"
   repeatSequences:
   - lines:
     - speaker: 1
-      text: Non ho altro da darti.
+      text: Non ho niente da darti.
     - speaker: 0
       text: Capisco, grazie comunque.
   itemDialogueTriggers: []
@@ -14887,8 +14913,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -16206,8 +16232,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -16394,7 +16420,7 @@ MonoBehaviour:
   - speaker: 1
     text: Vorresti essere un piromane anche tu vero?
   - speaker: 0
-    text: "S\xEC"
+    text: "...S\xEC!"
   repeatSequences:
   - lines:
     - speaker: 1
@@ -16415,7 +16441,7 @@ MonoBehaviour:
   rewardItem: Accendino
   consumeRequiredItem: 0
   rewardItemPrefab: {fileID: 7961290571484670256, guid: efe8e86cd4a614f4bb6582f7571d644e, type: 3}
-  rewardItemDescription: Fuoco del maestro piromane Carlos
+  rewardItemDescription: Fuoco del maestro piromane Carlos.
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
   rewardUpgradePath:
@@ -16589,19 +16615,21 @@ MonoBehaviour:
     text: "Se non \xE8 nel tuo cuore, sar\xE0 da qualche parte nell\u2019aula."
   completedSequence:
   - speaker: 0
-    text: Tieni il libro rosso
+    text: Tieni il libro rosso...
   - speaker: 1
-    text: Prendi pure le patatine
+    text: Prendi pure le patatine!
   - speaker: 0
     text: " \u2026"
   repeatSequences:
   - lines:
     - speaker: 1
-      text: "Sto libro rosso \xE8 uno sballo"
+      text: "Sto libro rosso \xE8 uno sballo!"
     - speaker: 0
       text: 'Ti stai per trasformare in un gatto? '
     - speaker: 1
-      text: mao
+      text: Meow!
+    - speaker: 0
+      text: ...
   itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
@@ -18558,23 +18586,23 @@ MonoBehaviour:
   - speaker: 1
     text: Ti rendi conto di quanto sia pericoloso lo scioglimento dei ghiacciai?
   - speaker: 0
-    text: "Damn dimmi di pi\xF9"
+    text: "Damn dimmi di pi\xF9."
   - speaker: 1
-    text: Gli orsi polari stanno morendo
+    text: Gli orsi polari stanno morendo.
   - speaker: 0
-    text: "Damn dimmi di pi\xF9"
+    text: "Damn dimmi di pi\xF9."
   - speaker: 1
-    text: "Guarda che se continua cos\xEC moriremo tutti "
+    text: "Guarda che se continua cos\xEC moriremo tutti."
   - speaker: 1
     text: Il nostro pianeta sta morendo!
   - speaker: 0
-    text: "Damn dimmi di pi\xF9"
+    text: "Damn dimmi di pi\xF9."
   - speaker: 1
     text: ...
   repeatSequences:
   - lines:
     - speaker: 1
-      text: Non ho altro da darti.
+      text: Non ho niente da darti.
     - speaker: 0
       text: Capisco, grazie comunque.
   itemDialogueTriggers: []
@@ -19430,8 +19458,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: Graffetta
   consumeItemOnOpen: 1
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -20045,27 +20073,17 @@ MonoBehaviour:
   missingItemSequence: []
   completedSequence:
   - speaker: 0
-    text: 'Ciao Rachel '
+    text: Ciao Rachel.
+  - speaker: 1
+    text: Lo sai che sono pazza? Me l'ha detto il dottore!
   - speaker: 0
-    text: Avrei bisogno di 1 bottone della tua collezione
-  - speaker: 0
-    text: Me lo regali?
-  - speaker: 1
-    text: 'Damn Della mia collezione? Sei impazzito? '
-  - speaker: 1
-    text: "Tuttavia\u2026 "
-  - speaker: 1
-    text: 'Mia nonna mi ha regalato un sacchetto di bottoni identici, non ci faccio
-      nulla. '
-  - speaker: 1
-    text: Tienili pure tutti e quattro. Spero ricambierai il favore durante la mia
-      interrogazione di domani.
+    text: Ok...
   repeatSequences:
   - lines:
     - speaker: 1
-      text: Non ho altro da darti.
+      text: Sono ancora pazza, lo sai??
     - speaker: 0
-      text: Capisco, grazie comunque.
+      text: ...
   itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
@@ -20077,9 +20095,9 @@ MonoBehaviour:
   tradeSteps: []
   finalChainDialogue:
     lines: []
-  rewardItem: Bottone
+  rewardItem: 
   consumeRequiredItem: 1
-  rewardItemPrefab: {fileID: 8855981923538525247, guid: 7b6ebb55309c6b14aafe2c3c6a5439b9, type: 3}
+  rewardItemPrefab: {fileID: 0}
   rewardItemDescription: Un bottone di Rachel
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
@@ -21667,32 +21685,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 47.655045, y: 2.1052203, z: 64.923645}
   m_Center: {x: 0.040062357, y: 0.00318159, z: -23.393154}
---- !u!1 &1481098182 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-  m_PrefabInstance: {fileID: 2071860162}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1481098186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1481098182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1a5d1d74f1b254a8cce090acb7cb1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StealableItem
-  itemName: Patatine
-  itemDescription: Un oggetto preso di nascosto dal banco di qualcuno.
-  stealDuration: 2
-  noiseRate: 0.6
-  suspicionCost: 1
-  owner: {fileID: 2058133692}
-  canInspect: 1
-  inspectionScaleMultiplier: 1
-  inspectionModelOverride: {fileID: 1481098182}
 --- !u!1001 &1484973463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22389,22 +22381,24 @@ MonoBehaviour:
   - speaker: 1
     text: Ti piace la mia collezione di figurine carine carine?
   - speaker: 0
-    text: Si, sono carine carine
+    text: Si, sono carine carine.
   - speaker: 0
-    text: Ne voglio una
+    text: Ne voglio una.
   - speaker: 1
-    text: "Se mi porti un accendino la figurina sar\xE0 tua"
+    text: "Se mi porti un accendino la figurina sar\xE0 tua."
   completedSequence:
   - speaker: 0
-    text: 'Ciao '
+    text: 'Ciao. '
   - speaker: 0
-    text: Ti ho portato l'accendino
+    text: Ti ho portato l'accendino.
   - speaker: 1
     text: "Evviva! \xE8 l'accendino di Carlos?"
   - speaker: 0
-    text: Si, ora dammi in cambio la figurina
+    text: Si, ora dammi in cambio la figurina!
   - speaker: 1
-    text: Si tieni, ma parta un po' di rispetto
+    text: Si tieni, ma porta un po' di rispetto.
+  - speaker: 0
+    text: ...
   repeatSequences:
   - lines:
     - speaker: 1
@@ -23483,7 +23477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundMusicController
   musicClip: {fileID: 8300000, guid: 9e4569213ea2849468d193828ae13aba, type: 3}
-  volume: 0.5
+  volume: 0.28
   basePitch: 1
   stealPitch: 1.5
   pitchLerpSpeed: 4
@@ -23950,15 +23944,8 @@ MonoBehaviour:
   repeatSequences:
   - lines:
     - speaker: 1
-      text: non ho niente vai via
-  itemDialogueTriggers:
-  - requiredItemName: Forbice
-    dialogue:
-      lines:
-      - speaker: 1
-        text: crazy shit bro ora che hai le forbici, sei crazy
-    oneShot: 0
-    triggered: 0
+      text: Non ho niente e non voglio guai vai via!!!
+  itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
   requiredItem: 
@@ -24189,63 +24176,6 @@ MonoBehaviour:
   m_FadeFactor: 1
   version: 1
   m_DecalLayerMask: 1
---- !u!1001 &1655998199
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1631098342629411151, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_Name
-      value: Graffetta
-      objectReference: {fileID: 0}
-    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.658669
-      objectReference: {fileID: 0}
-    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.6027327
-      objectReference: {fileID: 0}
-    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.00000019470718
-      objectReference: {fileID: 0}
-    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -6.123235e-17
-      objectReference: {fileID: 0}
-    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 6.123235e-17
-      objectReference: {fileID: 0}
-    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2155258158901613557, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 63c7c5da0dc77a049aade6cb5f95f75c, type: 3}
 --- !u!1001 &1659177532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26894,7 +26824,7 @@ MonoBehaviour:
   repeatSequences:
   - lines:
     - speaker: 1
-      text: Non ho altro da darti.
+      text: Non ho niente da darti.
     - speaker: 0
       text: Capisco, grazie comunque.
   itemDialogueTriggers: []
@@ -29018,6 +28948,7 @@ GameObject:
   - component: {fileID: 2017530964}
   - component: {fileID: 2017530965}
   - component: {fileID: 2017530966}
+  - component: {fileID: 2017530967}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -29146,17 +29077,114 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FootstepSystem
   controller: {fileID: 2017530962}
   player: {fileID: 2017530964}
-  source: {fileID: 0}
+  source: {fileID: 2017530967}
   steps:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  stepDistance: 1.8
+  - {fileID: 8300000, guid: afa5016654282004ca292d369aca9bf6, type: 3}
+  - {fileID: 8300000, guid: 400dd405a6137f14382ae9250ac2c211, type: 3}
+  - {fileID: 8300000, guid: 071c17dce3f64ad48865b04a0a1cd04f, type: 3}
+  - {fileID: 8300000, guid: e6ec8e9a77b38b24999d5533555fece0, type: 3}
+  stepDistance: 1
   stepDistanceVariation: 0.15
   minSpeed: 0.2
   pitchRange: {x: 0.9, y: 1.1}
   volumeRange: {x: 0.85, y: 1}
+--- !u!82 &2017530967
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017530961}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2027528575
 GameObject:
   m_ObjectHideFlags: 0
@@ -29699,8 +29727,8 @@ MonoBehaviour:
   pickupInside: {fileID: 0}
   requiredItemName: 
   consumeItemOnOpen: 0
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: efd1cf140e21e754e914d0c3ea8e7f29, type: 3}
+  closeClip: {fileID: 8300000, guid: b2bf67b446ea0794895dd668db864235, type: 3}
   audioSource: {fileID: 0}
   soundVolume: 1
   spatialBlend: 1
@@ -29939,66 +29967,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 655b26ee23914ec42a08d22e18845b16, type: 3}
---- !u!1001 &2071860162
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.621
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.002
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.123
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.98614204
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.07839117
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.123327866
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.078542694
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      propertyPath: m_Name
-      value: patatine
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1481098186}
-  m_SourcePrefab: {fileID: 100100000, guid: 6e88f7b2176946e448bc275bd4160987, type: 3}
 --- !u!1001 &2075272623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32252,10 +32220,8 @@ SceneRoots:
   - {fileID: 1535059784}
   - {fileID: 1459091989}
   - {fileID: 543225169}
-  - {fileID: 2071860162}
   - {fileID: 1606633543}
   - {fileID: 287249406}
-  - {fileID: 1655998199}
   - {fileID: 1726464207}
   - {fileID: 1827260485}
   - {fileID: 1221348434}
