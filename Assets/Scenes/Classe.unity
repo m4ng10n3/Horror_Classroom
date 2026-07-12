@@ -2237,8 +2237,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"4. Risposta D"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ffda58a78be75114694c7b44be1f794f, type: 2}
-  m_sharedMaterial: {fileID: 2521482486170382399, guid: ffda58a78be75114694c7b44be1f794f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
+  m_sharedMaterial: {fileID: -3993133888287975117, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5172,8 +5172,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Qui apparir\xE0 la domanda della prof"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 74eb134567a8a744fabc7318561d33a5, type: 2}
-  m_sharedMaterial: {fileID: -1717352280067757483, guid: 74eb134567a8a744fabc7318561d33a5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cbd5a8873874b2c4bab969609dba17fe, type: 2}
+  m_sharedMaterial: {fileID: -7570441805327760409, guid: cbd5a8873874b2c4bab969609dba17fe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5197,7 +5197,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.75
+  m_fontSize: 57
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5309,8 +5309,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"1. Risposta A"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ffda58a78be75114694c7b44be1f794f, type: 2}
-  m_sharedMaterial: {fileID: 2521482486170382399, guid: ffda58a78be75114694c7b44be1f794f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
+  m_sharedMaterial: {fileID: -3993133888287975117, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5446,8 +5446,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"3. Risposta C"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ffda58a78be75114694c7b44be1f794f, type: 2}
-  m_sharedMaterial: {fileID: 2521482486170382399, guid: ffda58a78be75114694c7b44be1f794f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
+  m_sharedMaterial: {fileID: -3993133888287975117, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6955,7 +6955,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"NON DOVEVI ALZARTI."'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cbd5a8873874b2c4bab969609dba17fe, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -9965,8 +9965,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"2. Risposta B"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ffda58a78be75114694c7b44be1f794f, type: 2}
-  m_sharedMaterial: {fileID: 2521482486170382399, guid: ffda58a78be75114694c7b44be1f794f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
+  m_sharedMaterial: {fileID: -3993133888287975117, guid: 0adc779e426ad4a4ca4137640a921c96, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
