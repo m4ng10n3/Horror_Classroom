@@ -98,6 +98,9 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     [Tooltip("Se popolato, lo studente chiede questi oggetti UNO ALLA VOLTA, in ordine. Ogni consegna sblocca la richiesta successiva. Il reward viene dato solo dopo l'ultimo passo. Sostituisce 'Required Item' singolo.")]
     public TradeStep[] tradeSteps = Array.Empty<TradeStep>();
 
+    [Tooltip("Dialogo finale separato mostrato alla consegna dell'ULTIMO passo, al posto del suo 'Received Dialogue'. È la chiusura dedicata dell'intera catena. Lascia vuoto per usare il receivedDialogue dell'ultimo passo.")]
+    public DialogueSequence finalChainDialogue = new DialogueSequence { lines = Array.Empty<DialogueLine>() };
+
     [Tooltip("Oggetto ricevuto dal player al termine del baratto.")]
     public string rewardItem = "";
 
@@ -936,6 +939,9 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
 
     private bool UsesTradeChain => tradeSteps != null && tradeSteps.Length > 0;
 
+    private bool HasFinalChainDialogue =>
+        finalChainDialogue != null && finalChainDialogue.lines != null && finalChainDialogue.lines.Length > 0;
+
     // Gestisce la catena di richieste in modo ORDINE-INDIPENDENTE: ogni passo chiede un
     // oggetto e lo consuma alla consegna. Se il player ha in mano l'oggetto di un passo
     // ancora aperto (in qualsiasi ordine), quel baratto si risolve. Il reward (rewardItem)
@@ -1011,7 +1017,11 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
             }
         };
 
-        DialogueLine[] received = capturedStep.receivedDialogue?.lines ?? Array.Empty<DialogueLine>();
+        // All'ultimo passo, se è configurato un dialogo finale separato, quello
+        // sostituisce il receivedDialogue dello step: è la chiusura dell'intera catena.
+        DialogueLine[] received = (finalStep && HasFinalChainDialogue)
+            ? finalChainDialogue.lines
+            : (capturedStep.receivedDialogue?.lines ?? Array.Empty<DialogueLine>());
 
         if (finalStep && !string.IsNullOrWhiteSpace(rewardItem))
         {
