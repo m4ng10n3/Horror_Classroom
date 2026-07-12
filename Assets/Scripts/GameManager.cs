@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
             answerButtons[i].onClick.AddListener(() => OnAnswerClicked(capturedIndex));
         }
 
+        SetupAnswerLayout();
+
         if (restartButton != null)
             restartButton.onClick.AddListener(RestartGame);
         if (gameOverPanel != null)
@@ -431,6 +433,99 @@ public class GameManager : MonoBehaviour
     void HideQuestionPanel()
     {
         if (questionPanel != null) questionPanel.SetActive(false);
+    }
+
+    // Sostituisce la griglia 2x2 a posizioni fisse degli AnswerButton con layout group
+    // che ridimensionano ogni bottone sul suo testo e li dispongono senza sovrapposizioni.
+    void SetupAnswerLayout()
+    {
+        if (questionPanel == null)
+            return;
+
+        RectTransform panelRect = questionPanel.GetComponent<RectTransform>();
+        if (panelRect == null)
+            return;
+
+        for (int i = 0; i < answerButtons.Length; i++)
+            if (answerButtons[i] == null)
+                return; // riferimenti incompleti: non tocchiamo il layout
+
+        // Contenitore che occupa la fascia sotto la domanda.
+        GameObject gridGO = new GameObject("AnswerGrid", typeof(RectTransform));
+        RectTransform gridRect = gridGO.GetComponent<RectTransform>();
+        gridRect.SetParent(panelRect, false);
+        gridRect.anchorMin = Vector2.zero;
+        gridRect.anchorMax = Vector2.one;
+        gridRect.offsetMin = new Vector2(24f, 20f);     // sinistra, basso
+        gridRect.offsetMax = new Vector2(-24f, -140f);  // destra, alto (lascia spazio alla domanda)
+
+        VerticalLayoutGroup column = gridGO.AddComponent<VerticalLayoutGroup>();
+        column.childAlignment = TextAnchor.MiddleCenter;
+        column.spacing = 20f;
+        column.childControlWidth = true;
+        column.childControlHeight = true;
+        column.childForceExpandWidth = true;   // le righe prendono tutta la larghezza
+        column.childForceExpandHeight = false;
+
+        RectTransform row0 = CreateAnswerRow(gridRect, "AnswerRow0");
+        RectTransform row1 = CreateAnswerRow(gridRect, "AnswerRow1");
+
+        ConfigureAnswerButton(answerButtons[0], row0);
+        ConfigureAnswerButton(answerButtons[1], row0);
+        ConfigureAnswerButton(answerButtons[2], row1);
+        ConfigureAnswerButton(answerButtons[3], row1);
+    }
+
+    RectTransform CreateAnswerRow(RectTransform parent, string rowName)
+    {
+        GameObject go = new GameObject(rowName, typeof(RectTransform));
+        RectTransform rect = go.GetComponent<RectTransform>();
+        rect.SetParent(parent, false);
+
+        HorizontalLayoutGroup row = go.AddComponent<HorizontalLayoutGroup>();
+        row.childAlignment = TextAnchor.MiddleCenter;
+        row.spacing = 20f;
+        row.childControlWidth = true;
+        row.childControlHeight = true;
+        row.childForceExpandWidth = false;   // le larghezze le decide il flexibleWidth dei bottoni
+        row.childForceExpandHeight = false;
+        return rect;
+    }
+
+    void ConfigureAnswerButton(Button button, RectTransform row)
+    {
+        RectTransform btnRect = button.GetComponent<RectTransform>();
+        btnRect.SetParent(row, false);
+
+        // Le due colonne si dividono equamente la larghezza della riga (colonne uguali),
+        // indipendentemente dalla lunghezza del testo.
+        LayoutElement le = button.GetComponent<LayoutElement>();
+        if (le == null)
+            le = button.gameObject.AddComponent<LayoutElement>();
+        le.flexibleWidth = 1f;
+        le.minWidth = 0f;
+        le.preferredWidth = -1f;
+        le.minHeight = 80f;
+
+        // Layout interno: il testo riempie la larghezza del bottone, va a capo se lungo,
+        // e il bottone cresce in ALTEZZA per contenerlo (niente testo fuori dal box).
+        VerticalLayoutGroup inner = button.GetComponent<VerticalLayoutGroup>();
+        if (inner == null)
+            inner = button.gameObject.AddComponent<VerticalLayoutGroup>();
+        inner.padding = new RectOffset(20, 20, 12, 12);
+        inner.childAlignment = TextAnchor.MiddleCenter;
+        inner.childControlWidth = true;
+        inner.childControlHeight = true;
+        inner.childForceExpandWidth = true;   // il testo occupa tutta la larghezza -> va a capo
+        inner.childForceExpandHeight = false;
+
+        TextMeshProUGUI txt = button.GetComponentInChildren<TextMeshProUGUI>(true);
+        if (txt != null)
+        {
+            txt.textWrappingMode = TextWrappingModes.Normal; // va a capo invece di uscire dal box
+            txt.alignment = TextAlignmentOptions.Center;
+            txt.overflowMode = TextOverflowModes.Overflow;
+        }
     }
 
     public void TriggerGameOverExternal(string message)

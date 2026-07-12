@@ -499,7 +499,8 @@ public class PlayerInteractionController : MonoBehaviour
             answerButtonTextStyle != null ? answerButtonTextStyle : questionTextStyle,
             38f,
             TextAlignmentOptions.Center);
-        StretchToParent(promptText.rectTransform);
+        // Il box si adatta al testo (una riga) tramite layout group + content size fitter.
+        FitBoxToSingleLine(promptPanel, promptText, new RectOffset(36, 36, 18, 18));
 
         RectTransform dialoguePanel = CreatePanel(
             "DialoguePanel",
@@ -517,7 +518,8 @@ public class PlayerInteractionController : MonoBehaviour
             questionTextStyle,
             dialogueFontSize,
             TextAlignmentOptions.TopLeft);
-        SetTextPadding(dialogueText.rectTransform, 32f, 22f, 32f, 22f);
+        // Larghezza fissa (980), cresce in altezza per contenere il testo mandato a capo.
+        FitBoxHeightToText(dialoguePanel, dialogueText, new RectOffset(32, 32, 22, 22));
 
         RectTransform crosshair = CreateRectTransform("InteractionCrosshair", hudRoot);
         crosshair.anchorMin = new Vector2(0.5f, 0.5f);
@@ -552,7 +554,7 @@ public class PlayerInteractionController : MonoBehaviour
             answerButtonTextStyle != null ? answerButtonTextStyle : questionTextStyle,
             38f,
             TextAlignmentOptions.Center);
-        StretchToParent(sitStandText.rectTransform);
+        FitBoxToSingleLine(sitStandPanel, sitStandText, new RectOffset(36, 36, 18, 18));
     }
 
     private Canvas ResolveTargetCanvas()
@@ -695,12 +697,42 @@ public class PlayerInteractionController : MonoBehaviour
         rect.pivot = new Vector2(0.5f, 0.5f);
     }
 
-    private void SetTextPadding(RectTransform rect, float left, float bottom, float right, float top)
+    // Box che si adatta al testo su UNA riga (cresce in larghezza e altezza attorno al testo).
+    // Usa HorizontalLayoutGroup + ContentSizeFitter: componenti nativi, robusti.
+    private void FitBoxToSingleLine(RectTransform panel, TextMeshProUGUI content, RectOffset padding)
     {
-        rect.anchorMin = Vector2.zero;
-        rect.anchorMax = Vector2.one;
-        rect.offsetMin = new Vector2(left, bottom);
-        rect.offsetMax = new Vector2(-right, -top);
+        content.textWrappingMode = TextWrappingModes.NoWrap;
+
+        HorizontalLayoutGroup layout = panel.gameObject.AddComponent<HorizontalLayoutGroup>();
+        layout.padding = padding;
+        layout.childAlignment = TextAnchor.MiddleCenter;
+        layout.childControlWidth = true;
+        layout.childControlHeight = true;
+        layout.childForceExpandWidth = false;
+        layout.childForceExpandHeight = false;
+
+        ContentSizeFitter fitter = panel.gameObject.AddComponent<ContentSizeFitter>();
+        fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+        fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+    }
+
+    // Box a larghezza fissa che cresce SOLO in altezza per contenere il testo mandato a capo.
+    // Usa VerticalLayoutGroup + ContentSizeFitter (orizzontale non vincolato).
+    private void FitBoxHeightToText(RectTransform panel, TextMeshProUGUI content, RectOffset padding)
+    {
+        content.textWrappingMode = TextWrappingModes.Normal;
+
+        VerticalLayoutGroup layout = panel.gameObject.AddComponent<VerticalLayoutGroup>();
+        layout.padding = padding;
+        layout.childAlignment = TextAnchor.UpperLeft;
+        layout.childControlWidth = true;
+        layout.childControlHeight = true;
+        layout.childForceExpandWidth = true;   // il testo riempie la larghezza e va a capo
+        layout.childForceExpandHeight = false;
+
+        ContentSizeFitter fitter = panel.gameObject.AddComponent<ContentSizeFitter>();
+        fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained; // larghezza fissa (980)
+        fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
     }
 
     private void RefreshHud()
