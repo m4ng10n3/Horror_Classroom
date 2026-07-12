@@ -332,26 +332,40 @@ MonoBehaviour:
   studentColor: {r: 0.6666667, g: 0.3137255, b: 0.6666667, a: 1}
   missingItemSequence:
   - speaker: 0
-    text: Hey Nicole
+    text: Hey Nicole!
   - speaker: 0
-    text: Hai qualche
+    text: Hai qualche ritaglio di tessuto che ti avanza?
+  - speaker: 0
+    text: Vorrei prenderne un paio.
+  - speaker: 1
+    text: "Certo, prendi quelli che vuoi. Io non li uso pi\xF9."
+  - speaker: 0
+    text: Sei la Goat.
+  - speaker: 1
+    text: Aspetta!
+  - speaker: 0
+    text: Cosa?
+  - speaker: 1
+    text: Hai una matita da prestarmi?
+  - speaker: 0
+    text: "S\xEC. Torno con la matita."
   completedSequence:
   - speaker: 0
-    text: Ho quello che cercavi.
+    text: Ecco la matita!
   - speaker: 1
-    text: Perfetto! Tieni, potrebbe servirti.
+    text: Ti ringrazio. Prendi il tessuto che vuoi.
   - speaker: 0
-    text: Grazie, ne avevo bisogno.
+    text: Grazie.
   repeatSequences:
   - lines:
     - speaker: 1
       text: Non ho altro da darti.
     - speaker: 0
-      text: Capisco, grazie comunque.
+      text: Ok...
   itemDialogueTriggers: []
   essential: 0
   tradeDone: 0
-  requiredItem: 
+  requiredItem: Matita
   additionalRequiredItems: []
   introChainDialogue:
     lines: []
@@ -359,9 +373,9 @@ MonoBehaviour:
   tradeSteps: []
   finalChainDialogue:
     lines: []
-  rewardItem: 
+  rewardItem: Tessuto
   consumeRequiredItem: 1
-  rewardItemPrefab: {fileID: 0}
+  rewardItemPrefab: {fileID: 1792679440342562260, guid: fb7edc29c9aaf8b41964591ed522590a, type: 3}
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
@@ -4631,7 +4645,7 @@ MonoBehaviour:
   itemDialogueTriggers: []
   essential: 1
   tradeDone: 0
-  requiredItem: Matita
+  requiredItem: 
   additionalRequiredItems: []
   introChainDialogue:
     lines: []
@@ -4639,9 +4653,9 @@ MonoBehaviour:
   tradeSteps: []
   finalChainDialogue:
     lines: []
-  rewardItem: Tessuto
+  rewardItem: 
   consumeRequiredItem: 1
-  rewardItemPrefab: {fileID: 1792679440342562260, guid: fb7edc29c9aaf8b41964591ed522590a, type: 3}
+  rewardItemPrefab: {fileID: 0}
   rewardItemDescription: 
   rewardItemCanInspect: 1
   rewardItemInspectionScaleMultiplier: 1
@@ -5387,8 +5401,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireAudio
   _fireClip: {fileID: 8300000, guid: ef0d95610694cdd47ab669e9cc83003f, type: 3}
-  _minDistance: 1
-  _maxDistance: 1.5
+  _minDistance: 0.3
+  _maxDistance: 1
   _volume: 0.483
 --- !u!82 &399139268
 AudioSource:
@@ -6514,6 +6528,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1286332797}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1286332801}
   m_SourcePrefab: {fileID: 100100000, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
 --- !u!1 &547947547 stripped
 GameObject:
@@ -11580,11 +11597,72 @@ MonoBehaviour:
   additionalRequiredItems:
   - Cloroformio
   introChainDialogue:
-    lines: []
+    lines:
+    - speaker: 1
+      text: We ma non sei venuto a fare il tifo al mio torneo!
+    - speaker: 0
+      text: Scusa dovevo lavorare...
+    - speaker: 1
+      text: Damn! Ma i bambini non lavorano!
+    - speaker: 0
+      text: Damn! Dammi il tuo pallone!
+    - speaker: 1
+      text: Ehi porta rispetto! Stai parlando con il vincitore del torneo!
+    - speaker: 0
+      text: "S\xEC ok... lo voglio lo stesso!"
+    - speaker: 1
+      text: Devi portarmi un paio di cose allora!
+    - speaker: 0
+      text: E ti pareva...
   introChainDialogueShown: 0
-  tradeSteps: []
+  tradeSteps:
+  - requiredItem: Tessuto
+    consumeItem: 1
+    requestDialogue:
+      lines:
+      - speaker: 1
+        text: Prendimi dei pezzi di tessuto da Nicole!
+      - speaker: 0
+        text: "E perch\xE9 vorresti dei pezzi di tessuto?"
+      - speaker: 1
+        text: Ovvio per metterci il cloroformio!
+      - speaker: 1
+        text: Secondo te come ho vinto il torneo!
+      - speaker: 0
+        text: ...
+    receivedDialogue:
+      lines: []
+    completed: 0
+  - requiredItem: Cloroformio
+    consumeItem: 1
+    requestDialogue:
+      lines:
+      - speaker: 1
+        text: Voglio del cloroformio!
+      - speaker: 0
+        text: "Che devi farci\u2026? No ok non far\xF2 domande.. Tranne..\r\n"
+      - speaker: 0
+        text: Dove diavolo lo vado a prendere del cloroformio?
+      - speaker: 1
+        text: "Ho visto una boccetta prima in fondo all\u2019aula. Sai che ci gioco
+          sempre!"
+    receivedDialogue:
+      lines:
+      - speaker: 0
+        text: "Tieni il cloroformio\u2026"
+      - speaker: 1
+        text: Perfetto.
+      - speaker: 0
+        text: Ma non voglio guai.
+      - speaker: 1
+        text: Ok sfigato.
+    completed: 0
   finalChainDialogue:
-    lines: []
+    lines:
+    - speaker: 0
+      text: Dammi il pallone...ORA!
+    - speaker: 0
+      text: Tieni tieni.
   rewardItem: Pallone Da Calcio
   consumeRequiredItem: 1
   rewardItemPrefab: {fileID: 2613632856586992849, guid: fec66354396ba2b4b97d17f26a3e930a, type: 3}
@@ -13939,7 +14017,7 @@ MonoBehaviour:
   - speaker: 0
     text: Dove lo trovo?
   - speaker: 1
-    text: "Se non \xE8 nel tuo cuore, sar\xE0 \xF9da qualche parte nell\u2019aula"
+    text: "Se non \xE8 nel tuo cuore, sar\xE0 da qualche parte nell\u2019aula."
   completedSequence:
   - speaker: 0
     text: Tieni il libro rosso
@@ -15893,6 +15971,27 @@ MonoBehaviour:
     actionLabel: Inserisci occhio
     stages: []
     nextStageIndex: 0
+--- !u!65 &1286332801
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286332793}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08428488, y: 0.17729083, z: 0.077693}
+  m_Center: {x: 0, y: 0.039593842, z: 0}
 --- !u!1 &1305016952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
@@ -23053,20 +23152,42 @@ MonoBehaviour:
   - speaker: 0
     text: Quanti taglierini hai sul banco!
   - speaker: 1
-    text: "Si una \xE8 per il braccio sinistro"
+    text: "Si una \xE8 per il braccio sinistro."
   - speaker: 1
-    text: "Una \xE8 per quello destro"
+    text: "Una \xE8 per quello destro."
   - speaker: 1
-    text: Uno per i piedi
+    text: Uno per i piedi.
   - speaker: 1
-    text: L'altro
+    text: L'altro...
+  - speaker: 1
+    text: PER LA GOLA!
+  - speaker: 0
+    text: 'Ehm..ok. Me ne presti uno? '
+  - speaker: 1
+    text: Ti do quello che ho in tasca. Ma prima ho bisogno di uno scotch.
+  - speaker: 0
+    text: Scotch?
+  - speaker: 1
+    text: "S\xEC devo riattaccare una lama che si \xE8 staccata."
+  - speaker: 0
+    text: "Non credo basti lo scotch\u2026"
+  - speaker: 1
+    text: Portalo e basta!
+  - speaker: 1
+    text: "O user\xF2 uno dei taglierini su di te."
+  - speaker: 0
+    text: ...
   completedSequence:
   - speaker: 0
-    text: Ho quello che cercavi.
+    text: Tieni lo scotch.
   - speaker: 1
-    text: Perfetto! Tieni, potrebbe servirti.
+    text: Ecco a te il taglierino.
   - speaker: 0
-    text: Grazie, ne avevo bisogno.
+    text: Grazie!
+  - speaker: 1
+    text: Ringrazia te stesso... per non avermi permesso di farti del male.
+  - speaker: 0
+    text: ...
   repeatSequences:
   - lines:
     - speaker: 1
