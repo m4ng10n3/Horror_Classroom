@@ -456,17 +456,72 @@ public class ItemInspectionController : MonoBehaviour
         pickup.inspectionScaleMultiplier = item.inspectionScaleMultiplier;
         pickup.upgradePath = item.upgradePath;
 
+        // La fisica va aggiunta dopo PickupItem: il suo Awake crea il collider di
+        // raycast (assente nello snapshot), che serve al Rigidbody per appoggiarsi.
+        EnsureDropPhysics(droppedObject, mainCamera != null ? mainCamera.transform : transform);
+
         return droppedObject;
+    }
+
+    // Configura la fisica dell'oggetto lasciato: cade con gravità e si appoggia sul
+    // collider del pavimento invece di essere piazzato "incollato" a terra.
+    private static void EnsureDropPhysics(GameObject droppedObject, Transform source)
+    {
+        // Un Rigidbody dinamico funziona solo con collider convex: le MeshCollider
+        // create da PickupItem sono già convex, ma lo forziamo per sicurezza.
+        foreach (var meshCol in droppedObject.GetComponentsInChildren<MeshCollider>())
+            meshCol.convex = true;
+
+        var body = droppedObject.GetComponent<Rigidbody>();
+        if (body == null)
+            body = droppedObject.AddComponent<Rigidbody>();
+
+        body.isKinematic            = false;
+        body.useGravity             = true;
+        body.mass                   = 1f;
+        body.interpolation          = RigidbodyInterpolation.Interpolate;
+        // Continuous evita che oggetti piccoli attraversino il pavimento statico.
+        body.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+        // Piccola spinta in avanti (solo orizzontale, così guardando in basso non
+        // viene sparato dentro il pavimento) e un filo verso il basso.
+        Vector3 forward = source != null
+            ? Vector3.ProjectOnPlane(source.forward, Vector3.up)
+            : Vector3.zero;
+        Vector3 toss = forward.normalized * 1.0f + Vector3.down * 0.3f;
+        body.linearVelocity  = toss;
+        body.angularVelocity = Vector3.zero;
     }
 
     private Vector3 GetDropPosition()
     {
         Transform source = mainCamera != null ? mainCamera.transform : transform;
-        Vector3 position = source.position + source.forward * 1.1f;
+        Vector3 origin = source.position;
 
-        if (Physics.Raycast(position + Vector3.up, Vector3.down, out RaycastHit hit, 3f, ~0, QueryTriggerInteraction.Ignore))
+        // Usa solo la direzione orizzontale dello sguardo: guardando in basso, il
+        // forward della camera punterebbe nel pavimento e l'oggetto comparirebbe
+        // sotto il terreno (e cadrebbe fuori dal mondo).
+        Vector3 forward = Vector3.ProjectOnPlane(source.forward, Vector3.up);
+        if (forward.sqrMagnitude < 0.0001f)
+            forward = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
+        forward.Normalize();
+
+        // Distanza di rilascio davanti al giocatore, ridotta se c'è un muro vicino
+        // così l'oggetto non compare oltre la parete.
+        float distance = 0.8f;
+        if (Physics.Raycast(origin, forward, out RaycastHit wall, distance + 0.2f, ~0, QueryTriggerInteraction.Ignore))
         {
-            position = hit.point + Vector3.up * 0.08f;
+            distance = Mathf.Max(0.25f, wall.distance - 0.2f);
+        }
+
+        // Rilascia poco sotto la linea degli occhi, davanti al giocatore.
+        Vector3 position = origin + forward * distance + Vector3.down * 0.35f;
+
+        // Assicura che il punto sia sopra il pavimento: se sotto, alzalo appena
+        // sopra il collider così la fisica lo fa appoggiare invece di sprofondare.
+        if (Physics.Raycast(position + Vector3.up * 2f, Vector3.down, out RaycastHit floor, 6f, ~0, QueryTriggerInteraction.Ignore))
+        {
+            position.y = Mathf.Max(position.y, floor.point.y + 0.15f);
         }
 
         return position;

@@ -20,6 +20,10 @@ public static class InventorySnapshot
         // dal clone per evitare che resti interagibile (doppio raccoglimento/furto).
         foreach (var col in snapshot.GetComponentsInChildren<Collider>())
             Object.Destroy(col);
+        // Un oggetto lasciato con la fisica ha un Rigidbody: va tolto dallo snapshot,
+        // altrimenti l'anteprima in inventario cadrebbe con la gravità.
+        foreach (var body in snapshot.GetComponentsInChildren<Rigidbody>())
+            Object.Destroy(body);
         foreach (var pu in snapshot.GetComponentsInChildren<PickupItem>())
             Object.Destroy(pu);
         foreach (var st in snapshot.GetComponentsInChildren<StealableItem>())
