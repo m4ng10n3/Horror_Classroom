@@ -5381,7 +5381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorEscape
   requiredPhysicalItems: 1
-  victoryMessage: SEI SCAPPATO DALLA CLASSE.
+  victoryMessage: "SEI SCAPPATO DALLA CLASSE. SAR\xC0 DAVVERO LA FINE? "
   requiredPickupItems: []
   requiredItemNames:
   - Chiave
@@ -6527,10 +6527,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1286332797}
+      addedObject: {fileID: 1286332801}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1286332801}
+      addedObject: {fileID: 1286332802}
   m_SourcePrefab: {fileID: 100100000, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
 --- !u!1 &547947547 stripped
 GameObject:
@@ -15948,29 +15948,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7fda2057d18a34a8b7cd51be995f81, type: 3}
   m_PrefabInstance: {fileID: 543225169}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1286332797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286332793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced62df329c77294799f6e94ba2020d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickupItem
-  itemName: Cloroformio
-  itemId: 
-  description: Un oggetto trovato in aula.
-  canInspect: 1
-  inspectionScaleMultiplier: 1
-  inspectionModelOverride: {fileID: 0}
-  upgradePath:
-    actionKey: 1
-    actionLabel: Inserisci occhio
-    stages: []
-    nextStageIndex: 0
 --- !u!65 &1286332801
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15992,6 +15969,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.08428488, y: 0.17729083, z: 0.077693}
   m_Center: {x: 0, y: 0.039593842, z: 0}
+--- !u!114 &1286332802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286332793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1a5d1d74f1b254a8cce090acb7cb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StealableItem
+  itemName: Cloroformio
+  itemDescription: Il cloroformio tanto agognato da Frank.
+  stealDuration: 2
+  noiseRate: 0.6
+  suspicionCost: 1
+  owner: {fileID: 0}
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
 --- !u!1 &1305016952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 420908ddc2e7ef846bf1d79c771938af, type: 3}
@@ -24368,6 +24366,32 @@ Transform:
   - {fileID: 1616488588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2029698295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4475677403317886838, guid: 023aa4c210c362049a9e43638d758af7, type: 3}
+  m_PrefabInstance: {fileID: 7388314652436991071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2029698300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029698295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1a5d1d74f1b254a8cce090acb7cb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StealableItem
+  itemName: Libro Rosso
+  itemDescription: Un libro preso di nascosto dal armadietto.
+  stealDuration: 2
+  noiseRate: 0.6
+  suspicionCost: 1
+  owner: {fileID: 0}
+  canInspect: 1
+  inspectionScaleMultiplier: 1
+  inspectionModelOverride: {fileID: 0}
 --- !u!1001 &2047323978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26956,10 +26980,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Libro_3_Rossofbx
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8516835029237791931, guid: 023aa4c210c362049a9e43638d758af7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4475677403317886838, guid: 023aa4c210c362049a9e43638d758af7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2029698300}
   m_SourcePrefab: {fileID: 100100000, guid: 023aa4c210c362049a9e43638d758af7, type: 3}
 --- !u!1001 &7717151750030950315
 PrefabInstance:

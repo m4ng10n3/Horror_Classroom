@@ -29,24 +29,61 @@ public class PickupItem : MonoBehaviour, IPlayerInteractable
 
     void Awake()
     {
-        // Aggiunge collider automatico se mancante (necessario per il raycast)
-        if (GetComponentInChildren<Collider>() == null)
+        EnsureRaycastCollider();
+
+        // Alone oro/scintillante che distingue i raccoglibili dagli oggetti di scena.
+        ItemHighlight.Ensure(gameObject, ItemHighlight.Kind.Pickup);
+    }
+
+    // Garantisce un collider per il raycast di interazione. Serve soprattutto agli oggetti
+    // "rimessi giù" dall'inventario: lo snapshot non ha collider, quindi va creato qui.
+    //
+    // ATTENZIONE (editor vs build): una MeshCollider convex creata da codice richiede che
+    // la mesh abbia "Read/Write Enabled" attivo. Nell'editor le mesh sono sempre leggibili
+    // in memoria, quindi funziona; in una build le mesh importate hanno Read/Write DISATTIVO
+    // di default, la MeshCollider convex non viene generata e l'oggetto diventa non
+    // raccoglibile. È esattamente il caso "nell'editor si raccoglie, nella build no".
+    // Se la mesh non è leggibile ripieghiamo su una BoxCollider basata sui bounds, che non
+    // richiede accesso ai vertici e funziona identica in editor e in build.
+    private void EnsureRaycastCollider()
+    {
+        if (GetComponentInChildren<Collider>() != null)
+            return;
+
+        var meshFilter = GetComponentInChildren<MeshFilter>();
+        if (meshFilter != null && meshFilter.sharedMesh != null)
         {
-            var mesh = GetComponentInChildren<MeshFilter>();
-            if (mesh != null)
+            Mesh mesh = meshFilter.sharedMesh;
+            if (mesh.isReadable)
             {
-                var col = gameObject.AddComponent<MeshCollider>();
-                col.sharedMesh = mesh.sharedMesh;
+                var col = meshFilter.gameObject.AddComponent<MeshCollider>();
+                col.sharedMesh = mesh;
                 col.convex = true;
             }
             else
             {
-                gameObject.AddComponent<BoxCollider>();
+                AddBoxColliderFromBounds(meshFilter.gameObject, mesh.bounds);
             }
+            return;
         }
 
-        // Alone oro/scintillante che distingue i raccoglibili dagli oggetti di scena.
-        ItemHighlight.Ensure(gameObject, ItemHighlight.Kind.Pickup);
+        var skinned = GetComponentInChildren<SkinnedMeshRenderer>();
+        if (skinned != null)
+        {
+            AddBoxColliderFromBounds(skinned.gameObject, skinned.localBounds);
+            return;
+        }
+
+        gameObject.AddComponent<BoxCollider>();
+    }
+
+    // Mesh.bounds e SkinnedMeshRenderer.localBounds sono metadati serializzati, disponibili
+    // anche quando la mesh non è leggibile: la box risultante funziona in ogni build.
+    private static void AddBoxColliderFromBounds(GameObject target, Bounds localBounds)
+    {
+        var box = target.AddComponent<BoxCollider>();
+        box.center = localBounds.center;
+        box.size   = localBounds.size;
     }
 
     public bool CanInteract() => !pickedUp && isActiveAndEnabled;

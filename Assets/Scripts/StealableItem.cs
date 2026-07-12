@@ -53,18 +53,41 @@ public class StealableItem : MonoBehaviour, IHoldInteractable
     void Awake()
     {
         // Stesso accorgimento di PickupItem: serve un collider per il raycast di interazione.
+        // La MeshCollider convex creata da codice va bene solo con mesh "Read/Write
+        // Enabled"; in una build le mesh non leggibili la fanno fallire silenziosamente (in
+        // editor funziona). Se non leggibile ripieghiamo su una BoxCollider dai bounds.
         if (GetComponentInChildren<Collider>() == null)
         {
-            var mesh = GetComponentInChildren<MeshFilter>();
-            if (mesh != null)
+            var meshFilter = GetComponentInChildren<MeshFilter>();
+            if (meshFilter != null && meshFilter.sharedMesh != null)
             {
-                var col = gameObject.AddComponent<MeshCollider>();
-                col.sharedMesh = mesh.sharedMesh;
-                col.convex = true;
+                Mesh mesh = meshFilter.sharedMesh;
+                if (mesh.isReadable)
+                {
+                    var col = meshFilter.gameObject.AddComponent<MeshCollider>();
+                    col.sharedMesh = mesh;
+                    col.convex = true;
+                }
+                else
+                {
+                    var box = meshFilter.gameObject.AddComponent<BoxCollider>();
+                    box.center = mesh.bounds.center;
+                    box.size   = mesh.bounds.size;
+                }
             }
             else
             {
-                gameObject.AddComponent<BoxCollider>();
+                var skinned = GetComponentInChildren<SkinnedMeshRenderer>();
+                if (skinned != null)
+                {
+                    var box = skinned.gameObject.AddComponent<BoxCollider>();
+                    box.center = skinned.localBounds.center;
+                    box.size   = skinned.localBounds.size;
+                }
+                else
+                {
+                    gameObject.AddComponent<BoxCollider>();
+                }
             }
         }
 
