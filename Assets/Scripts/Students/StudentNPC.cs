@@ -95,6 +95,13 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     public string[] additionalRequiredItems = Array.Empty<string>();
 
     [Header("Trade Chain — Richieste in Sequenza")]
+    [Tooltip("Dialogo introduttivo mostrato SOLO la prima volta che parli con questo studente, prima delle richieste della catena. Lascia vuoto per saltarlo.")]
+    public DialogueSequence introChainDialogue = new DialogueSequence { lines = Array.Empty<DialogueLine>() };
+
+    [Tooltip("Diventa true dopo che l'intro è stata mostrata una volta.")]
+    [HideInInspector]
+    public bool introChainDialogueShown = false;
+
     [Tooltip("Se popolato, lo studente chiede questi oggetti UNO ALLA VOLTA, in ordine. Ogni consegna sblocca la richiesta successiva. Il reward viene dato solo dopo l'ultimo passo. Sostituisce 'Required Item' singolo.")]
     public TradeStep[] tradeSteps = Array.Empty<TradeStep>();
 
@@ -942,6 +949,9 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     private bool HasFinalChainDialogue =>
         finalChainDialogue != null && finalChainDialogue.lines != null && finalChainDialogue.lines.Length > 0;
 
+    private bool HasIntroChainDialogue =>
+        introChainDialogue != null && introChainDialogue.lines != null && introChainDialogue.lines.Length > 0;
+
     // Gestisce la catena di richieste in modo ORDINE-INDIPENDENTE: ogni passo chiede un
     // oggetto e lo consuma alla consegna. Se il player ha in mano l'oggetto di un passo
     // ancora aperto (in qualsiasi ordine), quel baratto si risolve. Il reward (rewardItem)
@@ -949,6 +959,14 @@ public class StudentNPC : MonoBehaviour, IPlayerInteractable, IDialogueSequenceI
     // gli effetti collaterali sono applicati solo a dialogo concluso (pendingCommit).
     private DialogueLine[] GetTradeChainSequence(PhysicalInventory inventory)
     {
+        // Intro: SOLO la prima volta che si parla con questo studente, prima di
+        // qualsiasi richiesta. Il flag si "consuma" a dialogo concluso (pendingCommit).
+        if (HasIntroChainDialogue && !introChainDialogueShown)
+        {
+            pendingCommit = () => introChainDialogueShown = true;
+            return introChainDialogue.lines;
+        }
+
         // Cerca un passo non ancora risolto di cui il player possiede l'oggetto richiesto.
         // I passi senza oggetto (requiredItem vuoto) sono sempre risolvibili.
         TradeStep step = null;

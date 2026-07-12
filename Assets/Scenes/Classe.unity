@@ -353,6 +353,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -4630,6 +4633,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: Matita
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -7137,6 +7143,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: Forbice
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -7358,6 +7367,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -8197,6 +8209,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: Temperino
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -8336,6 +8351,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: Figurina Gatto
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -10181,6 +10199,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps:
   - requiredItem: Guanto da box
     consumeItem: 1
@@ -10798,6 +10819,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: Pallone Da Calcio
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -11555,6 +11579,9 @@ MonoBehaviour:
   requiredItem: Tessuto
   additionalRequiredItems:
   - Cloroformio
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -11952,6 +11979,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -13729,6 +13759,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -13927,6 +13960,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: Libro Rosso
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -14035,43 +14071,124 @@ MonoBehaviour:
   - Macchinina Verde
   - Patatine
   - Peluche Spaventoso
+  introChainDialogue:
+    lines:
+    - speaker: 0
+      text: Ciao Brad.
+    - speaker: 1
+      text: "Ciao Eddy. Lo sai?\r "
+    - speaker: 0
+      text: Cosa dovrei sapere?
+    - speaker: 1
+      text: Quello che ho trovato.
+    - speaker: 0
+      text: "Perch\xE9 dovrei saperlo?"
+    - speaker: 1
+      text: Non lo so.
+    - speaker: 0
+      text: ...
+    - speaker: 1
+      text: "Ok\u2026te lo dico io. Una chiave."
+    - speaker: 0
+      text: Dalla a me!
+    - speaker: 1
+      text: "No! L\u2019ho trovata io."
+    - speaker: 0
+      text: Se ti do qualcosa in cambio?
+    - speaker: 1
+      text: "Mh\u2026 Ok. Ma non te la caverai con una cosa sola!"
+  introChainDialogueShown: 0
   tradeSteps:
   - requiredItem: Macchinina
     consumeItem: 1
     requestDialogue:
       lines:
       - speaker: 1
-        text: sai adoro la macchinina
+        text: Voglio la macchinina verde.
+      - speaker: 0
+        text: Quale macchinina?
+      - speaker: 1
+        text: "Quella in fondo all\u2019aula."
     receivedDialogue:
       lines:
+      - speaker: 0
+        text: Ho la macchinina. Tieni.
       - speaker: 1
-        text: bell assaj
+        text: Perfetto!
+      - speaker: 0
+        text: Ora tu dammi la chiave!
+      - speaker: 1
+        text: Non mi ha ancora portato tutto o sbaglio?
+      - speaker: 0
+        text: ...
     completed: 0
   - requiredItem: Patatine
     consumeItem: 1
     requestDialogue:
       lines:
       - speaker: 1
-        text: che buone le patatine di will
+        text: "Vorrei proprio delle patatine\u2026"
+      - speaker: 0
+        text: Mi hai preso per un distributore automatico?
+      - speaker: 1
+        text: "Le ho viste sul banco di Will\u2026"
+      - speaker: 0
+        text: Smettila!
+      - speaker: 1
+        text: Niente patatine, niente chiave.
     receivedDialogue:
       lines:
+      - speaker: 0
+        text: Ho trovato le patatine.
       - speaker: 1
-        text: buon
+        text: Siiii! Patatine
+      - speaker: 0
+        text: Tieni...
+      - speaker: 1
+        text: MA SONO AVARIATE!
+      - speaker: 0
+        text: Sono quelle di Will. Quelle che mi hai chiesto.
+      - speaker: 1
+        text: "Non le voglio pi\xF9. Non ti dar\xF2 la chiave."
+      - speaker: 0
+        text: "Non \xE8 colpa mia! Sei un bugiardo."
+      - speaker: 1
+        text: Non sei affatto gentile.
+      - speaker: 0
+        text: Vuoi vedere con quanta gentilezza ti appendo al muro?
+      - speaker: 1
+        text: Sei cattivo.
+      - speaker: 0
+        text: Sto perdendo la pazienza...
     completed: 0
   - requiredItem: Peluche Spaventoso
     consumeItem: 1
     requestDialogue:
       lines:
       - speaker: 1
-        text: "voglio il peluche di Daniel.. ma con due occhi sarebbe molto pi\xF9
-          bella"
+        text: "Voglio il peluche di Daniel.. ma con due occhi sarebbe molto pi\xF9
+          bello."
+      - speaker: 0
+        text: E... questi occhi dove li trovo?
+      - speaker: 1
+        text: IO VEDO TANTI OCCHI IN QUESTA CLASSE!
+      - speaker: 0
+        text: ...
     receivedDialogue:
       lines:
+      - speaker: 0
+        text: HO IL DANNATO PUPAZZETTO. COSA MI HAI FATTO FARE?!
       - speaker: 1
-        text: bell assaj
+        text: "SO CHE TI \xC8 PIACIUTO! "
+      - speaker: 0
+        text: 'TU SEI PAZZO! '
     completed: 0
   finalChainDialogue:
-    lines: []
+    lines:
+    - speaker: 1
+      text: Tieni questa stupidissima chiave. MA A COSA TI SERVE?
+    - speaker: 0
+      text: A STARE LONTANO DA TE!
   rewardItem: Chiave
   consumeRequiredItem: 0
   rewardItemPrefab: {fileID: 1544191590021391022, guid: 8bafd1a332cdb8747bf7ff72e3d84985, type: 3}
@@ -15461,6 +15578,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -16566,6 +16686,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -18621,6 +18744,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: Accendino
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -19795,6 +19921,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -22189,6 +22318,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -22946,6 +23078,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
@@ -24422,6 +24557,9 @@ MonoBehaviour:
   tradeDone: 0
   requiredItem: 
   additionalRequiredItems: []
+  introChainDialogue:
+    lines: []
+  introChainDialogueShown: 0
   tradeSteps: []
   finalChainDialogue:
     lines: []
