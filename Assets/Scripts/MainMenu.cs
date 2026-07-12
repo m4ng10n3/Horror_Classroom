@@ -1,93 +1,94 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using TMPro;
 
-// Menu di pausa costruito interamente da codice.
-// - Si apre/chiude con ESC.
-// - Da aperto ferma il tempo (Time.timeScale = 0) e mostra il cursore.
-// - Contiene la scritta "MENU" e tre bottoni: "Riprendi", "Opzioni" ed "Esci dal gioco".
-// - "Opzioni" apre un sottomenu con due slider: volume e sensibilità del mouse.
-//   I valori vengono salvati in PlayerPrefs e riapplicati all'avvio.
+// Menu iniziale, costruito da codice con gli stessi pezzi di UI del PauseMenu
+// (vedi MenuUIFactory): immagine di sfondo, titolo e tre bottoni sopra.
+// - "Gioca" carica la scena di gioco.
+// - "Opzioni" apre lo stesso sottomenu volume/sensibilita' della pausa: i valori
+//   finiscono in PlayerPrefs e vengono riapplicati al player quando la partita parte.
+// - "Esci dal gioco" chiude l'applicazione.
 //
-// Basta aggiungere questo componente a un GameObject vuoto in scena.
-// I riferimenti a font e sprite si auto-popolano in editor (vedi Reset()).
+// Va messo su un GameObject vuoto nella scena del menu.
+// Font e sprite dei bottoni si auto-popolano in editor (vedi Reset()).
 [DisallowMultipleComponent]
-public class PauseMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
-    // Chiavi PlayerPrefs
+    // Stesse chiavi del PauseMenu: le impostazioni scelte qui valgono anche in partita.
     private const string PrefVolume = "Options_Volume";
     private const string PrefSensitivity = "Options_MouseSensitivity";
 
+    [Header("Scena di gioco")]
+    [Tooltip("Nome della scena caricata da \"Gioca\". Deve essere nella lista del Build Settings.")]
+    public string gameSceneName = "Classe";
+
+    [Header("Titolo")]
+    public string title = "HORROR CLASSROOM";
+
     [Header("Font & Sprite (auto-caricati in editor)")]
-    [Tooltip("Font della scritta centrale MENU (Brown Cookies SDF)")]
+    [Tooltip("Font del titolo (Brown Cookies SDF)")]
     public TMP_FontAsset menuFont;
     [Tooltip("Font dei bottoni (Huge Smile SDF)")]
     public TMP_FontAsset buttonFont;
     [Tooltip("Sprite di sfondo dei bottoni (lowpolypixelpaper)")]
     public Sprite buttonSprite;
 
-    [Header("Player")]
-    [Tooltip("Se assegnato, il player viene congelato mentre il menu è aperto (niente rotazione camera). Se vuoto viene cercato in scena.")]
-    public FPSController player;
+    [Header("Sfondo")]
+    [Tooltip("Immagine a schermo intero dietro ai bottoni. Va importata come Sprite (2D and UI). Se vuota resta uno sfondo scuro.")]
+    public Sprite backgroundImage;
+    [Tooltip("Quanto scurire l'immagine, per far risaltare i bottoni. 0 = immagine pulita, 1 = nero pieno.")]
+    [Range(0f, 1f)] public float backgroundDim = 0.45f;
 
     [Header("Opzioni - limiti degli slider")]
-    [Tooltip("Sensibilità mouse minima (estremo sinistro dello slider)")]
+    [Tooltip("Sensibilita' mouse minima (estremo sinistro dello slider). Deve combaciare con PauseMenu.")]
     public float minSensitivity = 0.02f;
-    [Tooltip("Sensibilità mouse massima (estremo destro dello slider)")]
+    [Tooltip("Sensibilita' mouse massima (estremo destro dello slider). Deve combaciare con PauseMenu.")]
     public float maxSensitivity = 0.5f;
+    [Tooltip("Valore usato al primo avvio, quando non c'e' ancora nulla in PlayerPrefs. Tienilo uguale a FPSController.mouseSensitivity.")]
+    public float defaultSensitivity = 0.1f;
 
-    private GameObject menuRoot;      // pannello a schermo intero, attivato/disattivato
-    private GameObject mainPanel;     // MENU + i tre bottoni
+    private GameObject mainPanel;     // titolo + i tre bottoni
     private GameObject optionsPanel;  // sottomenu OPZIONI con i due slider
     private Slider volumeSlider;
     private Slider sensitivitySlider;
     private TextMeshProUGUI volumeValueLabel;
     private TextMeshProUGUI sensitivityValueLabel;
-    private bool isOpen;
     private bool optionsOpen;
-    private float previousTimeScale = 1f;
 
     void Start()
     {
-        if (player == null)
-            player = FindFirstObjectByType<FPSController>();
+        // Tornando qui da una partita in pausa il tempo sarebbe ancora fermo.
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         MenuUIFactory.EnsureEventSystem(transform);
         BuildUI();
         LoadSettings();
-        SetOpen(false);
+        ShowOptions(false);
     }
 
     void Update()
     {
+        // Da dentro le opzioni, ESC torna al menu principale.
         var kb = Keyboard.current;
-        if (kb == null || !kb.escapeKey.wasPressedThisFrame)
-            return;
-
-        // Da dentro le opzioni, ESC torna al menu principale invece di chiudere tutto.
-        if (isOpen && optionsOpen)
+        if (kb != null && kb.escapeKey.wasPressedThisFrame && optionsOpen)
             ShowOptions(false);
-        else
-            Toggle();
     }
 
-    public void Toggle()
+    // Chiamato dal bottone "Gioca".
+    public void PlayGame()
     {
-        SetOpen(!isOpen);
-    }
-
-    // Chiamato dal bottone "Riprendi".
-    public void Resume()
-    {
-        SetOpen(false);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(gameSceneName);
     }
 
     // Chiamato dal bottone "Esci dal gioco".
     public void QuitGame()
     {
-        // Ripristina il tempo prima di uscire, per sicurezza.
-        Time.timeScale = 1f;
+        PlayerPrefs.Save();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -114,12 +115,13 @@ public class PauseMenu : MonoBehaviour
     private void LoadSettings()
     {
         float volume = Mathf.Clamp01(PlayerPrefs.GetFloat(PrefVolume, AudioListener.volume));
-        float sensitivity = PlayerPrefs.GetFloat(
-            PrefSensitivity, player != null ? player.mouseSensitivity : minSensitivity);
+        // Senza chiave salvata si parte dal default del player: scriverne uno diverso
+        // qui significherebbe cambiare la sensibilita' della partita senza chiederlo.
+        float sensitivity = PlayerPrefs.GetFloat(PrefSensitivity, defaultSensitivity);
         sensitivity = Mathf.Clamp(sensitivity, minSensitivity, maxSensitivity);
 
         // onValueChanged non scatta se il valore salvato coincide con quello di default
-        // dello slider, quindi applichiamo comunque i valori a mano (le Set* sono idempotenti).
+        // dello slider, quindi applichiamo comunque i valori a mano.
         if (volumeSlider != null) volumeSlider.SetValueWithoutNotify(volume);
         if (sensitivitySlider != null) sensitivitySlider.SetValueWithoutNotify(sensitivity);
 
@@ -131,6 +133,7 @@ public class PauseMenu : MonoBehaviour
 
     private void SetVolume(float value)
     {
+        // AudioListener.volume e' globale e sopravvive al cambio scena.
         AudioListener.volume = value;
         PlayerPrefs.SetFloat(PrefVolume, value);
 
@@ -140,39 +143,12 @@ public class PauseMenu : MonoBehaviour
 
     private void SetSensitivity(float value)
     {
-        if (player != null)
-            player.mouseSensitivity = value;
+        // Qui il player non esiste: il valore viaggia via PlayerPrefs e viene applicato
+        // da PauseMenu.LoadSettings() quando la scena di gioco parte.
         PlayerPrefs.SetFloat(PrefSensitivity, value);
 
         if (sensitivityValueLabel != null)
             sensitivityValueLabel.text = value.ToString("0.00");
-    }
-
-    private void SetOpen(bool open)
-    {
-        isOpen = open;
-
-        if (menuRoot != null)
-            menuRoot.SetActive(open);
-
-        // Riaprendo il menu si riparte sempre dalla schermata principale.
-        ShowOptions(false);
-
-        if (open)
-        {
-            previousTimeScale = Time.timeScale;
-            Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            if (player != null) player.gameplayFrozen = true;
-        }
-        else
-        {
-            Time.timeScale = previousTimeScale <= 0f ? 1f : previousTimeScale;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            if (player != null) player.gameplayFrozen = false;
-        }
     }
 
     // ----------------------------------------------------------------------
@@ -180,28 +156,33 @@ public class PauseMenu : MonoBehaviour
     // ----------------------------------------------------------------------
     private void BuildUI()
     {
-        // Canvas overlay in cima a tutto
-        var canvasGO = MenuUIFactory.CreateCanvas(transform, "PauseMenuCanvas", 999);
+        var canvasGO = MenuUIFactory.CreateCanvas(transform, "MainMenuCanvas", 0);
 
-        // Pannello di sfondo scuro semitrasparente a schermo intero (blocca i click dietro)
-        menuRoot = MenuUIFactory.CreateFullscreenImage(canvasGO.transform, "PauseRoot",
-            null, new Color(0f, 0f, 0f, 0.75f), true).gameObject;
+        // L'ordine dei figli e' l'ordine di disegno: prima lo sfondo, poi la velina,
+        // poi i pannelli. I primi due non sono raycast target, altrimenti mangerebbero i click.
+        MenuUIFactory.CreateFullscreenImage(canvasGO.transform, "Background",
+            backgroundImage,
+            backgroundImage != null ? Color.white : new Color(0.06f, 0.05f, 0.07f, 1f),
+            false);
+
+        MenuUIFactory.CreateFullscreenImage(canvasGO.transform, "Dim",
+            null, new Color(0f, 0f, 0f, backgroundDim), false);
 
         // --- Pannello principale ---------------------------------------
-        mainPanel = MenuUIFactory.CreateFullscreenPanel(menuRoot.transform, "MainPanel");
+        mainPanel = MenuUIFactory.CreateFullscreenPanel(canvasGO.transform, "MainPanel");
 
-        MenuUIFactory.CreateLabel(mainPanel.transform, "Title", "MENU", menuFont, 150f,
-            new Vector2(0f, 260f), new Vector2(900f, 260f), Color.white);
+        MenuUIFactory.CreateLabel(mainPanel.transform, "Title", title, menuFont, 130f,
+            new Vector2(0f, 280f), new Vector2(1400f, 300f), Color.white);
 
-        MenuUIFactory.CreateButton(mainPanel.transform, "ResumeButton", "Riprendi",
-            new Vector2(0f, 40f), buttonSprite, buttonFont, Resume);
+        MenuUIFactory.CreateButton(mainPanel.transform, "PlayButton", "Gioca",
+            new Vector2(0f, 40f), buttonSprite, buttonFont, PlayGame);
         MenuUIFactory.CreateButton(mainPanel.transform, "OptionsButton", "Opzioni",
             new Vector2(0f, -110f), buttonSprite, buttonFont, () => ShowOptions(true));
         MenuUIFactory.CreateButton(mainPanel.transform, "QuitButton", "Esci dal gioco",
             new Vector2(0f, -260f), buttonSprite, buttonFont, QuitGame);
 
         // --- Sottomenu opzioni -------------------------------------------
-        optionsPanel = MenuUIFactory.CreateFullscreenPanel(menuRoot.transform, "OptionsPanel");
+        optionsPanel = MenuUIFactory.CreateFullscreenPanel(canvasGO.transform, "OptionsPanel");
 
         MenuUIFactory.CreateLabel(optionsPanel.transform, "Title", "OPZIONI", menuFont, 120f,
             new Vector2(0f, 280f), new Vector2(900f, 220f), Color.white);
@@ -218,7 +199,7 @@ public class PauseMenu : MonoBehaviour
 
 #if UNITY_EDITOR
     // Auto-popola i riferimenti quando il componente viene aggiunto in editor,
-    // così non serve trascinare nulla a mano nell'Inspector.
+    // cosi' non serve trascinare nulla a mano nell'Inspector (tranne l'immagine di sfondo).
     private void Reset()
     {
         if (menuFont == null)

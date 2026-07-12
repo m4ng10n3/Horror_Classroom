@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Temperino
   itemId: 
-  description: Un oggetto trovato in aula.
+  description: Un temperino affilato
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}

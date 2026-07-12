@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemName: Matita Nera
   itemId: 
-  description: Un oggetto trovato in aula.
+  description: Una matitona nera!
   canInspect: 1
   inspectionScaleMultiplier: 1
   inspectionModelOverride: {fileID: 0}
